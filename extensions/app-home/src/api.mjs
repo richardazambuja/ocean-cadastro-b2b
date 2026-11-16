@@ -99,3 +99,28 @@ export async function assignOrderRole(contactId, roleId, locationId) {
     errorMessages,
   };
 }
+
+// Revoga SOMENTE a atribuicao especifica, nunca todos os papeis do cliente.
+const REVOKE_ROLE_MUTATION = `mutation OceanTravarAcesso(
+  $companyContactId: ID!, $companyContactRoleAssignmentId: ID!
+) {
+  companyContactRevokeRole(
+    companyContactId: $companyContactId,
+    companyContactRoleAssignmentId: $companyContactRoleAssignmentId
+  ) {
+    revokedCompanyContactRoleAssignmentId
+    userErrors { field message code }
+  }
+}`;
+
+export async function revokeOrderRole(contactId, assignmentId) {
+  const data = await graphql(REVOKE_ROLE_MUTATION, {
+    companyContactId:contactId, companyContactRoleAssignmentId:assignmentId,
+  });
+  const payload = data.companyContactRevokeRole;
+  const errors = payload?.userErrors?.map(e=>e.message).filter(Boolean) ?? [];
+  if (errors.length || payload?.revokedCompanyContactRoleAssignmentId !== assignmentId) {
+    throw new Error(errors.join('; ') || 'A Shopify nao confirmou a revogacao da funcao do comprador.');
+  }
+  return {revokedAssignmentId:assignmentId};
+}

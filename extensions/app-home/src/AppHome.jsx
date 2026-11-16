@@ -1,8 +1,8 @@
 import {render} from 'preact';
 import {useEffect, useMemo, useState} from 'preact/hooks';
-import {fetchAllLocations, fetchLocation, assignOrderRole} from './api.mjs';
+import {fetchAllLocations, fetchLocation, assignOrderRole, revokeOrderRole} from './api.mjs';
 import {selectBuyer, selectOrderRole, formatCnpj, classifyLocation} from './regras.mjs';
-import {approveLocation} from './aprovar.mjs';
+import {approveLocation, releaseAccess, lockAccess, validarTravamento} from './aprovar.mjs';
 import {ordenarPorCadastro, formatarDataCadastro} from './ordenacao.mjs';
 import {statusDoPainel, totaisDoPainel, podeReprovar, podeReabrir} from './status.mjs';
 import {fetchReviewStatuses, lerReviewStatus, salvarReviewStatus} from './reprovados-api.mjs';
@@ -25,6 +25,7 @@ function App() {
   const [filter,setFilter] = useState('pendente');
   const [sortOrder,setSortOrder] = useState('recentes');
   const [confirmingRejection,setConfirmingRejection] = useState(false);
+  const [confirmingLock,setConfirmingLock] = useState(false);
 
   async function loadLocations() {
     setLoading(true);
@@ -50,38 +51,64 @@ function App() {
       ]))].filter(Boolean).join(' ').toLowerCase().includes(needle);
   }),sortOrder),[locations,decisions,filter,search,sortOrder]);
 
-  async function review(id) {
+  async function review(id, openLock=false) {
     if (busy || loading) return;
-    setBusy(true);setError('');setNotice('');setConfirmingRejection(false);
+    setBusy(true);setError('');setNotice('');setConfirmingRejection(false);setConfirmingLock(false);
     try {
       // Verifica a Shopify e o estado interno no momento de abrir a analise.
       const [location,status] = await Promise.all([fetchLocation(id),lerReviewStatus(id)]);
       setDecisions(prev=>({...prev,[id]:status}));
       setSelected(location);
+      setConfirmingLock(Boolean(openLock && statusDoPainel(location,{[id]:status})==='aprovado_liberado' && validarTravamento(location).ok));
     } catch(e) {setError(e.message || 'Nao foi possivel abrir o cadastro.');}
     finally {setBusy(false);}
   }
 
+  // Aprovar significa SOMENTE aprovar comercialmente, sem liberar compra.
   async function approve() {
-    if (!selected || busy || loading || !podeReprovar(selected,decisions) || classifyLocation(selected)!=='pendente') return;
+    if (!selected || busy || loading || statusDoPainel(selected,decisions)!=='pendente') return;
     setBusy(true);setError('');setNotice('');
     try {
-      const latestStatus = await lerReviewStatus(selected.id);
-      if (latestStatus === 'reprovado') throw new Error('Este local foi reprovado por outro vendedor. Reabra a analise antes de aprovar.');
       const outcome = await approveLocation(selected.id,{
-        getLocation:fetchLocation,assignRole:assignOrderRole
+        getLocation:fetchLocation,readDecision:lerReviewStatus,saveDecision:salvarReviewStatus
       });
-      if (outcome.status === 'ja_aprovado') {
-        setNotice('Ja existe comprador atribuido a esse local. Nenhuma permissao foi alterada.');
-      } else {
-        setNotice(`${outcome.location.company.name}: comprador autorizado para pedidos no local ${outcome.location.name}.`);
-        shopify.toast.show('Cadastro aprovado e permissao confirmada.');
-      }
-      setSelected(null);
+      setSelected(null);setFilter('aprovado_pendente');
       await loadLocations();
-    } catch(e) {
-      setError(e.message || 'Nao foi possivel aprovar o cadastro.');
-    } finally {setBusy(false);}
+      setNotice(`${outcome.location.company.name}: aprovada comercialmente. O acesso a pedidos continua bloqueado ate a liberacao.`);
+      shopify.toast.show('Cadastro aprovado. Acesso pendente de liberacao.');
+    } catch(e) {setError(e.message || 'Falha na aprovacao comercial.');}
+    finally {setBusy(false);}
+  }
+
+  async function release() {
+    if (!selected || busy || loading || statusDoPainel(selected,decisions)!=='aprovado_pendente') return;
+    setBusy(true);setError('');setNotice('');
+    try {
+      const outcome=await releaseAccess(selected.id,{
+        getLocation:fetchLocation,readDecision:lerReviewStatus,assignRole:assignOrderRole
+      });
+      setSelected(null);setFilter('aprovado_liberado');
+      await loadLocations();
+      setNotice(`${outcome.location.company.name}: acesso Apenas pedidos concedido e confirmado na Shopify.`);
+      shopify.toast.show('Acesso a pedidos liberado.');
+    } catch(e) {setError(e.message || 'Nao foi possivel liberar o acesso.');}
+    finally {setBusy(false);}
+  }
+
+  async function lock() {
+    if (!selected || busy || loading || !confirmingLock || statusDoPainel(selected,decisions)!=='aprovado_liberado') return;
+    setBusy(true);setError('');setNotice('');
+    try {
+      const outcome=await lockAccess(selected.id,{
+        getLocation:fetchLocation,readDecision:lerReviewStatus,
+        saveDecision:salvarReviewStatus,revokeRole:revokeOrderRole
+      });
+      setSelected(null);setConfirmingLock(false);setFilter('aprovado_pendente');
+      await loadLocations();
+      setNotice(`${outcome.location.company.name}: funcao Apenas pedidos revogada e ausencia de acesso confirmada na Shopify.`);
+      shopify.toast.show('Acesso de compra travado.');
+    } catch(e) {setError(e.message || 'Nao foi possivel travar o acesso. Atualize a ficha antes de tentar novamente.');}
+    finally {setBusy(false);}
   }
 
   async function reject() {
@@ -89,8 +116,8 @@ function App() {
     setBusy(true);setError('');setNotice('');
     try {
       // Revalida para nao marcar como reprovado um local ja autorizado.
-      const actual = await fetchLocation(selected.id);
-      if (classifyLocation(actual)==='aprovado') throw new Error('O local ja possui comprador autorizado. Nao e permitido reprovar pelo painel.');
+      const [actual,decisaoAtual] = await Promise.all([fetchLocation(selected.id),lerReviewStatus(selected.id)]);
+      if (!['pendente','incompleto'].includes(statusDoPainel(actual,{[selected.id]:decisaoAtual}))) throw new Error('Situacao modificada por outro vendedor. Atualize os dados.');
       if (classifyLocation(actual)==='erro') throw new Error('Os dados do local estao incompletos para verificar as permissoes.');
       await salvarReviewStatus(selected.id,'reprovado');
       const companyName = actual.company.name;
@@ -106,8 +133,8 @@ function App() {
     if (!selected || busy || loading || !podeReabrir(selected,decisions)) return;
     setBusy(true);setError('');setNotice('');
     try {
-      const actual = await fetchLocation(selected.id);
-      if (classifyLocation(actual)==='aprovado') throw new Error('O local ja possui comprador autorizado; atualize os dados.');
+      const [actual,decisaoAtual] = await Promise.all([fetchLocation(selected.id),lerReviewStatus(selected.id)]);
+      if (statusDoPainel(actual,{[selected.id]:decisaoAtual})!=='reprovado') throw new Error('Situacao modificada por outro vendedor. Atualize os dados.');
       await salvarReviewStatus(selected.id,'reaberto');
       const companyName = actual.company.name;
       setSelected(null);setConfirmingRejection(false);
@@ -121,7 +148,8 @@ function App() {
 
   const STATUS = {
     pendente:{label:'Pendente',tone:'warning'},
-    aprovado:{label:'Aprovado',tone:'success'},
+    aprovado_pendente:{label:'Aprovado — acesso pendente',tone:'warning'},
+    aprovado_liberado:{label:'Aprovado — acesso liberado',tone:'success'},
     incompleto:{label:'Incompleto',tone:'critical'},
     reprovado:{label:'Reprovado',tone:'critical'},
     erro:{label:'Revisar',tone:'critical'}
@@ -133,12 +161,15 @@ function App() {
         {notice && <s-banner tone="success">{notice}</s-banner>}
         {!selected ? <>
           <s-section heading="Resumo dos cadastros B2B">
-            <s-grid gridTemplateColumns="repeat(4, 1fr)" gap="base">
+            <s-grid gridTemplateColumns="repeat(3, 1fr)" gap="base">
               <s-box padding="base" background="subdued" borderRadius="base">
                 <s-stack gap="small-100"><s-heading fontSize="large-400">{stats.pendente}</s-heading><s-text fontSize="large-100">Pendentes</s-text></s-stack>
               </s-box>
               <s-box padding="base" background="subdued" borderRadius="base">
-                <s-stack gap="small-100"><s-heading fontSize="large-400">{stats.aprovado}</s-heading><s-text fontSize="large-100">Aprovados</s-text></s-stack>
+                <s-stack gap="small-100"><s-heading fontSize="large-400">{stats.aprovado_pendente}</s-heading><s-text fontSize="large-100">Aprovados — acesso pendente</s-text></s-stack>
+              </s-box>
+              <s-box padding="base" background="subdued" borderRadius="base">
+                <s-stack gap="small-100"><s-heading fontSize="large-400">{stats.aprovado_liberado}</s-heading><s-text fontSize="large-100">Aprovados — acesso liberado</s-text></s-stack>
               </s-box>
               <s-box padding="base" background="subdued" borderRadius="base">
                 <s-stack gap="small-100"><s-heading fontSize="large-400">{stats.reprovado}</s-heading><s-text fontSize="large-100">Reprovados</s-text></s-stack>
@@ -148,7 +179,7 @@ function App() {
               </s-box>
             </s-grid>
             <s-stack direction="inline" alignItems="center" gap="small-200">
-              <s-text>Empresas em tempo real da Shopify; reprovacoes internas do aplicativo.</s-text>
+              <s-text>Permissoes de compra em tempo real na Shopify; decisoes comerciais no metaobjeto do app.</s-text>
               <s-button variant="tertiary" onClick={loadLocations} disabled={loading||busy}>{loading?'Atualizando...':'Atualizar dados'}</s-button>
             </s-stack>
           </s-section>
@@ -158,7 +189,8 @@ function App() {
                 value={search} onInput={e=>setSearch(e.currentTarget.value)}/>
               <s-stack direction="inline" gap="small-200">
                 <s-button variant={filter==='pendente'?'primary':'secondary'} onClick={()=>setFilter('pendente')}>Pendentes</s-button>
-                <s-button variant={filter==='aprovado'?'primary':'secondary'} onClick={()=>setFilter('aprovado')}>Aprovados</s-button>
+                <s-button variant={filter==='aprovado_pendente'?'primary':'secondary'} onClick={()=>setFilter('aprovado_pendente')}>Aprovados — acesso pendente</s-button>
+                <s-button variant={filter==='aprovado_liberado'?'primary':'secondary'} onClick={()=>setFilter('aprovado_liberado')}>Aprovados — acesso liberado</s-button>
                 <s-button variant={filter==='incompleto'?'primary':'secondary'} onClick={()=>setFilter('incompleto')}>Incompletos</s-button>
                 <s-button variant={filter==='reprovado'?'primary':'secondary'} onClick={()=>setFilter('reprovado')}>Reprovados</s-button>
                 <s-button variant={filter==='todos'?'primary':'secondary'} onClick={()=>setFilter('todos')}>Todos</s-button>
@@ -203,31 +235,39 @@ function App() {
                       <s-heading fontSize="large-200">Instagram:</s-heading>
                       <s-heading fontSize="large-200">{instagramHref ? <s-link href={instagramHref} target="_blank">{instagram}</s-link> : instagram}</s-heading>
                     </s-stack>}
-                    <s-button variant={status==='pendente'?'primary':'secondary'} disabled={busy} onClick={()=>review(item.id)}>
-                      {status==='pendente'?'Analisar cadastro':'Ver detalhes'}
-                    </s-button>
+                    <s-stack direction="inline" gap="small-200">
+                      <s-button variant={status==='pendente'?'primary':'secondary'} disabled={busy} onClick={()=>review(item.id)}>
+                        {status==='pendente'?'Analisar cadastro':status==='aprovado_pendente'?'Analisar liberação':'Ver detalhes'}
+                      </s-button>
+                      {status==='aprovado_liberado' && <s-button variant="secondary" tone="critical" disabled={busy||!validarTravamento(item).ok} onClick={()=>review(item.id,true)}>
+                        Travar acesso
+                      </s-button>}
+                    </s-stack>
                   </s-stack>
                 </s-box>;
               })}
             </s-stack>
           </s-section>
         </> : <Detail
-          location={selected} decisions={decisions} busy={busy} confirming={confirmingRejection}
+          location={selected} decisions={decisions} busy={busy} confirming={confirmingRejection} confirmingLock={confirmingLock}
           onStartRejection={()=>setConfirmingRejection(true)}
           onCancelRejection={()=>setConfirmingRejection(false)}
-          onBack={()=>{setSelected(null);setError('');setConfirmingRejection(false);}}
-          onApprove={approve} onReject={reject} onReopen={reopen}
+          onStartLock={()=>setConfirmingLock(true)}
+          onCancelLock={()=>setConfirmingLock(false)}
+          onBack={()=>{setSelected(null);setError('');setConfirmingRejection(false);setConfirmingLock(false);}}
+          onApprove={approve} onRelease={release} onLock={lock} onReject={reject} onReopen={reopen}
         />}
       </s-stack>
     </s-page>
   );
 }
 
-function Detail({location,decisions,busy,confirming,onStartRejection,onCancelRejection,onBack,onApprove,onReject,onReopen}) {
+function Detail({location,decisions,busy,confirming,confirmingLock,onStartRejection,onCancelRejection,onStartLock,onCancelLock,onBack,onApprove,onRelease,onLock,onReject,onReopen}) {
   const status=statusDoPainel(location,decisions);
   const buyer=selectBuyer(location.company);
   const contact=buyer.ok?buyer.contact.customer:null;
   const orderRole=selectOrderRole(location.company);
+  const locking=validarTravamento(location);
   const address=location.billingAddress;
   const telefone=telefoneDoCadastro(location,contact);
   const telHref=telefoneParaHref(telefone);
@@ -241,8 +281,8 @@ function Detail({location,decisions,busy,confirming,onStartRejection,onCancelRej
     <s-stack gap="base">
       <s-button variant="tertiary" onClick={onBack} disabled={busy}>Voltar</s-button>
       <s-heading fontSize="large-400">{location.company.name}</s-heading>
-      <s-badge tone={status==='pendente'?'warning':status==='aprovado'?'success':'critical'}>
-        {status==='pendente'?'Aguardando aprovação':status==='aprovado'?'Aprovado':status==='reprovado'?'Reprovado no painel':'Revisão necessária'}
+      <s-badge tone={status==='aprovado_liberado'?'success':status==='pendente'||status==='aprovado_pendente'?'warning':'critical'}>
+        {status==='pendente'?'Pendente de aprovação':status==='aprovado_pendente'?'Aprovado — acesso pendente':status==='aprovado_liberado'?'Aprovado — acesso liberado':status==='reprovado'?'Reprovado no painel':'Revisão necessária'}
       </s-badge>
       <s-box border="base" borderRadius="base" padding="base">
         <s-stack gap="base">
@@ -294,22 +334,39 @@ function Detail({location,decisions,busy,confirming,onStartRejection,onCancelRej
       <s-box border="base" borderRadius="base" padding="base">
         <s-stack gap="base">
           <s-heading fontSize="large-300">Permissões B2B</s-heading>
-          <s-heading fontSize="large-200">Função concedida ao aprovar: Apenas pedidos</s-heading>
-          <s-heading fontSize="large-200">Situação: {status==='aprovado'?'Comprador já atribuído':status==='pendente'?'Aguardando aprovação':status==='reprovado'?'Reprovado somente no painel':'Revisar cadastro'}</s-heading>
+          <s-heading fontSize="large-200">Função necessária para compra: Apenas pedidos</s-heading>
+          <s-heading fontSize="large-200">Situação: {status==='aprovado_liberado'?'Permissão de compra existente no local':status==='aprovado_pendente'?'Aprovado comercialmente, aguardando liberar pedidos':status==='pendente'?'Aguardando aprovação comercial':status==='reprovado'?'Reprovado somente no painel':'Revisar cadastro'}</s-heading>
         </s-stack>
       </s-box>
-      {!buyer.ok && status!=='reprovado' && status!=='aprovado' && <s-banner tone="critical">{buyer.reason}</s-banner>}
-      {!orderRole && status==='pendente' && <s-banner tone="critical">Função "Apenas pedidos" indisponível nesta empresa.</s-banner>}
-      {status==='aprovado' && <s-banner tone="success">Já existe comprador atribuído ao local. A reprovação pelo painel está indisponível.</s-banner>}
-      {status==='reprovado' && <s-banner tone="info">Reprovado apenas no aplicativo. Os dados e as permissões B2B da empresa continuam inalterados.</s-banner>}
-      {status==='pendente' && buyer.ok && orderRole && <s-banner tone="info">Aprovar libera "Apenas pedidos" neste local. Reprovar apenas organiza este cadastro dentro do aplicativo.</s-banner>}
+      {!buyer.ok && status!=='reprovado' && <s-banner tone="critical">{buyer.reason}</s-banner>}
+      {!orderRole && ['pendente','aprovado_pendente'].includes(status) && <s-banner tone="critical">Função "Apenas pedidos" indisponível nesta empresa.</s-banner>}
+      {status==='pendente' && buyer.ok && orderRole && <s-banner tone="info">Aprovar cadastro altera somente o status comercial. O cliente NÃO recebe permissão de pedidos ainda.</s-banner>}
       {status==='pendente' && buyer.ok && orderRole && <s-button variant="primary" disabled={busy||confirming} onClick={onApprove}>
         {busy?'Processando...':'Aprovar cadastro'}
       </s-button>}
+      {status==='aprovado_pendente' && <s-banner tone="info">Cadastro aprovado, mas sem função de comprador neste local. Use Liberar acesso para permitir pedidos.</s-banner>}
+      {status==='aprovado_pendente' && buyer.ok && orderRole && <s-button variant="primary" disabled={busy} onClick={onRelease}>
+        {busy?'Liberando...':'Liberar acesso de compra'}
+      </s-button>}
+      {status==='aprovado_liberado' && <s-banner tone="success">O local possui atribuição de função B2B. O bloqueio depende da revogação confirmada na Shopify.</s-banner>}
+      {status==='aprovado_liberado' && !locking.ok && <s-banner tone="critical">Travar indisponível: {locking.reason}</s-banner>}
+      {status==='aprovado_liberado' && locking.ok && !confirmingLock && <s-button variant="secondary" tone="critical" disabled={busy} onClick={onStartLock}>
+        Travar o acesso
+      </s-button>}
+      {status==='aprovado_liberado' && locking.ok && confirmingLock && <s-box border="base" borderRadius="base" padding="base">
+        <s-stack gap="small-200">
+          <s-text>Confirma travar o acesso? A função "Apenas pedidos" deste contato será revogada na Shopify. O cadastro continuará aprovado e voltará para Aprovados — acesso pendente.</s-text>
+          <s-stack direction="inline" gap="small-200">
+            <s-button variant="primary" tone="critical" disabled={busy} onClick={onLock}>{busy?'Travando...':'Confirmar travamento'}</s-button>
+            <s-button variant="secondary" disabled={busy} onClick={onCancelLock}>Cancelar</s-button>
+          </s-stack>
+        </s-stack>
+      </s-box>}
+      {status==='reprovado' && <s-banner tone="info">Reprovado apenas no aplicativo. A Shopify não teve permissões alteradas.</s-banner>}
       {podeReprovar(location,decisions) && !confirming && <s-button variant="secondary" tone="critical" disabled={busy} onClick={onStartRejection}>Reprovar cadastro</s-button>}
       {podeReprovar(location,decisions) && confirming && <s-box border="base" borderRadius="base" padding="base">
         <s-stack gap="small-200">
-          <s-text>Confirmar reprovação? O cadastro irá para a aba Reprovados, sem bloquear o cliente na Shopify.</s-text>
+          <s-text>Confirmar reprovação? O cadastro irá para Reprovados sem bloquear o cliente na Shopify.</s-text>
           <s-stack direction="inline" gap="small-200">
             <s-button variant="primary" tone="critical" disabled={busy} onClick={onReject}>{busy?'Registrando...':'Confirmar reprovação'}</s-button>
             <s-button variant="secondary" disabled={busy} onClick={onCancelRejection}>Cancelar</s-button>

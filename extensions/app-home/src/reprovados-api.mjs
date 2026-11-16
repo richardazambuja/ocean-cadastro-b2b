@@ -1,5 +1,5 @@
 import {graphql} from './api.mjs';
-import {handleDoLocal, STATUS_REPROVADO, STATUS_REABERTO} from './status.mjs';
+import {handleDoLocal, STATUS_REPROVADO, STATUS_REABERTO, STATUS_APROVADO_PENDENTE} from './status.mjs';
 
 // Declarado em shopify.app.toml. Somente o app cadastra os metadados de revisão.
 const TIPO = '$app:cadastro_decisao';
@@ -38,7 +38,7 @@ export async function fetchReviewStatuses() {
       if (vistos.has(node.handle)) continue;
       vistos.add(node.handle);
       const r = registroEmStatus(node);
-      if (r && (r.status===STATUS_REPROVADO || r.status===STATUS_REABERTO)) decisoes[r.id]=r.status;
+      if (r && (r.status===STATUS_REPROVADO || r.status===STATUS_REABERTO || r.status===STATUS_APROVADO_PENDENTE)) decisoes[r.id]=r.status;
     }
     if (!conn.pageInfo?.hasNextPage) return decisoes;
     if (!conn.pageInfo.endCursor || conn.pageInfo.endCursor === cursor) throw new Error('Paginacao de decisoes inconsistente.');
@@ -55,7 +55,7 @@ export async function lerReviewStatus(localId) {
 }
 
 export async function salvarReviewStatus(localId, status) {
-  if (status !== STATUS_REPROVADO && status !== STATUS_REABERTO) throw new Error('Status interno invalido.');
+  if (![STATUS_REPROVADO, STATUS_REABERTO, STATUS_APROVADO_PENDENTE].includes(status)) throw new Error('Status interno invalido.');
   const handle = {type:TIPO, handle:handleDoLocal(localId)};
   const metaobject = {fields:[
     {key:'local_id',value:localId},
