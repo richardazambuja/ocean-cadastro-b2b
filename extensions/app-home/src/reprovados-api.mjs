@@ -39,6 +39,8 @@ export async function fetchReviewStatuses() {
       vistos.add(node.handle);
       const r = registroEmStatus(node);
       if (r && (r.status===STATUS_REPROVADO || r.status===STATUS_REABERTO || r.status===STATUS_APROVADO_PENDENTE)) decisoes[r.id]=r.status;
+      // OCEAN_REABERTURA_PENDENTES_10M_V1
+      if (r?.status===STATUS_REABERTO && Number.isFinite(Date.parse(r.updatedAt))) decisoes[`__reaberto_em__${r.id}`]=r.updatedAt;
     }
     if (!conn.pageInfo?.hasNextPage) return decisoes;
     if (!conn.pageInfo.endCursor || conn.pageInfo.endCursor === cursor) throw new Error('Paginacao de decisoes inconsistente.');

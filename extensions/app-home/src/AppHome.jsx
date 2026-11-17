@@ -7,7 +7,9 @@ import {ordenarPorCadastro, formatarDataCadastro} from './ordenacao.mjs';
 import {statusDoPainel, totaisDoPainel, podeReprovar, podeReabrir} from './status.mjs';
 import {fetchReviewStatuses, lerReviewStatus, salvarReviewStatus} from './reprovados-api.mjs';
 import {telefoneDoCadastro, formatarTelefone, telefoneParaHref, instagramParaHref} from './contato-links.mjs';
+import {mensagemWhatsAppDoStatus, whatsappMensagemHref} from './mensagens-whatsapp.mjs'; // OCEAN_WHATSAPP_STATUS_V1
 import {cnpjParaHref} from './cnpj-link.mjs';
+import {calcularPrazoPendente} from './prazo-pendentes.mjs'; // OCEAN_PENDENTES_10M_V1
 
 export default async function extension() {
   render(<App />, document.body);
@@ -26,6 +28,7 @@ function App() {
   const [sortOrder,setSortOrder] = useState('recentes');
   const [confirmingRejection,setConfirmingRejection] = useState(false);
   const [confirmingLock,setConfirmingLock] = useState(false);
+  const [agora,setAgora] = useState(Date.now());
 
   async function loadLocations() {
     setLoading(true);
@@ -40,16 +43,23 @@ function App() {
   }
 
   useEffect(()=>{void loadLocations();},[]);
+  useEffect(()=>{
+    const timer = setInterval(()=>setAgora(Date.now()),1000);
+    return ()=>clearInterval(timer);
+  },[]);
   const stats = useMemo(()=>totaisDoPainel(locations,decisions),[locations,decisions]);
+  const vencidosPendentes=locations.filter(local=>statusDoPainel(local,decisions)==='pendente' && calcularPrazoPendente(local,decisions,agora).vencido).length;
   const filtered = useMemo(()=>ordenarPorCadastro(locations.filter(item=>{
     const status = statusDoPainel(item,decisions);
-    if (filter !== 'todos' && status !== filter) return false;
+    if (filter === 'vencidos') {
+      if (status !== 'pendente' || !calcularPrazoPendente(item,decisions,agora).vencido) return false;
+    } else if (filter !== 'todos' && status !== filter) return false;
     const needle = search.trim().toLowerCase();
     return !needle || [item.company?.name,item.name,item.taxSettings?.taxRegistrationId,item.company?.cnpjCadastro?.value,
       ...((item.company?.contacts?.nodes || []).flatMap(c=>[
         c.customer?.displayName,c.customer?.defaultEmailAddress?.emailAddress
       ]))].filter(Boolean).join(' ').toLowerCase().includes(needle);
-  }),sortOrder),[locations,decisions,filter,search,sortOrder]);
+  }),sortOrder),[locations,decisions,filter,search,sortOrder,agora]);
 
   async function review(id, openLock=false) {
     if (busy || loading) return;
@@ -159,6 +169,13 @@ function App() {
       <s-stack direction="block" gap="base">
         {error && <s-banner tone="critical">{error}</s-banner>}
         {notice && <s-banner tone="success">{notice}</s-banner>}
+        {/* OCEAN_FILTRO_VENCIDOS_10M_V2: botao independente e sempre visivel */}
+        {!selected && !loading && vencidosPendentes>0 && <s-stack direction="block" gap="small-200">
+          <s-banner tone="critical">Atenção: {vencidosPendentes} cadastro(s) da aba Pendentes excederam o prazo de 10 minutos para análise.</s-banner>
+          <s-button variant="primary" onClick={()=>{setSearch('');setFilter('vencidos');}}>
+            Ver cadastros vencidos ({vencidosPendentes})
+          </s-button>
+        </s-stack>}
         {!selected ? <>
           <s-section heading="Resumo dos cadastros B2B">
             <s-grid gridTemplateColumns="repeat(3, 1fr)" gap="base">
@@ -183,12 +200,13 @@ function App() {
               <s-button variant="tertiary" onClick={loadLocations} disabled={loading||busy}>{loading?'Atualizando...':'Atualizar dados'}</s-button>
             </s-stack>
           </s-section>
-          <s-section heading="Cadastros de empresas">
+          <s-section heading={filter==='vencidos'?'Pendentes vencidos — análise necessária':'Cadastros de empresas'}>
             <s-stack gap="base">
               <s-text-field icon="search" label="Buscar" placeholder="Empresa, local, contato ou CNPJ"
                 value={search} onInput={e=>setSearch(e.currentTarget.value)}/>
               <s-stack direction="inline" gap="small-200">
                 <s-button variant={filter==='pendente'?'primary':'secondary'} onClick={()=>setFilter('pendente')}>Pendentes</s-button>
+                <s-button variant={filter==='vencidos'?'primary':'secondary'} onClick={()=>{setSearch('');setFilter('vencidos');}}>Vencidos ({vencidosPendentes})</s-button>
                 <s-button variant={filter==='aprovado_pendente'?'primary':'secondary'} onClick={()=>setFilter('aprovado_pendente')}>Aprovados — acesso pendente</s-button>
                 <s-button variant={filter==='aprovado_liberado'?'primary':'secondary'} onClick={()=>setFilter('aprovado_liberado')}>Aprovados — acesso liberado</s-button>
                 <s-button variant={filter==='incompleto'?'primary':'secondary'} onClick={()=>setFilter('incompleto')}>Incompletos</s-button>
@@ -201,7 +219,7 @@ function App() {
                 <s-button variant={sortOrder==='antigos'?'primary':'secondary'} onClick={()=>setSortOrder('antigos')}>Mais antigos</s-button>
               </s-stack>
               {loading && <s-text>Consultando empresas e decisoes do aplicativo...</s-text>}
-              {!loading && !error && filtered.length===0 && <s-text>Nenhum local encontrado nesse filtro.</s-text>}
+              {!loading && !error && filtered.length===0 && <s-text>{filter==='vencidos'?'Nenhum cadastro pendente com prazo vencido.':'Nenhum local encontrado nesse filtro.'}</s-text>}
               {!loading && !error && filtered.map(item=>{
                 const status=statusDoPainel(item,decisions);
                 const buyer=selectBuyer(item.company);
@@ -212,6 +230,7 @@ function App() {
                 const instagramHref=instagramParaHref(instagram);
                 const cnpjBruto=item.taxSettings?.taxRegistrationId || item.company?.cnpjCadastro?.value;
                 const cnpjHref=cnpjParaHref(cnpjBruto);
+                const prazo=status==='pendente'?calcularPrazoPendente(item,decisions,agora):null;
                 return <s-box key={item.id} border="base" borderRadius="base" padding="base">
                   <s-stack gap="base">
                     <s-stack direction="inline" alignItems="center" justifyContent="space-between" gap="base">
@@ -220,6 +239,7 @@ function App() {
                     </s-stack>
                     <s-heading fontSize="large-200">Local: {item.name}</s-heading>
                     <s-heading fontSize="large-200">Cadastro: {formatarDataCadastro(item.createdAt)}</s-heading>
+                    {prazo && <s-banner tone={prazo.vencido?'critical':'info'}>{prazo.texto}</s-banner>}
                     <s-stack direction="inline" alignItems="center" gap="small-200">
                       <s-heading fontSize="large-200">CNPJ:</s-heading>
                       <s-heading fontSize="large-200">
@@ -249,7 +269,7 @@ function App() {
             </s-stack>
           </s-section>
         </> : <Detail
-          location={selected} decisions={decisions} busy={busy} confirming={confirmingRejection} confirmingLock={confirmingLock}
+          location={selected} decisions={decisions} agora={agora} busy={busy} confirming={confirmingRejection} confirmingLock={confirmingLock}
           onStartRejection={()=>setConfirmingRejection(true)}
           onCancelRejection={()=>setConfirmingRejection(false)}
           onStartLock={()=>setConfirmingLock(true)}
@@ -262,7 +282,7 @@ function App() {
   );
 }
 
-function Detail({location,decisions,busy,confirming,confirmingLock,onStartRejection,onCancelRejection,onStartLock,onCancelLock,onBack,onApprove,onRelease,onLock,onReject,onReopen}) {
+function Detail({location,decisions,agora,busy,confirming,confirmingLock,onStartRejection,onCancelRejection,onStartLock,onCancelLock,onBack,onApprove,onRelease,onLock,onReject,onReopen}) {
   const status=statusDoPainel(location,decisions);
   const buyer=selectBuyer(location.company);
   const contact=buyer.ok?buyer.contact.customer:null;
@@ -270,13 +290,15 @@ function Detail({location,decisions,busy,confirming,confirmingLock,onStartReject
   const locking=validarTravamento(location);
   const address=location.billingAddress;
   const telefone=telefoneDoCadastro(location,contact);
-  const telHref=telefoneParaHref(telefone);
+  const mensagemTipo=mensagemWhatsAppDoStatus(status);
+  const mensagemHref=mensagemTipo ? whatsappMensagemHref(telefone,status) : null;
   const instagram=location.company?.instagram?.value?.trim() || '';
   const instagramHref=instagramParaHref(instagram);
   const segmento=location.company?.segmento?.value?.trim() || '';
   const faturamento=location.company?.faturamento?.value?.trim() || '';
   const cnpjBruto=location.taxSettings?.taxRegistrationId || location.company?.cnpjCadastro?.value;
   const cnpjHref=cnpjParaHref(cnpjBruto);
+  const prazoPendente=status==='pendente'?calcularPrazoPendente(location,decisions,agora):null;
   return <s-section heading="Análise do cadastro">
     <s-stack gap="base">
       <s-button variant="tertiary" onClick={onBack} disabled={busy}>Voltar</s-button>
@@ -284,6 +306,7 @@ function Detail({location,decisions,busy,confirming,confirmingLock,onStartReject
       <s-badge tone={status==='aprovado_liberado'?'success':status==='pendente'||status==='aprovado_pendente'?'warning':'critical'}>
         {status==='pendente'?'Pendente de aprovação':status==='aprovado_pendente'?'Aprovado — acesso pendente':status==='aprovado_liberado'?'Aprovado — acesso liberado':status==='reprovado'?'Reprovado no painel':'Revisão necessária'}
       </s-badge>
+      {prazoPendente && <s-banner tone={prazoPendente.vencido?'critical':'info'}>{prazoPendente.texto}</s-banner>}
       <s-box border="base" borderRadius="base" padding="base">
         <s-stack gap="base">
           <s-heading fontSize="large-300">Dados da empresa</s-heading>
@@ -314,15 +337,22 @@ function Detail({location,decisions,busy,confirming,confirmingLock,onStartReject
           <s-heading fontSize="large-200">Responsável: {contact?.displayName || 'Não identificado'}</s-heading>
           <s-heading fontSize="large-200">E-mail: {contact?.defaultEmailAddress?.emailAddress || 'Não informado'}</s-heading>
           <s-stack direction="inline" gap="base" alignItems="center">
-            <s-heading fontSize="large-200">WhatsApp:</s-heading>
-            <s-heading fontSize="large-200">{telefone ? (telHref ? <s-link href={telHref} target="_blank">{formatarTelefone(telefone)}</s-link> : formatarTelefone(telefone)) : 'Não informado'}</s-heading>
-          </s-stack>
-          <s-stack direction="inline" gap="base" alignItems="center">
             <s-heading fontSize="large-200">Instagram:</s-heading>
             <s-heading fontSize="large-200">{instagram ? (instagramHref ? <s-link href={instagramHref} target="_blank">{instagram}</s-link> : instagram) : 'Não informado'}</s-heading>
           </s-stack>
         </s-stack>
       </s-box>
+      {mensagemTipo && <s-box border="base" borderRadius="base" padding="base">
+        <s-stack gap="base">
+          <s-heading fontSize="large-300">Enviar mensagem padrão</s-heading>
+          <s-stack direction="inline" alignItems="center" justifyContent="space-between" gap="base">
+            <s-heading fontSize="large-200">{telefone ? formatarTelefone(telefone) : 'Número não informado'}</s-heading>
+            {mensagemHref && <s-button variant="primary" href={mensagemHref} target="_blank">Abrir WhatsApp</s-button>}
+          </s-stack>
+          <s-text color="subdued">WhatsApp com mensagem pré-definida — {mensagemTipo==='reprovacao'?'Reprovação':'Aprovação'}</s-text>
+          {!mensagemHref && <s-text>Não foi possível abrir o WhatsApp: confira o número do cliente no cadastro.</s-text>}
+        </s-stack>
+      </s-box>}
       <s-box border="base" borderRadius="base" padding="base">
         <s-stack gap="base">
           <s-heading fontSize="large-300">Local e faturamento</s-heading>
