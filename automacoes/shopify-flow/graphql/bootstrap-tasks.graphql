@@ -1,0 +1,5 @@
+query OceanBootstrapTasks {
+ foreach: automationTask(id:"gid://shopify/AutomationTask/shopify%3A%3Aflow%3A%3Afor_each?version=0.1") { id taskId version outputPortIds configFields { id required ... on AutomationPathConfigField { listsOnly allowedTypes } } }
+ location: automationTask(id:"gid://shopify/AutomationTask/shopify%3A%3Aadmin%3A%3Acompany_location_created?version=0.1") { id taskId version outputPortIds configFields { id required } }
+ contact: automationTask(id:"gid://shopify/AutomationTask/shopify%3A%3Aadmin%3A%3Acompany_contact_created?version=0.1") { id taskId version outputPortIds configFields { id required } }
+}

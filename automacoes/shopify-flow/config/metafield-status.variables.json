@@ -1,0 +1,15 @@
+{
+  "definition": {
+    "name": "Status comercial Ocean",
+    "namespace": "ocean_b2b",
+    "key": "status",
+    "type": "single_line_text_field",
+    "ownerType": "COMPANY_LOCATION",
+    "validations": [
+      {
+        "name": "choices",
+        "value": "[\"pendente\",\"aprovado_pendente\",\"aprovado_liberado\",\"reprovado\",\"incompleto\"]"
+      }
+    ]
+  }
+}

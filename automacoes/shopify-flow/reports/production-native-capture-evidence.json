@@ -1,0 +1,78 @@
+{
+  "data": {
+    "companyLocation": {
+      "id": "gid://shopify/CompanyLocation/8622604388",
+      "name": "Local TESTE captura nativa",
+      "company": {
+        "id": "gid://shopify/Company/7442399332",
+        "name": "OCEAN B2B TESTE NATIVO 20261117",
+        "mainContact": null,
+        "contacts": {
+          "nodes": [
+            {
+              "id": "gid://shopify/CompanyContact/4960157796",
+              "customer": {
+                "id": "gid://shopify/Customer/31382403285092"
+              }
+            }
+          ]
+        },
+        "contactRoles": {
+          "nodes": [
+            {
+              "id": "gid://shopify/CompanyContactRole/13688602724",
+              "name": "Admin do local"
+            },
+            {
+              "id": "gid://shopify/CompanyContactRole/13688635492",
+              "name": "Apenas pedidos"
+            }
+          ]
+        }
+      },
+      "roleAssignments": {
+        "nodes": []
+      },
+      "metafields": {
+        "nodes": [
+          {
+            "key": "review",
+            "value": "{\"schema\":1,\"locationId\":\"gid://shopify/CompanyLocation/8622604388\",\"ready\":true,\"operationId\":null,\"status\":\"pendente\",\"cycleId\":\"initial-8622604388\",\"enteredAt\":\"2026-11-17T14:23:47Z\",\"enrolled\":true,\"reopenVersion\":null,\"decisionVersion\":null,\"updatedAt\":\"2026-11-17T14:23:47Z\",\"signalPending\":true}",
+            "updatedAt": "2026-11-17T14:23:47Z",
+            "compareDigest": "883266dd5bee55fe91e00d2408686969b3da2d64e18ec17fbcfa905f0585dea5"
+          },
+          {
+            "key": "pending_since",
+            "value": "2026-11-17T14:23:47Z",
+            "updatedAt": "2026-11-17T14:23:47Z",
+            "compareDigest": "480ceea4c5943fce76a33700671c46cdcc82ddc33f50fb23e271daa2bdc4e31e"
+          },
+          {
+            "key": "cycle_id",
+            "value": "initial-8622604388",
+            "updatedAt": "2026-11-17T14:23:47Z",
+            "compareDigest": "ae763db7f5e3c041fae7fbf7839ce04d104b440d255b338cf7d97355fcde5f64"
+          },
+          {
+            "key": "status",
+            "value": "pendente",
+            "updatedAt": "2026-11-17T14:23:47Z",
+            "compareDigest": "07326388922bebde413043d80e9ccac267f4574b0a30e5686a6a8524fc4c32aa"
+          },
+          {
+            "key": "ready",
+            "value": "true",
+            "updatedAt": "2026-11-17T14:23:47Z",
+            "compareDigest": "acc8a7699a2bf4cbd05f69678eac4fc236572041c28dfd0ab558e5fcf2ab6540"
+          },
+          {
+            "key": "notifications",
+            "value": "{\"schema\":1,\"cycleId\":\"initial-8622604388\",\"novo\":{\"state\":\"sent\",\"requestId\":\"01a1e9c5-8412-721a-9a5e-2e545f827eee01M7MY8Z4W0QXQKTBKEFNP3RD163c4a583f0e8cc65v2\",\"runUrl\":\"https://admin.shopify.com/store/mrdvrf-6a/apps/flow/activity/01a1e9c5-8412-721a-9a5e-2e545f827eee:01M7MY8Z4W0QXQKTBKEFNP3RD1:63c4a583f0e8cc65:v2\"}}",
+            "updatedAt": "2026-11-17T14:23:50Z",
+            "compareDigest": "d0fbb09a2653047c1f309309f31263dca24b3737dc210cf5da7061cf763a7335"
+          }
+        ]
+      }
+    }
+  }
+}

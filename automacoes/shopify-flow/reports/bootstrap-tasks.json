@@ -1,0 +1,21 @@
+{
+  "foreach": null,
+  "location": {
+    "id": "gid://shopify/AutomationTask/shopify%3A%3Aadmin%3A%3Acompany_location_created?version=0.1",
+    "taskId": "shopify::admin::company_location_created",
+    "version": "0.1",
+    "outputPortIds": [
+      "output"
+    ],
+    "configFields": []
+  },
+  "contact": {
+    "id": "gid://shopify/AutomationTask/shopify%3A%3Aadmin%3A%3Acompany_contact_created?version=0.1",
+    "taskId": "shopify::admin::company_contact_created",
+    "version": "0.1",
+    "outputPortIds": [
+      "output"
+    ],
+    "configFields": []
+  }
+}

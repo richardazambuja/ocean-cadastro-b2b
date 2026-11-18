@@ -1,11 +1,18 @@
 import {render} from 'preact';
-import {useEffect, useMemo, useState} from 'preact/hooks';
-import {fetchAllLocations, fetchLocation, assignOrderRole, revokeOrderRole} from './api.mjs';
+import {ponteFlow} from './flow-bridge-app.mjs';
+import {loadPanelData} from './panel-data.mjs';
+import {createPanelController} from './panel-controller.mjs';
+import {withReadDeadline} from './read-deadline.mjs';
+import {APP_HOME_STARTED,recordPanelTiming} from './panel-timing.mjs';
+import {createSyncScheduler} from './notification-sync.mjs';
+import {rejectLocation,reopenLocation} from './review-actions.mjs';
+import {useEffect, useLayoutEffect, useMemo, useRef, useState} from 'preact/hooks';
+import {fetchLocation, assignOrderRole, revokeOrderRole} from './api.mjs';
 import {selectBuyer, selectOrderRole, formatCnpj, classifyLocation} from './regras.mjs';
 import {approveLocation, releaseAccess, lockAccess, validarTravamento} from './aprovar.mjs';
 import {ordenarPorCadastro, formatarDataCadastro} from './ordenacao.mjs';
 import {statusDoPainel, totaisDoPainel, podeReprovar, podeReabrir} from './status.mjs';
-import {fetchReviewStatuses, lerReviewStatus, salvarReviewStatus} from './reprovados-api.mjs';
+import {lerReviewStatus, salvarReviewStatus} from './reprovados-api.mjs';
 import {telefoneDoCadastro, formatarTelefone, telefoneParaHref, instagramParaHref} from './contato-links.mjs';
 import {mensagemWhatsAppDoStatus, whatsappMensagemHref} from './mensagens-whatsapp.mjs'; // OCEAN_WHATSAPP_STATUS_V1
 import {cnpjParaHref} from './cnpj-link.mjs';
@@ -15,13 +22,32 @@ export default async function extension() {
   render(<App />, document.body);
 }
 
+const REVIEW_DEPS={getLocation:fetchLocation,readDecision:lerReviewStatus,saveDecision:salvarReviewStatus,classify:classifyLocation,status:statusDoPainel};
+
+function errorMessage(value,fallback) {return value instanceof Error?value.message:fallback;}
+
+export const PANEL_BUILD='ocean-b2b-ui-20261118-urgent';
+
 function App() {
-  const [locations,setLocations] = useState([]);
-  const [decisions,setDecisions] = useState({});
-  const [loading,setLoading] = useState(true);
+  const [view,setView] = useState({snapshot:null,initialLoading:true,refreshing:false,stale:false,error:'',requestId:0,kind:'initial',startedAt:APP_HOME_STARTED,finishedAt:null});
+  const locations=view.snapshot?.locations||[];
+  const [decisionOverrides,setDecisionOverrides] = useState({});
+  const decisions=useMemo(()=>({...view.snapshot?.decisions,...decisionOverrides}),[view.snapshot,decisionOverrides]);
+  const initialLoading=view.initialLoading,refreshing=view.refreshing;
+  const loading=initialLoading||view.stale;
+  const detailsGate=useRef(false);
+  const actionGate=useRef(false);
   const [busy,setBusy] = useState(false);
   const [selected,setSelected] = useState(null);
   const [error,setError] = useState('');
+  const [syncWarning,setSyncWarning] = useState('');
+  const [syncStatus,setSyncStatus]=useState('idle');
+  const syncScheduler=useMemo(()=>createSyncScheduler(snapshot=>ponteFlow.syncLoaded(snapshot.locations,{fullInventory:true,reviewDecisions:snapshot.reviewDecisions,loadedAt:snapshot.loadedAt}),{onStatus:setSyncStatus}),[]);
+  const panel=useMemo(()=>createPanelController({read:loadPanelData,onChange:setView,onSnapshot:snapshot=>{
+    setDecisionOverrides({});setSyncWarning('');
+    syncScheduler.enqueue(snapshot,warnings=>setSyncWarning(warnings.length?'Sincronizacao de avisos requer revisao: '+warnings.join('; '):''));
+  }}),[]);
+  const committedRequest=useRef(0);
   const [notice,setNotice] = useState('');
   const [search,setSearch] = useState('');
   const [filter,setFilter] = useState('pendente');
@@ -30,19 +56,24 @@ function App() {
   const [confirmingLock,setConfirmingLock] = useState(false);
   const [agora,setAgora] = useState(Date.now());
 
-  async function loadLocations() {
-    setLoading(true);
-    setError('');
-    try {
-      // Falha ao ler as decisoes nao deve transformar reprovados em pendentes.
-      const [locais,decisoes] = await Promise.all([fetchAllLocations(),fetchReviewStatuses()]);
-      setLocations(locais);
-      setDecisions(decisoes);
-    } catch (e) {setError(e.message || 'Falha ao consultar a Shopify.');}
-    finally {setLoading(false);}
+  function loadLocations(kind='refresh') {
+    if(kind!=='action'&&(actionGate.current||detailsGate.current))return Promise.resolve({ok:false,busy:true});
+    return panel.load(kind);
   }
 
-  useEffect(()=>{void loadLocations();},[]);
+  // Start essential reads during commit; do not defer startup until a passive
+  // after-paint effect in the remote App Home runtime.
+  useLayoutEffect(()=>{
+    recordPanelTiming({phase:'app-home-mounted',build:PANEL_BUILD,sinceOpenMs:Date.now()-APP_HOME_STARTED});
+    void loadLocations('initial');
+    return ()=>{panel.dispose();syncScheduler.dispose();};
+  },[]);
+  useLayoutEffect(()=>{
+    if(view.snapshot&&!view.initialLoading&&!view.refreshing&&!view.stale&&committedRequest.current!==view.requestId){
+      committedRequest.current=view.requestId;
+      recordPanelTiming({phase:'list-committed',build:PANEL_BUILD,kind:view.kind,requestId:view.requestId,locations:locations.length,readMs:view.finishedAt-view.startedAt,requestToCommitMs:Date.now()-view.startedAt,sinceOpenMs:Date.now()-APP_HOME_STARTED});
+    }
+  },[view]);
   useEffect(()=>{
     const timer = setInterval(()=>setAgora(Date.now()),1000);
     return ()=>clearInterval(timer);
@@ -62,98 +93,104 @@ function App() {
   }),sortOrder),[locations,decisions,filter,search,sortOrder,agora]);
 
   async function review(id, openLock=false) {
-    if (busy || loading) return;
+    if (detailsGate.current || actionGate.current || busy || loading || refreshing || panel.getState().refreshing) return;
+    detailsGate.current=true;
     setBusy(true);setError('');setNotice('');setConfirmingRejection(false);setConfirmingLock(false);
     try {
       // Verifica a Shopify e o estado interno no momento de abrir a analise.
-      const [location,status] = await Promise.all([fetchLocation(id),lerReviewStatus(id)]);
-      setDecisions(prev=>({...prev,[id]:status}));
+      const [location,status] = await withReadDeadline(()=>Promise.all([fetchLocation(id),lerReviewStatus(id)]));
+      setDecisionOverrides(prev=>({...prev,[id]:status}));
       setSelected(location);
       setConfirmingLock(Boolean(openLock && statusDoPainel(location,{[id]:status})==='aprovado_liberado' && validarTravamento(location).ok));
-    } catch(e) {setError(e.message || 'Nao foi possivel abrir o cadastro.');}
-    finally {setBusy(false);}
+    } catch(e) {setError(errorMessage(e,'Nao foi possivel abrir o cadastro.'));}
+    finally {detailsGate.current=false;setBusy(false);}
   }
 
   // Aprovar significa SOMENTE aprovar comercialmente, sem liberar compra.
   async function approve() {
-    if (!selected || busy || loading || statusDoPainel(selected,decisions)!=='pendente') return;
+    if (actionGate.current || !selected || busy || loading || refreshing || panel.getState().refreshing || statusDoPainel(selected,decisions)!=='pendente') return;
+    actionGate.current=true;
     setBusy(true);setError('');setNotice('');
     try {
-      const outcome = await approveLocation(selected.id,{
+      const outcome = await ponteFlow.run(selected.id,()=>approveLocation(selected.id,{
         getLocation:fetchLocation,readDecision:lerReviewStatus,saveDecision:salvarReviewStatus
-      });
+      }));
       setSelected(null);setFilter('aprovado_pendente');
-      await loadLocations();
+      const refreshed=await loadLocations('action');
+      if(!refreshed.ok){setNotice('Acao executada; os dados da listagem ainda precisam ser confirmados.');return;}
       setNotice(`${outcome.location.company.name}: aprovada comercialmente. O acesso a pedidos continua bloqueado ate a liberacao.`);
       shopify.toast.show('Cadastro aprovado. Acesso pendente de liberacao.');
-    } catch(e) {setError(e.message || 'Falha na aprovacao comercial.');}
-    finally {setBusy(false);}
+    } catch(e) {setError(errorMessage(e,'Falha na aprovacao comercial.'));}
+    finally {actionGate.current=false;setBusy(false);}
   }
 
   async function release() {
-    if (!selected || busy || loading || statusDoPainel(selected,decisions)!=='aprovado_pendente') return;
+    if (actionGate.current || !selected || busy || loading || refreshing || panel.getState().refreshing || statusDoPainel(selected,decisions)!=='aprovado_pendente') return;
+    actionGate.current=true;
     setBusy(true);setError('');setNotice('');
     try {
-      const outcome=await releaseAccess(selected.id,{
+      const outcome=await ponteFlow.run(selected.id,()=>releaseAccess(selected.id,{
         getLocation:fetchLocation,readDecision:lerReviewStatus,assignRole:assignOrderRole
-      });
+      }));
       setSelected(null);setFilter('aprovado_liberado');
-      await loadLocations();
+      const refreshed=await loadLocations('action');
+      if(!refreshed.ok){setNotice('Acao executada; os dados da listagem ainda precisam ser confirmados.');return;}
       setNotice(`${outcome.location.company.name}: acesso Apenas pedidos concedido e confirmado na Shopify.`);
       shopify.toast.show('Acesso a pedidos liberado.');
-    } catch(e) {setError(e.message || 'Nao foi possivel liberar o acesso.');}
-    finally {setBusy(false);}
+    } catch(e) {setError(errorMessage(e,'Nao foi possivel liberar o acesso.'));}
+    finally {actionGate.current=false;setBusy(false);}
   }
 
   async function lock() {
-    if (!selected || busy || loading || !confirmingLock || statusDoPainel(selected,decisions)!=='aprovado_liberado') return;
+    if (actionGate.current || !selected || busy || loading || refreshing || panel.getState().refreshing || !confirmingLock || statusDoPainel(selected,decisions)!=='aprovado_liberado') return;
+    actionGate.current=true;
     setBusy(true);setError('');setNotice('');
     try {
-      const outcome=await lockAccess(selected.id,{
+      const outcome=await ponteFlow.run(selected.id,()=>lockAccess(selected.id,{
         getLocation:fetchLocation,readDecision:lerReviewStatus,
         saveDecision:salvarReviewStatus,revokeRole:revokeOrderRole
-      });
+      }));
       setSelected(null);setConfirmingLock(false);setFilter('aprovado_pendente');
-      await loadLocations();
+      const refreshed=await loadLocations('action');
+      if(!refreshed.ok){setNotice('Acao executada; os dados da listagem ainda precisam ser confirmados.');return;}
       setNotice(`${outcome.location.company.name}: funcao Apenas pedidos revogada e ausencia de acesso confirmada na Shopify.`);
       shopify.toast.show('Acesso de compra travado.');
-    } catch(e) {setError(e.message || 'Nao foi possivel travar o acesso. Atualize a ficha antes de tentar novamente.');}
-    finally {setBusy(false);}
+    } catch(e) {setError(errorMessage(e,'Nao foi possivel travar o acesso. Atualize a ficha antes de tentar novamente.'));}
+    finally {actionGate.current=false;setBusy(false);}
   }
 
   async function reject() {
-    if (!selected || busy || loading || !podeReprovar(selected,decisions) || !confirmingRejection) return;
+    if (actionGate.current || !selected || busy || loading || refreshing || panel.getState().refreshing || !podeReprovar(selected,decisions) || !confirmingRejection) return;
+    actionGate.current=true;
     setBusy(true);setError('');setNotice('');
     try {
       // Revalida para nao marcar como reprovado um local ja autorizado.
-      const [actual,decisaoAtual] = await Promise.all([fetchLocation(selected.id),lerReviewStatus(selected.id)]);
-      if (!['pendente','incompleto'].includes(statusDoPainel(actual,{[selected.id]:decisaoAtual}))) throw new Error('Situacao modificada por outro vendedor. Atualize os dados.');
-      if (classifyLocation(actual)==='erro') throw new Error('Os dados do local estao incompletos para verificar as permissoes.');
-      await salvarReviewStatus(selected.id,'reprovado');
+      const actual = await ponteFlow.run(selected.id,()=>rejectLocation(selected.id,REVIEW_DEPS));
       const companyName = actual.company.name;
       setSelected(null);setConfirmingRejection(false);setFilter('reprovado');
-      await loadLocations();
+      const refreshed=await loadLocations('action');
+      if(!refreshed.ok){setNotice('Acao executada; os dados da listagem ainda precisam ser confirmados.');return;}
       setNotice(`${companyName} movida para Reprovados. Nenhuma permissao B2B foi modificada.`);
       shopify.toast.show('Cadastro marcado como reprovado no painel.');
-    } catch(e) {setError(e.message || 'Falha ao gravar a reprovacao.');}
-    finally {setBusy(false);}
+    } catch(e) {setError(errorMessage(e,'Falha ao gravar a reprovacao.'));}
+    finally {actionGate.current=false;setBusy(false);}
   }
 
   async function reopen() {
-    if (!selected || busy || loading || !podeReabrir(selected,decisions)) return;
+    if (actionGate.current || !selected || busy || loading || refreshing || panel.getState().refreshing || !podeReabrir(selected,decisions)) return;
+    actionGate.current=true;
     setBusy(true);setError('');setNotice('');
     try {
-      const [actual,decisaoAtual] = await Promise.all([fetchLocation(selected.id),lerReviewStatus(selected.id)]);
-      if (statusDoPainel(actual,{[selected.id]:decisaoAtual})!=='reprovado') throw new Error('Situacao modificada por outro vendedor. Atualize os dados.');
-      await salvarReviewStatus(selected.id,'reaberto');
+      const actual = await ponteFlow.run(selected.id,()=>reopenLocation(selected.id,REVIEW_DEPS));
       const companyName = actual.company.name;
       setSelected(null);setConfirmingRejection(false);
       const currentStatus = classifyLocation(actual);
       setFilter(currentStatus==='incompleto'?'incompleto':'pendente');
-      await loadLocations();
+      const refreshed=await loadLocations('action');
+      if(!refreshed.ok){setNotice('Acao executada; os dados da listagem ainda precisam ser confirmados.');return;}
       setNotice(`${companyName}: analise reaberta no painel.`);
-    } catch(e) {setError(e.message || 'Falha ao reabrir o cadastro.');}
-    finally {setBusy(false);}
+    } catch(e) {setError(errorMessage(e,'Falha ao reabrir o cadastro.'));}
+    finally {actionGate.current=false;setBusy(false);}
   }
 
   const STATUS = {
@@ -167,10 +204,12 @@ function App() {
   return (
     <s-page heading="Gestão de Cadastros">
       <s-stack direction="block" gap="base">
+        {view.error && <s-banner tone="critical">{view.error} {view.snapshot?'Os cadastros abaixo sao da ultima leitura confirmada; nao representam o estado atual. Atualize antes de executar uma acao.':'Nenhum cadastro foi confirmado.'}</s-banner>}
         {error && <s-banner tone="critical">{error}</s-banner>}
         {notice && <s-banner tone="success">{notice}</s-banner>}
+        {syncWarning && <s-banner tone="warning">{syncWarning}</s-banner>}
         {/* OCEAN_FILTRO_VENCIDOS_10M_V2: botao independente e sempre visivel */}
-        {!selected && !loading && vencidosPendentes>0 && <s-stack direction="block" gap="small-200">
+        {!selected && view.snapshot && !view.stale && vencidosPendentes>0 && <s-stack direction="block" gap="small-200">
           <s-banner tone="critical">Atenção: {vencidosPendentes} cadastro(s) da aba Pendentes excederam o prazo de 10 minutos para análise.</s-banner>
           <s-button variant="primary" onClick={()=>{setSearch('');setFilter('vencidos');}}>
             Ver cadastros vencidos ({vencidosPendentes})
@@ -180,25 +219,27 @@ function App() {
           <s-section heading="Resumo dos cadastros B2B">
             <s-grid gridTemplateColumns="repeat(3, 1fr)" gap="base">
               <s-box padding="base" background="subdued" borderRadius="base">
-                <s-stack gap="small-100"><s-heading fontSize="large-400">{stats.pendente}</s-heading><s-text fontSize="large-100">Pendentes</s-text></s-stack>
+                <s-stack gap="small-100"><s-heading fontSize="large-400">{view.snapshot?stats.pendente:'—'}</s-heading><s-text fontSize="large-100">Pendentes</s-text></s-stack>
               </s-box>
               <s-box padding="base" background="subdued" borderRadius="base">
-                <s-stack gap="small-100"><s-heading fontSize="large-400">{stats.aprovado_pendente}</s-heading><s-text fontSize="large-100">Aprovados — acesso pendente</s-text></s-stack>
+                <s-stack gap="small-100"><s-heading fontSize="large-400">{view.snapshot?stats.aprovado_pendente:'—'}</s-heading><s-text fontSize="large-100">Aprovados — acesso pendente</s-text></s-stack>
               </s-box>
               <s-box padding="base" background="subdued" borderRadius="base">
-                <s-stack gap="small-100"><s-heading fontSize="large-400">{stats.aprovado_liberado}</s-heading><s-text fontSize="large-100">Aprovados — acesso liberado</s-text></s-stack>
+                <s-stack gap="small-100"><s-heading fontSize="large-400">{view.snapshot?stats.aprovado_liberado:'—'}</s-heading><s-text fontSize="large-100">Aprovados — acesso liberado</s-text></s-stack>
               </s-box>
               <s-box padding="base" background="subdued" borderRadius="base">
-                <s-stack gap="small-100"><s-heading fontSize="large-400">{stats.reprovado}</s-heading><s-text fontSize="large-100">Reprovados</s-text></s-stack>
+                <s-stack gap="small-100"><s-heading fontSize="large-400">{view.snapshot?stats.reprovado:'—'}</s-heading><s-text fontSize="large-100">Reprovados</s-text></s-stack>
               </s-box>
               <s-box padding="base" background="subdued" borderRadius="base">
-                <s-stack gap="small-100"><s-heading fontSize="large-400">{stats.incompleto+stats.erro}</s-heading><s-text fontSize="large-100">Sem contato / revisar</s-text></s-stack>
+                <s-stack gap="small-100"><s-heading fontSize="large-400">{view.snapshot?stats.incompleto+stats.erro:'—'}</s-heading><s-text fontSize="large-100">Sem contato / revisar</s-text></s-stack>
               </s-box>
             </s-grid>
             <s-stack direction="inline" alignItems="center" gap="small-200">
-              <s-text>Permissoes de compra em tempo real na Shopify; decisoes comerciais no metaobjeto do app.</s-text>
-              <s-button variant="tertiary" onClick={loadLocations} disabled={loading||busy}>{loading?'Atualizando...':'Atualizar dados'}</s-button>
+              <s-text>{view.stale?'Ultima leitura confirmada; dados desatualizados.':refreshing?'Atualizando os dados; a ultima leitura confirmada continua disponivel.':view.snapshot?'Dados comerciais confirmados na ultima consulta.':'Aguardando confirmacao dos dados comerciais.'}</s-text>
+              <s-button variant="tertiary" onClick={()=>void loadLocations('refresh')} disabled={initialLoading||refreshing||busy}>{initialLoading?'Carregando...':refreshing?'Atualizando...':'Atualizar dados'}</s-button>
             </s-stack>
+            <s-text color="subdued">{syncStatus==='running'?'Sincronizando notificacoes em segundo plano...':syncWarning?'Notificacoes: sincronizacao requer revisao.':'Notificacoes automaticas processadas pelo Shopify Flow.'}</s-text>
+            <s-text color="subdued">Versao: {PANEL_BUILD}</s-text>
           </s-section>
           <s-section heading={filter==='vencidos'?'Pendentes vencidos — análise necessária':'Cadastros de empresas'}>
             <s-stack gap="base">
@@ -218,9 +259,9 @@ function App() {
                 <s-button variant={sortOrder==='recentes'?'primary':'secondary'} onClick={()=>setSortOrder('recentes')}>Mais recentes</s-button>
                 <s-button variant={sortOrder==='antigos'?'primary':'secondary'} onClick={()=>setSortOrder('antigos')}>Mais antigos</s-button>
               </s-stack>
-              {loading && <s-text>Consultando empresas e decisoes do aplicativo...</s-text>}
-              {!loading && !error && filtered.length===0 && <s-text>{filter==='vencidos'?'Nenhum cadastro pendente com prazo vencido.':'Nenhum local encontrado nesse filtro.'}</s-text>}
-              {!loading && !error && filtered.map(item=>{
+              {initialLoading && <s-text>Consultando empresas e decisoes do aplicativo...</s-text>}
+              {view.snapshot && filtered.length===0 && <s-text>{filter==='vencidos'?'Nenhum cadastro pendente com prazo vencido.':'Nenhum local encontrado nesse filtro.'}</s-text>}
+              {view.snapshot && filtered.map(item=>{
                 const status=statusDoPainel(item,decisions);
                 const buyer=selectBuyer(item.company);
                 const customer=buyer.ok?buyer.contact.customer:null;
@@ -256,10 +297,10 @@ function App() {
                       <s-heading fontSize="large-200">{instagramHref ? <s-link href={instagramHref} target="_blank">{instagram}</s-link> : instagram}</s-heading>
                     </s-stack>}
                     <s-stack direction="inline" gap="small-200">
-                      <s-button variant={status==='pendente'?'primary':'secondary'} disabled={busy} onClick={()=>review(item.id)}>
+                      <s-button variant={status==='pendente'?'primary':'secondary'} disabled={busy||refreshing||view.stale} onClick={()=>review(item.id)}>
                         {status==='pendente'?'Analisar cadastro':status==='aprovado_pendente'?'Analisar liberação':'Ver detalhes'}
                       </s-button>
-                      {status==='aprovado_liberado' && <s-button variant="secondary" tone="critical" disabled={busy||!validarTravamento(item).ok} onClick={()=>review(item.id,true)}>
+                      {status==='aprovado_liberado' && <s-button variant="secondary" tone="critical" disabled={busy||refreshing||view.stale||!validarTravamento(item).ok} onClick={()=>review(item.id,true)}>
                         Travar acesso
                       </s-button>}
                     </s-stack>
@@ -269,7 +310,7 @@ function App() {
             </s-stack>
           </s-section>
         </> : <Detail
-          location={selected} decisions={decisions} agora={agora} busy={busy} confirming={confirmingRejection} confirmingLock={confirmingLock}
+          location={selected} decisions={decisions} agora={agora} busy={busy||refreshing||view.stale} confirming={confirmingRejection} confirmingLock={confirmingLock}
           onStartRejection={()=>setConfirmingRejection(true)}
           onCancelRejection={()=>setConfirmingRejection(false)}
           onStartLock={()=>setConfirmingLock(true)}

@@ -1,0 +1,5 @@
+query OceanBootstrapDiscovery {
+ automationTasks(first:20,query:"Company",taskType:TRIGGER) { nodes { id taskId version label returnFields { name type typeDefinitions } } pageInfo {hasNextPage endCursor} }
+ locations: automationTask(id:"gid://shopify/AutomationTask/shopify%3A%3Aflow%3A%3Afetch%3A%3Acompany_locations?version=v1") { taskId version configFields { ... on AutomationQueryPresetConfigField { id queryFilters } } }
+ automationEnvironmentPaths(rootType:"CompanyContact",query:"company locations id",first:10) { nodes { path leafType pathElementsTypes } pageInfo {hasNextPage endCursor} }
+}

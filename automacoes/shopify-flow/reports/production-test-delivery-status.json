@@ -1,0 +1,15 @@
+{
+  "data": {
+    "companyLocation": {
+      "ledger": {
+        "value": "{\"schema\":1,\"cycleId\":\"108ddf6e-bc65-430f-839a-27fd8674766b\",\"novo\":{\"state\":\"sent\",\"requestId\":\"01a1e9c5-8412-721a-9a5e-2e545f827eee01M7MXHDMER7DWWW4QVKRNJNSA63c4a583f0e8cc65v2\",\"runUrl\":\"https://admin.shopify.com/store/mrdvrf-6a/apps/flow/activity/01a1e9c5-8412-721a-9a5e-2e545f827eee:01M7MXHDMER7DWWW4QVKRNJNSA:63c4a583f0e8cc65:v2\"}}",
+        "updatedAt": "2026-11-17T14:10:59Z",
+        "compareDigest": "39b698ad6382e464087a06de1995b4eaae6d680b38376c42d5556123fa01a83b"
+      },
+      "debug": {
+        "value": "{\"phase\":\"parsed\",\"state\":{\"schema\":1,\"locationId\":\"gid://shopify/CompanyLocation/8622571620\",\"ready\":true,\"operationId\":null,\"status\":\"pendente\",\"cycleId\":\"108ddf6e-bc65-430f-839a-27fd8674766b\",\"enteredAt\":\"2026-11-17T14:02:37Z\",\"enrolled\":true,\"reopenVersion\":null,\"decisionVersion\":null,\"updatedAt\":\"2026-11-17T14:02:37Z\",\"signalPending\":true},\"event\":{\"locationId\":\"gid://shopify/CompanyLocation/8622571620\",\"cycleId\":\"108ddf6e-bc65-430f-839a-27fd8674766b\",\"enteredAt\":\"2026-11-17T14:02:37Z\",\"requestId\":\"01a1e9c5-8412-721a-9a5e-2e545f827eee01M7MXHDMER7DWWW4QVKRNJNSA63c4a583f0e8cc65v2\",\"runUrl\":\"https://admin.shopify.com/store/mrdvrf-6a/apps/flow/activity/01a1e9c5-8412-721a-9a5e-2e545f827eee:01M7MXHDMER7DWWW4QVKRNJNSA:63c4a583f0e8cc65:v2\",\"clock\":\"2026-11-17T14:10:57Z\"},\"reviewDigest\":true,\"ready\":true,\"status\":\"pendente\",\"cycle\":\"108ddf6e-bc65-430f-839a-27fd8674766b\",\"since\":\"2026-11-17T14:02:37Z\"}",
+        "updatedAt": "2026-11-17T14:10:58Z"
+      }
+    }
+  }
+}

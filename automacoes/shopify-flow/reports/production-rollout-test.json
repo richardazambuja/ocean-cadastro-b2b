@@ -1,0 +1,17 @@
+{
+  "data": {
+    "metafieldsSet": {
+      "metafields": [
+        {
+          "id": "gid://shopify/Metafield/193810612977764",
+          "namespace": "ocean_b2b",
+          "key": "rollout",
+          "type": "json",
+          "value": "{\"mode\":\"test\",\"testLocationIds\":[\"gid://shopify/CompanyLocation/8622571620\"],\"cutover\":null,\"recipient\":\"cadastros@oceanjoiasbr.com\",\"productionApproved\":false}",
+          "compareDigest": "5496e676bcedbfc7545ca07eae39b081a995cd988b24db6eb4206e60cf7a9844"
+        }
+      ],
+      "userErrors": []
+    }
+  }
+}

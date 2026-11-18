@@ -1,0 +1,45 @@
+{
+  "apiVersion": "2026-10",
+  "records": [
+    {
+      "name": "READ",
+      "passed": true,
+      "details": "## Validation Summary\n\n**Overall Status:** ✅ VALID\n**Total Code Blocks:** 1\n\n## Detailed Results\n\n### Code Block 1\n**Artifact ID:** ocean-performance-read\n**Revision:** 1\n*Use same ID & increment revision when retrying on an improvement of this artifact*\n\n**Status:** ✅ SUCCESS\n**Details:** Successfully validated GraphQL query against schema.\nRequired scopes: read_customers, read_companies\n\n\n"
+    },
+    {
+      "name": "READ_MANY",
+      "passed": true,
+      "details": "## Validation Summary\n\n**Overall Status:** ✅ VALID\n**Total Code Blocks:** 1\n\n## Detailed Results\n\n### Code Block 1\n**Artifact ID:** ocean-performance-read_many\n**Revision:** 1\n*Use same ID & increment revision when retrying on an improvement of this artifact*\n\n**Status:** ✅ SUCCESS\n**Details:** Successfully validated GraphQL query against schema.\nRequired scopes: read_customers, read_companies\n\n\n"
+    },
+    {
+      "name": "SET",
+      "passed": true,
+      "details": "## Validation Summary\n\n**Overall Status:** ✅ VALID\n**Total Code Blocks:** 1\n\n## Detailed Results\n\n### Code Block 1\n**Artifact ID:** ocean-performance-set\n**Revision:** 1\n*Use same ID & increment revision when retrying on an improvement of this artifact*\n\n**Status:** ✅ SUCCESS\n**Details:** Successfully validated GraphQL mutation against schema.\n\n\n"
+    },
+    {
+      "name": "SIGNAL",
+      "passed": true,
+      "details": "## Validation Summary\n\n**Overall Status:** ✅ VALID\n**Total Code Blocks:** 1\n\n## Detailed Results\n\n### Code Block 1\n**Artifact ID:** ocean-performance-signal\n**Revision:** 1\n*Use same ID & increment revision when retrying on an improvement of this artifact*\n\n**Status:** ✅ SUCCESS\n**Details:** Successfully validated GraphQL mutation against schema.\nRequired scopes: write_metaobjects, read_metaobjects\n\n\n"
+    },
+    {
+      "name": "REVIEW",
+      "passed": true,
+      "details": "## Validation Summary\n\n**Overall Status:** ✅ VALID\n**Total Code Blocks:** 1\n\n## Detailed Results\n\n### Code Block 1\n**Artifact ID:** ocean-performance-review\n**Revision:** 1\n*Use same ID & increment revision when retrying on an improvement of this artifact*\n\n**Status:** ✅ SUCCESS\n**Details:** Successfully validated GraphQL query against schema.\nRequired scopes: read_metaobjects\n\n\n"
+    },
+    {
+      "name": "READ_SIGNAL",
+      "passed": true,
+      "details": "## Validation Summary\n\n**Overall Status:** ✅ VALID\n**Total Code Blocks:** 1\n\n## Detailed Results\n\n### Code Block 1\n**Artifact ID:** ocean-performance-read_signal\n**Revision:** 1\n*Use same ID & increment revision when retrying on an improvement of this artifact*\n\n**Status:** ✅ SUCCESS\n**Details:** Successfully validated GraphQL query against schema.\nRequired scopes: read_metaobjects\n\n\n"
+    },
+    {
+      "name": "PANEL_QUERY",
+      "passed": true,
+      "details": "## Validation Summary\n\n**Overall Status:** ✅ VALID\n**Total Code Blocks:** 1\n\n## Detailed Results\n\n### Code Block 1\n**Artifact ID:** ocean-performance-panel_query\n**Revision:** 1\n*Use same ID & increment revision when retrying on an improvement of this artifact*\n\n**Status:** ✅ SUCCESS\n**Details:** Successfully validated GraphQL query against schema.\nRequired scopes: read_customers, read_companies, read_metaobjects\n\n\n"
+    },
+    {
+      "name": "APP_HOME",
+      "passed": true,
+      "details": "## Validation Summary\n\n**Overall Status:** ✅ VALID\n**Total Components:** 1\n\n## Detailed Results\n\n### Component 1\n**Artifact ID:** ocean-performance-panel\n**Revision:** 3\n*Use same ID & increment revision when retrying on an improvement of this artifact*\n\n**Status:** ✅ SUCCESS\n**Details:** All components validated successfully by TypeScript. Found components: s-page, s-stack, s-banner, s-button, s-section, s-grid, s-box, s-heading, s-text, s-text-field, s-badge, s-link.\n\nTry and use component from Shopify Polaris components. Non-Shopify components (not validated):\n  - App\n  - Detail\n\n\n"
+    }
+  ]
+}

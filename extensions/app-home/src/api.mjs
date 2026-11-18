@@ -1,6 +1,7 @@
 // A Shopify injeta o objeto global `shopify` no App Home UI extension.
 // Nao coloque chaves privadas, tokens ou CNPJs em codigo-fonte.
-const FRAGMENT = `
+import {controlledRequest} from './request-control.mjs';
+export const LOCATION_FIELDS = `
   id
   name
   createdAt
@@ -30,13 +31,13 @@ const FRAGMENT = `
 
 const LOCATIONS_QUERY = `query OceanLocations($after: String) {
   companyLocations(first: 50, after: $after) {
-    nodes { ${FRAGMENT} }
+    nodes { ${LOCATION_FIELDS} }
     pageInfo { hasNextPage endCursor }
   }
 }`;
 
 const LOCATION_QUERY = `query OceanLocation($id: ID!) {
-  companyLocation(id: $id) { ${FRAGMENT} }
+  companyLocation(id: $id) { ${LOCATION_FIELDS} }
 }`;
 
 const ASSIGN_ROLE_MUTATION = `mutation OceanApprove(
@@ -52,13 +53,8 @@ const ASSIGN_ROLE_MUTATION = `mutation OceanApprove(
   }
 }`;
 
-export async function graphql(query, variables={}) {
-  const result = await shopify.query(query, {variables, version:'2026-10'});
-  if (result?.errors?.length) {
-    throw new Error(result.errors.map(x => x.message).join('; '));
-  }
-  if (!result?.data) throw new Error('Resposta GraphQL sem dados. Confira os escopos do app.');
-  return result.data;
+export async function graphql(query, variables={}, options={}) {
+  return controlledRequest(query,variables,options);
 }
 
 export async function fetchAllLocations() {

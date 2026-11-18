@@ -1,0 +1,48 @@
+{
+  "context": "Native company-location-created capture. Only bootstrap writes were allowed by synthetic company ID; notification workflows remain restricted to the two other explicit test location IDs.",
+  "evidence": {
+    "data": {
+      "companyLocation": {
+        "id": "gid://shopify/CompanyLocation/8622702692",
+        "createdAt": "2026-11-17T14:39:39Z",
+        "roleAssignments": {
+          "nodes": []
+        },
+        "metafields": {
+          "nodes": [
+            {
+              "key": "review",
+              "value": "{\"schema\":1,\"locationId\":\"gid://shopify/CompanyLocation/8622702692\",\"ready\":true,\"operationId\":null,\"status\":\"pendente\",\"cycleId\":\"native-8622702692-01M7MZ60M28KMTTEGDGFXZP5CG\",\"enteredAt\":\"2026-11-17T14:39:41Z\",\"enrolled\":true,\"reopenVersion\":null,\"decisionVersion\":null,\"updatedAt\":\"2026-11-17T14:39:41Z\",\"signalPending\":true}",
+              "updatedAt": "2026-11-17T14:39:41Z",
+              "compareDigest": "b3ce43728109eacfadf2faa8a5d766f84d54ab0d076192b86c8fb8813a3b96ad"
+            },
+            {
+              "key": "pending_since",
+              "value": "2026-11-17T14:39:41Z",
+              "updatedAt": "2026-11-17T14:39:41Z",
+              "compareDigest": "0ad09f64c1c32e76f0f48b543e1576626c3fb5df92f4040bf3e17f0c4174cbf2"
+            },
+            {
+              "key": "cycle_id",
+              "value": "native-8622702692-01M7MZ60M28KMTTEGDGFXZP5CG",
+              "updatedAt": "2026-11-17T14:39:41Z",
+              "compareDigest": "c168176513521627067eb2f3ccc8f81f00ba908bb311e8847ecaa440182d6651"
+            },
+            {
+              "key": "status",
+              "value": "pendente",
+              "updatedAt": "2026-11-17T14:39:41Z",
+              "compareDigest": "07326388922bebde413043d80e9ccac267f4574b0a30e5686a6a8524fc4c32aa"
+            },
+            {
+              "key": "ready",
+              "value": "true",
+              "updatedAt": "2026-11-17T14:39:41Z",
+              "compareDigest": "acc8a7699a2bf4cbd05f69678eac4fc236572041c28dfd0ab558e5fcf2ab6540"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

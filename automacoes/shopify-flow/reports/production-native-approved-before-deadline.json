@@ -1,0 +1,23 @@
+{
+  "evidence": {
+    "data": {
+      "companyContactAssignRole": {
+        "companyContactRoleAssignment": {
+          "id": "gid://shopify/CompanyContactRoleAssignment/52373848164",
+          "companyLocation": {
+            "id": "gid://shopify/CompanyLocation/8622604388"
+          },
+          "companyContact": {
+            "id": "gid://shopify/CompanyContact/4960157796"
+          },
+          "role": {
+            "id": "gid://shopify/CompanyContactRole/13688635492",
+            "name": "Apenas pedidos"
+          }
+        },
+        "userErrors": []
+      }
+    }
+  },
+  "test": "Actual Shopify B2B access assigned to synthetic buyer before 10-minute deadline; stale pending mirror intentionally retained to exercise live-data guard. This does not validate owner-app commercial approval without access."
+}

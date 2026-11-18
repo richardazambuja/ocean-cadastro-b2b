@@ -1,0 +1,1272 @@
+{
+  "metafield": {
+    "nodes": [
+      {
+        "path": "metafield.compareDigest",
+        "leafType": "String",
+        "description": "The data stored in the resource, represented as a digest."
+      },
+      {
+        "path": "metafield.updatedAt",
+        "leafType": "DateTime",
+        "description": "The date and time when the metafield was updated."
+      },
+      {
+        "path": "metafield.value",
+        "leafType": "String",
+        "description": "The data stored in the metafield. Always stored as a string, regardless of the metafield's type."
+      },
+      {
+        "path": "metafield.jsonValue",
+        "leafType": "JSON",
+        "description": "The data stored in the metafield in JSON format."
+      },
+      {
+        "path": "metafield.definition.constraints.values.value",
+        "leafType": "String",
+        "description": "The subtype value of the constraint."
+      },
+      {
+        "path": "metafield.definition.validations.value",
+        "leafType": "String",
+        "description": "The validation value."
+      },
+      {
+        "path": "metafield.definition.capabilities.uniqueValues.eligible",
+        "leafType": "Boolean",
+        "description": "Indicates if the definition is eligible to have the capability."
+      },
+      {
+        "path": "metafield.definition.capabilities.uniqueValues.enabled",
+        "leafType": "Boolean",
+        "description": "Indicates if the capability is enabled."
+      },
+      {
+        "path": "metafield.definition.standardTemplate.validations.value",
+        "leafType": "String",
+        "description": "The validation value."
+      }
+    ],
+    "pageInfo": {
+      "hasNextPage": false,
+      "endCursor": "ODo6OWY0MWYyOTBkNTViMDlhNTdlYjlkNjU0M2Y4MDhlODkyZDNhYzVlZjBlNDIzOTFhODhjMjU4YzI1YzA2MmM3NA"
+    }
+  },
+  "shop": {
+    "nodes": [
+      {
+        "path": "shop.metafield",
+        "leafType": "Metafield",
+        "description": "A [custom field](https://shopify.dev/docs/apps/build/custom-data),\nincluding its `namespace` and `key`, that's associated with a Shopify resource\nfor the purposes of adding and storing additional information."
+      },
+      {
+        "path": "shop.accountOwner.avatar.metafield",
+        "leafType": "Metafield",
+        "description": "A [custom field](https://shopify.dev/docs/apps/build/custom-data),\nincluding its `namespace` and `key`, that's associated with a Shopify resource\nfor the purposes of adding and storing additional information."
+      },
+      {
+        "path": "shop.availableChannelApps.installation.metafield",
+        "leafType": "Metafield",
+        "description": "A [custom field](https://shopify.dev/docs/apps/build/custom-data),\nincluding its `namespace` and `key`, that's associated with a Shopify resource\nfor the purposes of adding and storing additional information."
+      },
+      {
+        "path": "shop.fulfillmentServices.location.metafield",
+        "leafType": "Metafield",
+        "description": "A [custom field](https://shopify.dev/docs/apps/build/custom-data),\nincluding its `namespace` and `key`, that's associated with a Shopify resource\nfor the purposes of adding and storing additional information."
+      },
+      {
+        "path": "shop.availableChannelApps.icon.metafield",
+        "leafType": "Metafield",
+        "description": "A [custom field](https://shopify.dev/docs/apps/build/custom-data),\nincluding its `namespace` and `key`, that's associated with a Shopify resource\nfor the purposes of adding and storing additional information."
+      },
+      {
+        "path": "shop.availableChannelApps.screenshots.metafield",
+        "leafType": "Metafield",
+        "description": "A [custom field](https://shopify.dev/docs/apps/build/custom-data),\nincluding its `namespace` and `key`, that's associated with a Shopify resource\nfor the purposes of adding and storing additional information."
+      },
+      {
+        "path": "shop.availableChannelApps.banner.metafield",
+        "leafType": "Metafield",
+        "description": "A [custom field](https://shopify.dev/docs/apps/build/custom-data),\nincluding its `namespace` and `key`, that's associated with a Shopify resource\nfor the purposes of adding and storing additional information."
+      },
+      {
+        "path": "shop.analyticsAnnotations.createdByApp.installation.metafield",
+        "leafType": "Metafield",
+        "description": "A [custom field](https://shopify.dev/docs/apps/build/custom-data),\nincluding its `namespace` and `key`, that's associated with a Shopify resource\nfor the purposes of adding and storing additional information."
+      },
+      {
+        "path": "shop.analyticsAnnotations.createdByApp.icon.metafield",
+        "leafType": "Metafield",
+        "description": "A [custom field](https://shopify.dev/docs/apps/build/custom-data),\nincluding its `namespace` and `key`, that's associated with a Shopify resource\nfor the purposes of adding and storing additional information."
+      },
+      {
+        "path": "shop.analyticsAnnotations.createdByApp.banner.metafield",
+        "leafType": "Metafield",
+        "description": "A [custom field](https://shopify.dev/docs/apps/build/custom-data),\nincluding its `namespace` and `key`, that's associated with a Shopify resource\nfor the purposes of adding and storing additional information."
+      }
+    ],
+    "pageInfo": {
+      "hasNextPage": true,
+      "endCursor": "OTo6NTY2OTU1ZmVhN2M5OGYyMWI0M2E3NzUyOGJhZTY4OTJlZDFiOWM0NjQ1MDNlMTBjMzczNDQzYjA1MWQ5OThlZQ"
+    }
+  },
+  "metaobject": {
+    "nodes": [
+      {
+        "path": "metaobject.thumbnailField.key",
+        "leafType": "String",
+        "description": "The object key of this field."
+      },
+      {
+        "path": "metaobject.fields.key",
+        "leafType": "String",
+        "description": "The object key of this field."
+      },
+      {
+        "path": "metaobject.fields.value",
+        "leafType": "String",
+        "description": "The assigned field value, always stored as a string regardless of the field type."
+      },
+      {
+        "path": "metaobject.thumbnailField.value",
+        "leafType": "String",
+        "description": "The assigned field value, always stored as a string regardless of the field type."
+      },
+      {
+        "path": "metaobject.thumbnailField.definition.key",
+        "leafType": "String",
+        "description": "A key name used to identify the field within the metaobject composition."
+      },
+      {
+        "path": "metaobject.thumbnailField.jsonValue",
+        "leafType": "JSON",
+        "description": "The assigned field value in JSON format."
+      },
+      {
+        "path": "metaobject.definition.fieldDefinitions.key",
+        "leafType": "String",
+        "description": "A key name used to identify the field within the metaobject composition."
+      },
+      {
+        "path": "metaobject.fields.definition.key",
+        "leafType": "String",
+        "description": "A key name used to identify the field within the metaobject composition."
+      },
+      {
+        "path": "metaobject.fields.jsonValue",
+        "leafType": "JSON",
+        "description": "The assigned field value in JSON format."
+      },
+      {
+        "path": "metaobject.definition.standardTemplate.fieldDefinitions.key",
+        "leafType": "String",
+        "description": "The key owned by the definition after the definition has been enabled."
+      }
+    ],
+    "pageInfo": {
+      "hasNextPage": true,
+      "endCursor": "OTo6MmVmZmFiYzM0MDc2NDVjY2U0OTc1OWY3MThkYTUwMzBjODhhNGI3NGVmNzAwMmYxYTEyZTY2OTJlY2I2NDBjNg"
+    }
+  },
+  "templates": {
+    "nodes": [
+      {
+        "id": "gid://shopify/AutomationTemplate/0198c54b-884f-76de-bbfc-0e0350c7a833",
+        "title": "Create a Commslayer ticket when a form has been submitted",
+        "configuration": {
+          "__metadata": {
+            "version": 0.1
+          },
+          "root": {
+            "steps": [
+              {
+                "step_id": "1476e820-435a-11f0-8b2e-6fa462b8178e",
+                "config_field_values": [
+                  {
+                    "config_field_id": "type",
+                    "value": "app--6171699--shopify-forms500232"
+                  }
+                ],
+                "task_id": "shopify::admin::metaobject_created",
+                "task_version": "0.1",
+                "task_type": "TRIGGER",
+                "name": null
+              },
+              {
+                "step_id": "ca7e7af0-458c-11f0-99dd-8b10ece26b5c",
+                "config_field_values": [
+                  {
+                    "config_field_id": "customer_id",
+                    "value": "{\"value\":null,\"default_value\":\"metaobject.formSubmittedBy.id\"}"
+                  },
+                  {
+                    "config_field_id": "order_id",
+                    "value": "{\"value\":null,\"default_value\":\"metaobject.formSubmittedBy.lastOrder.id\"}"
+                  },
+                  {
+                    "config_field_id": "note",
+                    "value": "{{metaobject.firstName}}\n{{metaobject.email}}\n{{metaobject.formSubmittedAt}}\n"
+                  },
+                  {
+                    "config_field_id": "hide_order",
+                    "value": "false"
+                  },
+                  {
+                    "config_field_id": "email_inbox",
+                    "value": "support@exampleshop.com"
+                  }
+                ],
+                "task_id": "721e7a33-28a1-4cca-b417-b2233b20b127",
+                "task_version": "1.0",
+                "task_type": "ACTION",
+                "name": null
+              }
+            ],
+            "links": [
+              {
+                "from_step_id": "1476e820-435a-11f0-8b2e-6fa462b8178e",
+                "from_port_id": "output",
+                "to_step_id": "ca7e7af0-458c-11f0-99dd-8b10ece26b5c",
+                "to_port_id": "input"
+              }
+            ],
+            "patched_fields": []
+          }
+        }
+      },
+      {
+        "id": "gid://shopify/AutomationTemplate/019f18db-0045-76d4-9408-38811025a75a",
+        "title": "Use a deny list to cancel orders and send internal notifications",
+        "configuration": {
+          "__metadata": {
+            "version": 0.1
+          },
+          "root": {
+            "steps": [
+              {
+                "step_id": "dacfed50-d357-11ef-9ef4-f96284c385e8",
+                "config_field_values": [],
+                "task_id": "shopify::admin::order_created",
+                "task_version": "0.1",
+                "task_type": "TRIGGER",
+                "name": null
+              },
+              {
+                "step_id": "bf60aa50-d35c-11ef-a206-1b4e4b97ad3e",
+                "config_field_values": [
+                  {
+                    "config_field_id": "sort_by",
+                    "value": "{\"sortKey\":\"id\",\"order\":\"ASCENDING\"}"
+                  },
+                  {
+                    "config_field_id": "max_root_records",
+                    "value": "10"
+                  },
+                  {
+                    "config_field_id": "type",
+                    "value": "fraud_deny_list"
+                  },
+                  {
+                    "config_field_id": "query",
+                    "value": "fields.email:{{order.email}}"
+                  }
+                ],
+                "task_id": "shopify::flow::fetch::metaobjects",
+                "task_version": "v1",
+                "task_type": "ACTION",
+                "name": "Get metaobject entries (1)"
+              },
+              {
+                "step_id": "8d93c070-dcd5-11ef-8003-2f3031bc4f83",
+                "config_field_values": [
+                  {
+                    "config_field_id": "listpath",
+                    "value": "getMetaobjectEntries1"
+                  }
+                ],
+                "task_id": "shopify::flow::foreach",
+                "task_version": "0.1",
+                "task_type": "FOREACH",
+                "name": null
+              },
+              {
+                "step_id": "94040190-dcd5-11ef-8003-2f3031bc4f83",
+                "config_field_values": [
+                  {
+                    "config_field_id": "condition",
+                    "value": "(getMetaobjectEntries1Foreachitem.actionList any? |actionList_item| (actionList_item == 'Cancel'))"
+                  }
+                ],
+                "task_id": "shopify::flow::condition",
+                "task_version": "0.1",
+                "task_type": "CONDITION",
+                "name": null
+              },
+              {
+                "step_id": "a9231c50-dcd5-11ef-8003-2f3031bc4f83",
+                "config_field_values": [
+                  {
+                    "config_field_id": "order_id",
+                    "value": "{\"value\":null,\"default_value\":\"order.id\"}"
+                  },
+                  {
+                    "config_field_id": "reason",
+                    "value": "FRAUD"
+                  },
+                  {
+                    "config_field_id": "notify_customer",
+                    "value": "false"
+                  },
+                  {
+                    "config_field_id": "refund",
+                    "value": "true"
+                  },
+                  {
+                    "config_field_id": "restock",
+                    "value": "true"
+                  },
+                  {
+                    "config_field_id": "staff_note",
+                    "value": "Cancelled due to Flow rule"
+                  }
+                ],
+                "task_id": "shopify::admin::cancel_order",
+                "task_version": "1.0",
+                "task_type": "ACTION",
+                "name": null
+              },
+              {
+                "step_id": "7adcb190-df31-11ef-a8d0-9fe68ad0f759",
+                "config_field_values": [
+                  {
+                    "config_field_id": "condition",
+                    "value": "(getMetaobjectEntries1Foreachitem.actionList any? |actionList_item| (actionList_item == 'Notify'))"
+                  }
+                ],
+                "task_id": "shopify::flow::condition",
+                "task_version": "0.1",
+                "task_type": "CONDITION",
+                "name": null
+              },
+              {
+                "step_id": "31644b30-df32-11ef-a8d0-9fe68ad0f759",
+                "config_field_values": [
+                  {
+                    "config_field_id": "address",
+                    "value": ""
+                  },
+                  {
+                    "config_field_id": "subject",
+                    "value": "Order may be fraudulent {{order.name}}"
+                  },
+                  {
+                    "config_field_id": "message",
+                    "value": "Please check it"
+                  }
+                ],
+                "task_id": "shopify::flow::send_email",
+                "task_version": "2.0",
+                "task_type": "ACTION",
+                "name": null
+              }
+            ],
+            "links": [
+              {
+                "from_step_id": "8d93c070-dcd5-11ef-8003-2f3031bc4f83",
+                "from_port_id": "loop_body",
+                "to_step_id": "94040190-dcd5-11ef-8003-2f3031bc4f83",
+                "to_port_id": "input"
+              },
+              {
+                "from_step_id": "94040190-dcd5-11ef-8003-2f3031bc4f83",
+                "from_port_id": "true",
+                "to_step_id": "a9231c50-dcd5-11ef-8003-2f3031bc4f83",
+                "to_port_id": "input"
+              },
+              {
+                "from_step_id": "bf60aa50-d35c-11ef-a206-1b4e4b97ad3e",
+                "from_port_id": "output",
+                "to_step_id": "8d93c070-dcd5-11ef-8003-2f3031bc4f83",
+                "to_port_id": "input"
+              },
+              {
+                "from_step_id": "dacfed50-d357-11ef-9ef4-f96284c385e8",
+                "from_port_id": "output",
+                "to_step_id": "bf60aa50-d35c-11ef-a206-1b4e4b97ad3e",
+                "to_port_id": "input"
+              },
+              {
+                "from_step_id": "7adcb190-df31-11ef-a8d0-9fe68ad0f759",
+                "from_port_id": "true",
+                "to_step_id": "31644b30-df32-11ef-a8d0-9fe68ad0f759",
+                "to_port_id": "input"
+              },
+              {
+                "from_step_id": "8d93c070-dcd5-11ef-8003-2f3031bc4f83",
+                "from_port_id": "loop_body",
+                "to_step_id": "7adcb190-df31-11ef-a8d0-9fe68ad0f759",
+                "to_port_id": "input"
+              }
+            ],
+            "patched_fields": []
+          }
+        }
+      },
+      {
+        "id": "gid://shopify/AutomationTemplate/0196da8e-0f62-7f7b-863c-ca6937e9b13a",
+        "title": "Use a deny list to cancel orders and send internal notifications",
+        "configuration": {
+          "__metadata": {
+            "version": 0.1
+          },
+          "root": {
+            "steps": [
+              {
+                "step_id": "dacfed50-d357-11ef-9ef4-f96284c385e8",
+                "config_field_values": [],
+                "task_id": "shopify::admin::order_created",
+                "task_version": "0.1",
+                "task_type": "TRIGGER",
+                "name": null
+              },
+              {
+                "step_id": "bf60aa50-d35c-11ef-a206-1b4e4b97ad3e",
+                "config_field_values": [
+                  {
+                    "config_field_id": "sort_by",
+                    "value": "{\"sortKey\":\"id\",\"order\":\"ASCENDING\"}"
+                  },
+                  {
+                    "config_field_id": "max_root_records",
+                    "value": "10"
+                  },
+                  {
+                    "config_field_id": "type",
+                    "value": "fraud_deny_list"
+                  },
+                  {
+                    "config_field_id": "query",
+                    "value": "fields.email:{{order.email}}"
+                  }
+                ],
+                "task_id": "shopify::flow::fetch::metaobjects",
+                "task_version": "v1",
+                "task_type": "ACTION",
+                "name": "Get metaobject entries (1)"
+              },
+              {
+                "step_id": "8d93c070-dcd5-11ef-8003-2f3031bc4f83",
+                "config_field_values": [
+                  {
+                    "config_field_id": "listpath",
+                    "value": "getMetaobjectEntries1"
+                  }
+                ],
+                "task_id": "shopify::flow::foreach",
+                "task_version": "0.1",
+                "task_type": "FOREACH",
+                "name": null
+              },
+              {
+                "step_id": "94040190-dcd5-11ef-8003-2f3031bc4f83",
+                "config_field_values": [
+                  {
+                    "config_field_id": "condition",
+                    "value": "(getMetaobjectEntries1Foreachitem.actionList any? |actionList_item| (actionList_item == 'Cancel'))"
+                  }
+                ],
+                "task_id": "shopify::flow::condition",
+                "task_version": "0.1",
+                "task_type": "CONDITION",
+                "name": null
+              },
+              {
+                "step_id": "a9231c50-dcd5-11ef-8003-2f3031bc4f83",
+                "config_field_values": [
+                  {
+                    "config_field_id": "order_id",
+                    "value": "{\"value\":null,\"default_value\":\"order.id\"}"
+                  },
+                  {
+                    "config_field_id": "reason",
+                    "value": "FRAUD"
+                  },
+                  {
+                    "config_field_id": "notify_customer",
+                    "value": "false"
+                  },
+                  {
+                    "config_field_id": "refund",
+                    "value": "true"
+                  },
+                  {
+                    "config_field_id": "restock",
+                    "value": "true"
+                  },
+                  {
+                    "config_field_id": "staff_note",
+                    "value": "Cancelled due to Flow rule"
+                  }
+                ],
+                "task_id": "shopify::admin::cancel_order",
+                "task_version": "1.0",
+                "task_type": "ACTION",
+                "name": null
+              },
+              {
+                "step_id": "7adcb190-df31-11ef-a8d0-9fe68ad0f759",
+                "config_field_values": [
+                  {
+                    "config_field_id": "condition",
+                    "value": "(getMetaobjectEntries1Foreachitem.actionList any? |actionList_item| (actionList_item == 'Notify'))"
+                  }
+                ],
+                "task_id": "shopify::flow::condition",
+                "task_version": "0.1",
+                "task_type": "CONDITION",
+                "name": null
+              },
+              {
+                "step_id": "31644b30-df32-11ef-a8d0-9fe68ad0f759",
+                "config_field_values": [
+                  {
+                    "config_field_id": "address",
+                    "value": ""
+                  },
+                  {
+                    "config_field_id": "subject",
+                    "value": "Order may be fraudulent {{order.name}}"
+                  },
+                  {
+                    "config_field_id": "message",
+                    "value": "Please check it"
+                  }
+                ],
+                "task_id": "shopify::flow::send_email",
+                "task_version": "0.1",
+                "task_type": "ACTION",
+                "name": null
+              }
+            ],
+            "links": [
+              {
+                "from_step_id": "8d93c070-dcd5-11ef-8003-2f3031bc4f83",
+                "from_port_id": "loop_body",
+                "to_step_id": "94040190-dcd5-11ef-8003-2f3031bc4f83",
+                "to_port_id": "input"
+              },
+              {
+                "from_step_id": "94040190-dcd5-11ef-8003-2f3031bc4f83",
+                "from_port_id": "true",
+                "to_step_id": "a9231c50-dcd5-11ef-8003-2f3031bc4f83",
+                "to_port_id": "input"
+              },
+              {
+                "from_step_id": "bf60aa50-d35c-11ef-a206-1b4e4b97ad3e",
+                "from_port_id": "output",
+                "to_step_id": "8d93c070-dcd5-11ef-8003-2f3031bc4f83",
+                "to_port_id": "input"
+              },
+              {
+                "from_step_id": "dacfed50-d357-11ef-9ef4-f96284c385e8",
+                "from_port_id": "output",
+                "to_step_id": "bf60aa50-d35c-11ef-a206-1b4e4b97ad3e",
+                "to_port_id": "input"
+              },
+              {
+                "from_step_id": "7adcb190-df31-11ef-a8d0-9fe68ad0f759",
+                "from_port_id": "true",
+                "to_step_id": "31644b30-df32-11ef-a8d0-9fe68ad0f759",
+                "to_port_id": "input"
+              },
+              {
+                "from_step_id": "8d93c070-dcd5-11ef-8003-2f3031bc4f83",
+                "from_port_id": "loop_body",
+                "to_step_id": "7adcb190-df31-11ef-a8d0-9fe68ad0f759",
+                "to_port_id": "input"
+              }
+            ],
+            "patched_fields": []
+          }
+        }
+      },
+      {
+        "id": "gid://shopify/AutomationTemplate/0199ceb7-ab9e-7c41-88c3-b7e4de552ed0",
+        "title": "Track amount of times customers have returned items",
+        "configuration": {
+          "__metadata": {
+            "version": 0.1
+          },
+          "root": {
+            "steps": [
+              {
+                "step_id": "fe434d78-540b-4fb9-abdd-d675f3ce4136",
+                "config_field_values": [],
+                "task_id": "shopify::admin::refund_created",
+                "task_version": "0.1",
+                "task_type": "TRIGGER",
+                "name": null
+              },
+              {
+                "step_id": "d7d47fd9-9668-433c-aa9e-ed9651d5041f",
+                "config_field_values": [
+                  {
+                    "config_field_id": "condition",
+                    "value": "(refund.refundLineItems any? |refundLineItems_item| (refundLineItems_item.quantity >= 1))"
+                  }
+                ],
+                "task_id": "shopify::flow::condition",
+                "task_version": "0.1",
+                "task_type": "CONDITION",
+                "name": null
+              },
+              {
+                "step_id": "b4c29819-0cc5-46f9-a4f3-1db0eaacedf0",
+                "config_field_values": [
+                  {
+                    "config_field_id": "customer_id",
+                    "value": "{\"value\":null,\"default_value\":\"order.customer.id\"}"
+                  },
+                  {
+                    "config_field_id": "metafield",
+                    "value": "{\"namespace\":\"custom\",\"key\":\"num_refunds\",\"type\":\"number_integer\"}"
+                  },
+                  {
+                    "config_field_id": "value",
+                    "value": "{%- assign num_refunds = order.metafields | where: \"namespace\", \"custom\" | where: \"key\", \"num_refunds\" | first -%}\n{%- if num_refunds.value == blank %}1\n{%- else -%}{{ num_refunds.value | plus: 1 -}}{% endif -%}"
+                  }
+                ],
+                "task_id": "shopify::admin::add_customer_metafield",
+                "task_version": "1.0",
+                "task_type": "ACTION",
+                "name": null
+              }
+            ],
+            "links": [
+              {
+                "from_step_id": "fe434d78-540b-4fb9-abdd-d675f3ce4136",
+                "from_port_id": "output",
+                "to_step_id": "d7d47fd9-9668-433c-aa9e-ed9651d5041f",
+                "to_port_id": "input"
+              },
+              {
+                "from_step_id": "d7d47fd9-9668-433c-aa9e-ed9651d5041f",
+                "from_port_id": "true",
+                "to_step_id": "b4c29819-0cc5-46f9-a4f3-1db0eaacedf0",
+                "to_port_id": "input"
+              }
+            ],
+            "patched_fields": []
+          }
+        }
+      },
+      {
+        "id": "gid://shopify/AutomationTemplate/019c061b-bc60-7236-af36-04cf1a70c45f",
+        "title": "Tag and organize new products by title",
+        "configuration": {
+          "__metadata": {
+            "version": 0.1
+          },
+          "root": {
+            "steps": [
+              {
+                "step_id": "2a7c8076-f787-4113-ba1d-d8ca05b85ea3",
+                "config_field_values": [],
+                "task_id": "shopify::admin::product_added",
+                "task_version": "0.1",
+                "task_type": "TRIGGER",
+                "name": null
+              },
+              {
+                "step_id": "654203b6-fe8f-468e-8236-a4c58b2b3a9e",
+                "config_field_values": [
+                  {
+                    "config_field_id": "product_id",
+                    "value": "{\"value\":null,\"default_value\":\"product.id\"}"
+                  },
+                  {
+                    "config_field_id": "tags",
+                    "value": "[\"T-Shirt\",\"Tops\"]"
+                  }
+                ],
+                "task_id": "shopify::admin::add_product_tags",
+                "task_version": "0.1",
+                "task_type": "ACTION",
+                "name": null
+              },
+              {
+                "step_id": "0d8bfcf9-8772-4aff-a0b1-d5dad0b715d6",
+                "config_field_values": [
+                  {
+                    "config_field_id": "product_id",
+                    "value": "{\"value\":null,\"default_value\":\"product.id\"}"
+                  },
+                  {
+                    "config_field_id": "metafield",
+                    "value": "{\"namespace\":\"Instructions\",\"key\":\"Wash\",\"type\":\"single_line_text_field\"}"
+                  },
+                  {
+                    "config_field_id": "value",
+                    "value": "Cold Water"
+                  }
+                ],
+                "task_id": "shopify::admin::add_product_metafield",
+                "task_version": "1.0",
+                "task_type": "ACTION",
+                "name": null
+              },
+              {
+                "step_id": "d3ade8e2-b54d-4168-96f9-b42a962cd273",
+                "config_field_values": [
+                  {
+                    "config_field_id": "condition",
+                    "value": "(product.title include? 'Jeans')"
+                  }
+                ],
+                "task_id": "shopify::flow::condition",
+                "task_version": "0.1",
+                "task_type": "CONDITION",
+                "name": null
+              },
+              {
+                "step_id": "ca54c6ce-460b-4300-99f7-812b33925784",
+                "config_field_values": [
+                  {
+                    "config_field_id": "product_id",
+                    "value": "{\"value\":null,\"default_value\":\"product.id\"}"
+                  },
+                  {
+                    "config_field_id": "tags",
+                    "value": "[\"Jeans\",\"Bottoms\"]"
+                  }
+                ],
+                "task_id": "shopify::admin::add_product_tags",
+                "task_version": "0.1",
+                "task_type": "ACTION",
+                "name": null
+              },
+              {
+                "step_id": "4b47e704-d005-4918-8618-8b9aaf0704c6",
+                "config_field_values": [
+                  {
+                    "config_field_id": "product_id",
+                    "value": "{\"value\":null,\"default_value\":\"product.id\"}"
+                  },
+                  {
+                    "config_field_id": "metafield",
+                    "value": "{\"namespace\":\"Instructions\",\"key\":\"Wash\",\"type\":\"single_line_text_field\"}"
+                  },
+                  {
+                    "config_field_id": "value",
+                    "value": "Tumble Dry Low"
+                  }
+                ],
+                "task_id": "shopify::admin::add_product_metafield",
+                "task_version": "1.0",
+                "task_type": "ACTION",
+                "name": null
+              },
+              {
+                "step_id": "126abd80-0476-11ec-8be3-e70613ddecf8",
+                "config_field_values": [
+                  {
+                    "config_field_id": "condition",
+                    "value": "(product.title include? 'Shirt')"
+                  }
+                ],
+                "task_id": "shopify::flow::condition",
+                "task_version": "0.1",
+                "task_type": "CONDITION",
+                "name": null
+              },
+              {
+                "step_id": "997415c0-b376-11f0-b1ef-63ff584bca1b",
+                "config_field_values": [
+                  {
+                    "config_field_id": "product_id",
+                    "value": "{\"value\":\"\",\"default_value\":\"product.id\"}"
+                  },
+                  {
+                    "config_field_id": "collection_id",
+                    "value": ""
+                  }
+                ],
+                "task_id": "shopify::admin::add_product_to_collection",
+                "task_version": "1.0",
+                "task_type": "ACTION",
+                "name": null
+              },
+              {
+                "step_id": "a8895250-b376-11f0-b1ef-63ff584bca1b",
+                "config_field_values": [
+                  {
+                    "config_field_id": "product_id",
+                    "value": "{\"value\":\"\",\"default_value\":\"product.id\"}"
+                  },
+                  {
+                    "config_field_id": "collection_id",
+                    "value": ""
+                  }
+                ],
+                "task_id": "shopify::admin::add_product_to_collection",
+                "task_version": "1.0",
+                "task_type": "ACTION",
+                "name": null
+              }
+            ],
+            "links": [
+              {
+                "from_step_id": "d3ade8e2-b54d-4168-96f9-b42a962cd273",
+                "from_port_id": "true",
+                "to_step_id": "ca54c6ce-460b-4300-99f7-812b33925784",
+                "to_port_id": "input"
+              },
+              {
+                "from_step_id": "d3ade8e2-b54d-4168-96f9-b42a962cd273",
+                "from_port_id": "true",
+                "to_step_id": "4b47e704-d005-4918-8618-8b9aaf0704c6",
+                "to_port_id": "input"
+              },
+              {
+                "from_step_id": "2a7c8076-f787-4113-ba1d-d8ca05b85ea3",
+                "from_port_id": "output",
+                "to_step_id": "126abd80-0476-11ec-8be3-e70613ddecf8",
+                "to_port_id": "input"
+              },
+              {
+                "from_step_id": "126abd80-0476-11ec-8be3-e70613ddecf8",
+                "from_port_id": "true",
+                "to_step_id": "654203b6-fe8f-468e-8236-a4c58b2b3a9e",
+                "to_port_id": "input"
+              },
+              {
+                "from_step_id": "126abd80-0476-11ec-8be3-e70613ddecf8",
+                "from_port_id": "true",
+                "to_step_id": "0d8bfcf9-8772-4aff-a0b1-d5dad0b715d6",
+                "to_port_id": "input"
+              },
+              {
+                "from_step_id": "2a7c8076-f787-4113-ba1d-d8ca05b85ea3",
+                "from_port_id": "output",
+                "to_step_id": "d3ade8e2-b54d-4168-96f9-b42a962cd273",
+                "to_port_id": "input"
+              },
+              {
+                "from_step_id": "126abd80-0476-11ec-8be3-e70613ddecf8",
+                "from_port_id": "true",
+                "to_step_id": "997415c0-b376-11f0-b1ef-63ff584bca1b",
+                "to_port_id": "input"
+              },
+              {
+                "from_step_id": "d3ade8e2-b54d-4168-96f9-b42a962cd273",
+                "from_port_id": "true",
+                "to_step_id": "a8895250-b376-11f0-b1ef-63ff584bca1b",
+                "to_port_id": "input"
+              }
+            ],
+            "patched_fields": []
+          }
+        }
+      },
+      {
+        "id": "gid://shopify/AutomationTemplate/0196da8e-1893-7dad-a026-b80445142f24",
+        "title": "Store recent order total in a customer metafield for each new order",
+        "configuration": {
+          "__metadata": {
+            "version": 0.1
+          },
+          "root": {
+            "steps": [
+              {
+                "step_id": "d934a020-8cc7-11ef-8793-198ac19e97fd",
+                "config_field_values": [],
+                "task_id": "shopify::admin::order_created",
+                "task_version": "0.1",
+                "task_type": "TRIGGER",
+                "name": null
+              },
+              {
+                "step_id": "aad53050-8ccc-11ef-8793-198ac19e97fd",
+                "config_field_values": [
+                  {
+                    "config_field_id": "sort_by",
+                    "value": "{\"sortKey\":\"CREATED_AT\",\"order\":\"ASCENDING\"}"
+                  },
+                  {
+                    "config_field_id": "max_root_records",
+                    "value": "100"
+                  },
+                  {
+                    "config_field_id": "query",
+                    "value": "customer_id:{{order.customer.legacyResourceId}} AND created_at:>='{{ \"now\" | date_minus:\"30 days\" }}'"
+                  }
+                ],
+                "task_id": "shopify::flow::fetch::orders",
+                "task_version": "v1",
+                "task_type": "ACTION",
+                "name": "Get order data"
+              },
+              {
+                "step_id": "3065db00-21ee-11f0-84c0-c5241c7e7815",
+                "config_field_values": [
+                  {
+                    "config_field_id": "customer_id",
+                    "value": "{\"value\":null,\"default_value\":\"order.customer.id\"}"
+                  },
+                  {
+                    "config_field_id": "metafield",
+                    "value": "{\"namespace\":\"custom\",\"key\":\"revenue_last_30_days\",\"type\":\"number_decimal\"}"
+                  },
+                  {
+                    "config_field_id": "value",
+                    "value": "{{sum}}"
+                  }
+                ],
+                "task_id": "shopify::admin::add_customer_metafield",
+                "task_version": "1.0",
+                "task_type": "ACTION",
+                "name": null
+              },
+              {
+                "step_id": "6b9befc0-21ee-11f0-84c0-c5241c7e7815",
+                "config_field_values": [
+                  {
+                    "config_field_id": "numberpath",
+                    "value": "getOrderData.currentTotalPriceSet.shopMoney.amount"
+                  }
+                ],
+                "task_id": "shopify::flow::sum",
+                "task_version": "0.1",
+                "task_type": "ACTION",
+                "name": "Sum"
+              }
+            ],
+            "links": [
+              {
+                "from_step_id": "d934a020-8cc7-11ef-8793-198ac19e97fd",
+                "from_port_id": "output",
+                "to_step_id": "aad53050-8ccc-11ef-8793-198ac19e97fd",
+                "to_port_id": "input"
+              },
+              {
+                "from_step_id": "aad53050-8ccc-11ef-8793-198ac19e97fd",
+                "from_port_id": "output",
+                "to_step_id": "6b9befc0-21ee-11f0-84c0-c5241c7e7815",
+                "to_port_id": "input"
+              },
+              {
+                "from_step_id": "6b9befc0-21ee-11f0-84c0-c5241c7e7815",
+                "from_port_id": "output",
+                "to_step_id": "3065db00-21ee-11f0-84c0-c5241c7e7815",
+                "to_port_id": "input"
+              }
+            ],
+            "patched_fields": [
+              {
+                "id": "0197d6b8-7f6c-793e-9596-97f7222fc7ad",
+                "handle": "silverTier",
+                "field": "metafield",
+                "patched_type": "Shop",
+                "arguments": {
+                  "key": "silver",
+                  "namespace": "tiers"
+                }
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "gid://shopify/AutomationTemplate/019c061b-c437-7bfd-aae0-fc117cec060c",
+        "title": "Check product metafield values on an order",
+        "configuration": {
+          "__metadata": {
+            "version": 0.1
+          },
+          "root": {
+            "steps": [
+              {
+                "step_id": "ba2b4340-5396-11ec-9334-cf698a207c5d",
+                "config_field_values": [],
+                "task_id": "shopify::admin::order_created",
+                "task_version": "0.1",
+                "task_type": "TRIGGER",
+                "name": null
+              },
+              {
+                "step_id": "c48c6da0-5396-11ec-9334-cf698a207c5d",
+                "config_field_values": [
+                  {
+                    "config_field_id": "condition",
+                    "value": "(order.lineItems any? |lineItems_item| (lineItems_item.product.productColors.value any? |value_item| (value_item == 'black')))"
+                  }
+                ],
+                "task_id": "shopify::flow::condition",
+                "task_version": "0.1",
+                "task_type": "CONDITION",
+                "name": null
+              },
+              {
+                "step_id": "c07d3560-49c9-11ef-8276-ebf91f1f5f7c",
+                "config_field_values": [
+                  {
+                    "config_field_id": "message",
+                    "value": "Found a metafield with the value. Here is a list of all the line items and the value for this metafield:\n{% for lineItems_item in order.lineItems %}\n{{ lineItems_item.product.title }} :\n{% for value_item in lineItems_item.product.productColors.value %}\n-  {{value_item}}\n{% endfor %}\n{% endfor %}"
+                  }
+                ],
+                "task_id": "shopify::flow::print",
+                "task_version": "0.1",
+                "task_type": "ACTION",
+                "name": null
+              }
+            ],
+            "links": [
+              {
+                "from_step_id": "ba2b4340-5396-11ec-9334-cf698a207c5d",
+                "from_port_id": "output",
+                "to_step_id": "c48c6da0-5396-11ec-9334-cf698a207c5d",
+                "to_port_id": "input"
+              },
+              {
+                "from_step_id": "c48c6da0-5396-11ec-9334-cf698a207c5d",
+                "from_port_id": "true",
+                "to_step_id": "c07d3560-49c9-11ef-8276-ebf91f1f5f7c",
+                "to_port_id": "input"
+              }
+            ],
+            "patched_fields": [
+              {
+                "id": "01KG31QH1QGR7PB1HNDWF6KR40",
+                "handle": "productColors",
+                "field": "metafield",
+                "patched_type": "Product",
+                "arguments": {
+                  "key": "product_colors",
+                  "namespace": "custom"
+                }
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "gid://shopify/AutomationTemplate/019f0071-b014-70cd-b1e2-adb68b06b253",
+        "title": "Send an event to Ometria when an item is added to a wishlist",
+        "configuration": {
+          "__metadata": {
+            "version": 0.1
+          },
+          "root": {
+            "steps": [
+              {
+                "step_id": "01KTKHGFRMTTEA1F25E3VJE3YM",
+                "config_field_values": [
+                  {
+                    "config_field_id": "method",
+                    "value": "POST"
+                  },
+                  {
+                    "config_field_id": "url",
+                    "value": "https://api.ometria.com/v2/push"
+                  },
+                  {
+                    "config_field_id": "headers",
+                    "value": "[[\"Content-Type\",\"application/json\"],[\"Accept\",\"application/json\"],[\"X-Ometria-Auth\",\"\"]]"
+                  },
+                  {
+                    "config_field_id": "body",
+                    "value": "[\n  {\n    \"@type\": \"custom_event\",\n    \"id\": \"wysh_wishlist_item_added_{{wishlist.id}}_{{triggerItem.id}}_{{triggerItem.variantId}}_{{triggerItem.addedAt}}\",\n    \"event_type\": \"wishlist_item_added\",\n    \"timestamp\": \"{{triggerItem.addedAt}}\",\n    \"properties\": {},\n    \"identity_email\": \"{{customer.defaultEmailAddress.emailAddress}}\"\n  }\n]"
+                  },
+                  {
+                    "config_field_id": "on_client_error",
+                    "value": "fail"
+                  },
+                  {
+                    "config_field_id": "on_server_error",
+                    "value": "fail"
+                  }
+                ],
+                "task_id": "shopify::flow::send_http",
+                "task_version": "2.0",
+                "task_type": "ACTION",
+                "name": "Send HTTP request"
+              },
+              {
+                "step_id": "01KV844TNDHSC0GR6ER9C51841",
+                "config_field_values": [],
+                "task_id": "019c42ad-a08c-7311-a885-3f5995cb787c",
+                "task_version": "1.0",
+                "task_type": "TRIGGER",
+                "name": null
+              }
+            ],
+            "links": [
+              {
+                "from_step_id": "01KV844TNDHSC0GR6ER9C51841",
+                "from_port_id": "output",
+                "to_step_id": "01KTKHGFRMTTEA1F25E3VJE3YM",
+                "to_port_id": "input"
+              }
+            ],
+            "patched_fields": []
+          }
+        }
+      },
+      {
+        "id": "gid://shopify/AutomationTemplate/019f14b0-0bbf-74c5-aaa4-d2aff3005b14",
+        "title": "Track percent off a product using metafield",
+        "configuration": {
+          "__metadata": {
+            "version": 0.1
+          },
+          "root": {
+            "steps": [
+              {
+                "step_id": "e4296a80-348c-11ef-a727-0730f6e4c6cc",
+                "config_field_values": [
+                  {
+                    "config_field_id": "recurrence",
+                    "value": "[\"DTSTART;TZID=America/New_York:20250205T165600\\nRRULE:FREQ=MINUTELY;INTERVAL=10;WKST=MO\"]"
+                  }
+                ],
+                "task_id": "shopify::flow::scheduled_time",
+                "task_version": "0.1",
+                "task_type": "TRIGGER",
+                "name": null
+              },
+              {
+                "step_id": "5c3bf3b0-2782-11f0-a8f7-330701d5adf2",
+                "config_field_values": [
+                  {
+                    "config_field_id": "sort_by",
+                    "value": "{\"sortKey\":\"CREATED_AT\",\"order\":\"ASCENDING\"}"
+                  },
+                  {
+                    "config_field_id": "max_root_records",
+                    "value": "5"
+                  },
+                  {
+                    "config_field_id": "query",
+                    "value": "updated_at:<='{{ scheduledAt}}' AND updated_at:>'{{ scheduledAt | date_minus: scheduleInterval }}'"
+                  }
+                ],
+                "task_id": "shopify::flow::fetch::products",
+                "task_version": "v1",
+                "task_type": "ACTION",
+                "name": "Get product data"
+              },
+              {
+                "step_id": "800b5130-278e-11f0-a150-e70a23d0c936",
+                "config_field_values": [
+                  {
+                    "config_field_id": "input",
+                    "value": "query {\n  getProductData {\n    id\n    tags\n    variants {\n      title\n      product {\n        title\n      }\n      price\n      compareAtPrice\n    }\n    discountPercent {\n      value\n    }\n  }\n}"
+                  },
+                  {
+                    "config_field_id": "script",
+                    "value": "export default function main(input) {\n  // Extract products data from the input structure\n  const productsData = input.getProductData || [];\n\n  // Process each product to find its max discount\n  const results = productsData.map((productData) => {\n    const variants = productData.variants || [];\n    const productId = productData.id;\n\n    // Get product title from the first variant since it's not at the top level\n    const productTitle = variants.length > 0 ? variants[0].product?.title : null;\n\n    // Extract the custom discount_percent metafield value if it exists\n    const discountMetafield = productData.discountPercent?.value ?? null;\n    const currentDiscountPercentMetafield = discountMetafield != null ? parseFloat(discountMetafield) : null;\n\n\n    let maxDiscountPercentage = 0;\n    let maxDiscountVariantTitle = null;\n    let maxDiscountPrice = null;\n    let maxDiscountCompareAtPrice = null;\n\n    // Iterate through variants to find max discount for this product\n    variants.forEach(variant => {\n      const price = parseFloat(variant.price);\n      const compareAtPrice = parseFloat(variant.compareAtPrice);\n\n      // Skip variants without valid prices or if compareAtPrice is null\n      if (!price || !compareAtPrice || isNaN(compareAtPrice) || compareAtPrice <= price) {\n        return;\n      }\n\n      // Calculate discount percentage\n      const discountPercentage = ((compareAtPrice - price) / compareAtPrice) * 100;\n\n      // Update max values if this discount is higher\n      if (discountPercentage > maxDiscountPercentage) {\n        maxDiscountPercentage = discountPercentage;\n        maxDiscountVariantTitle = variant.title;\n        maxDiscountPrice = price;\n        maxDiscountCompareAtPrice = compareAtPrice;\n      }\n    });\n\n    // Round to 2 decimal places\n    maxDiscountPercentage = Math.round(maxDiscountPercentage * 100) / 100;\n\n    return {\n      productId,\n      productTitle,\n      maxDiscountPercentage,\n      maxDiscountVariantTitle,\n      maxDiscountPrice,\n      maxDiscountCompareAtPrice,\n      currentDiscountPercentMetafield,\n    };\n  });\n\n  // Filter out any products that don't have valid data\n  const validResults = results.filter(product => product.productId);\n\n  return {\n    products: validResults,\n    count: validResults.length,\n  };\n}\n"
+                  },
+                  {
+                    "config_field_id": "output_schema",
+                    "value": "type Product {\n  productId: ID\n  productTitle: String\n  tags: String\n  maxDiscountPercentage: Float\n  maxDiscountVariantTitle: String\n  maxDiscountPrice: Float\n  maxDiscountCompareAtPrice: Float\n  currentDiscountPercentMetafield: Float\n}\n\ntype Output {\n  products: [Product]\n  count: Int\n  backfillTag: String\n}\n"
+                  }
+                ],
+                "task_id": "shopify::flow::run_code",
+                "task_version": "0.1",
+                "task_type": "ACTION",
+                "name": "Run code"
+              },
+              {
+                "step_id": "b201e2c0-278f-11f0-a150-e70a23d0c936",
+                "config_field_values": [
+                  {
+                    "config_field_id": "listpath",
+                    "value": "runCode.products"
+                  }
+                ],
+                "task_id": "shopify::flow::foreach",
+                "task_version": "0.1",
+                "task_type": "FOREACH",
+                "name": null
+              },
+              {
+                "step_id": "c4b37ff0-278f-11f0-a150-e70a23d0c936",
+                "config_field_values": [
+                  {
+                    "config_field_id": "api_call",
+                    "value": "{\"name\":\"metafieldsSet\",\"blob\":\"{\\n  \\\"metafields\\\": [\\n    {\\n      \\\"ownerId\\\": \\\"{{productsForeachitem.productId}}\\\",\\n      \\\"namespace\\\": \\\"custom\\\",\\n      \\\"key\\\": \\\"discount_percent\\\",\\n      \\\"value\\\": \\\"{{productsForeachitem.maxDiscountPercentage}}\\\",\\n      \\\"type\\\": \\\"number_decimal\\\"\\n    }\\n  ]\\n}\"}"
+                  }
+                ],
+                "task_id": "shopify::admin::admin_api_operation",
+                "task_version": "0.1",
+                "task_type": "ACTION",
+                "name": "Send Admin API request"
+              },
+              {
+                "step_id": "1646c780-3282-11f0-9e4b-4383414399dc",
+                "config_field_values": [
+                  {
+                    "config_field_id": "condition",
+                    "value": "(productsForeachitem.maxDiscountPercentage != productsForeachitem.currentDiscountPercentMetafield)"
+                  }
+                ],
+                "task_id": "shopify::flow::condition",
+                "task_version": "0.1",
+                "task_type": "CONDITION",
+                "name": null
+              }
+            ],
+            "links": [
+              {
+                "from_step_id": "5c3bf3b0-2782-11f0-a8f7-330701d5adf2",
+                "from_port_id": "output",
+                "to_step_id": "800b5130-278e-11f0-a150-e70a23d0c936",
+                "to_port_id": "input"
+              },
+              {
+                "from_step_id": "800b5130-278e-11f0-a150-e70a23d0c936",
+                "from_port_id": "output",
+                "to_step_id": "b201e2c0-278f-11f0-a150-e70a23d0c936",
+                "to_port_id": "input"
+              },
+              {
+                "from_step_id": "e4296a80-348c-11ef-a727-0730f6e4c6cc",
+                "from_port_id": "output",
+                "to_step_id": "5c3bf3b0-2782-11f0-a8f7-330701d5adf2",
+                "to_port_id": "input"
+              },
+              {
+                "from_step_id": "b201e2c0-278f-11f0-a150-e70a23d0c936",
+                "from_port_id": "loop_body",
+                "to_step_id": "1646c780-3282-11f0-9e4b-4383414399dc",
+                "to_port_id": "input"
+              },
+              {
+                "from_step_id": "1646c780-3282-11f0-9e4b-4383414399dc",
+                "from_port_id": "true",
+                "to_step_id": "c4b37ff0-278f-11f0-a150-e70a23d0c936",
+                "to_port_id": "input"
+              }
+            ],
+            "patched_fields": [
+              {
+                "id": "01KWAB02XZ6BDZ64DPRFXTQ4B9",
+                "handle": "discountPercent",
+                "field": "metafield",
+                "patched_type": "Product",
+                "arguments": {
+                  "key": "discount_percent",
+                  "namespace": "custom"
+                }
+              }
+            ]
+          }
+        }
+      }
+    ],
+    "pageInfo": {
+      "hasNextPage": false,
+      "endCursor": "eyJsYXN0X3ZhbHVlIjoiT0RvNk5HRk1Ra0pCVlV4a1IxWjBZMGQ0YUdSSFZucE1hbGxYV2tWT2JtUlhWWGhPVmtwU1VXNVdhRm94T1UxUFJXUTBXVEU1VTFGUlJVSkdiVVpEVTFST1EwNXFaSEZWYTNkNVVWVmtjbEZzT1daYVZFMHdWRlZGUVVGUlFVRkJRVUZFU25GWlJFWnJjRU5UYkRsd1dUQmFlVlZyY0hoU1ZWWjFWRzVLTUdORmVFSlJWa1ZCUXpOU2JHSllRbk5aV0ZKc1kzazBNa1p0VWtSYU0xWnNUVlJXVTFWVlNqRlpWMlJtVkVSb1NHVkhUbVpWYTBWQlFWSmFObVJHUmpOWU1qVnVZakZLTW1KWWFGVlphM1I0VFVWb1UwMUZaRUpCUVVWQlFVRkJRVUV5WjNseWFGcDRXbnBvVUZvd1duRlZSbEp5VVhwR2FWWnNUVE5YUmxweFpFVjRRa0ZCZERCYVZ6RjNZa2RHTUZwWVRYVk9hRnByVVRKa01WcFVSVEZWYkVaRFpGZEdibGd3ZHpSU00yaHFXREZLUWtKQlJWZE5iRVpOWW1wS2QxWXpVbEppZVRGVFRrY3dlV0ZVYUhCamJteG1aSGRCUWtGQlFVRkJRVWxCWlVwalYwMXJaRnBqYmxKb1dURndWVTVGVGxaUlYyOHpXa2hrVTJOcmEzaFJVVUZNWkVkV2RHTkhlR2hrUjFaNlRHcFpWMXBGVG01a1YxVjRUbFpLVWxGdVZtaGFNVGxOVDBWa05Ga3hPVk5SVVUxQ1JtcEtVbFJITkhsalJtUXdWVmM0ZEZWcVVuUk5iV3MwWVZoS05WZ3pZMEZCVVVGQlFVRkJRMEZJYVZkR2FrcElWMWhLTUZsWFRtRldSRkpFVmxWR2NVNHlVak5WYmtwS1RWVkZRVU16VW14aVdFSnpXVmhTYkdONU5ESkdiVkpFV2pOV2JFMVVWbE5WVlVveFdWZGtabFJFYUVobFIwNW1WV3RGUTBGU1dtaFJhMnQ2VVdwWk0yRnNTazFOYTBaSVlUQktabGd5VlhwT1JURkNRVUZGUVVGQlFVRkJlV0Z0UVdoYVMxRnJjR1poVjA1SFkyeEtTMk5WVmtaaWF6VjVaRWhDVFZGVlJsSkJRVVZYV2tWT2JtUlhWWGhPVmtwU1VXNVdhRm94T1UxUFJXUTBXVEU1VTFGUlFVRSJ9"
+    }
+  }
+}

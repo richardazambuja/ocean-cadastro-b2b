@@ -1,0 +1,98 @@
+[
+  {
+    "createdAt": "2026-11-17 14:27:14",
+    "createdBy": "gid://shopify/User/288782911",
+    "versionTag": "ocean-b2b-notifications-20261117-1427",
+    "status": "active",
+    "versionId": "gid://shopify/Version/1232262725633",
+    "message": "Ocean B2B: ponte idempotente, recuperacao de sinais e preservacao do historico"
+  },
+  {
+    "createdAt": "2026-11-17 13:57:13",
+    "createdBy": "gid://shopify/User/288782911",
+    "versionTag": "ocean-b2b-notifications-20261117-1358",
+    "status": "inactive",
+    "versionId": "gid://shopify/Version/1232056516609",
+    "message": "Normalizacao de horarios para precisao de segundos validada em teste real"
+  },
+  {
+    "createdAt": "2026-11-17 13:45:57",
+    "createdBy": "gid://shopify/User/288782911",
+    "versionTag": "ocean-b2b-notifications-20261117-1345",
+    "status": "inactive",
+    "versionId": "gid://shopify/Version/1231981576193",
+    "message": "Ponte B2B com ciclos, CAS e controle de implantacao restrito a teste"
+  },
+  {
+    "createdAt": "2026-11-17 11:48:03",
+    "createdBy": "gid://shopify/User/288782911",
+    "versionTag": "cadastro-b2b-9",
+    "status": "inactive",
+    "versionId": "gid://shopify/Version/1231196717057",
+    "message": ""
+  },
+  {
+    "createdAt": "2026-11-17 11:43:11",
+    "createdBy": "gid://shopify/User/288782911",
+    "versionTag": "cadastro-b2b-8",
+    "status": "inactive",
+    "versionId": "gid://shopify/Version/1231163293697",
+    "message": ""
+  },
+  {
+    "createdAt": "2026-11-16 17:53:54",
+    "createdBy": "gid://shopify/User/288782911",
+    "versionTag": "cadastro-b2b-7",
+    "status": "inactive",
+    "versionId": "gid://shopify/Version/1225449668609",
+    "message": ""
+  },
+  {
+    "createdAt": "2026-11-16 14:29:34",
+    "createdBy": "gid://shopify/User/288782911",
+    "versionTag": "cadastro-b2b-6",
+    "status": "inactive",
+    "versionId": "gid://shopify/Version/1225016836097",
+    "message": ""
+  },
+  {
+    "createdAt": "2026-11-16 13:32:25",
+    "createdBy": "gid://shopify/User/288782911",
+    "versionTag": "cadastro-b2b-5",
+    "status": "inactive",
+    "versionId": "gid://shopify/Version/1224913256449",
+    "message": ""
+  },
+  {
+    "createdAt": "2026-11-16 13:07:55",
+    "createdBy": "gid://shopify/User/288782911",
+    "versionTag": "cadastro-b2b-4",
+    "status": "inactive",
+    "versionId": "gid://shopify/Version/1224870395905",
+    "message": ""
+  },
+  {
+    "createdAt": "2026-11-16 12:50:29",
+    "createdBy": "gid://shopify/User/288782911",
+    "versionTag": "cadastro-b2b-3",
+    "status": "inactive",
+    "versionId": "gid://shopify/Version/1224837955585",
+    "message": ""
+  },
+  {
+    "createdAt": "2026-11-16 12:27:44",
+    "createdBy": "gid://shopify/User/288782911",
+    "versionTag": "cadastro-b2b-2",
+    "status": "inactive",
+    "versionId": "gid://shopify/Version/1224799813633",
+    "message": ""
+  },
+  {
+    "createdAt": "2026-11-16 11:41:53",
+    "createdBy": "gid://shopify/User/288782911",
+    "versionTag": "cadastro-b2b-1",
+    "status": "inactive",
+    "versionId": "gid://shopify/Version/1224714715137",
+    "message": ""
+  }
+]

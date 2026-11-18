@@ -1,0 +1,28 @@
+{
+  "definition": {
+    "type": "ocean_b2b_pending_cycle",
+    "name": "Ocean - Ciclo pendente para notificacao",
+    "description": "Sinal nativo por ciclo; nao substitui a decisao comercial do cadastro-b2b.",
+    "displayNameKey": "cycle_id",
+    "fieldDefinitions": [
+      {
+        "key": "local_id",
+        "name": "ID do local B2B",
+        "type": "single_line_text_field",
+        "required": true
+      },
+      {
+        "key": "cycle_id",
+        "name": "Ciclo de analise",
+        "type": "single_line_text_field",
+        "required": true
+      },
+      {
+        "key": "entered_at",
+        "name": "Entrada em Pendentes",
+        "type": "date_time",
+        "required": true
+      }
+    ]
+  }
+}

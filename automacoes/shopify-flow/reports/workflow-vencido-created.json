@@ -1,0 +1,86 @@
+{
+  "automationWorkflowCreate": {
+    "automationWorkflow": {
+      "id": "gid://shopify/AutomationWorkflow/01a1e9c5-a198-7078-8e9a-35b205098189",
+      "name": "OCEAN — CADASTRO VENCIDO",
+      "version": "01M7MWB8FNCACT6F9BERXX394T",
+      "versionState": "DRAFT",
+      "activeVersion": null,
+      "validationErrors": [
+        {
+          "code": "CONFIG_FIELD_GRAPHQL_QUERY_ERROR",
+          "message": "Este campo de configuração contém uma consulta inválida da Admin API.",
+          "stepId": "check_rollout",
+          "configFieldId": "input"
+        },
+        {
+          "code": "CONFIG_FIELD_GRAPHQL_QUERY_ERROR",
+          "message": "Este campo de configuração contém uma consulta inválida da Admin API.",
+          "stepId": "reserve_once",
+          "configFieldId": "input"
+        },
+        {
+          "code": "CONFIG_FIELD_GRAPHQL_QUERY_ERROR",
+          "message": "Este campo de configuração contém uma consulta inválida da Admin API.",
+          "stepId": "reserve_once",
+          "configFieldId": "input"
+        },
+        {
+          "code": "CONFIG_FIELD_GRAPHQL_QUERY_ERROR",
+          "message": "Este campo de configuração contém uma consulta inválida da Admin API.",
+          "stepId": "reserve_once",
+          "configFieldId": "input"
+        },
+        {
+          "code": "CONFIG_FIELD_GRAPHQL_QUERY_ERROR",
+          "message": "Este campo de configuração contém uma consulta inválida da Admin API.",
+          "stepId": "reserve_once",
+          "configFieldId": "input"
+        },
+        {
+          "code": "CONFIG_FIELD_GRAPHQL_QUERY_ERROR",
+          "message": "Este campo de configuração contém uma consulta inválida da Admin API.",
+          "stepId": "verify_claim",
+          "configFieldId": "input"
+        },
+        {
+          "code": "CONFIG_FIELD_GRAPHQL_QUERY_ERROR",
+          "message": "Este campo de configuração contém uma consulta inválida da Admin API.",
+          "stepId": "verify_claim",
+          "configFieldId": "input"
+        },
+        {
+          "code": "CONFIG_FIELD_GRAPHQL_QUERY_ERROR",
+          "message": "Este campo de configuração contém uma consulta inválida da Admin API.",
+          "stepId": "verify_claim",
+          "configFieldId": "input"
+        },
+        {
+          "code": "CONFIG_FIELD_GRAPHQL_QUERY_ERROR",
+          "message": "Este campo de configuração contém uma consulta inválida da Admin API.",
+          "stepId": "verify_claim",
+          "configFieldId": "input"
+        },
+        {
+          "code": "CONFIG_FIELD_NAME_RESOLUTION_ERROR",
+          "message": "Este campo de configuração faz referência a dados que não existem ou não estão disponíveis.",
+          "stepId": "fresh_location",
+          "configFieldId": "query"
+        },
+        {
+          "code": "CONFIG_FIELD_NAME_RESOLUTION_ERROR",
+          "message": "Este campo de configuração faz referência a dados que não existem ou não estão disponíveis.",
+          "stepId": "revalidate_location",
+          "configFieldId": "query"
+        },
+        {
+          "code": "CONFIG_FIELD_NAME_RESOLUTION_ERROR",
+          "message": "Este campo de configuração faz referência a dados que não existem ou não estão disponíveis.",
+          "stepId": "internal_email",
+          "configFieldId": "message"
+        }
+      ]
+    },
+    "userErrors": []
+  }
+}

@@ -70,3 +70,20 @@ build/
 
 mcp.json
 .npmrc
+
+# Credenciais e configuracoes locais
+.env
+.env.*
+!.env.example
+.npmrc
+mcp.json
+*.pem
+*.key
+
+# Arquivos gerados
+node_modules/
+.shopify/
+dist/
+build/
+*.log
+extensions/**/manifest.json

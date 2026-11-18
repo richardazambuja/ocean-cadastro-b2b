@@ -1,0 +1,44 @@
+{
+  "data": {
+    "raw": {
+      "id": "gid://shopify/Metaobject/695339155556",
+      "handle": "local-8622702692-native-8622702692-01m7mz60m28kmttegdgfxzp5cg",
+      "type": "ocean_b2b_pending_cycle",
+      "updatedAt": "2026-11-17T14:39:41Z",
+      "fields": [
+        {
+          "key": "local_id",
+          "value": "gid://shopify/CompanyLocation/8622702692"
+        },
+        {
+          "key": "cycle_id",
+          "value": "native-8622702692-01M7MZ60M28KMTTEGDGFXZP5CG"
+        },
+        {
+          "key": "entered_at",
+          "value": "2026-11-17T14:39:41Z"
+        }
+      ]
+    },
+    "canonical": {
+      "id": "gid://shopify/Metaobject/695339155556",
+      "handle": "local-8622702692-native-8622702692-01m7mz60m28kmttegdgfxzp5cg",
+      "type": "ocean_b2b_pending_cycle",
+      "updatedAt": "2026-11-17T14:39:41Z",
+      "fields": [
+        {
+          "key": "local_id",
+          "value": "gid://shopify/CompanyLocation/8622702692"
+        },
+        {
+          "key": "cycle_id",
+          "value": "native-8622702692-01M7MZ60M28KMTTEGDGFXZP5CG"
+        },
+        {
+          "key": "entered_at",
+          "value": "2026-11-17T14:39:41Z"
+        }
+      ]
+    }
+  }
+}

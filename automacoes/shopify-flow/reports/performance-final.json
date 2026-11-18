@@ -1,0 +1,332 @@
+{
+  "at": "2026-11-18T11:51:58.861Z",
+  "store": "mrdvrf-6a.myshopify.com",
+  "app": {
+    "id": "gid://shopify/App/447943081985",
+    "title": "cadastro-b2b",
+    "apiKey": "cbdf3320e1517c8e9006c806a882be25"
+  },
+  "recipient": "cadastros@oceanjoiasbr.com",
+  "deployment": {
+    "createdAt": "2026-11-18 11:49:07",
+    "createdBy": "gid://shopify/User/288782911",
+    "versionTag": "ocean-b2b-performance-20261118-1150",
+    "status": "active",
+    "versionId": "gid://shopify/Version/1235870842881",
+    "message": "Carregamento independente da sincronizacao; consultas em lote; retentativas 503 limitadas e verificacao CAS",
+    "url": "https://dev.shopify.com/dashboard/243206031/apps/447943081985/versions/1235870842881",
+    "bundleSha256": "785b142a977ba264b6d3daa31154e12647ec1ac014601af99c3d5cea9031760b"
+  },
+  "rootCause": "AppHome awaited syncLoaded before clearing loading; per-location sequential bridge read plus fresh location and private decision read, and repeated confirmed signal receipt writes for stable enrolled cycles.",
+  "before": {
+    "reportedBrowserMs": 120000,
+    "measuredApiMs": 31183,
+    "essentialApiMs": 979,
+    "networkReads": 175,
+    "readOnly": true,
+    "receiptMutationsBlocked": true,
+    "operations": {
+      "OceanStatusReprovados": {
+        "count": 1,
+        "sumMs": 360,
+        "minMs": 360,
+        "medianMs": 360,
+        "maxMs": 360
+      },
+      "OceanLocations": {
+        "count": 2,
+        "sumMs": 978,
+        "minMs": 304,
+        "medianMs": 674,
+        "maxMs": 674
+      },
+      "OceanBridgeRollout": {
+        "count": 1,
+        "sumMs": 228,
+        "minMs": 228,
+        "medianMs": 228,
+        "maxMs": 228
+      },
+      "OceanReadBridge": {
+        "count": 59,
+        "sumMs": 14694,
+        "minMs": 196,
+        "medianMs": 235,
+        "maxMs": 410
+      },
+      "OceanReadCommercialDecision": {
+        "count": 55,
+        "sumMs": 13404,
+        "minMs": 204,
+        "medianMs": 230,
+        "maxMs": 349
+      },
+      "OceanLocation": {
+        "count": 55,
+        "sumMs": 14770,
+        "minMs": 223,
+        "medianMs": 265,
+        "maxMs": 318
+      },
+      "OceanReadSignal": {
+        "count": 2,
+        "sumMs": 436,
+        "minMs": 209,
+        "medianMs": 227,
+        "maxMs": 227
+      }
+    }
+  },
+  "after": {
+    "samples": [
+      {
+        "kind": "open",
+        "essentialsMs": 1011,
+        "totalWithBackgroundMs": 2263,
+        "locations": 55,
+        "foregroundRequests": 3,
+        "backgroundRequests": 3,
+        "warnings": []
+      },
+      {
+        "kind": "refresh",
+        "essentialsMs": 892,
+        "totalWithBackgroundMs": 1579,
+        "locations": 55,
+        "foregroundRequests": 3,
+        "backgroundRequests": 3,
+        "warnings": []
+      },
+      {
+        "kind": "reopen",
+        "essentialsMs": 971,
+        "totalWithBackgroundMs": 1740,
+        "locations": 55,
+        "foregroundRequests": 3,
+        "backgroundRequests": 3,
+        "warnings": []
+      }
+    ],
+    "operations": {
+      "OceanStatusReprovados": {
+        "count": 3,
+        "sumMs": 932,
+        "minMs": 269,
+        "medianMs": 301,
+        "maxMs": 362
+      },
+      "OceanLocations": {
+        "count": 6,
+        "sumMs": 2873,
+        "minMs": 287,
+        "medianMs": 556,
+        "maxMs": 723
+      },
+      "OceanBridgeRollout": {
+        "count": 3,
+        "sumMs": 1167,
+        "minMs": 216,
+        "medianMs": 219,
+        "maxMs": 732
+      },
+      "OceanReadBridgeBatch": {
+        "count": 6,
+        "sumMs": 1529,
+        "minMs": 229,
+        "medianMs": 253,
+        "maxMs": 298
+      }
+    },
+    "browserTimingMeasured": false,
+    "foregroundRequests": 3,
+    "backgroundRequests": 3,
+    "stableLocationWrites": 0
+  },
+  "retries": {
+    "readAttempts": 3,
+    "backoffMs": [
+      500,
+      1000
+    ],
+    "jitterMs": [
+      0,
+      199
+    ],
+    "writeAttempts": 2,
+    "verifyPersistedValuesAndCasBeforeReplay": true,
+    "blindCommercialRetries": false,
+    "signalCreationReplays": false
+  },
+  "limits": {
+    "requestsInFlight": 2,
+    "minStartIntervalMs": 100,
+    "backgroundWorkers": 2,
+    "writeCandidatesPerPass": 20,
+    "repeatingRetryTimer": false
+  },
+  "tests": {
+    "total": 151,
+    "passed": true,
+    "build": "passed",
+    "configValidation": "valid",
+    "toolkitValidation": "7 of 7 passed"
+  },
+  "productionAudit": {
+    "locations": 55,
+    "allCommercialStatesMatch": true,
+    "allLocationsReady": true,
+    "permissionsCyclesLedgersDigestsPreserved": true,
+    "affectedLocation": {
+      "id": "gid://shopify/CompanyLocation/8606646372",
+      "status": "aprovado_liberado",
+      "roles": [
+        {
+          "id": "gid://shopify/CompanyContactRoleAssignment/52373979236",
+          "role": {
+            "id": "gid://shopify/CompanyContactRole/13657440356",
+            "name": "Apenas pedidos"
+          },
+          "companyContact": {
+            "id": "gid://shopify/CompanyContact/4947771492"
+          }
+        }
+      ],
+      "review": {
+        "schema": 1,
+        "locationId": "gid://shopify/CompanyLocation/8606646372",
+        "ready": true,
+        "operationId": null,
+        "status": "aprovado_liberado",
+        "cycleId": null,
+        "enteredAt": null,
+        "enrolled": false,
+        "reopenVersion": null,
+        "decisionVersion": "2026-11-16T17:51:28.828Z",
+        "decisionStatus": "aprovado_pendente",
+        "updatedAt": "2026-11-17T18:54:50Z",
+        "signalPending": false,
+        "sourceKind": "cadastro-b2b",
+        "projectionEpoch": "ocean-20261117-1845",
+        "migratedAt": "2026-11-17T18:54:50.314Z"
+      },
+      "digest": "41dd8a97b994840506ae42186efb52ce3bafe98482985638be08e8f34009067f",
+      "ledger": null,
+      "ledgerDigest": null,
+      "signal": null
+    },
+    "productionMutationsDuringValidation": 0
+  },
+  "notificationWorkflows": [
+    {
+      "id": "gid://shopify/AutomationWorkflow/01a1e9c5-a198-7078-8e9a-35b205098189",
+      "name": "OCEAN — CADASTRO VENCIDO",
+      "version": "01M7ND17GDZT14NQNC7Z8MT5PR",
+      "activeVersion": "01M7ND17GDZT14NQNC7Z8MT5PR",
+      "active": true,
+      "configurationSha256": "b4cf45f4f9ae0e2c5f7f9ea7ab5b2b21f6b1b0cf9bbf4aa85266001c51b940f6",
+      "unchanged": true,
+      "validationErrors": []
+    },
+    {
+      "id": "gid://shopify/AutomationWorkflow/01a1e9c5-8412-721a-9a5e-2e545f827eee",
+      "name": "OCEAN — NOVO CADASTRO B2B",
+      "version": "01M7ND1053SFM395G569ZCH2MJ",
+      "activeVersion": "01M7ND1053SFM395G569ZCH2MJ",
+      "active": true,
+      "configurationSha256": "e0a2db9b23f70920ffd83d5f4178d885186279d169419e2563004764ba0e2de9",
+      "unchanged": true,
+      "validationErrors": []
+    }
+  ],
+  "allWorkflows": [
+    {
+      "id": "gid://shopify/AutomationWorkflow/01a1e9e3-4bea-70f3-8e80-b18d8c984f89",
+      "name": "OCEAN — PONTE TÉCNICA B2B (novo contato)",
+      "version": "01M7ND1MNKGG38VAEZJ9R0ETZ5",
+      "activeVersion": "01M7ND1MNKGG38VAEZJ9R0ETZ5",
+      "active": true,
+      "configurationSha256": "74aee82aa9e23e0f68dbe77f2f4b82a5f59909521c80fb2b09b8559c034161e7",
+      "unchanged": true,
+      "validationErrors": []
+    },
+    {
+      "id": "gid://shopify/AutomationWorkflow/01a1e9e0-fb18-7796-96df-1f4d86f80bac",
+      "name": "OCEAN — PONTE TÉCNICA B2B (novo local)",
+      "version": "01M7ND1F014GWZV5WG0AHSWR9Y",
+      "activeVersion": "01M7ND1F014GWZV5WG0AHSWR9Y",
+      "active": true,
+      "configurationSha256": "3b8a6a910c69f03d57f6b6e66ec362bc6c0ff8981a801380ff160e8516f0afe9",
+      "unchanged": true,
+      "validationErrors": []
+    },
+    {
+      "id": "gid://shopify/AutomationWorkflow/01a1e9c5-a198-7078-8e9a-35b205098189",
+      "name": "OCEAN — CADASTRO VENCIDO",
+      "version": "01M7ND17GDZT14NQNC7Z8MT5PR",
+      "activeVersion": "01M7ND17GDZT14NQNC7Z8MT5PR",
+      "active": true,
+      "configurationSha256": "b4cf45f4f9ae0e2c5f7f9ea7ab5b2b21f6b1b0cf9bbf4aa85266001c51b940f6",
+      "unchanged": true,
+      "validationErrors": []
+    },
+    {
+      "id": "gid://shopify/AutomationWorkflow/01a1e9c5-8412-721a-9a5e-2e545f827eee",
+      "name": "OCEAN — NOVO CADASTRO B2B",
+      "version": "01M7ND1053SFM395G569ZCH2MJ",
+      "activeVersion": "01M7ND1053SFM395G569ZCH2MJ",
+      "active": true,
+      "configurationSha256": "e0a2db9b23f70920ffd83d5f4178d885186279d169419e2563004764ba0e2de9",
+      "unchanged": true,
+      "validationErrors": []
+    },
+    {
+      "id": "gid://shopify/AutomationWorkflow/01a1c14c-9fee-73fb-8b03-6357cbe0154c",
+      "name": "Receber uma notificação e configurar empresas criadas por solicitações de conta da empresa",
+      "version": "01M72XNFVAGHPTXTV1YDX9QG5X",
+      "activeVersion": "01M72XNFVAGHPTXTV1YDX9QG5X",
+      "active": true,
+      "configurationSha256": "e09e26fce2716821b3dfba258a73a0df0112e12952a4f1294b20eb20d4c637f5",
+      "unchanged": true,
+      "validationErrors": []
+    },
+    {
+      "id": "gid://shopify/AutomationWorkflow/01a1c180-81c7-79af-9c3e-ca8b4ea94983",
+      "name": "New Workflow",
+      "version": "01M70R10E4NQKGQ71416JKK078",
+      "activeVersion": "01M70R10E4NQKGQ71416JKK078",
+      "active": true,
+      "configurationSha256": "c14e701b0d7ce9cc68f068a70eda08cf6ef9d48c16f857a5bebd6d4a9bf3f42c",
+      "unchanged": true,
+      "validationErrors": []
+    },
+    {
+      "id": "gid://shopify/AutomationWorkflow/01a18422-f112-75f0-b62e-1358b17adcea",
+      "name": "Recover abandoned checkout",
+      "version": "01M6225W8J1ZBVFRR33H3P864S",
+      "activeVersion": "01M6225W8J1ZBVFRR33H3P864S",
+      "active": true,
+      "configurationSha256": "74b15157ba088ffff78cec5df8d67cfae56a7bcdee65e1ee19d80f67b445e63c",
+      "unchanged": true,
+      "validationErrors": [
+        {
+          "code": "CONNECTOR_ERROR",
+          "message": "O conector para esta etapa da automação está indisponível.",
+          "stepId": "abandoned_checkout",
+          "configFieldId": null
+        }
+      ]
+    }
+  ],
+  "closedPanelNotifications": "Preserved unchanged active native location/contact bootstrap workflows and both notification workflows. No live test email was sent in this correction.",
+  "preservedFeatures": [
+    "Aprovacao e reprovacao comercial",
+    "Aprovados acesso pendente e liberado",
+    "Liberacao e travamento manual",
+    "Prazo de 10 minutos e aviso vermelho",
+    "Ver cadastros vencidos",
+    "Mensagens de WhatsApp",
+    "Aviso imediato e vencido",
+    "Ciclos, reaberturas, CAS e deduplicacao",
+    "Notificacoes nativas com painel fechado"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "automationWorkflowUpdate": {
+    "automationWorkflow": {
+      "id": "gid://shopify/AutomationWorkflow/01a1e9e0-fb18-7796-96df-1f4d86f80bac",
+      "name": "OCEAN — PONTE TÉCNICA B2B (novo local)",
+      "version": "01M7MY1YXH8SRC8KJK4W200P8D",
+      "activeVersion": null,
+      "validationErrors": [
+        {
+          "code": "CONFIG_FIELD_VALIDATION_ERROR",
+          "message": "O campo de configuração da automação é inválido.",
+          "stepId": "write_initial_state",
+          "configFieldId": "api_call"
+        },
+        {
+          "code": "CONFIG_FIELD_VALIDATION_ERROR",
+          "message": "O campo de configuração da automação é inválido.",
+          "stepId": "publish_cycle",
+          "configFieldId": "api_call"
+        }
+      ]
+    },
+    "userErrors": []
+  }
+}

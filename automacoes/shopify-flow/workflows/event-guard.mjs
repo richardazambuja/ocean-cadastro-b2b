@@ -1,0 +1,7 @@
+export default function main(input) {
+ const fields=input.metaobject?.localId ? {local_id:input.metaobject.localId,cycle_id:input.metaobject.cycleId,entered_at:input.metaobject.enteredAt} : Object.fromEntries((input.metaobject?.system?.fields||[]).map(f=>[f.key,f.value]));
+ let config;try{config=JSON.parse(input.shop?.oceanRollout?.value||'{}');}catch{return {allowed:false,locationId:'',numericId:'',cycleId:'',enteredAt:'',requestId:'',runUrl:'',clock:'',debug:'invalid-config'};}
+ const id=fields.local_id||'';
+ const allowed=/^gid:\/\/shopify\/CompanyLocation\/\d+$/.test(id) && /^[a-zA-Z0-9-]{1,80}$/.test(fields.cycle_id||'') && Number.isFinite(Date.parse(fields.entered_at)) && (['test','preparing'].includes(config.mode) && config.testLocationIds?.includes(id) || config.mode==='production' && config.productionApproved===true && Date.parse(fields.entered_at)>=Date.parse(config.cutover));
+ return {allowed:Boolean(allowed),locationId:id,numericId:id.split('/').pop(),cycleId:fields.cycle_id||'',enteredAt:fields.entered_at||'',requestId:(input.getWorkflowRunData?.id||'').split('/').pop().replace(/[^a-zA-Z0-9-]/g,''),runUrl:input.getWorkflowRunData?.url||'',clock:input.getWorkflowRunData?.startedAt||'',debug:JSON.stringify({fields,allowed,runId:input.getWorkflowRunData?.id,configMode:config.mode})};
+}

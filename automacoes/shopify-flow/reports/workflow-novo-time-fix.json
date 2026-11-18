@@ -1,0 +1,12 @@
+{
+  "automationWorkflowUpdate": {
+    "automationWorkflow": {
+      "id": "gid://shopify/AutomationWorkflow/01a1e9c5-8412-721a-9a5e-2e545f827eee",
+      "name": "OCEAN — NOVO CADASTRO B2B",
+      "version": "01M7MWRDYGSDMT5WWHRZRG8M22",
+      "activeVersion": "01M7MWB16W8Q8SV68PBNB6P686",
+      "validationErrors": []
+    },
+    "userErrors": []
+  }
+}

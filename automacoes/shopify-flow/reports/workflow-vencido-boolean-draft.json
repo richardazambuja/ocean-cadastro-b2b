@@ -1,0 +1,12 @@
+{
+  "automationWorkflowUpdate": {
+    "automationWorkflow": {
+      "id": "gid://shopify/AutomationWorkflow/01a1e9c5-a198-7078-8e9a-35b205098189",
+      "name": "OCEAN — CADASTRO VENCIDO",
+      "version": "01M7MXGK79B266G79R86BEJGGZ",
+      "activeVersion": "01M7MXBD41XA1BHRYZ4J8V2HV6",
+      "validationErrors": []
+    },
+    "userErrors": []
+  }
+}

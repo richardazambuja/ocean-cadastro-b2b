@@ -1,0 +1,9 @@
+{
+  "definition": {
+    "name": "Controle de avisos Ocean",
+    "namespace": "ocean_b2b",
+    "key": "notifications",
+    "type": "json",
+    "ownerType": "COMPANY_LOCATION"
+  }
+}

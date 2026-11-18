@@ -1,0 +1,3 @@
+query OceanReopenDefinitions {
+ metaobjectDefinitions(first:100) {nodes{id name type access{admin}} pageInfo{hasNextPage endCursor}}
+}

@@ -1,0 +1,13 @@
+{
+  "app": "cadastro-b2b",
+  "appId": "gid://shopify/App/447943081985",
+  "versionTag": "ocean-b2b-production-20261117-1900",
+  "versionId": "gid://shopify/Version/1233627316225",
+  "status": "active",
+  "createdAtUTC": "2026-11-17 18:58:09",
+  "verification": "shopify app versions list --json",
+  "url": "https://dev.shopify.com/dashboard/243206031/apps/447943081985/versions/1233627316225",
+  "build": "passed",
+  "deploy": "New version released to users",
+  "testDiagnosticExecutorRemovedFromBundle": true
+}

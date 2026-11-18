@@ -1,0 +1,14 @@
+{
+  "schema": 1,
+  "locationId": "gid://shopify/CompanyLocation/8622571620",
+  "ready": true,
+  "operationId": null,
+  "status": "pendente",
+  "cycleId": "8c88f54d-c2f0-48ef-94ed-cc7813aaa309",
+  "enteredAt": "2026-11-17T13:54:55.178Z",
+  "enrolled": true,
+  "reopenVersion": null,
+  "decisionVersion": null,
+  "updatedAt": "2026-11-17T13:54:55.178Z",
+  "signalPending": true
+}

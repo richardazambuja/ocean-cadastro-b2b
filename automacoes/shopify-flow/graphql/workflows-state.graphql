@@ -1,0 +1,3 @@
+query OceanWorkflowsState {
+ automationWorkflows(first:100) {nodes{id name version activeVersion versionState configuration validationErrors{code message stepId configFieldId}} pageInfo{hasNextPage endCursor}}
+}

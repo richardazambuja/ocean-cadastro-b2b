@@ -1,0 +1,43 @@
+{
+  "data": {
+    "companyLocation": {
+      "id": "gid://shopify/CompanyLocation/8622571620",
+      "name": "Local TESTE notificações internas",
+      "createdAt": "2026-11-17T13:40:42Z",
+      "taxSettings": {
+        "taxRegistrationId": "TESTE-SEM-CNPJ-REAL"
+      },
+      "roleAssignments": {
+        "nodes": [
+          {
+            "id": "gid://shopify/CompanyContactRoleAssignment/52373749860"
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false
+        }
+      },
+      "company": {
+        "id": "gid://shopify/Company/7442366564",
+        "name": "OCEAN B2B TESTE FLOW 20261117",
+        "mainContact": {
+          "id": "gid://shopify/CompanyContact/4960125028"
+        },
+        "contacts": {
+          "nodes": [
+            {
+              "id": "gid://shopify/CompanyContact/4960125028",
+              "customer": {
+                "id": "gid://shopify/Customer/31382285811812"
+              }
+            }
+          ],
+          "pageInfo": {
+            "hasNextPage": false
+          }
+        }
+      },
+      "review": null
+    }
+  }
+}

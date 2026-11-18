@@ -1,0 +1,15 @@
+{
+  "data": {
+    "companyLocationCreate": {
+      "companyLocation": {
+        "id": "gid://shopify/CompanyLocation/8622702692",
+        "name": "Local TESTE gatilho de criação",
+        "createdAt": "2026-11-17T14:39:39Z",
+        "roleAssignments": {
+          "nodes": []
+        }
+      },
+      "userErrors": []
+    }
+  }
+}

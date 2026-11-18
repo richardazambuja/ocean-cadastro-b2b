@@ -1,0 +1,9 @@
+{
+  "definition": {
+    "name": "Entrada em Pendentes Ocean",
+    "namespace": "ocean_b2b",
+    "key": "pending_since",
+    "type": "date_time",
+    "ownerType": "COMPANY_LOCATION"
+  }
+}

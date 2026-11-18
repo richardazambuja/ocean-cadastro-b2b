@@ -1,0 +1,20 @@
+{
+  "data": {
+    "companyCreate": {
+      "company": {
+        "id": "gid://shopify/Company/7442399332",
+        "name": "OCEAN B2B TESTE NATIVO 20261117",
+        "locations": {
+          "nodes": [
+            {
+              "id": "gid://shopify/CompanyLocation/8622604388",
+              "name": "Local TESTE captura nativa",
+              "createdAt": "2026-11-17T14:23:05Z"
+            }
+          ]
+        }
+      },
+      "userErrors": []
+    }
+  }
+}

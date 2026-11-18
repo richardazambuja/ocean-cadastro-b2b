@@ -13,4 +13,4 @@ target = "admin.app.home.render"
 assets = "./assets"
 
 [access_scopes]
-scopes = "read_companies,read_customers,write_companies"
+scopes = "read_companies,read_customers,write_companies,read_metaobjects,write_metaobjects"

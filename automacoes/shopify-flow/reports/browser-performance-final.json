@@ -1,0 +1,113 @@
+{
+  "at": "2026-11-18T12:16:54.847Z",
+  "deployment": {
+    "createdAt": "2026-11-18 12:14:57",
+    "createdBy": "gid://shopify/User/288782911",
+    "versionTag": "ocean-b2b-ui-20261118-urgent",
+    "status": "active",
+    "versionId": "gid://shopify/Version/1235951386625",
+    "message": "Estados independentes da listagem; dados essenciais atomicos; atualizacao sem desmontar; cancelamento e timeout; notificacoes preservadas",
+    "url": "https://dev.shopify.com/dashboard/243206031/apps/447943081985/versions/1235951386625"
+  },
+  "confirmedUiCause": "Summary totals were unconditional; loading was set for every refresh and guarded all list rows. It could wait indefinitely for essential SDK promises/request slots. There was no separate refresh state or deadline. The previous release no longer awaited notifications directly; the production duration of the remaining SDK wait was not measured in an authenticated browser.",
+  "changes": [
+    {
+      "file": "AppHome.jsx",
+      "sha256": "bff403ea91b02712cfd8ed93ce87b78eeb687593c6cc38a93af503e99e61df7e"
+    },
+    {
+      "file": "api.mjs",
+      "sha256": "997f450714bf3a5a81cef913d53d6e1becf036b36fe9f919925b5b7a7ffcbaf8"
+    },
+    {
+      "file": "notification-sync.mjs",
+      "sha256": "c30f5b5a3d01c55d388d87b784753940e053e74530e6e6e02abbeda966062d9a"
+    },
+    {
+      "file": "panel-controller.mjs",
+      "sha256": "44e5eab6268ef9c424429f1bb01a03530acfc7cbddbfed7c9e6a4a361c0ee676"
+    },
+    {
+      "file": "panel-data.mjs",
+      "sha256": "f6ff43e04170164810d7d5bc737c6e57584f28b13f5ac883193400f1465b7e03"
+    },
+    {
+      "file": "panel-timing.mjs",
+      "sha256": "adf2351d29e2cc84c17d10c2ab1344b03bc5773c651ca7329742507e7023bb4d"
+    },
+    {
+      "file": "read-deadline.mjs",
+      "sha256": "930f148a266570d4c100acb8e4612309cd6fdf5d982880206781e09595a77835"
+    },
+    {
+      "file": "reprovados-api.mjs",
+      "sha256": "20d40345655ef46acb3901a745f1b40a7de9c53dc67cb449b3ff194c3dc0ecc7"
+    },
+    {
+      "file": "request-control.mjs",
+      "sha256": "367f4f12a78f9b341767448968984dcf56b9c44bfa5c7e75a65960d4532b08e8"
+    }
+  ],
+  "states": {
+    "initialLoading": "Only before first verified snapshot",
+    "refreshing": "Keeps existing keyed row DOM",
+    "syncStatus": "Independent background indicator",
+    "busy": "Commercial action/detail processing",
+    "stale": "Retains old snapshot with explicit warning and blocks commercial actions"
+  },
+  "deadlines": {
+    "essentialTotalMs": 12000,
+    "readAttemptMs": 8000,
+    "cancelsFetchAndQueuedRequests": true,
+    "lateResultsIgnored": true,
+    "read503Attempts": 3,
+    "blindMutationRetries": false
+  },
+  "dataReads": {
+    "combinedLocationAndDecisionQuery": true,
+    "pagination": "Independent cursors and include flags",
+    "verifiedOnProductionLocations": 55
+  },
+  "validation": {
+    "unitAndRegressionTests": 164,
+    "passed": true,
+    "browserFixtureChecks": [
+      "initial list visible while notifications run",
+      "refresh keeps the same row DOM node",
+      "all commercial tabs and overdue filter respond",
+      "customer details open and return",
+      "one simulated 503 recovers with list present",
+      "exhausted 503 marks retained list stale and unlocks refresh",
+      "hung query times out with retained stale list and retry button"
+    ],
+    "browserFixture": "Real Chrome on localhost; synthetic data; no authenticated Shopify Admin",
+    "toolkitChecks": 8,
+    "build": "passed",
+    "config": "valid"
+  },
+  "productionBrowserTiming": {
+    "beforeMs": null,
+    "afterMs": null,
+    "status": "Not measured; user explicitly requested production deployment and will test in their authenticated browser."
+  },
+  "runtimeInstrumentation": "Console [ocean-b2b-panel]: app-home-mounted and list-committed for initial/refresh, with request ID and timing. Measures extension runtime commit; not native host paint.",
+  "productionStatePreserved": true,
+  "allWorkflowsUnchanged": true,
+  "notificationWorkflows": [
+    {
+      "id": "gid://shopify/AutomationWorkflow/01a1e9c5-a198-7078-8e9a-35b205098189",
+      "name": "OCEAN — CADASTRO VENCIDO",
+      "version": "01M7ND17GDZT14NQNC7Z8MT5PR",
+      "activeVersion": "01M7ND17GDZT14NQNC7Z8MT5PR",
+      "validationErrors": []
+    },
+    {
+      "id": "gid://shopify/AutomationWorkflow/01a1e9c5-8412-721a-9a5e-2e545f827eee",
+      "name": "OCEAN — NOVO CADASTRO B2B",
+      "version": "01M7ND1053SFM395G569ZCH2MJ",
+      "activeVersion": "01M7ND1053SFM395G569ZCH2MJ",
+      "validationErrors": []
+    }
+  ],
+  "recipient": "cadastros@oceanjoiasbr.com"
+}

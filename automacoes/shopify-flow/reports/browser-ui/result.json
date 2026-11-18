@@ -1,0 +1,80 @@
+{
+  "at": "2026-11-18T12:14:53.284Z",
+  "environment": "Real Chrome; local HTTP fixture; synthetic API; not authenticated Shopify Admin",
+  "initialFixtureRenderMs": 384,
+  "refreshFixtureRenderMs": 595,
+  "checks": [
+    "initial list visible while notifications run",
+    "refresh keeps the same row DOM node",
+    "all commercial tabs and overdue filter respond",
+    "customer details open and return",
+    "one simulated 503 recovers with list present",
+    "exhausted 503 marks retained list stale and unlocks refresh",
+    "hung query times out with retained stale list and retry button"
+  ],
+  "exceptions": [],
+  "productionBrowserValidated": false,
+  "renderCommits": [
+    {
+      "at": 1795004081178,
+      "phase": "app-home-mounted",
+      "build": "ocean-b2b-ui-20261118-urgent",
+      "sinceOpenMs": 4
+    },
+    {
+      "at": 1795004081290,
+      "phase": "list-committed",
+      "build": "ocean-b2b-ui-20261118-urgent",
+      "kind": "initial",
+      "requestId": 1,
+      "locations": 4,
+      "readMs": 84,
+      "requestToCommitMs": 111,
+      "sinceOpenMs": 116
+    },
+    {
+      "at": 1795004081845,
+      "phase": "list-committed",
+      "build": "ocean-b2b-ui-20261118-urgent",
+      "kind": "refresh",
+      "requestId": 2,
+      "locations": 4,
+      "readMs": 509,
+      "requestToCommitMs": 511,
+      "sinceOpenMs": 671
+    },
+    {
+      "at": 1795004082924,
+      "phase": "list-committed",
+      "build": "ocean-b2b-ui-20261118-urgent",
+      "kind": "refresh",
+      "requestId": 3,
+      "locations": 4,
+      "readMs": 636,
+      "requestToCommitMs": 637,
+      "sinceOpenMs": 1750
+    },
+    {
+      "at": 1795004084997,
+      "phase": "list-committed",
+      "build": "ocean-b2b-ui-20261118-urgent",
+      "kind": "refresh",
+      "requestId": 5,
+      "locations": 4,
+      "readMs": 59,
+      "requestToCommitMs": 61,
+      "sinceOpenMs": 3823
+    },
+    {
+      "at": 1795004093102,
+      "phase": "list-committed",
+      "build": "ocean-b2b-ui-20261118-urgent",
+      "kind": "refresh",
+      "requestId": 7,
+      "locations": 4,
+      "readMs": 32,
+      "requestToCommitMs": 34,
+      "sinceOpenMs": 11928
+    }
+  ]
+}

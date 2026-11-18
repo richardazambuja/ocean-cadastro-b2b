@@ -1,0 +1,472 @@
+{
+  "at": "2026-11-18T11:42:45.744Z",
+  "samples": [
+    {
+      "kind": "open",
+      "essentialsMs": 1052,
+      "totalWithBackgroundMs": 1775,
+      "locations": 55,
+      "foregroundRequests": 3,
+      "backgroundRequests": 3,
+      "warnings": []
+    },
+    {
+      "kind": "refresh",
+      "essentialsMs": 919,
+      "totalWithBackgroundMs": 1827,
+      "locations": 55,
+      "foregroundRequests": 3,
+      "backgroundRequests": 3,
+      "warnings": []
+    },
+    {
+      "kind": "reopen",
+      "essentialsMs": 829,
+      "totalWithBackgroundMs": 1650,
+      "locations": 55,
+      "foregroundRequests": 3,
+      "backgroundRequests": 3,
+      "warnings": []
+    }
+  ],
+  "calls": [
+    {
+      "operation": "OceanStatusReprovados",
+      "ms": 362,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 16,
+        "actualQueryCost": 14,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3488,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanLocations",
+      "ms": 697,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 506,
+        "actualQueryCost": 135,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3859,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanLocations",
+      "ms": 354,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 506,
+        "actualQueryCost": 16,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3948,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanBridgeRollout_mwm1xuh7_1",
+      "ms": 205,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 2,
+        "actualQueryCost": 2,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3998,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadBridgeBatch_mwm1xuh7_2",
+      "ms": 244,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 8,
+        "actualQueryCost": 8,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3992,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadBridgeBatch_mwm1xuh7_3",
+      "ms": 264,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 8,
+        "actualQueryCost": 8,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3992,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanLocations",
+      "ms": 609,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 506,
+        "actualQueryCost": 135,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3872,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanStatusReprovados",
+      "ms": 542,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 16,
+        "actualQueryCost": 14,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3874,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanLocations",
+      "ms": 309,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 506,
+        "actualQueryCost": 16,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3959,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanBridgeRollout_mwm1xuh7_4",
+      "ms": 304,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 2,
+        "actualQueryCost": 2,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3998,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadBridgeBatch_mwm1xuh7_5",
+      "ms": 309,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 8,
+        "actualQueryCost": 8,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3992,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadBridgeBatch_mwm1xuh7_6",
+      "ms": 293,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 8,
+        "actualQueryCost": 8,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3992,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanStatusReprovados",
+      "ms": 232,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 16,
+        "actualQueryCost": 14,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3500,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanLocations",
+      "ms": 501,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 506,
+        "actualQueryCost": 135,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3871,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanLocations",
+      "ms": 328,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 506,
+        "actualQueryCost": 16,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3935,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanBridgeRollout_mwm1xuh7_7",
+      "ms": 202,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 2,
+        "actualQueryCost": 2,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3997,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadBridgeBatch_mwm1xuh7_8",
+      "ms": 254,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 8,
+        "actualQueryCost": 8,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3992,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadBridgeBatch_mwm1xuh7_9",
+      "ms": 362,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 8,
+        "actualQueryCost": 8,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3992,
+          "restoreRate": 200
+        }
+      }
+    }
+  ],
+  "metrics": [
+    {
+      "operation": "OceanStatusReprovados",
+      "mutation": false,
+      "background": false,
+      "attempt": 1,
+      "ms": 1353,
+      "queueMs": 56,
+      "ok": true,
+      "cost": 14
+    },
+    {
+      "operation": "OceanLocations",
+      "mutation": false,
+      "background": false,
+      "attempt": 1,
+      "ms": 1688,
+      "queueMs": 0,
+      "ok": true,
+      "cost": 135
+    },
+    {
+      "operation": "OceanLocations",
+      "mutation": false,
+      "background": false,
+      "attempt": 1,
+      "ms": 354,
+      "queueMs": 0,
+      "ok": true,
+      "cost": 16
+    },
+    {
+      "operation": "OceanBridgeRollout_mwm1xuh7_1",
+      "mutation": false,
+      "background": false,
+      "attempt": 1,
+      "ms": 205,
+      "queueMs": 0,
+      "ok": true,
+      "cost": 2
+    },
+    {
+      "operation": "OceanReadBridgeBatch_mwm1xuh7_2",
+      "mutation": false,
+      "background": true,
+      "attempt": 1,
+      "ms": 244,
+      "queueMs": 0,
+      "ok": true,
+      "cost": 8
+    },
+    {
+      "operation": "OceanReadBridgeBatch_mwm1xuh7_3",
+      "mutation": false,
+      "background": true,
+      "attempt": 1,
+      "ms": 265,
+      "queueMs": 0,
+      "ok": true,
+      "cost": 8
+    },
+    {
+      "operation": "OceanLocations",
+      "mutation": false,
+      "background": false,
+      "attempt": 1,
+      "ms": 609,
+      "queueMs": 0,
+      "ok": true,
+      "cost": 135
+    },
+    {
+      "operation": "OceanStatusReprovados",
+      "mutation": false,
+      "background": false,
+      "attempt": 1,
+      "ms": 542,
+      "queueMs": 101,
+      "ok": true,
+      "cost": 14
+    },
+    {
+      "operation": "OceanLocations",
+      "mutation": false,
+      "background": false,
+      "attempt": 1,
+      "ms": 309,
+      "queueMs": 0,
+      "ok": true,
+      "cost": 16
+    },
+    {
+      "operation": "OceanBridgeRollout_mwm1xuh7_4",
+      "mutation": false,
+      "background": false,
+      "attempt": 1,
+      "ms": 303,
+      "queueMs": 0,
+      "ok": true,
+      "cost": 2
+    },
+    {
+      "operation": "OceanReadBridgeBatch_mwm1xuh7_5",
+      "mutation": false,
+      "background": true,
+      "attempt": 1,
+      "ms": 309,
+      "queueMs": 0,
+      "ok": true,
+      "cost": 8
+    },
+    {
+      "operation": "OceanReadBridgeBatch_mwm1xuh7_6",
+      "mutation": false,
+      "background": true,
+      "attempt": 1,
+      "ms": 293,
+      "queueMs": 0,
+      "ok": true,
+      "cost": 8
+    },
+    {
+      "operation": "OceanStatusReprovados",
+      "mutation": false,
+      "background": false,
+      "attempt": 1,
+      "ms": 231,
+      "queueMs": 101,
+      "ok": true,
+      "cost": 14
+    },
+    {
+      "operation": "OceanLocations",
+      "mutation": false,
+      "background": false,
+      "attempt": 1,
+      "ms": 500,
+      "queueMs": 0,
+      "ok": true,
+      "cost": 135
+    },
+    {
+      "operation": "OceanLocations",
+      "mutation": false,
+      "background": false,
+      "attempt": 1,
+      "ms": 328,
+      "queueMs": 0,
+      "ok": true,
+      "cost": 16
+    },
+    {
+      "operation": "OceanBridgeRollout_mwm1xuh7_7",
+      "mutation": false,
+      "background": false,
+      "attempt": 1,
+      "ms": 202,
+      "queueMs": 0,
+      "ok": true,
+      "cost": 2
+    },
+    {
+      "operation": "OceanReadBridgeBatch_mwm1xuh7_8",
+      "mutation": false,
+      "background": true,
+      "attempt": 1,
+      "ms": 254,
+      "queueMs": 0,
+      "ok": true,
+      "cost": 8
+    },
+    {
+      "operation": "OceanReadBridgeBatch_mwm1xuh7_9",
+      "mutation": false,
+      "background": true,
+      "attempt": 1,
+      "ms": 362,
+      "queueMs": 0,
+      "ok": true,
+      "cost": 8
+    }
+  ],
+  "permissionsPreserved": true,
+  "commercialStatesPreserved": true,
+  "mutations": 0,
+  "validation": "Production API with app identity; excludes browser render and App Bridge transport"
+}

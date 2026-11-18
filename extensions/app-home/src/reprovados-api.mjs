@@ -1,4 +1,5 @@
 import {graphql} from './api.mjs';
+import {rememberDecision,latestDecision,decisionReceipts} from './commercial-receipts.mjs';
 import {handleDoLocal, STATUS_REPROVADO, STATUS_REABERTO, STATUS_APROVADO_PENDENTE} from './status.mjs';
 
 // Declarado em shopify.app.toml. Somente o app cadastra os metadados de revisão.
@@ -10,11 +11,11 @@ const Q_LISTAR = `query OceanStatusReprovados($after: String) {
   }
 }`;
 const Q_UM = `query OceanStatusLocal($handle: MetaobjectHandleInput!) {
-  metaobjectByHandle(handle: $handle) { handle fields { key value } }
+  metaobjectByHandle(handle: $handle) { id handle updatedAt fields { key value } }
 }`;
 const M_SALVAR = `mutation OceanSalvarDecisao($handle: MetaobjectHandleInput!, $metaobject: MetaobjectUpsertInput!) {
   metaobjectUpsert(handle: $handle, metaobject: $metaobject) {
-    metaobject { handle }
+    metaobject { id handle updatedAt fields { key value } }
     userErrors { field message code }
   }
 }`;
@@ -26,32 +27,37 @@ function registroEmStatus(node) {
   return {id, status:props.status, updatedAt:props.alterado_em};
 }
 
-export async function fetchReviewStatuses() {
-  const decisoes = {};
-  let cursor = null;
-  const vistos = new Set();
-  for (let pagina=0; pagina<100; pagina++) {
-    const data = await graphql(Q_LISTAR, {after:cursor});
-    const conn = data.metaobjects;
-    if (!Array.isArray(conn?.nodes)) throw new Error('Falha ao ler decisoes internas do aplicativo.');
-    for (const node of conn.nodes) {
-      if (vistos.has(node.handle)) continue;
-      vistos.add(node.handle);
-      const r = registroEmStatus(node);
-      if (r && (r.status===STATUS_REPROVADO || r.status===STATUS_REABERTO || r.status===STATUS_APROVADO_PENDENTE)) decisoes[r.id]=r.status;
-      // OCEAN_REABERTURA_PENDENTES_10M_V1
-      if (r?.status===STATUS_REABERTO && Number.isFinite(Date.parse(r.updatedAt))) decisoes[`__reaberto_em__${r.id}`]=r.updatedAt;
-    }
-    if (!conn.pageInfo?.hasNextPage) return decisoes;
-    if (!conn.pageInfo.endCursor || conn.pageInfo.endCursor === cursor) throw new Error('Paginacao de decisoes inconsistente.');
-    cursor = conn.pageInfo.endCursor;
+export async function fetchReviewSnapshot() {
+  return reviewSnapshotFromRecords(await fetchReviewRecords());
+}
+
+function reviewSnapshotFromRecords(records) {
+  const statuses={};
+  const decisions=new Map();
+  for(const [id,node] of records){
+    const r=registroEmStatus(node);
+    if(!r||r.id!==id||node.handle!==handleDoLocal(id)||![STATUS_REPROVADO,STATUS_REABERTO,STATUS_APROVADO_PENDENTE].includes(r.status)||!Number.isFinite(Date.parse(r.updatedAt)))throw Error('Decisao comercial invalida; atualizacao interrompida.');
+    statuses[id]=r.status;
+    if(r.status===STATUS_REABERTO)statuses[`__reaberto_em__${id}`]=r.updatedAt;
+    decisions.set(id,{verified:true,localId:id,status:r.status,updatedAt:r.updatedAt});
   }
-  throw new Error('Paginacao de decisoes atingiu o limite; nada foi alterado.');
+  return {statuses,decisions};
+}
+
+export function reviewSnapshotFromNodes(nodes) {
+  const records=new Map();
+  for(const node of nodes){const r=registroEmStatus(node);if(!r)throw Error('Decisao comercial sem local valido.');records.set(r.id,latestDecision(r.id,node));}
+  for(const record of decisionReceipts()){const r=registroEmStatus(record);if(r)records.set(r.id,latestDecision(r.id,records.get(r.id)));}
+  return reviewSnapshotFromRecords(records);
+}
+
+export async function fetchReviewStatuses() {
+  return (await fetchReviewSnapshot()).statuses;
 }
 
 export async function lerReviewStatus(localId) {
   const data = await graphql(Q_UM, {handle:{type:TIPO, handle:handleDoLocal(localId)}});
-  const r = registroEmStatus(data.metaobjectByHandle);
+  const r = registroEmStatus(latestDecision(localId,data.metaobjectByHandle));
   if (r && r.id !== localId) throw new Error('Status nao corresponde ao local consultado.');
   return r?.status ?? null;
 }
@@ -70,7 +76,23 @@ export async function salvarReviewStatus(localId, status) {
   if (!result?.metaobject?.handle || errors.length) {
     throw new Error(errors.join('; ') || 'A Shopify nao confirmou o registro da decisao.');
   }
+  if(result.metaobject.fields){
+    const committed=registroEmStatus(result.metaobject);
+    if(committed?.id!==localId||committed.status!==status||committed.updatedAt!==metaobject.fields.find(f=>f.key==='alterado_em').value)throw Error('Recibo da decisao comercial divergente.');
+    rememberDecision(result.metaobject);
+  }
   const persisted = await lerReviewStatus(localId);
   if (persisted !== status) throw new Error('A decisao foi enviada, mas nao foi confirmada na leitura seguinte. Atualize os dados.');
   return status;
+}
+
+export async function fetchReviewRecords(){
+ const records=new Map();let after=null;
+ for(let page=0;page<100;page++){
+  const data=await graphql(Q_LISTAR,{after});const c=data.metaobjects;if(!c||!Array.isArray(c.nodes))throw Error('Leitura das decisoes incompleta.');
+  for(const node of c.nodes){const r=registroEmStatus(node);if(!r)throw Error('Decisao comercial sem local valido.');records.set(r.id,latestDecision(r.id,node));}
+  if(!c.pageInfo?.hasNextPage){for(const record of decisionReceipts()){const r=registroEmStatus(record);if(r)records.set(r.id,latestDecision(r.id,records.get(r.id)));}return records;}
+  if(!c.pageInfo.endCursor||c.pageInfo.endCursor===after)throw Error('Cursor de decisoes invalido.');after=c.pageInfo.endCursor;
+ }
+ throw Error('Limite da leitura das decisoes atingido.');
 }

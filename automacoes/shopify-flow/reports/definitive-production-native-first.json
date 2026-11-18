@@ -1,0 +1,39 @@
+{
+  "capturedAt": "2026-11-17T19:08:53.819Z",
+  "data": {
+    "shop": {
+      "rollout": {
+        "value": "{\"mode\":\"production\",\"cutover\":\"2026-11-17T19:08:04Z\",\"recipient\":\"cadastros@oceanjoiasbr.com\",\"productionApproved\":true,\"epoch\":\"ocean-20261117-1845\"}",
+        "updatedAt": "2026-11-17T19:08:04Z"
+      }
+    },
+    "companyLocation": {
+      "id": "gid://shopify/CompanyLocation/8625356900",
+      "name": "OCEAN TESTE PRODUCAO FLOW 20261117 1908",
+      "createdAt": "2026-11-17T19:08:17Z",
+      "roleAssignments": {
+        "nodes": []
+      },
+      "review": {
+        "value": "{\"schema\":1,\"locationId\":\"gid://shopify/CompanyLocation/8625356900\",\"ready\":true,\"operationId\":null,\"status\":\"pendente\",\"cycleId\":\"native-8625356900-01M7NEHWY5JRVVJVCFDGZAW5SP\",\"enteredAt\":\"2026-11-17T19:08:19Z\",\"enrolled\":true,\"reopenVersion\":null,\"decisionVersion\":null,\"updatedAt\":\"2026-11-17T19:08:19Z\",\"signalPending\":false,\"sourceKind\":\"native-new-location\"}",
+        "updatedAt": "2026-11-17T19:08:19Z"
+      },
+      "ledger": {
+        "value": "{\"schema\":1,\"cycleId\":\"native-8625356900-01M7NEHWY5JRVVJVCFDGZAW5SP\",\"novo\":{\"state\":\"sent\",\"requestId\":\"01a1e9c5-8412-721a-9a5e-2e545f827eee01M7NEHZ2TDW09RD61P9WHX4QE63c4a583f0e8cc65v2\",\"runUrl\":\"https://admin.shopify.com/store/mrdvrf-6a/apps/flow/activity/01a1e9c5-8412-721a-9a5e-2e545f827eee:01M7NEHZ2TDW09RD61P9WHX4QE:63c4a583f0e8cc65:v2\"}}",
+        "updatedAt": "2026-11-17T19:08:22Z"
+      },
+      "ready": {
+        "value": "true"
+      },
+      "status": {
+        "value": "pendente"
+      },
+      "cycle": {
+        "value": "native-8625356900-01M7NEHWY5JRVVJVCFDGZAW5SP"
+      },
+      "since": {
+        "value": "2026-11-17T19:08:19Z"
+      }
+    }
+  }
+}

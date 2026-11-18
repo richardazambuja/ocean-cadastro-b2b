@@ -1,0 +1,1719 @@
+{
+  "automationWorkflows": {
+    "nodes": [
+      {
+        "id": "gid://shopify/AutomationWorkflow/01a1e9e3-4bea-70f3-8e80-b18d8c984f89",
+        "name": "OCEAN — PONTE TÉCNICA B2B (novo contato)",
+        "version": "01M7ND1MNKGG38VAEZJ9R0ETZ5",
+        "activeVersion": "01M7ND1MNKGG38VAEZJ9R0ETZ5",
+        "versionState": "MAIN",
+        "configuration": {
+          "__metadata": {
+            "version": 0.1
+          },
+          "root": {
+            "steps": [
+              {
+                "step_id": "source_created",
+                "config_field_values": [],
+                "task_id": "shopify::admin::company_contact_created",
+                "task_version": "0.1",
+                "task_type": "TRIGGER",
+                "name": null
+              },
+              {
+                "step_id": "run_identity",
+                "config_field_values": [],
+                "task_id": "shopify::flow::get_workflow_run_data",
+                "task_version": "0.1",
+                "task_type": "ACTION",
+                "name": "Get workflow run data"
+              },
+              {
+                "step_id": "target_query",
+                "config_field_values": [
+                  {
+                    "config_field_id": "input",
+                    "value": "query{companyContact{company{id}}}"
+                  },
+                  {
+                    "config_field_id": "script",
+                    "value": "export default function main(input){const id=input.companyContact?.company?.id||'';return {query:'company_id:'+id.split('/').pop()};}"
+                  },
+                  {
+                    "config_field_id": "output_schema",
+                    "value": "type Output{query:String!}"
+                  }
+                ],
+                "task_id": "shopify::flow::run_code",
+                "task_version": "0.1",
+                "task_type": "ACTION",
+                "name": "Run code"
+              },
+              {
+                "step_id": "fresh_locations",
+                "config_field_values": [
+                  {
+                    "config_field_id": "sort_by",
+                    "value": "{\"sortKey\":\"ID\",\"order\":\"ASCENDING\"}"
+                  },
+                  {
+                    "config_field_id": "max_root_records",
+                    "value": "100"
+                  },
+                  {
+                    "config_field_id": "query",
+                    "value": "{{runCode.query}}"
+                  }
+                ],
+                "task_id": "shopify::flow::fetch::company_locations",
+                "task_version": "v1",
+                "task_type": "ACTION",
+                "name": "Get company location data"
+              },
+              {
+                "step_id": "bootstrap_batch",
+                "config_field_values": [
+                  {
+                    "config_field_id": "input",
+                    "value": "query{getCompanyLocationData{id createdAt company {id mainContact{id} contacts{id customer{id}}} roleAssignments{id} metafields{namespace key value compareDigest}} shop{oceanRollout{value}} getWorkflowRunData{id startedAt}}"
+                  },
+                  {
+                    "config_field_id": "script",
+                    "value": "function selectBuyer(company) {\n  const contacts = company?.contacts;\n  if (!Array.isArray(contacts?.nodes)) return {ok:false, reason:'Contatos da empresa indisponiveis.'};\n  const all = contacts.nodes.filter(c => c?.id && c?.customer?.id);\n  const mainId = company?.mainContact?.id;\n  if (mainId) {\n    const main = all.find(c => c.id === mainId);\n    if (main) return {ok:true, contact:main};\n    return {ok:false, reason:'Contato principal nao confirmado entre os contatos da empresa.'};\n  }\n  if (contacts.pageInfo?.hasNextPage) return {ok:false, reason:'Ha contatos adicionais nao carregados; revise antes de aprovar.'};\n  if (all.length === 1) return {ok:true, contact:all[0]};\n  if (all.length === 0) return {ok:false, reason:'Empresa sem contato vinculado. Vincule o cliente antes de aprovar.'};\n  return {ok:false, reason:'Empresa com multiplos contatos e sem contato principal; selecione um principal na Shopify.'};\n}\nfunction classifyLocation(location) {\n  const roleConnection = location?.roleAssignments;\n  if (!roleConnection || !Array.isArray(roleConnection.nodes)) return 'erro';\n  if (roleConnection.nodes.length > 0) return 'aprovado';\n  if (roleConnection.pageInfo?.hasNextPage) return 'erro';\n  const contacts = location.company?.contacts;\n  if (!contacts || !Array.isArray(contacts.nodes)) return 'erro';\n  if (contacts.nodes.length === 0 && !contacts.pageInfo?.hasNextPage) return 'incompleto';\n  if (selectBuyer(location.company).ok) return 'pendente';\n  return 'incompleto';\n}\nfunction planOne(input){\n const out={eligible:false,inputs:'{}',numericId:'',locationId:'',cycleId:'',enteredAt:''};\n const loc=input.getCompanyLocationDataForeachitem;if(!loc||!/^gid:\\/\\/shopify\\/CompanyLocation\\/\\d+$/.test(loc.id||''))return out;\n let config;try{config=JSON.parse(input.shop?.oceanRollout?.value||'{}');}catch{return out;}\n const existingReview=(loc.metafields||[]).find(f=>f.namespace==='ocean_b2b'&&f.key==='review');let baseline;try{baseline=JSON.parse(existingReview?.value||'null');}catch{return out;}\n const oldIncompleteVerified=baseline?.sourceKind==='cadastro-b2b'&&baseline?.projectionEpoch===config.epoch&&baseline?.status==='incompleto'&&!baseline?.decisionVersion;\n const allowed=['test','preparing'].includes(config.mode)&&(config.testLocationIds?.includes(loc.id)||config.bootstrapTestCompanyIds?.includes(loc.company?.id))||config.mode==='production'&&config.productionApproved===true&&(Date.parse(loc.createdAt)>=Date.parse(config.cutover)||oldIncompleteVerified);\n if(!allowed)return out;\n const fields=(loc.metafields||[]).filter(f=>f.namespace==='ocean_b2b');const review=fields.find(f=>f.key==='review');let prev=null;\n if(review){try{prev=JSON.parse(review.value);}catch{return out;}\n if(prev.schema!==1||prev.locationId!==loc.id||!prev.ready||prev.operationId||prev.decisionVersion||!(['incompleto'].includes(prev.status)||prev.status==='pendente'&&prev.cycleId?.startsWith('native-'))||!review.compareDigest)return out;\n }else if(fields.some(f=>['ready','status','cycle_id','pending_since'].includes(f.key)))return out;\n const current={...loc,roleAssignments:{nodes:loc.roleAssignments||[],pageInfo:{hasNextPage:false}},company:{...loc.company,contacts:{nodes:loc.company?.contacts||[],pageInfo:{hasNextPage:(loc.company?.contacts||[]).length>=50}}}};\n if(classifyLocation(current)!=='pendente')return out;\n const enteredAt=input.getWorkflowRunData?.startedAt;if(!Number.isFinite(Date.parse(enteredAt))||Date.parse(enteredAt)<Date.parse(loc.createdAt))return out;\n const numericId=loc.id.split('/').pop(),runToken=(input.getWorkflowRunData?.id||'').split('/').pop().split(':')[1];if(!/^[a-zA-Z0-9-]{1,30}$/.test(runToken||''))return out;const cycleId=prev?.status==='pendente'?prev.cycleId:'native-'+numericId+'-'+runToken;\n const state={schema:1,locationId:loc.id,ready:true,operationId:null,status:'pendente',cycleId,enteredAt:prev?.status==='pendente'?prev.enteredAt:enteredAt,enrolled:true,reopenVersion:null,decisionVersion:null,updatedAt:enteredAt,signalPending:false,sourceKind:'native-new-location'};\n const values=[['review','json',JSON.stringify(state)],['ready','boolean','true'],['status','single_line_text_field','pendente'],['cycle_id','single_line_text_field',cycleId],['pending_since','date_time',state.enteredAt]];\n const metafields=prev?.status==='pendente'?[{ownerId:loc.id,namespace:'ocean_b2b',key:'review',type:'json',value:review.value,compareDigest:review.compareDigest}]:values.map(([key,type,value])=>({ownerId:loc.id,namespace:'ocean_b2b',key,type,value,...(key==='review'?{compareDigest:review?.compareDigest||null}:{})}));\n return {eligible:true,inputs:JSON.stringify({metafields}),numericId,locationId:loc.id,cycleId,enteredAt:state.enteredAt};\n}\nexport default function main(input){return {plans:(input.getCompanyLocationData||[]).map(loc=>planOne({...input,getCompanyLocationDataForeachitem:loc})).filter(x=>x.eligible)};}"
+                  },
+                  {
+                    "config_field_id": "output_schema",
+                    "value": "type Output{plans:[Plan!]!} type Plan{eligible:Boolean! inputs:String! numericId:String! locationId:String! cycleId:String! enteredAt:String!}"
+                  }
+                ],
+                "task_id": "shopify::flow::run_code",
+                "task_version": "0.1",
+                "task_type": "ACTION",
+                "name": "Run code (1)"
+              },
+              {
+                "step_id": "each_location",
+                "config_field_values": [
+                  {
+                    "config_field_id": "listpath",
+                    "value": "runCode1.plans"
+                  }
+                ],
+                "task_id": "shopify::flow::foreach",
+                "task_version": "0.1",
+                "task_type": "FOREACH",
+                "name": null
+              },
+              {
+                "step_id": "write_initial_state",
+                "config_field_values": [
+                  {
+                    "config_field_id": "api_call",
+                    "value": "{\"name\":\"metafieldsSet\",\"blob\":\"{{plansForeachitem.inputs}}\"}"
+                  }
+                ],
+                "task_id": "shopify::admin::admin_api_operation",
+                "task_version": "0.1",
+                "task_type": "ACTION",
+                "name": "Send Admin API request"
+              },
+              {
+                "step_id": "verify_location",
+                "config_field_values": [
+                  {
+                    "config_field_id": "sort_by",
+                    "value": "{\"sortKey\":\"ID\",\"order\":\"ASCENDING\"}"
+                  },
+                  {
+                    "config_field_id": "max_root_records",
+                    "value": "100"
+                  },
+                  {
+                    "config_field_id": "query",
+                    "value": "{{runCode.query}}"
+                  }
+                ],
+                "task_id": "shopify::flow::fetch::company_locations",
+                "task_version": "v1",
+                "task_type": "ACTION",
+                "name": "Get company location data (1)"
+              },
+              {
+                "step_id": "verify_initial_state",
+                "config_field_values": [
+                  {
+                    "config_field_id": "input",
+                    "value": "query{runCode1{plans{numericId locationId cycleId enteredAt}} getCompanyLocationData1{id createdAt company {id mainContact{id} contacts{id customer{id}}} roleAssignments{id} metafields{namespace key value compareDigest}}}"
+                  },
+                  {
+                    "config_field_id": "script",
+                    "value": "function selectBuyer(company) {\n  const contacts = company?.contacts;\n  if (!Array.isArray(contacts?.nodes)) return {ok:false, reason:'Contatos da empresa indisponiveis.'};\n  const all = contacts.nodes.filter(c => c?.id && c?.customer?.id);\n  const mainId = company?.mainContact?.id;\n  if (mainId) {\n    const main = all.find(c => c.id === mainId);\n    if (main) return {ok:true, contact:main};\n    return {ok:false, reason:'Contato principal nao confirmado entre os contatos da empresa.'};\n  }\n  if (contacts.pageInfo?.hasNextPage) return {ok:false, reason:'Ha contatos adicionais nao carregados; revise antes de aprovar.'};\n  if (all.length === 1) return {ok:true, contact:all[0]};\n  if (all.length === 0) return {ok:false, reason:'Empresa sem contato vinculado. Vincule o cliente antes de aprovar.'};\n  return {ok:false, reason:'Empresa com multiplos contatos e sem contato principal; selecione um principal na Shopify.'};\n}\nfunction classifyLocation(location) {\n  const roleConnection = location?.roleAssignments;\n  if (!roleConnection || !Array.isArray(roleConnection.nodes)) return 'erro';\n  if (roleConnection.nodes.length > 0) return 'aprovado';\n  if (roleConnection.pageInfo?.hasNextPage) return 'erro';\n  const contacts = location.company?.contacts;\n  if (!contacts || !Array.isArray(contacts.nodes)) return 'erro';\n  if (contacts.nodes.length === 0 && !contacts.pageInfo?.hasNextPage) return 'incompleto';\n  if (selectBuyer(location.company).ok) return 'pendente';\n  return 'incompleto';\n}\nfunction verifyOne(input){\n const out={eligible:false,signal:'{}'};const plan=input.runCode1;const rows=(input.getCompanyLocationData1||[]).filter(x=>x.id===plan.locationId);if(rows.length!==1)return out;const loc=rows[0];\n const fields=Object.fromEntries((loc.metafields||[]).filter(f=>f.namespace==='ocean_b2b').map(f=>[f.key,f]));let state;try{state=JSON.parse(fields.review?.value||'null');}catch{return out;}\n if(!state||!state.ready||state.operationId||!state.enrolled||state.status!=='pendente'||state.cycleId!==plan.cycleId||Date.parse(state.enteredAt)!==Date.parse(plan.enteredAt)||state.decisionVersion)return out;\n if(fields.ready?.value!=='true'||fields.status?.value!=='pendente'||fields.cycle_id?.value!==plan.cycleId||Date.parse(fields.pending_since?.value)!==Date.parse(plan.enteredAt))return out;\n const current={...loc,roleAssignments:{nodes:loc.roleAssignments||[],pageInfo:{hasNextPage:false}},company:{...loc.company,contacts:{nodes:loc.company?.contacts||[],pageInfo:{hasNextPage:(loc.company?.contacts||[]).length>=50}}}};if(classifyLocation(current)!=='pendente')return out;\n return {eligible:true,signal:JSON.stringify({handle:{type:'ocean_b2b_pending_cycle',handle:('local-'+plan.numericId+'-'+plan.cycleId).toLowerCase()},metaobject:{fields:[{key:'local_id',value:plan.locationId},{key:'cycle_id',value:plan.cycleId},{key:'entered_at',value:plan.enteredAt}]}})};\n}\nexport default function main(input){return {signals:(input.runCode1?.plans||[]).map(p=>verifyOne({...input,runCode1:p})).filter(x=>x.eligible)};}"
+                  },
+                  {
+                    "config_field_id": "output_schema",
+                    "value": "type Output{signals:[Signal!]!} type Signal{eligible:Boolean! signal:String!}"
+                  }
+                ],
+                "task_id": "shopify::flow::run_code",
+                "task_version": "0.1",
+                "task_type": "ACTION",
+                "name": "Run code (2)"
+              },
+              {
+                "step_id": "each_signal",
+                "config_field_values": [
+                  {
+                    "config_field_id": "listpath",
+                    "value": "runCode2.signals"
+                  }
+                ],
+                "task_id": "shopify::flow::foreach",
+                "task_version": "0.1",
+                "task_type": "FOREACH",
+                "name": null
+              },
+              {
+                "step_id": "publish_cycle",
+                "config_field_values": [
+                  {
+                    "config_field_id": "api_call",
+                    "value": "{\"name\":\"metaobjectUpsert\",\"blob\":\"{{signalsForeachitem.signal}}\"}"
+                  }
+                ],
+                "task_id": "shopify::admin::admin_api_operation",
+                "task_version": "0.1",
+                "task_type": "ACTION",
+                "name": "Send Admin API request (1)"
+              }
+            ],
+            "links": [
+              {
+                "from_step_id": "source_created",
+                "from_port_id": "output",
+                "to_step_id": "run_identity",
+                "to_port_id": "input"
+              },
+              {
+                "from_step_id": "run_identity",
+                "from_port_id": "output",
+                "to_step_id": "target_query",
+                "to_port_id": "input"
+              },
+              {
+                "from_step_id": "target_query",
+                "from_port_id": "output",
+                "to_step_id": "fresh_locations",
+                "to_port_id": "input"
+              },
+              {
+                "from_step_id": "fresh_locations",
+                "from_port_id": "output",
+                "to_step_id": "bootstrap_batch",
+                "to_port_id": "input"
+              },
+              {
+                "from_step_id": "bootstrap_batch",
+                "from_port_id": "output",
+                "to_step_id": "each_location",
+                "to_port_id": "input"
+              },
+              {
+                "from_step_id": "each_location",
+                "from_port_id": "loop_body",
+                "to_step_id": "write_initial_state",
+                "to_port_id": "input"
+              },
+              {
+                "from_step_id": "each_location",
+                "from_port_id": "after",
+                "to_step_id": "verify_location",
+                "to_port_id": "input"
+              },
+              {
+                "from_step_id": "verify_location",
+                "from_port_id": "output",
+                "to_step_id": "verify_initial_state",
+                "to_port_id": "input"
+              },
+              {
+                "from_step_id": "verify_initial_state",
+                "from_port_id": "output",
+                "to_step_id": "each_signal",
+                "to_port_id": "input"
+              },
+              {
+                "from_step_id": "each_signal",
+                "from_port_id": "loop_body",
+                "to_step_id": "publish_cycle",
+                "to_port_id": "input"
+              }
+            ],
+            "patched_fields": [
+              {
+                "id": "14b01e70-bc85-4083-8ba2-5cd2261d5fc5",
+                "handle": "oceanRollout",
+                "field": "metafield",
+                "patched_type": "Shop",
+                "arguments": {
+                  "key": "rollout",
+                  "namespace": "ocean_b2b"
+                }
+              }
+            ]
+          }
+        },
+        "validationErrors": []
+      },
+      {
+        "id": "gid://shopify/AutomationWorkflow/01a1e9e0-fb18-7796-96df-1f4d86f80bac",
+        "name": "OCEAN — PONTE TÉCNICA B2B (novo local)",
+        "version": "01M7ND1F014GWZV5WG0AHSWR9Y",
+        "activeVersion": "01M7ND1F014GWZV5WG0AHSWR9Y",
+        "versionState": "MAIN",
+        "configuration": {
+          "__metadata": {
+            "version": 0.1
+          },
+          "root": {
+            "steps": [
+              {
+                "step_id": "source_created",
+                "config_field_values": [],
+                "task_id": "shopify::admin::company_location_created",
+                "task_version": "0.1",
+                "task_type": "TRIGGER",
+                "name": null
+              },
+              {
+                "step_id": "run_identity",
+                "config_field_values": [],
+                "task_id": "shopify::flow::get_workflow_run_data",
+                "task_version": "0.1",
+                "task_type": "ACTION",
+                "name": "Get workflow run data"
+              },
+              {
+                "step_id": "target_query",
+                "config_field_values": [
+                  {
+                    "config_field_id": "input",
+                    "value": "query{companyLocation{id}}"
+                  },
+                  {
+                    "config_field_id": "script",
+                    "value": "export default function main(input){const id=input.companyLocation?.id||'';return {query:'ids:'+id.split('/').pop()};}"
+                  },
+                  {
+                    "config_field_id": "output_schema",
+                    "value": "type Output{query:String!}"
+                  }
+                ],
+                "task_id": "shopify::flow::run_code",
+                "task_version": "0.1",
+                "task_type": "ACTION",
+                "name": "Run code"
+              },
+              {
+                "step_id": "fresh_locations",
+                "config_field_values": [
+                  {
+                    "config_field_id": "sort_by",
+                    "value": "{\"sortKey\":\"ID\",\"order\":\"ASCENDING\"}"
+                  },
+                  {
+                    "config_field_id": "max_root_records",
+                    "value": "100"
+                  },
+                  {
+                    "config_field_id": "query",
+                    "value": "{{runCode.query}}"
+                  }
+                ],
+                "task_id": "shopify::flow::fetch::company_locations",
+                "task_version": "v1",
+                "task_type": "ACTION",
+                "name": "Get company location data"
+              },
+              {
+                "step_id": "bootstrap_batch",
+                "config_field_values": [
+                  {
+                    "config_field_id": "input",
+                    "value": "query{getCompanyLocationData{id createdAt company {id mainContact{id} contacts{id customer{id}}} roleAssignments{id} metafields{namespace key value compareDigest}} shop{oceanRollout{value}} getWorkflowRunData{id startedAt}}"
+                  },
+                  {
+                    "config_field_id": "script",
+                    "value": "function selectBuyer(company) {\n  const contacts = company?.contacts;\n  if (!Array.isArray(contacts?.nodes)) return {ok:false, reason:'Contatos da empresa indisponiveis.'};\n  const all = contacts.nodes.filter(c => c?.id && c?.customer?.id);\n  const mainId = company?.mainContact?.id;\n  if (mainId) {\n    const main = all.find(c => c.id === mainId);\n    if (main) return {ok:true, contact:main};\n    return {ok:false, reason:'Contato principal nao confirmado entre os contatos da empresa.'};\n  }\n  if (contacts.pageInfo?.hasNextPage) return {ok:false, reason:'Ha contatos adicionais nao carregados; revise antes de aprovar.'};\n  if (all.length === 1) return {ok:true, contact:all[0]};\n  if (all.length === 0) return {ok:false, reason:'Empresa sem contato vinculado. Vincule o cliente antes de aprovar.'};\n  return {ok:false, reason:'Empresa com multiplos contatos e sem contato principal; selecione um principal na Shopify.'};\n}\nfunction classifyLocation(location) {\n  const roleConnection = location?.roleAssignments;\n  if (!roleConnection || !Array.isArray(roleConnection.nodes)) return 'erro';\n  if (roleConnection.nodes.length > 0) return 'aprovado';\n  if (roleConnection.pageInfo?.hasNextPage) return 'erro';\n  const contacts = location.company?.contacts;\n  if (!contacts || !Array.isArray(contacts.nodes)) return 'erro';\n  if (contacts.nodes.length === 0 && !contacts.pageInfo?.hasNextPage) return 'incompleto';\n  if (selectBuyer(location.company).ok) return 'pendente';\n  return 'incompleto';\n}\nfunction planOne(input){\n const out={eligible:false,inputs:'{}',numericId:'',locationId:'',cycleId:'',enteredAt:''};\n const loc=input.getCompanyLocationDataForeachitem;if(!loc||!/^gid:\\/\\/shopify\\/CompanyLocation\\/\\d+$/.test(loc.id||''))return out;\n let config;try{config=JSON.parse(input.shop?.oceanRollout?.value||'{}');}catch{return out;}\n const existingReview=(loc.metafields||[]).find(f=>f.namespace==='ocean_b2b'&&f.key==='review');let baseline;try{baseline=JSON.parse(existingReview?.value||'null');}catch{return out;}\n const oldIncompleteVerified=baseline?.sourceKind==='cadastro-b2b'&&baseline?.projectionEpoch===config.epoch&&baseline?.status==='incompleto'&&!baseline?.decisionVersion;\n const allowed=['test','preparing'].includes(config.mode)&&(config.testLocationIds?.includes(loc.id)||config.bootstrapTestCompanyIds?.includes(loc.company?.id))||config.mode==='production'&&config.productionApproved===true&&(Date.parse(loc.createdAt)>=Date.parse(config.cutover)||oldIncompleteVerified);\n if(!allowed)return out;\n const fields=(loc.metafields||[]).filter(f=>f.namespace==='ocean_b2b');const review=fields.find(f=>f.key==='review');let prev=null;\n if(review){try{prev=JSON.parse(review.value);}catch{return out;}\n if(prev.schema!==1||prev.locationId!==loc.id||!prev.ready||prev.operationId||prev.decisionVersion||!(['incompleto'].includes(prev.status)||prev.status==='pendente'&&prev.cycleId?.startsWith('native-'))||!review.compareDigest)return out;\n }else if(fields.some(f=>['ready','status','cycle_id','pending_since'].includes(f.key)))return out;\n const current={...loc,roleAssignments:{nodes:loc.roleAssignments||[],pageInfo:{hasNextPage:false}},company:{...loc.company,contacts:{nodes:loc.company?.contacts||[],pageInfo:{hasNextPage:(loc.company?.contacts||[]).length>=50}}}};\n if(classifyLocation(current)!=='pendente')return out;\n const enteredAt=input.getWorkflowRunData?.startedAt;if(!Number.isFinite(Date.parse(enteredAt))||Date.parse(enteredAt)<Date.parse(loc.createdAt))return out;\n const numericId=loc.id.split('/').pop(),runToken=(input.getWorkflowRunData?.id||'').split('/').pop().split(':')[1];if(!/^[a-zA-Z0-9-]{1,30}$/.test(runToken||''))return out;const cycleId=prev?.status==='pendente'?prev.cycleId:'native-'+numericId+'-'+runToken;\n const state={schema:1,locationId:loc.id,ready:true,operationId:null,status:'pendente',cycleId,enteredAt:prev?.status==='pendente'?prev.enteredAt:enteredAt,enrolled:true,reopenVersion:null,decisionVersion:null,updatedAt:enteredAt,signalPending:false,sourceKind:'native-new-location'};\n const values=[['review','json',JSON.stringify(state)],['ready','boolean','true'],['status','single_line_text_field','pendente'],['cycle_id','single_line_text_field',cycleId],['pending_since','date_time',state.enteredAt]];\n const metafields=prev?.status==='pendente'?[{ownerId:loc.id,namespace:'ocean_b2b',key:'review',type:'json',value:review.value,compareDigest:review.compareDigest}]:values.map(([key,type,value])=>({ownerId:loc.id,namespace:'ocean_b2b',key,type,value,...(key==='review'?{compareDigest:review?.compareDigest||null}:{})}));\n return {eligible:true,inputs:JSON.stringify({metafields}),numericId,locationId:loc.id,cycleId,enteredAt:state.enteredAt};\n}\nexport default function main(input){return {plans:(input.getCompanyLocationData||[]).map(loc=>planOne({...input,getCompanyLocationDataForeachitem:loc})).filter(x=>x.eligible)};}"
+                  },
+                  {
+                    "config_field_id": "output_schema",
+                    "value": "type Output{plans:[Plan!]!} type Plan{eligible:Boolean! inputs:String! numericId:String! locationId:String! cycleId:String! enteredAt:String!}"
+                  }
+                ],
+                "task_id": "shopify::flow::run_code",
+                "task_version": "0.1",
+                "task_type": "ACTION",
+                "name": "Run code (1)"
+              },
+              {
+                "step_id": "each_location",
+                "config_field_values": [
+                  {
+                    "config_field_id": "listpath",
+                    "value": "runCode1.plans"
+                  }
+                ],
+                "task_id": "shopify::flow::foreach",
+                "task_version": "0.1",
+                "task_type": "FOREACH",
+                "name": null
+              },
+              {
+                "step_id": "write_initial_state",
+                "config_field_values": [
+                  {
+                    "config_field_id": "api_call",
+                    "value": "{\"name\":\"metafieldsSet\",\"blob\":\"{{plansForeachitem.inputs}}\"}"
+                  }
+                ],
+                "task_id": "shopify::admin::admin_api_operation",
+                "task_version": "0.1",
+                "task_type": "ACTION",
+                "name": "Send Admin API request"
+              },
+              {
+                "step_id": "verify_location",
+                "config_field_values": [
+                  {
+                    "config_field_id": "sort_by",
+                    "value": "{\"sortKey\":\"ID\",\"order\":\"ASCENDING\"}"
+                  },
+                  {
+                    "config_field_id": "max_root_records",
+                    "value": "100"
+                  },
+                  {
+                    "config_field_id": "query",
+                    "value": "{{runCode.query}}"
+                  }
+                ],
+                "task_id": "shopify::flow::fetch::company_locations",
+                "task_version": "v1",
+                "task_type": "ACTION",
+                "name": "Get company location data (1)"
+              },
+              {
+                "step_id": "verify_initial_state",
+                "config_field_values": [
+                  {
+                    "config_field_id": "input",
+                    "value": "query{runCode1{plans{numericId locationId cycleId enteredAt}} getCompanyLocationData1{id createdAt company {id mainContact{id} contacts{id customer{id}}} roleAssignments{id} metafields{namespace key value compareDigest}}}"
+                  },
+                  {
+                    "config_field_id": "script",
+                    "value": "function selectBuyer(company) {\n  const contacts = company?.contacts;\n  if (!Array.isArray(contacts?.nodes)) return {ok:false, reason:'Contatos da empresa indisponiveis.'};\n  const all = contacts.nodes.filter(c => c?.id && c?.customer?.id);\n  const mainId = company?.mainContact?.id;\n  if (mainId) {\n    const main = all.find(c => c.id === mainId);\n    if (main) return {ok:true, contact:main};\n    return {ok:false, reason:'Contato principal nao confirmado entre os contatos da empresa.'};\n  }\n  if (contacts.pageInfo?.hasNextPage) return {ok:false, reason:'Ha contatos adicionais nao carregados; revise antes de aprovar.'};\n  if (all.length === 1) return {ok:true, contact:all[0]};\n  if (all.length === 0) return {ok:false, reason:'Empresa sem contato vinculado. Vincule o cliente antes de aprovar.'};\n  return {ok:false, reason:'Empresa com multiplos contatos e sem contato principal; selecione um principal na Shopify.'};\n}\nfunction classifyLocation(location) {\n  const roleConnection = location?.roleAssignments;\n  if (!roleConnection || !Array.isArray(roleConnection.nodes)) return 'erro';\n  if (roleConnection.nodes.length > 0) return 'aprovado';\n  if (roleConnection.pageInfo?.hasNextPage) return 'erro';\n  const contacts = location.company?.contacts;\n  if (!contacts || !Array.isArray(contacts.nodes)) return 'erro';\n  if (contacts.nodes.length === 0 && !contacts.pageInfo?.hasNextPage) return 'incompleto';\n  if (selectBuyer(location.company).ok) return 'pendente';\n  return 'incompleto';\n}\nfunction verifyOne(input){\n const out={eligible:false,signal:'{}'};const plan=input.runCode1;const rows=(input.getCompanyLocationData1||[]).filter(x=>x.id===plan.locationId);if(rows.length!==1)return out;const loc=rows[0];\n const fields=Object.fromEntries((loc.metafields||[]).filter(f=>f.namespace==='ocean_b2b').map(f=>[f.key,f]));let state;try{state=JSON.parse(fields.review?.value||'null');}catch{return out;}\n if(!state||!state.ready||state.operationId||!state.enrolled||state.status!=='pendente'||state.cycleId!==plan.cycleId||Date.parse(state.enteredAt)!==Date.parse(plan.enteredAt)||state.decisionVersion)return out;\n if(fields.ready?.value!=='true'||fields.status?.value!=='pendente'||fields.cycle_id?.value!==plan.cycleId||Date.parse(fields.pending_since?.value)!==Date.parse(plan.enteredAt))return out;\n const current={...loc,roleAssignments:{nodes:loc.roleAssignments||[],pageInfo:{hasNextPage:false}},company:{...loc.company,contacts:{nodes:loc.company?.contacts||[],pageInfo:{hasNextPage:(loc.company?.contacts||[]).length>=50}}}};if(classifyLocation(current)!=='pendente')return out;\n return {eligible:true,signal:JSON.stringify({handle:{type:'ocean_b2b_pending_cycle',handle:('local-'+plan.numericId+'-'+plan.cycleId).toLowerCase()},metaobject:{fields:[{key:'local_id',value:plan.locationId},{key:'cycle_id',value:plan.cycleId},{key:'entered_at',value:plan.enteredAt}]}})};\n}\nexport default function main(input){return {signals:(input.runCode1?.plans||[]).map(p=>verifyOne({...input,runCode1:p})).filter(x=>x.eligible)};}"
+                  },
+                  {
+                    "config_field_id": "output_schema",
+                    "value": "type Output{signals:[Signal!]!} type Signal{eligible:Boolean! signal:String!}"
+                  }
+                ],
+                "task_id": "shopify::flow::run_code",
+                "task_version": "0.1",
+                "task_type": "ACTION",
+                "name": "Run code (2)"
+              },
+              {
+                "step_id": "each_signal",
+                "config_field_values": [
+                  {
+                    "config_field_id": "listpath",
+                    "value": "runCode2.signals"
+                  }
+                ],
+                "task_id": "shopify::flow::foreach",
+                "task_version": "0.1",
+                "task_type": "FOREACH",
+                "name": null
+              },
+              {
+                "step_id": "publish_cycle",
+                "config_field_values": [
+                  {
+                    "config_field_id": "api_call",
+                    "value": "{\"name\":\"metaobjectUpsert\",\"blob\":\"{{signalsForeachitem.signal}}\"}"
+                  }
+                ],
+                "task_id": "shopify::admin::admin_api_operation",
+                "task_version": "0.1",
+                "task_type": "ACTION",
+                "name": "Send Admin API request (1)"
+              }
+            ],
+            "links": [
+              {
+                "from_step_id": "source_created",
+                "from_port_id": "output",
+                "to_step_id": "run_identity",
+                "to_port_id": "input"
+              },
+              {
+                "from_step_id": "run_identity",
+                "from_port_id": "output",
+                "to_step_id": "target_query",
+                "to_port_id": "input"
+              },
+              {
+                "from_step_id": "target_query",
+                "from_port_id": "output",
+                "to_step_id": "fresh_locations",
+                "to_port_id": "input"
+              },
+              {
+                "from_step_id": "fresh_locations",
+                "from_port_id": "output",
+                "to_step_id": "bootstrap_batch",
+                "to_port_id": "input"
+              },
+              {
+                "from_step_id": "bootstrap_batch",
+                "from_port_id": "output",
+                "to_step_id": "each_location",
+                "to_port_id": "input"
+              },
+              {
+                "from_step_id": "each_location",
+                "from_port_id": "loop_body",
+                "to_step_id": "write_initial_state",
+                "to_port_id": "input"
+              },
+              {
+                "from_step_id": "each_location",
+                "from_port_id": "after",
+                "to_step_id": "verify_location",
+                "to_port_id": "input"
+              },
+              {
+                "from_step_id": "verify_location",
+                "from_port_id": "output",
+                "to_step_id": "verify_initial_state",
+                "to_port_id": "input"
+              },
+              {
+                "from_step_id": "verify_initial_state",
+                "from_port_id": "output",
+                "to_step_id": "each_signal",
+                "to_port_id": "input"
+              },
+              {
+                "from_step_id": "each_signal",
+                "from_port_id": "loop_body",
+                "to_step_id": "publish_cycle",
+                "to_port_id": "input"
+              }
+            ],
+            "patched_fields": [
+              {
+                "id": "6b33a069-122b-4ada-9e6e-33c8efb4b23a",
+                "handle": "oceanRollout",
+                "field": "metafield",
+                "patched_type": "Shop",
+                "arguments": {
+                  "key": "rollout",
+                  "namespace": "ocean_b2b"
+                }
+              }
+            ]
+          }
+        },
+        "validationErrors": []
+      },
+      {
+        "id": "gid://shopify/AutomationWorkflow/01a1e9c5-a198-7078-8e9a-35b205098189",
+        "name": "OCEAN — CADASTRO VENCIDO",
+        "version": "01M7ND17GDZT14NQNC7Z8MT5PR",
+        "activeVersion": "01M7ND17GDZT14NQNC7Z8MT5PR",
+        "versionState": "MAIN",
+        "configuration": {
+          "__metadata": {
+            "version": 0.1
+          },
+          "root": {
+            "steps": [
+              {
+                "step_id": "cycle_created",
+                "config_field_values": [
+                  {
+                    "config_field_id": "type",
+                    "value": "ocean_b2b_pending_cycle"
+                  }
+                ],
+                "task_id": "shopify::admin::metaobject_created",
+                "task_version": "0.1",
+                "task_type": "TRIGGER",
+                "name": null
+              },
+              {
+                "step_id": "wait_ten_minutes",
+                "config_field_values": [
+                  {
+                    "config_field_id": "wait_duration",
+                    "value": "{\"amount\":\"10\",\"unit\":\"minutes\"}"
+                  }
+                ],
+                "task_id": "shopify::flow::wait",
+                "task_version": "0.1",
+                "task_type": "WAIT",
+                "name": null
+              },
+              {
+                "step_id": "run_identity",
+                "config_field_values": [],
+                "task_id": "shopify::flow::get_workflow_run_data",
+                "task_version": "0.1",
+                "task_type": "ACTION",
+                "name": "Get workflow run data"
+              },
+              {
+                "step_id": "check_rollout",
+                "config_field_values": [
+                  {
+                    "config_field_id": "input",
+                    "value": "query { metaobject { localId cycleId enteredAt } shop { oceanRollout { value } } getWorkflowRunData { id url startedAt } }"
+                  },
+                  {
+                    "config_field_id": "script",
+                    "value": "export default function main(input) {\n const fields=input.metaobject?.localId ? {local_id:input.metaobject.localId,cycle_id:input.metaobject.cycleId,entered_at:input.metaobject.enteredAt} : Object.fromEntries((input.metaobject?.system?.fields||[]).map(f=>[f.key,f.value]));\n let config;try{config=JSON.parse(input.shop?.oceanRollout?.value||'{}');}catch{return {allowed:false,locationId:'',numericId:'',cycleId:'',enteredAt:'',requestId:'',runUrl:'',clock:'',debug:'invalid-config'};}\n const id=fields.local_id||'';\n const allowed=/^gid:\\/\\/shopify\\/CompanyLocation\\/\\d+$/.test(id) && /^[a-zA-Z0-9-]{1,80}$/.test(fields.cycle_id||'') && Number.isFinite(Date.parse(fields.entered_at)) && (['test','preparing'].includes(config.mode) && config.testLocationIds?.includes(id) || config.mode==='production' && config.productionApproved===true && Date.parse(fields.entered_at)>=Date.parse(config.cutover));\n return {allowed:Boolean(allowed),locationId:id,numericId:id.split('/').pop(),cycleId:fields.cycle_id||'',enteredAt:fields.entered_at||'',requestId:(input.getWorkflowRunData?.id||'').split('/').pop().replace(/[^a-zA-Z0-9-]/g,''),runUrl:input.getWorkflowRunData?.url||'',clock:input.getWorkflowRunData?.startedAt||'',debug:JSON.stringify({fields,allowed,runId:input.getWorkflowRunData?.id,configMode:config.mode})};\n}"
+                  },
+                  {
+                    "config_field_id": "output_schema",
+                    "value": "type Output { allowed:Boolean! locationId:String! numericId:String! cycleId:String! enteredAt:String! requestId:String! runUrl:String! clock:String! debug:String! }"
+                  }
+                ],
+                "task_id": "shopify::flow::run_code",
+                "task_version": "0.1",
+                "task_type": "ACTION",
+                "name": "Run code"
+              },
+              {
+                "step_id": "allowed",
+                "config_field_values": [
+                  {
+                    "config_field_id": "condition",
+                    "value": "(runCode.allowed == true)"
+                  }
+                ],
+                "task_id": "shopify::flow::condition",
+                "task_version": "0.1",
+                "task_type": "CONDITION",
+                "name": null
+              },
+              {
+                "step_id": "fresh_location",
+                "config_field_values": [
+                  {
+                    "config_field_id": "sort_by",
+                    "value": "{\"sortKey\":\"ID\",\"order\":\"ASCENDING\"}"
+                  },
+                  {
+                    "config_field_id": "max_root_records",
+                    "value": "2"
+                  },
+                  {
+                    "config_field_id": "query",
+                    "value": "ids:{{runCode.numericId}}"
+                  }
+                ],
+                "task_id": "shopify::flow::fetch::company_locations",
+                "task_version": "v1",
+                "task_type": "ACTION",
+                "name": "Get company location data"
+              },
+              {
+                "step_id": "reserve_once",
+                "config_field_values": [
+                  {
+                    "config_field_id": "input",
+                    "value": "query { runCode { locationId cycleId enteredAt requestId runUrl clock } getCompanyLocationData { id name createdAt taxSettings { taxRegistrationId } company { id name oceanCnpj { value } mainContact { id } contacts { id customer { id } } } roleAssignments { id } metafields { namespace key value compareDigest updatedAt } oceanReview { value } oceanNotifications { value } oceanReady { value } oceanStatus { value } oceanCycle { value } oceanSince { value } } }"
+                  },
+                  {
+                    "config_field_id": "script",
+                    "value": "function selectBuyer(company) {\n  const contacts = company?.contacts;\n  if (!Array.isArray(contacts?.nodes)) return {ok:false, reason:'Contatos da empresa indisponiveis.'};\n  const all = contacts.nodes.filter(c => c?.id && c?.customer?.id);\n  const mainId = company?.mainContact?.id;\n  if (mainId) {\n    const main = all.find(c => c.id === mainId);\n    if (main) return {ok:true, contact:main};\n    return {ok:false, reason:'Contato principal nao confirmado entre os contatos da empresa.'};\n  }\n  if (contacts.pageInfo?.hasNextPage) return {ok:false, reason:'Ha contatos adicionais nao carregados; revise antes de aprovar.'};\n  if (all.length === 1) return {ok:true, contact:all[0]};\n  if (all.length === 0) return {ok:false, reason:'Empresa sem contato vinculado. Vincule o cliente antes de aprovar.'};\n  return {ok:false, reason:'Empresa com multiplos contatos e sem contato principal; selecione um principal na Shopify.'};\n}\nfunction classifyLocation(location) {\n  const roleConnection = location?.roleAssignments;\n  if (!roleConnection || !Array.isArray(roleConnection.nodes)) return 'erro';\n  if (roleConnection.nodes.length > 0) return 'aprovado';\n  if (roleConnection.pageInfo?.hasNextPage) return 'erro';\n  const contacts = location.company?.contacts;\n  if (!contacts || !Array.isArray(contacts.nodes)) return 'erro';\n  if (contacts.nodes.length === 0 && !contacts.pageInfo?.hasNextPage) return 'incompleto';\n  if (selectBuyer(location.company).ok) return 'pendente';\n  return 'incompleto';\n}\nexport default function main(input) {\n const result={eligible:false,claimInputs:'{}',ackInputs:'{}',companyName:'',cnpj:'',enteredAt:'',locationId:'',cycleId:'',debug:'initial'};\n const ev=input.runCode;const rows=input.getCompanyLocationData||[];\n const matches=rows.filter(x=>x.id===ev.locationId);if(matches.length!==1||!ev.requestId)return result;\n const loc=matches[0];result.debug=JSON.stringify({phase:'row',keys:Object.keys(loc),event:ev,rawFields:(loc.metafields||[]).map(x=>({namespace:x.namespace,key:x.key,hasDigest:Boolean(x.compareDigest)}))});for(const f of loc.metafields||[]){if(f.namespace==='ocean_b2b'&&f.key==='review')loc.oceanReview=f;if(f.namespace==='ocean_b2b'&&f.key==='notifications')loc.oceanNotifications=f;}let state,ledger;\n try{state=JSON.parse(loc.oceanReview?.value||'null');ledger=loc.oceanNotifications?JSON.parse(loc.oceanNotifications.value):null;}catch{return result;}\n result.debug=JSON.stringify({phase:'parsed',state,event:ev,reviewDigest:Boolean(loc.oceanReview?.compareDigest),ready:loc.oceanReady?.value,status:loc.oceanStatus?.value,cycle:loc.oceanCycle?.value,since:loc.oceanSince?.value});\n if(!state||state.schema!==1||state.locationId!==ev.locationId||!state.ready||!state.enrolled||state.operationId||state.status!=='pendente'||state.cycleId!==ev.cycleId||Date.parse(state.enteredAt)!==Date.parse(ev.enteredAt))return result;\n if((loc.oceanReady?.value!==true&&loc.oceanReady?.value!=='true')||loc.oceanStatus?.value!=='pendente'||loc.oceanCycle?.value!==ev.cycleId||Date.parse(loc.oceanSince?.value)!==Date.parse(ev.enteredAt))return result;\n const live={...loc,roleAssignments:{nodes:loc.roleAssignments||[],pageInfo:{hasNextPage:false}},company:{...loc.company,contacts:{nodes:loc.company?.contacts||[],pageInfo:{hasNextPage:(loc.company?.contacts||[]).length>=50}}}};\n if(classifyLocation(live)!=='pendente'||!loc.oceanReview?.compareDigest)return result;\n if(ledger&&ledger.schema!==1)return result;\n if(ledger?.cycleId!==ev.cycleId)ledger={schema:1,cycleId:ev.cycleId};\n const kind='vencido';\n if(ledger[kind])return result;\n if(ledger.novo?.state!=='sent'||!Number.isFinite(Date.parse(ev.clock))||Date.parse(ev.clock)+600000<Date.parse(ev.enteredAt)+600000)return result;\n const base={ownerId:loc.id,namespace:'ocean_b2b',type:'json'};\n const review={...base,key:'review',value:loc.oceanReview.value,compareDigest:loc.oceanReview.compareDigest};\n const claimed={...ledger,[kind]:{state:'claimed',requestId:ev.requestId,runUrl:ev.runUrl}};\n const confirmed={...ledger,[kind]:{...ledger[kind],state:'sent',requestId:ev.requestId,runUrl:ev.runUrl}};\n result.claimInputs=JSON.stringify({metafields:[review,{...base,key:'notifications',value:JSON.stringify(claimed),compareDigest:loc.oceanNotifications?.compareDigest||null}]});\n result.ackInputs=JSON.stringify({metafields:[review,{...base,key:'notifications',value:JSON.stringify(confirmed),compareDigest:loc.oceanNotifications?.compareDigest||null}]});\n return {...result,eligible:true,companyName:loc.company?.name||loc.name||'',cnpj:loc.company?.oceanCnpj?.value||loc.taxSettings?.taxRegistrationId||'Nao informado',enteredAt:ev.enteredAt,locationId:loc.id,cycleId:ev.cycleId};\n}"
+                  },
+                  {
+                    "config_field_id": "output_schema",
+                    "value": "type Output { eligible:Boolean! claimInputs:String! ackInputs:String! companyName:String! cnpj:String! enteredAt:String! locationId:String! cycleId:String! debug:String! }"
+                  }
+                ],
+                "task_id": "shopify::flow::run_code",
+                "task_version": "0.1",
+                "task_type": "ACTION",
+                "name": "Run code (1)"
+              },
+              {
+                "step_id": "eligible",
+                "config_field_values": [
+                  {
+                    "config_field_id": "condition",
+                    "value": "(runCode1.eligible == true)"
+                  }
+                ],
+                "task_id": "shopify::flow::condition",
+                "task_version": "0.1",
+                "task_type": "CONDITION",
+                "name": null
+              },
+              {
+                "step_id": "claim_notification",
+                "config_field_values": [
+                  {
+                    "config_field_id": "api_call",
+                    "value": "{\"name\":\"metafieldsSet\",\"blob\":\"{{runCode1.claimInputs}}\"}"
+                  }
+                ],
+                "task_id": "shopify::admin::admin_api_operation",
+                "task_version": "0.1",
+                "task_type": "ACTION",
+                "name": "Send Admin API request"
+              },
+              {
+                "step_id": "revalidate_location",
+                "config_field_values": [
+                  {
+                    "config_field_id": "sort_by",
+                    "value": "{\"sortKey\":\"ID\",\"order\":\"ASCENDING\"}"
+                  },
+                  {
+                    "config_field_id": "max_root_records",
+                    "value": "2"
+                  },
+                  {
+                    "config_field_id": "query",
+                    "value": "ids:{{runCode.numericId}}"
+                  }
+                ],
+                "task_id": "shopify::flow::fetch::company_locations",
+                "task_version": "v1",
+                "task_type": "ACTION",
+                "name": "Get company location data (1)"
+              },
+              {
+                "step_id": "verify_claim",
+                "config_field_values": [
+                  {
+                    "config_field_id": "input",
+                    "value": "query { runCode { locationId cycleId enteredAt requestId runUrl clock } getCompanyLocationData1 { id name createdAt taxSettings { taxRegistrationId } company { id name oceanCnpj { value } mainContact { id } contacts { id customer { id } } } roleAssignments { id } metafields { namespace key value compareDigest updatedAt } oceanReview { value } oceanNotifications { value } oceanReady { value } oceanStatus { value } oceanCycle { value } oceanSince { value } } }"
+                  },
+                  {
+                    "config_field_id": "script",
+                    "value": "function selectBuyer(company) {\n  const contacts = company?.contacts;\n  if (!Array.isArray(contacts?.nodes)) return {ok:false, reason:'Contatos da empresa indisponiveis.'};\n  const all = contacts.nodes.filter(c => c?.id && c?.customer?.id);\n  const mainId = company?.mainContact?.id;\n  if (mainId) {\n    const main = all.find(c => c.id === mainId);\n    if (main) return {ok:true, contact:main};\n    return {ok:false, reason:'Contato principal nao confirmado entre os contatos da empresa.'};\n  }\n  if (contacts.pageInfo?.hasNextPage) return {ok:false, reason:'Ha contatos adicionais nao carregados; revise antes de aprovar.'};\n  if (all.length === 1) return {ok:true, contact:all[0]};\n  if (all.length === 0) return {ok:false, reason:'Empresa sem contato vinculado. Vincule o cliente antes de aprovar.'};\n  return {ok:false, reason:'Empresa com multiplos contatos e sem contato principal; selecione um principal na Shopify.'};\n}\nfunction classifyLocation(location) {\n  const roleConnection = location?.roleAssignments;\n  if (!roleConnection || !Array.isArray(roleConnection.nodes)) return 'erro';\n  if (roleConnection.nodes.length > 0) return 'aprovado';\n  if (roleConnection.pageInfo?.hasNextPage) return 'erro';\n  const contacts = location.company?.contacts;\n  if (!contacts || !Array.isArray(contacts.nodes)) return 'erro';\n  if (contacts.nodes.length === 0 && !contacts.pageInfo?.hasNextPage) return 'incompleto';\n  if (selectBuyer(location.company).ok) return 'pendente';\n  return 'incompleto';\n}\nexport default function main(input) {\n const result={eligible:false,claimInputs:'{}',ackInputs:'{}',companyName:'',cnpj:'',enteredAt:'',locationId:'',cycleId:'',debug:'initial'};\n const ev=input.runCode;const rows=input.getCompanyLocationData1||[];\n const matches=rows.filter(x=>x.id===ev.locationId);if(matches.length!==1||!ev.requestId)return result;\n const loc=matches[0];result.debug=JSON.stringify({phase:'row',keys:Object.keys(loc),event:ev,rawFields:(loc.metafields||[]).map(x=>({namespace:x.namespace,key:x.key,hasDigest:Boolean(x.compareDigest)}))});for(const f of loc.metafields||[]){if(f.namespace==='ocean_b2b'&&f.key==='review')loc.oceanReview=f;if(f.namespace==='ocean_b2b'&&f.key==='notifications')loc.oceanNotifications=f;}let state,ledger;\n try{state=JSON.parse(loc.oceanReview?.value||'null');ledger=loc.oceanNotifications?JSON.parse(loc.oceanNotifications.value):null;}catch{return result;}\n result.debug=JSON.stringify({phase:'parsed',state,event:ev,reviewDigest:Boolean(loc.oceanReview?.compareDigest),ready:loc.oceanReady?.value,status:loc.oceanStatus?.value,cycle:loc.oceanCycle?.value,since:loc.oceanSince?.value});\n if(!state||state.schema!==1||state.locationId!==ev.locationId||!state.ready||!state.enrolled||state.operationId||state.status!=='pendente'||state.cycleId!==ev.cycleId||Date.parse(state.enteredAt)!==Date.parse(ev.enteredAt))return result;\n if((loc.oceanReady?.value!==true&&loc.oceanReady?.value!=='true')||loc.oceanStatus?.value!=='pendente'||loc.oceanCycle?.value!==ev.cycleId||Date.parse(loc.oceanSince?.value)!==Date.parse(ev.enteredAt))return result;\n const live={...loc,roleAssignments:{nodes:loc.roleAssignments||[],pageInfo:{hasNextPage:false}},company:{...loc.company,contacts:{nodes:loc.company?.contacts||[],pageInfo:{hasNextPage:(loc.company?.contacts||[]).length>=50}}}};\n if(classifyLocation(live)!=='pendente'||!loc.oceanReview?.compareDigest)return result;\n if(ledger&&ledger.schema!==1)return result;\n if(ledger?.cycleId!==ev.cycleId)ledger={schema:1,cycleId:ev.cycleId};\n const kind='vencido';\n if(ledger[kind]?.state!=='claimed'||ledger[kind]?.requestId!==ev.requestId)return result;\n if(ledger.novo?.state!=='sent'||!Number.isFinite(Date.parse(ev.clock))||Date.parse(ev.clock)+600000<Date.parse(ev.enteredAt)+600000)return result;\n const base={ownerId:loc.id,namespace:'ocean_b2b',type:'json'};\n const review={...base,key:'review',value:loc.oceanReview.value,compareDigest:loc.oceanReview.compareDigest};\n const claimed={...ledger,[kind]:{state:'claimed',requestId:ev.requestId,runUrl:ev.runUrl}};\n const confirmed={...ledger,[kind]:{...ledger[kind],state:'sent',requestId:ev.requestId,runUrl:ev.runUrl}};\n result.claimInputs=JSON.stringify({metafields:[review,{...base,key:'notifications',value:JSON.stringify(claimed),compareDigest:loc.oceanNotifications?.compareDigest||null}]});\n result.ackInputs=JSON.stringify({metafields:[review,{...base,key:'notifications',value:JSON.stringify(confirmed),compareDigest:loc.oceanNotifications?.compareDigest||null}]});\n return {...result,eligible:true,companyName:loc.company?.name||loc.name||'',cnpj:loc.company?.oceanCnpj?.value||loc.taxSettings?.taxRegistrationId||'Nao informado',enteredAt:ev.enteredAt,locationId:loc.id,cycleId:ev.cycleId};\n}"
+                  },
+                  {
+                    "config_field_id": "output_schema",
+                    "value": "type Output { eligible:Boolean! claimInputs:String! ackInputs:String! companyName:String! cnpj:String! enteredAt:String! locationId:String! cycleId:String! debug:String! }"
+                  }
+                ],
+                "task_id": "shopify::flow::run_code",
+                "task_version": "0.1",
+                "task_type": "ACTION",
+                "name": "Run code (2)"
+              },
+              {
+                "step_id": "still_pending",
+                "config_field_values": [
+                  {
+                    "config_field_id": "condition",
+                    "value": "(runCode2.eligible == true)"
+                  }
+                ],
+                "task_id": "shopify::flow::condition",
+                "task_version": "0.1",
+                "task_type": "CONDITION",
+                "name": null
+              },
+              {
+                "step_id": "internal_email",
+                "config_field_values": [
+                  {
+                    "config_field_id": "address",
+                    "value": "cadastros@oceanjoiasbr.com"
+                  },
+                  {
+                    "config_field_id": "subject",
+                    "value": "OCEAN B2B | CADASTRO VENCIDO | {{runCode2.companyName}}"
+                  },
+                  {
+                    "config_field_id": "message",
+                    "value": "Empresa: {{runCode2.companyName}}\nCNPJ: {{runCode2.cnpj}}\nEntrada em Pendentes (UTC): {{runCode2.enteredAt}}\nLocal: {{runCode2.locationId}}\nCiclo de analise: {{runCode2.cycleId}}\n\nAguardando aprovacao comercial no aplicativo cadastro-b2b.\nExecucao: {{getWorkflowRunData.url}}"
+                  }
+                ],
+                "task_id": "shopify::flow::send_email",
+                "task_version": "2.0",
+                "task_type": "ACTION",
+                "name": null
+              },
+              {
+                "step_id": "confirm_notification",
+                "config_field_values": [
+                  {
+                    "config_field_id": "api_call",
+                    "value": "{\"name\":\"metafieldsSet\",\"blob\":\"{{runCode2.ackInputs}}\"}"
+                  }
+                ],
+                "task_id": "shopify::admin::admin_api_operation",
+                "task_version": "0.1",
+                "task_type": "ACTION",
+                "name": "Send Admin API request (1)"
+              }
+            ],
+            "links": [
+              {
+                "from_step_id": "cycle_created",
+                "from_port_id": "output",
+                "to_step_id": "wait_ten_minutes",
+                "to_port_id": "input"
+              },
+              {
+                "from_step_id": "wait_ten_minutes",
+                "from_port_id": "output",
+                "to_step_id": "run_identity",
+                "to_port_id": "input"
+              },
+              {
+                "from_step_id": "run_identity",
+                "from_port_id": "output",
+                "to_step_id": "check_rollout",
+                "to_port_id": "input"
+              },
+              {
+                "from_step_id": "check_rollout",
+                "from_port_id": "output",
+                "to_step_id": "allowed",
+                "to_port_id": "input"
+              },
+              {
+                "from_step_id": "allowed",
+                "from_port_id": "true",
+                "to_step_id": "fresh_location",
+                "to_port_id": "input"
+              },
+              {
+                "from_step_id": "fresh_location",
+                "from_port_id": "output",
+                "to_step_id": "reserve_once",
+                "to_port_id": "input"
+              },
+              {
+                "from_step_id": "reserve_once",
+                "from_port_id": "output",
+                "to_step_id": "eligible",
+                "to_port_id": "input"
+              },
+              {
+                "from_step_id": "eligible",
+                "from_port_id": "true",
+                "to_step_id": "claim_notification",
+                "to_port_id": "input"
+              },
+              {
+                "from_step_id": "claim_notification",
+                "from_port_id": "output",
+                "to_step_id": "revalidate_location",
+                "to_port_id": "input"
+              },
+              {
+                "from_step_id": "revalidate_location",
+                "from_port_id": "output",
+                "to_step_id": "verify_claim",
+                "to_port_id": "input"
+              },
+              {
+                "from_step_id": "verify_claim",
+                "from_port_id": "output",
+                "to_step_id": "still_pending",
+                "to_port_id": "input"
+              },
+              {
+                "from_step_id": "still_pending",
+                "from_port_id": "true",
+                "to_step_id": "internal_email",
+                "to_port_id": "input"
+              },
+              {
+                "from_step_id": "internal_email",
+                "from_port_id": "output",
+                "to_step_id": "confirm_notification",
+                "to_port_id": "input"
+              }
+            ],
+            "patched_fields": [
+              {
+                "id": "9b14df95-580e-4e7a-a428-9cfa1b5d9f00",
+                "handle": "oceanCnpj",
+                "field": "metafield",
+                "patched_type": "Company",
+                "arguments": {
+                  "key": "cnpj",
+                  "namespace": "custom"
+                }
+              },
+              {
+                "id": "65fa3ca3-a742-4f28-84d1-d673bd195810",
+                "handle": "oceanCycle",
+                "field": "metafield",
+                "patched_type": "CompanyLocation",
+                "arguments": {
+                  "key": "cycle_id",
+                  "namespace": "ocean_b2b"
+                }
+              },
+              {
+                "id": "ae4709b2-4051-48e6-8a0c-58537cdff060",
+                "handle": "oceanNotifications",
+                "field": "metafield",
+                "patched_type": "CompanyLocation",
+                "arguments": {
+                  "key": "notifications",
+                  "namespace": "ocean_b2b"
+                }
+              },
+              {
+                "id": "a6d11e03-9bef-41c6-a4d2-06f7bc0f9fcd",
+                "handle": "oceanReady",
+                "field": "metafield",
+                "patched_type": "CompanyLocation",
+                "arguments": {
+                  "key": "ready",
+                  "namespace": "ocean_b2b"
+                }
+              },
+              {
+                "id": "093987a2-ca31-4598-b60e-c0ea28df6fd7",
+                "handle": "oceanReview",
+                "field": "metafield",
+                "patched_type": "CompanyLocation",
+                "arguments": {
+                  "key": "review",
+                  "namespace": "ocean_b2b"
+                }
+              },
+              {
+                "id": "90beec36-2d99-4529-80ff-0d9a028e5f8e",
+                "handle": "oceanSince",
+                "field": "metafield",
+                "patched_type": "CompanyLocation",
+                "arguments": {
+                  "key": "pending_since",
+                  "namespace": "ocean_b2b"
+                }
+              },
+              {
+                "id": "6c013efb-9196-47b5-a3ae-9101285675dd",
+                "handle": "oceanStatus",
+                "field": "metafield",
+                "patched_type": "CompanyLocation",
+                "arguments": {
+                  "key": "status",
+                  "namespace": "ocean_b2b"
+                }
+              },
+              {
+                "id": "11ed3818-5da5-4322-ad16-42e1a0cba15c",
+                "handle": "oceanRollout",
+                "field": "metafield",
+                "patched_type": "Shop",
+                "arguments": {
+                  "key": "rollout",
+                  "namespace": "ocean_b2b"
+                }
+              }
+            ]
+          }
+        },
+        "validationErrors": []
+      },
+      {
+        "id": "gid://shopify/AutomationWorkflow/01a1e9c5-8412-721a-9a5e-2e545f827eee",
+        "name": "OCEAN — NOVO CADASTRO B2B",
+        "version": "01M7ND1053SFM395G569ZCH2MJ",
+        "activeVersion": "01M7ND1053SFM395G569ZCH2MJ",
+        "versionState": "MAIN",
+        "configuration": {
+          "__metadata": {
+            "version": 0.1
+          },
+          "root": {
+            "steps": [
+              {
+                "step_id": "cycle_created",
+                "config_field_values": [
+                  {
+                    "config_field_id": "type",
+                    "value": "ocean_b2b_pending_cycle"
+                  }
+                ],
+                "task_id": "shopify::admin::metaobject_created",
+                "task_version": "0.1",
+                "task_type": "TRIGGER",
+                "name": null
+              },
+              {
+                "step_id": "run_identity",
+                "config_field_values": [],
+                "task_id": "shopify::flow::get_workflow_run_data",
+                "task_version": "0.1",
+                "task_type": "ACTION",
+                "name": "Get workflow run data"
+              },
+              {
+                "step_id": "check_rollout",
+                "config_field_values": [
+                  {
+                    "config_field_id": "input",
+                    "value": "query { metaobject { localId cycleId enteredAt } shop { oceanRollout { value } } getWorkflowRunData { id url startedAt } }"
+                  },
+                  {
+                    "config_field_id": "script",
+                    "value": "export default function main(input) {\n const fields=input.metaobject?.localId ? {local_id:input.metaobject.localId,cycle_id:input.metaobject.cycleId,entered_at:input.metaobject.enteredAt} : Object.fromEntries((input.metaobject?.system?.fields||[]).map(f=>[f.key,f.value]));\n let config;try{config=JSON.parse(input.shop?.oceanRollout?.value||'{}');}catch{return {allowed:false,locationId:'',numericId:'',cycleId:'',enteredAt:'',requestId:'',runUrl:'',clock:'',debug:'invalid-config'};}\n const id=fields.local_id||'';\n const allowed=/^gid:\\/\\/shopify\\/CompanyLocation\\/\\d+$/.test(id) && /^[a-zA-Z0-9-]{1,80}$/.test(fields.cycle_id||'') && Number.isFinite(Date.parse(fields.entered_at)) && (['test','preparing'].includes(config.mode) && config.testLocationIds?.includes(id) || config.mode==='production' && config.productionApproved===true && Date.parse(fields.entered_at)>=Date.parse(config.cutover));\n return {allowed:Boolean(allowed),locationId:id,numericId:id.split('/').pop(),cycleId:fields.cycle_id||'',enteredAt:fields.entered_at||'',requestId:(input.getWorkflowRunData?.id||'').split('/').pop().replace(/[^a-zA-Z0-9-]/g,''),runUrl:input.getWorkflowRunData?.url||'',clock:input.getWorkflowRunData?.startedAt||'',debug:JSON.stringify({fields,allowed,runId:input.getWorkflowRunData?.id,configMode:config.mode})};\n}"
+                  },
+                  {
+                    "config_field_id": "output_schema",
+                    "value": "type Output { allowed:Boolean! locationId:String! numericId:String! cycleId:String! enteredAt:String! requestId:String! runUrl:String! clock:String! debug:String! }"
+                  }
+                ],
+                "task_id": "shopify::flow::run_code",
+                "task_version": "0.1",
+                "task_type": "ACTION",
+                "name": "Run code"
+              },
+              {
+                "step_id": "allowed",
+                "config_field_values": [
+                  {
+                    "config_field_id": "condition",
+                    "value": "(runCode.allowed == true)"
+                  }
+                ],
+                "task_id": "shopify::flow::condition",
+                "task_version": "0.1",
+                "task_type": "CONDITION",
+                "name": null
+              },
+              {
+                "step_id": "fresh_location",
+                "config_field_values": [
+                  {
+                    "config_field_id": "sort_by",
+                    "value": "{\"sortKey\":\"ID\",\"order\":\"ASCENDING\"}"
+                  },
+                  {
+                    "config_field_id": "max_root_records",
+                    "value": "2"
+                  },
+                  {
+                    "config_field_id": "query",
+                    "value": "ids:{{runCode.numericId}}"
+                  }
+                ],
+                "task_id": "shopify::flow::fetch::company_locations",
+                "task_version": "v1",
+                "task_type": "ACTION",
+                "name": "Get company location data"
+              },
+              {
+                "step_id": "reserve_once",
+                "config_field_values": [
+                  {
+                    "config_field_id": "input",
+                    "value": "query { runCode { locationId cycleId enteredAt requestId runUrl clock } getCompanyLocationData { id name createdAt taxSettings { taxRegistrationId } company { id name oceanCnpj { value } mainContact { id } contacts { id customer { id } } } roleAssignments { id } metafields { namespace key value compareDigest updatedAt } oceanReview { value } oceanNotifications { value } oceanReady { value } oceanStatus { value } oceanCycle { value } oceanSince { value } } }"
+                  },
+                  {
+                    "config_field_id": "script",
+                    "value": "function selectBuyer(company) {\n  const contacts = company?.contacts;\n  if (!Array.isArray(contacts?.nodes)) return {ok:false, reason:'Contatos da empresa indisponiveis.'};\n  const all = contacts.nodes.filter(c => c?.id && c?.customer?.id);\n  const mainId = company?.mainContact?.id;\n  if (mainId) {\n    const main = all.find(c => c.id === mainId);\n    if (main) return {ok:true, contact:main};\n    return {ok:false, reason:'Contato principal nao confirmado entre os contatos da empresa.'};\n  }\n  if (contacts.pageInfo?.hasNextPage) return {ok:false, reason:'Ha contatos adicionais nao carregados; revise antes de aprovar.'};\n  if (all.length === 1) return {ok:true, contact:all[0]};\n  if (all.length === 0) return {ok:false, reason:'Empresa sem contato vinculado. Vincule o cliente antes de aprovar.'};\n  return {ok:false, reason:'Empresa com multiplos contatos e sem contato principal; selecione um principal na Shopify.'};\n}\nfunction classifyLocation(location) {\n  const roleConnection = location?.roleAssignments;\n  if (!roleConnection || !Array.isArray(roleConnection.nodes)) return 'erro';\n  if (roleConnection.nodes.length > 0) return 'aprovado';\n  if (roleConnection.pageInfo?.hasNextPage) return 'erro';\n  const contacts = location.company?.contacts;\n  if (!contacts || !Array.isArray(contacts.nodes)) return 'erro';\n  if (contacts.nodes.length === 0 && !contacts.pageInfo?.hasNextPage) return 'incompleto';\n  if (selectBuyer(location.company).ok) return 'pendente';\n  return 'incompleto';\n}\nexport default function main(input) {\n const result={eligible:false,claimInputs:'{}',ackInputs:'{}',companyName:'',cnpj:'',enteredAt:'',locationId:'',cycleId:'',debug:'initial'};\n const ev=input.runCode;const rows=input.getCompanyLocationData||[];\n const matches=rows.filter(x=>x.id===ev.locationId);if(matches.length!==1||!ev.requestId)return result;\n const loc=matches[0];result.debug=JSON.stringify({phase:'row',keys:Object.keys(loc),event:ev,rawFields:(loc.metafields||[]).map(x=>({namespace:x.namespace,key:x.key,hasDigest:Boolean(x.compareDigest)}))});for(const f of loc.metafields||[]){if(f.namespace==='ocean_b2b'&&f.key==='review')loc.oceanReview=f;if(f.namespace==='ocean_b2b'&&f.key==='notifications')loc.oceanNotifications=f;}let state,ledger;\n try{state=JSON.parse(loc.oceanReview?.value||'null');ledger=loc.oceanNotifications?JSON.parse(loc.oceanNotifications.value):null;}catch{return result;}\n result.debug=JSON.stringify({phase:'parsed',state,event:ev,reviewDigest:Boolean(loc.oceanReview?.compareDigest),ready:loc.oceanReady?.value,status:loc.oceanStatus?.value,cycle:loc.oceanCycle?.value,since:loc.oceanSince?.value});\n if(!state||state.schema!==1||state.locationId!==ev.locationId||!state.ready||!state.enrolled||state.operationId||state.status!=='pendente'||state.cycleId!==ev.cycleId||Date.parse(state.enteredAt)!==Date.parse(ev.enteredAt))return result;\n if((loc.oceanReady?.value!==true&&loc.oceanReady?.value!=='true')||loc.oceanStatus?.value!=='pendente'||loc.oceanCycle?.value!==ev.cycleId||Date.parse(loc.oceanSince?.value)!==Date.parse(ev.enteredAt))return result;\n const live={...loc,roleAssignments:{nodes:loc.roleAssignments||[],pageInfo:{hasNextPage:false}},company:{...loc.company,contacts:{nodes:loc.company?.contacts||[],pageInfo:{hasNextPage:(loc.company?.contacts||[]).length>=50}}}};\n if(classifyLocation(live)!=='pendente'||!loc.oceanReview?.compareDigest)return result;\n if(ledger&&ledger.schema!==1)return result;\n if(ledger?.cycleId!==ev.cycleId)ledger={schema:1,cycleId:ev.cycleId};\n const kind='novo';\n if(ledger[kind])return result;\n \n const base={ownerId:loc.id,namespace:'ocean_b2b',type:'json'};\n const review={...base,key:'review',value:loc.oceanReview.value,compareDigest:loc.oceanReview.compareDigest};\n const claimed={...ledger,[kind]:{state:'claimed',requestId:ev.requestId,runUrl:ev.runUrl}};\n const confirmed={...ledger,[kind]:{...ledger[kind],state:'sent',requestId:ev.requestId,runUrl:ev.runUrl}};\n result.claimInputs=JSON.stringify({metafields:[review,{...base,key:'notifications',value:JSON.stringify(claimed),compareDigest:loc.oceanNotifications?.compareDigest||null}]});\n result.ackInputs=JSON.stringify({metafields:[review,{...base,key:'notifications',value:JSON.stringify(confirmed),compareDigest:loc.oceanNotifications?.compareDigest||null}]});\n return {...result,eligible:true,companyName:loc.company?.name||loc.name||'',cnpj:loc.company?.oceanCnpj?.value||loc.taxSettings?.taxRegistrationId||'Nao informado',enteredAt:ev.enteredAt,locationId:loc.id,cycleId:ev.cycleId};\n}"
+                  },
+                  {
+                    "config_field_id": "output_schema",
+                    "value": "type Output { eligible:Boolean! claimInputs:String! ackInputs:String! companyName:String! cnpj:String! enteredAt:String! locationId:String! cycleId:String! debug:String! }"
+                  }
+                ],
+                "task_id": "shopify::flow::run_code",
+                "task_version": "0.1",
+                "task_type": "ACTION",
+                "name": "Run code (1)"
+              },
+              {
+                "step_id": "eligible",
+                "config_field_values": [
+                  {
+                    "config_field_id": "condition",
+                    "value": "(runCode1.eligible == true)"
+                  }
+                ],
+                "task_id": "shopify::flow::condition",
+                "task_version": "0.1",
+                "task_type": "CONDITION",
+                "name": null
+              },
+              {
+                "step_id": "claim_notification",
+                "config_field_values": [
+                  {
+                    "config_field_id": "api_call",
+                    "value": "{\"name\":\"metafieldsSet\",\"blob\":\"{{runCode1.claimInputs}}\"}"
+                  }
+                ],
+                "task_id": "shopify::admin::admin_api_operation",
+                "task_version": "0.1",
+                "task_type": "ACTION",
+                "name": "Send Admin API request"
+              },
+              {
+                "step_id": "revalidate_location",
+                "config_field_values": [
+                  {
+                    "config_field_id": "sort_by",
+                    "value": "{\"sortKey\":\"ID\",\"order\":\"ASCENDING\"}"
+                  },
+                  {
+                    "config_field_id": "max_root_records",
+                    "value": "2"
+                  },
+                  {
+                    "config_field_id": "query",
+                    "value": "ids:{{runCode.numericId}}"
+                  }
+                ],
+                "task_id": "shopify::flow::fetch::company_locations",
+                "task_version": "v1",
+                "task_type": "ACTION",
+                "name": "Get company location data (1)"
+              },
+              {
+                "step_id": "verify_claim",
+                "config_field_values": [
+                  {
+                    "config_field_id": "input",
+                    "value": "query { runCode { locationId cycleId enteredAt requestId runUrl clock } getCompanyLocationData1 { id name createdAt taxSettings { taxRegistrationId } company { id name oceanCnpj { value } mainContact { id } contacts { id customer { id } } } roleAssignments { id } metafields { namespace key value compareDigest updatedAt } oceanReview { value } oceanNotifications { value } oceanReady { value } oceanStatus { value } oceanCycle { value } oceanSince { value } } }"
+                  },
+                  {
+                    "config_field_id": "script",
+                    "value": "function selectBuyer(company) {\n  const contacts = company?.contacts;\n  if (!Array.isArray(contacts?.nodes)) return {ok:false, reason:'Contatos da empresa indisponiveis.'};\n  const all = contacts.nodes.filter(c => c?.id && c?.customer?.id);\n  const mainId = company?.mainContact?.id;\n  if (mainId) {\n    const main = all.find(c => c.id === mainId);\n    if (main) return {ok:true, contact:main};\n    return {ok:false, reason:'Contato principal nao confirmado entre os contatos da empresa.'};\n  }\n  if (contacts.pageInfo?.hasNextPage) return {ok:false, reason:'Ha contatos adicionais nao carregados; revise antes de aprovar.'};\n  if (all.length === 1) return {ok:true, contact:all[0]};\n  if (all.length === 0) return {ok:false, reason:'Empresa sem contato vinculado. Vincule o cliente antes de aprovar.'};\n  return {ok:false, reason:'Empresa com multiplos contatos e sem contato principal; selecione um principal na Shopify.'};\n}\nfunction classifyLocation(location) {\n  const roleConnection = location?.roleAssignments;\n  if (!roleConnection || !Array.isArray(roleConnection.nodes)) return 'erro';\n  if (roleConnection.nodes.length > 0) return 'aprovado';\n  if (roleConnection.pageInfo?.hasNextPage) return 'erro';\n  const contacts = location.company?.contacts;\n  if (!contacts || !Array.isArray(contacts.nodes)) return 'erro';\n  if (contacts.nodes.length === 0 && !contacts.pageInfo?.hasNextPage) return 'incompleto';\n  if (selectBuyer(location.company).ok) return 'pendente';\n  return 'incompleto';\n}\nexport default function main(input) {\n const result={eligible:false,claimInputs:'{}',ackInputs:'{}',companyName:'',cnpj:'',enteredAt:'',locationId:'',cycleId:'',debug:'initial'};\n const ev=input.runCode;const rows=input.getCompanyLocationData1||[];\n const matches=rows.filter(x=>x.id===ev.locationId);if(matches.length!==1||!ev.requestId)return result;\n const loc=matches[0];result.debug=JSON.stringify({phase:'row',keys:Object.keys(loc),event:ev,rawFields:(loc.metafields||[]).map(x=>({namespace:x.namespace,key:x.key,hasDigest:Boolean(x.compareDigest)}))});for(const f of loc.metafields||[]){if(f.namespace==='ocean_b2b'&&f.key==='review')loc.oceanReview=f;if(f.namespace==='ocean_b2b'&&f.key==='notifications')loc.oceanNotifications=f;}let state,ledger;\n try{state=JSON.parse(loc.oceanReview?.value||'null');ledger=loc.oceanNotifications?JSON.parse(loc.oceanNotifications.value):null;}catch{return result;}\n result.debug=JSON.stringify({phase:'parsed',state,event:ev,reviewDigest:Boolean(loc.oceanReview?.compareDigest),ready:loc.oceanReady?.value,status:loc.oceanStatus?.value,cycle:loc.oceanCycle?.value,since:loc.oceanSince?.value});\n if(!state||state.schema!==1||state.locationId!==ev.locationId||!state.ready||!state.enrolled||state.operationId||state.status!=='pendente'||state.cycleId!==ev.cycleId||Date.parse(state.enteredAt)!==Date.parse(ev.enteredAt))return result;\n if((loc.oceanReady?.value!==true&&loc.oceanReady?.value!=='true')||loc.oceanStatus?.value!=='pendente'||loc.oceanCycle?.value!==ev.cycleId||Date.parse(loc.oceanSince?.value)!==Date.parse(ev.enteredAt))return result;\n const live={...loc,roleAssignments:{nodes:loc.roleAssignments||[],pageInfo:{hasNextPage:false}},company:{...loc.company,contacts:{nodes:loc.company?.contacts||[],pageInfo:{hasNextPage:(loc.company?.contacts||[]).length>=50}}}};\n if(classifyLocation(live)!=='pendente'||!loc.oceanReview?.compareDigest)return result;\n if(ledger&&ledger.schema!==1)return result;\n if(ledger?.cycleId!==ev.cycleId)ledger={schema:1,cycleId:ev.cycleId};\n const kind='novo';\n if(ledger[kind]?.state!=='claimed'||ledger[kind]?.requestId!==ev.requestId)return result;\n \n const base={ownerId:loc.id,namespace:'ocean_b2b',type:'json'};\n const review={...base,key:'review',value:loc.oceanReview.value,compareDigest:loc.oceanReview.compareDigest};\n const claimed={...ledger,[kind]:{state:'claimed',requestId:ev.requestId,runUrl:ev.runUrl}};\n const confirmed={...ledger,[kind]:{...ledger[kind],state:'sent',requestId:ev.requestId,runUrl:ev.runUrl}};\n result.claimInputs=JSON.stringify({metafields:[review,{...base,key:'notifications',value:JSON.stringify(claimed),compareDigest:loc.oceanNotifications?.compareDigest||null}]});\n result.ackInputs=JSON.stringify({metafields:[review,{...base,key:'notifications',value:JSON.stringify(confirmed),compareDigest:loc.oceanNotifications?.compareDigest||null}]});\n return {...result,eligible:true,companyName:loc.company?.name||loc.name||'',cnpj:loc.company?.oceanCnpj?.value||loc.taxSettings?.taxRegistrationId||'Nao informado',enteredAt:ev.enteredAt,locationId:loc.id,cycleId:ev.cycleId};\n}"
+                  },
+                  {
+                    "config_field_id": "output_schema",
+                    "value": "type Output { eligible:Boolean! claimInputs:String! ackInputs:String! companyName:String! cnpj:String! enteredAt:String! locationId:String! cycleId:String! debug:String! }"
+                  }
+                ],
+                "task_id": "shopify::flow::run_code",
+                "task_version": "0.1",
+                "task_type": "ACTION",
+                "name": "Run code (2)"
+              },
+              {
+                "step_id": "still_pending",
+                "config_field_values": [
+                  {
+                    "config_field_id": "condition",
+                    "value": "(runCode2.eligible == true)"
+                  }
+                ],
+                "task_id": "shopify::flow::condition",
+                "task_version": "0.1",
+                "task_type": "CONDITION",
+                "name": null
+              },
+              {
+                "step_id": "internal_email",
+                "config_field_values": [
+                  {
+                    "config_field_id": "address",
+                    "value": "cadastros@oceanjoiasbr.com"
+                  },
+                  {
+                    "config_field_id": "subject",
+                    "value": "OCEAN B2B | NOVO CADASTRO PENDENTE | {{runCode2.companyName}}"
+                  },
+                  {
+                    "config_field_id": "message",
+                    "value": "Empresa: {{runCode2.companyName}}\nCNPJ: {{runCode2.cnpj}}\nEntrada em Pendentes (UTC): {{runCode2.enteredAt}}\nLocal: {{runCode2.locationId}}\nCiclo de analise: {{runCode2.cycleId}}\n\nAguardando aprovacao comercial no aplicativo cadastro-b2b.\nExecucao: {{getWorkflowRunData.url}}"
+                  }
+                ],
+                "task_id": "shopify::flow::send_email",
+                "task_version": "2.0",
+                "task_type": "ACTION",
+                "name": null
+              },
+              {
+                "step_id": "confirm_notification",
+                "config_field_values": [
+                  {
+                    "config_field_id": "api_call",
+                    "value": "{\"name\":\"metafieldsSet\",\"blob\":\"{{runCode2.ackInputs}}\"}"
+                  }
+                ],
+                "task_id": "shopify::admin::admin_api_operation",
+                "task_version": "0.1",
+                "task_type": "ACTION",
+                "name": "Send Admin API request (1)"
+              }
+            ],
+            "links": [
+              {
+                "from_step_id": "cycle_created",
+                "from_port_id": "output",
+                "to_step_id": "run_identity",
+                "to_port_id": "input"
+              },
+              {
+                "from_step_id": "run_identity",
+                "from_port_id": "output",
+                "to_step_id": "check_rollout",
+                "to_port_id": "input"
+              },
+              {
+                "from_step_id": "check_rollout",
+                "from_port_id": "output",
+                "to_step_id": "allowed",
+                "to_port_id": "input"
+              },
+              {
+                "from_step_id": "allowed",
+                "from_port_id": "true",
+                "to_step_id": "fresh_location",
+                "to_port_id": "input"
+              },
+              {
+                "from_step_id": "fresh_location",
+                "from_port_id": "output",
+                "to_step_id": "reserve_once",
+                "to_port_id": "input"
+              },
+              {
+                "from_step_id": "reserve_once",
+                "from_port_id": "output",
+                "to_step_id": "eligible",
+                "to_port_id": "input"
+              },
+              {
+                "from_step_id": "eligible",
+                "from_port_id": "true",
+                "to_step_id": "claim_notification",
+                "to_port_id": "input"
+              },
+              {
+                "from_step_id": "claim_notification",
+                "from_port_id": "output",
+                "to_step_id": "revalidate_location",
+                "to_port_id": "input"
+              },
+              {
+                "from_step_id": "revalidate_location",
+                "from_port_id": "output",
+                "to_step_id": "verify_claim",
+                "to_port_id": "input"
+              },
+              {
+                "from_step_id": "verify_claim",
+                "from_port_id": "output",
+                "to_step_id": "still_pending",
+                "to_port_id": "input"
+              },
+              {
+                "from_step_id": "still_pending",
+                "from_port_id": "true",
+                "to_step_id": "internal_email",
+                "to_port_id": "input"
+              },
+              {
+                "from_step_id": "internal_email",
+                "from_port_id": "output",
+                "to_step_id": "confirm_notification",
+                "to_port_id": "input"
+              }
+            ],
+            "patched_fields": [
+              {
+                "id": "58ef5bd6-7c0a-40b9-bf52-bda426fb3adf",
+                "handle": "oceanCnpj",
+                "field": "metafield",
+                "patched_type": "Company",
+                "arguments": {
+                  "key": "cnpj",
+                  "namespace": "custom"
+                }
+              },
+              {
+                "id": "6f417ed1-08c1-4977-8d85-5c44beb4a06e",
+                "handle": "oceanCycle",
+                "field": "metafield",
+                "patched_type": "CompanyLocation",
+                "arguments": {
+                  "key": "cycle_id",
+                  "namespace": "ocean_b2b"
+                }
+              },
+              {
+                "id": "9f4b3440-9d85-430c-aa95-95cb66615dfc",
+                "handle": "oceanNotifications",
+                "field": "metafield",
+                "patched_type": "CompanyLocation",
+                "arguments": {
+                  "key": "notifications",
+                  "namespace": "ocean_b2b"
+                }
+              },
+              {
+                "id": "afc91ee6-0636-4195-8d64-39a3479b40be",
+                "handle": "oceanReady",
+                "field": "metafield",
+                "patched_type": "CompanyLocation",
+                "arguments": {
+                  "key": "ready",
+                  "namespace": "ocean_b2b"
+                }
+              },
+              {
+                "id": "2b29f919-1cfb-489f-a5d2-85f46ac5ac9a",
+                "handle": "oceanReview",
+                "field": "metafield",
+                "patched_type": "CompanyLocation",
+                "arguments": {
+                  "key": "review",
+                  "namespace": "ocean_b2b"
+                }
+              },
+              {
+                "id": "7e8a791e-69f6-4b49-9c86-d995ccf32196",
+                "handle": "oceanSince",
+                "field": "metafield",
+                "patched_type": "CompanyLocation",
+                "arguments": {
+                  "key": "pending_since",
+                  "namespace": "ocean_b2b"
+                }
+              },
+              {
+                "id": "7cc90d6b-2e1b-4969-a90c-fba50bea0cc7",
+                "handle": "oceanStatus",
+                "field": "metafield",
+                "patched_type": "CompanyLocation",
+                "arguments": {
+                  "key": "status",
+                  "namespace": "ocean_b2b"
+                }
+              },
+              {
+                "id": "de2e8a77-2744-4b5f-9785-085dfcd44095",
+                "handle": "oceanRollout",
+                "field": "metafield",
+                "patched_type": "Shop",
+                "arguments": {
+                  "key": "rollout",
+                  "namespace": "ocean_b2b"
+                }
+              }
+            ]
+          }
+        },
+        "validationErrors": []
+      },
+      {
+        "id": "gid://shopify/AutomationWorkflow/01a1c14c-9fee-73fb-8b03-6357cbe0154c",
+        "name": "Receber uma notificação e configurar empresas criadas por solicitações de conta da empresa",
+        "version": "01M72XNFVAGHPTXTV1YDX9QG5X",
+        "activeVersion": "01M72XNFVAGHPTXTV1YDX9QG5X",
+        "versionState": "MAIN",
+        "configuration": {
+          "__metadata": {
+            "version": 0.1
+          },
+          "root": {
+            "steps": [
+              {
+                "step_id": "3a1e41f6-acd6-48ff-8837-9f3e48d87eb4",
+                "config_field_values": [],
+                "task_id": "shopify::admin::company_location_created",
+                "task_version": "0.1",
+                "task_type": "TRIGGER",
+                "name": null
+              },
+              {
+                "step_id": "40411d7b-4895-4688-a213-04ac9c05abda",
+                "config_field_values": [
+                  {
+                    "config_field_id": "condition",
+                    "value": "(companyLocation.events any? |events_item| (events_item.appTitle == 'Forms'))"
+                  }
+                ],
+                "task_id": "shopify::flow::condition",
+                "task_version": "0.1",
+                "task_type": "CONDITION",
+                "name": null
+              },
+              {
+                "step_id": "962dabcc-7ab0-4206-8ddd-cf3d1cf2ae66",
+                "config_field_values": [
+                  {
+                    "config_field_id": "company_location_id",
+                    "value": "{\"value\":null,\"default_value\":\"companyLocation.id\"}"
+                  },
+                  {
+                    "config_field_id": "checkout_to_draft",
+                    "value": "false"
+                  }
+                ],
+                "task_id": "shopify::admin::update_company_location_checkout_to_draft",
+                "task_version": "0.1",
+                "task_type": "ACTION",
+                "name": null
+              },
+              {
+                "step_id": "45cdbcd6-005f-4cd2-a758-9a7eca17cbec",
+                "config_field_values": [
+                  {
+                    "config_field_id": "company_location_id",
+                    "value": "{\"value\":null,\"default_value\":\"companyLocation.id\"}"
+                  },
+                  {
+                    "config_field_id": "editable_shipping_address",
+                    "value": "true"
+                  }
+                ],
+                "task_id": "shopify::admin::update_company_location_editable_shipping_address",
+                "task_version": "0.1",
+                "task_type": "ACTION",
+                "name": null
+              },
+              {
+                "step_id": "b4dc8a88-2784-4bc4-a311-5d167d0a63a5",
+                "config_field_values": [
+                  {
+                    "config_field_id": "address",
+                    "value": "oceanjoiassales23@gmail.com"
+                  },
+                  {
+                    "config_field_id": "subject",
+                    "value": "New company account request - {{companyLocation.company.name}}"
+                  },
+                  {
+                    "config_field_id": "message",
+                    "value": "{{companyLocation.company.name}} has submitted a company account request.\n\nContact Name: {{companyLocation.company.mainContact.customer.displayName}}\n\nContact Email: {{companyLocation.company.mainContact.customer.email}}\n\n{% for metafields_item in companyLocation.company.metafields %}\n  {{metafields_item.definition.name}}: {{metafields_item.value}}\n{% endfor %}\n\nReview the full submission:\nhttps://{{shop.myshopifyDomain}}/admin/companies?selectedView=orderingNotApproved&orderStatus=%20AND%20active_customers_count%3A0"
+                  }
+                ],
+                "task_id": "shopify::flow::send_email",
+                "task_version": "2.0",
+                "task_type": "ACTION",
+                "name": null
+              }
+            ],
+            "links": [
+              {
+                "from_step_id": "3a1e41f6-acd6-48ff-8837-9f3e48d87eb4",
+                "from_port_id": "output",
+                "to_step_id": "40411d7b-4895-4688-a213-04ac9c05abda",
+                "to_port_id": "input"
+              },
+              {
+                "from_step_id": "40411d7b-4895-4688-a213-04ac9c05abda",
+                "from_port_id": "true",
+                "to_step_id": "962dabcc-7ab0-4206-8ddd-cf3d1cf2ae66",
+                "to_port_id": "input"
+              },
+              {
+                "from_step_id": "40411d7b-4895-4688-a213-04ac9c05abda",
+                "from_port_id": "true",
+                "to_step_id": "45cdbcd6-005f-4cd2-a758-9a7eca17cbec",
+                "to_port_id": "input"
+              },
+              {
+                "from_step_id": "40411d7b-4895-4688-a213-04ac9c05abda",
+                "from_port_id": "true",
+                "to_step_id": "b4dc8a88-2784-4bc4-a311-5d167d0a63a5",
+                "to_port_id": "input"
+              }
+            ],
+            "patched_fields": []
+          }
+        },
+        "validationErrors": []
+      },
+      {
+        "id": "gid://shopify/AutomationWorkflow/01a1c180-81c7-79af-9c3e-ca8b4ea94983",
+        "name": "New Workflow",
+        "version": "01M70R10E4NQKGQ71416JKK078",
+        "activeVersion": "01M70R10E4NQKGQ71416JKK078",
+        "versionState": "MAIN",
+        "configuration": {
+          "__metadata": {
+            "version": 0.1
+          },
+          "root": {
+            "steps": [
+              {
+                "step_id": "01M70R1BRRT0Y62A1BXWA3SSTX",
+                "config_field_values": [],
+                "task_id": "shopify::admin::company_location_created",
+                "task_version": "0.1",
+                "task_type": "TRIGGER",
+                "name": null
+              },
+              {
+                "step_id": "01M70R3MYDHSWWZWBH82V381F1",
+                "config_field_values": [
+                  {
+                    "config_field_id": "api_call",
+                    "value": "{\"name\":\"companyLocationAssignAddress\",\"blob\":\"\\n{\\n  \\\"locationId\\\": \\\"{{ companyLocation.id }}\\\",\\n  \\\"address\\\": {\\n    \\\"address1\\\": {{ companyLocation.billingAddress.address1 | json }},\\n    \\\"address2\\\": {{ companyLocation.billingAddress.address2 | json }},\\n    \\\"city\\\": {{ companyLocation.billingAddress.city | json }},\\n    \\\"zip\\\": {{ companyLocation.billingAddress.zip | json }},\\n    \\\"zoneCode\\\": {{ companyLocation.billingAddress.zoneCode | json }},\\n    \\\"countryCode\\\": {{ companyLocation.billingAddress.countryCode | json }},\\n    \\\"recipient\\\": {{ companyLocation.billingAddress.recipient | json }},\\n    \\\"firstName\\\": {{ companyLocation.billingAddress.firstName | json }},\\n    \\\"lastName\\\": {{ companyLocation.billingAddress.lastName | json }},\\n    \\\"phone\\\": {{ companyLocation.billingAddress.phone | json }}\\n  },\\n  \\\"addressTypes\\\": [\\\"SHIPPING\\\"]\\n}\\n\"}"
+                  }
+                ],
+                "task_id": "shopify::admin::admin_api_operation",
+                "task_version": "0.1",
+                "task_type": "ACTION",
+                "name": "Send Admin API request"
+              },
+              {
+                "step_id": "01M70S771DTEK83FQFXCHR7EHH",
+                "config_field_values": [
+                  {
+                    "config_field_id": "wait_duration",
+                    "value": "{\"amount\":\"60\",\"unit\":\"seconds\"}"
+                  }
+                ],
+                "task_id": "shopify::flow::wait",
+                "task_version": "0.1",
+                "task_type": "WAIT",
+                "name": null
+              },
+              {
+                "step_id": "01M70S8JQPSA2GB99Z3H9WC7GT",
+                "config_field_values": [
+                  {
+                    "config_field_id": "api_call",
+                    "value": "{\"name\":\"companyLocationTaxSettingsUpdate\",\"blob\":\"\\n{\\n  \\\"companyLocationId\\\": \\\"{{ companyLocation.id }}\\\",\\n  \\\"taxRegistrationId\\\": \\\"{{ companyLocation.company.cnpj.value }}\\\"\\n}\\n\"}"
+                  }
+                ],
+                "task_id": "shopify::admin::admin_api_operation",
+                "task_version": "0.1",
+                "task_type": "ACTION",
+                "name": "Send Admin API request (1)"
+              },
+              {
+                "step_id": "01M70SQFDNSXF5XZKJCZG8Y0BF",
+                "config_field_values": [
+                  {
+                    "config_field_id": "condition",
+                    "value": "((companyLocation.billingAddress.address1 not_empty_and_not_nil?) && (companyLocation.company.cnpj.value not_empty_and_not_nil?))"
+                  }
+                ],
+                "task_id": "shopify::flow::condition",
+                "task_version": "0.1",
+                "task_type": "CONDITION",
+                "name": null
+              }
+            ],
+            "links": [
+              {
+                "from_step_id": "01M70R1BRRT0Y62A1BXWA3SSTX",
+                "from_port_id": "output",
+                "to_step_id": "01M70S771DTEK83FQFXCHR7EHH",
+                "to_port_id": "input"
+              },
+              {
+                "from_step_id": "01M70R3MYDHSWWZWBH82V381F1",
+                "from_port_id": "output",
+                "to_step_id": "01M70S8JQPSA2GB99Z3H9WC7GT",
+                "to_port_id": "input"
+              },
+              {
+                "from_step_id": "01M70S771DTEK83FQFXCHR7EHH",
+                "from_port_id": "output",
+                "to_step_id": "01M70SQFDNSXF5XZKJCZG8Y0BF",
+                "to_port_id": "input"
+              },
+              {
+                "from_step_id": "01M70SQFDNSXF5XZKJCZG8Y0BF",
+                "from_port_id": "true",
+                "to_step_id": "01M70R3MYDHSWWZWBH82V381F1",
+                "to_port_id": "input"
+              }
+            ],
+            "patched_fields": [
+              {
+                "id": "df28b891-19cb-4713-8b68-9686136a260c",
+                "handle": "cnpj",
+                "field": "metafield",
+                "patched_type": "Company",
+                "arguments": {
+                  "key": "cnpj",
+                  "namespace": "custom"
+                }
+              }
+            ]
+          }
+        },
+        "validationErrors": []
+      },
+      {
+        "id": "gid://shopify/AutomationWorkflow/01a18422-f112-75f0-b62e-1358b17adcea",
+        "name": "Recover abandoned checkout",
+        "version": "01M6225W8J1ZBVFRR33H3P864S",
+        "activeVersion": "01M6225W8J1ZBVFRR33H3P864S",
+        "versionState": "MAIN",
+        "configuration": {
+          "__metadata": {
+            "version": 0.1
+          },
+          "root": {
+            "steps": [
+              {
+                "step_id": "abandoned-checkout-trigger",
+                "config_field_values": [],
+                "task_id": "shopify::admin::abandoned_checkout",
+                "task_version": "0.2",
+                "task_type": "TRIGGER",
+                "name": null
+              },
+              {
+                "step_id": "online-store-checkout-condition",
+                "config_field_values": [
+                  {
+                    "config_field_id": "condition",
+                    "value": "(abandonment.isFromOnlineStore == true)"
+                  }
+                ],
+                "task_id": "shopify::flow::condition",
+                "task_version": "0.1",
+                "task_type": "CONDITION",
+                "name": null
+              },
+              {
+                "step_id": "price-condition",
+                "config_field_values": [
+                  {
+                    "config_field_id": "condition",
+                    "value": "(abandonment.abandonedCheckoutPayload.totalPriceSet.shopMoney.amount > 0)"
+                  }
+                ],
+                "task_id": "shopify::flow::condition",
+                "task_version": "0.1",
+                "task_type": "CONDITION",
+                "name": null
+              },
+              {
+                "step_id": "wait-step",
+                "config_field_values": [
+                  {
+                    "config_field_id": "wait_duration",
+                    "value": "{\"amount\":\"10\",\"unit\":\"hours\"}"
+                  }
+                ],
+                "task_id": "shopify::flow::wait",
+                "task_version": "0.1",
+                "task_type": "WAIT",
+                "name": null
+              },
+              {
+                "step_id": "order-and-previous-abandoned-checkout-condition",
+                "config_field_values": [
+                  {
+                    "config_field_id": "condition",
+                    "value": "((abandonment.customerHasNoOrderSinceAbandonment == true) && (abandonment.hoursSinceLastAbandonedCheckout > 24))"
+                  }
+                ],
+                "task_id": "shopify::flow::condition",
+                "task_version": "0.1",
+                "task_type": "CONDITION",
+                "name": null
+              },
+              {
+                "step_id": "inventory-available-condition",
+                "config_field_values": [
+                  {
+                    "config_field_id": "condition",
+                    "value": "(abandonment.inventoryAvailable == true)"
+                  }
+                ],
+                "task_id": "shopify::flow::condition",
+                "task_version": "0.1",
+                "task_type": "CONDITION",
+                "name": null
+              },
+              {
+                "step_id": "abandoned_checkout",
+                "config_field_values": [
+                  {
+                    "config_field_id": "abandonment_id",
+                    "value": "{\"value\":null,\"default_value\":\"abandonment.id\"}"
+                  },
+                  {
+                    "config_field_id": "customer_id",
+                    "value": "{\"value\":null,\"default_value\":\"customer.id\"}"
+                  },
+                  {
+                    "config_field_id": "marketing_activity_id",
+                    "value": "gid://shopify/MarketingActivity/182099705956"
+                  }
+                ],
+                "task_id": "d077fa62-a75a-45b3-bfa9-835c45f6f2f0",
+                "task_version": "1.0",
+                "task_type": "ACTION",
+                "name": null
+              }
+            ],
+            "links": [
+              {
+                "from_step_id": "abandoned-checkout-trigger",
+                "from_port_id": "output",
+                "to_step_id": "online-store-checkout-condition",
+                "to_port_id": "input"
+              },
+              {
+                "from_step_id": "online-store-checkout-condition",
+                "from_port_id": "true",
+                "to_step_id": "price-condition",
+                "to_port_id": "input"
+              },
+              {
+                "from_step_id": "price-condition",
+                "from_port_id": "true",
+                "to_step_id": "wait-step",
+                "to_port_id": "input"
+              },
+              {
+                "from_step_id": "wait-step",
+                "from_port_id": "output",
+                "to_step_id": "order-and-previous-abandoned-checkout-condition",
+                "to_port_id": "input"
+              },
+              {
+                "from_step_id": "order-and-previous-abandoned-checkout-condition",
+                "from_port_id": "true",
+                "to_step_id": "inventory-available-condition",
+                "to_port_id": "input"
+              },
+              {
+                "from_step_id": "inventory-available-condition",
+                "from_port_id": "true",
+                "to_step_id": "abandoned_checkout",
+                "to_port_id": "input"
+              }
+            ],
+            "patched_fields": []
+          }
+        },
+        "validationErrors": [
+          {
+            "code": "CONNECTOR_ERROR",
+            "message": "O conector para esta etapa da automação está indisponível.",
+            "stepId": "abandoned_checkout",
+            "configFieldId": null
+          }
+        ]
+      }
+    ],
+    "pageInfo": {
+      "hasNextPage": false,
+      "endCursor": "eyJsYXN0X3ZhbHVlIjoiTmpvNk1qQXlOaTB4TVMweE9GUXhNam94TlRvME1DNHpOamc1T0RVck1EQTZNREEifQ=="
+    }
+  }
+}

@@ -1,0 +1,80 @@
+[
+  {
+    "name": "AppHome.jsx",
+    "before": "5615768ef9c5d7a65b18e7be800e605a94ff912626c0e949005f562c73a20d2d",
+    "current": "8c452800ceb479fc4933fb79e976f5a111121cc3954b2b02a7eca56194c05659",
+    "preserved": false
+  },
+  {
+    "name": "api.mjs",
+    "before": "38a5743c2bb4eac6a9fbfe9f1e686dcf6b0d4370ec2c35e31b342c8466fefe6d",
+    "current": "38a5743c2bb4eac6a9fbfe9f1e686dcf6b0d4370ec2c35e31b342c8466fefe6d",
+    "preserved": true
+  },
+  {
+    "name": "aprovar.mjs",
+    "before": "39cebc48f6f126a5a9970460d83c0b763aa12632115cf4cd8cff3b96e430cc48",
+    "current": "39cebc48f6f126a5a9970460d83c0b763aa12632115cf4cd8cff3b96e430cc48",
+    "preserved": true
+  },
+  {
+    "name": "cnpj-link.mjs",
+    "before": "415a29a433041aa0733874c0971f9f3d44f61ee257b6693ee994227335fd7c9a",
+    "current": "415a29a433041aa0733874c0971f9f3d44f61ee257b6693ee994227335fd7c9a",
+    "preserved": true
+  },
+  {
+    "name": "contato-links.mjs",
+    "before": "b8377510f8f6c46fe459d14655ccdb379796604fa8c76b98956564e93ca96b51",
+    "current": "b8377510f8f6c46fe459d14655ccdb379796604fa8c76b98956564e93ca96b51",
+    "preserved": true
+  },
+  {
+    "name": "mensagens-whatsapp.mjs",
+    "before": "66cd9762087a64ce611caaddb56bca23fb2700a9749b5e8930b674bcc9d91819",
+    "current": "66cd9762087a64ce611caaddb56bca23fb2700a9749b5e8930b674bcc9d91819",
+    "preserved": true
+  },
+  {
+    "name": "ordenacao.mjs",
+    "before": "68fda88d5a24509ed6190a7742049725e0d5a636d28523384e42fa174ab74e8d",
+    "current": "68fda88d5a24509ed6190a7742049725e0d5a636d28523384e42fa174ab74e8d",
+    "preserved": true
+  },
+  {
+    "name": "prazo-pendentes.mjs",
+    "before": "218f81bf16f12d4c7f997aa7f11818f5f4c346ba117d2626767769732c3590ab",
+    "current": "218f81bf16f12d4c7f997aa7f11818f5f4c346ba117d2626767769732c3590ab",
+    "preserved": true
+  },
+  {
+    "name": "regras.mjs",
+    "before": "9e4abb8e98590e431d3ad4de6adc468a1ddc3de82ea20f7d2af5f5e5e80dc158",
+    "current": "9e4abb8e98590e431d3ad4de6adc468a1ddc3de82ea20f7d2af5f5e5e80dc158",
+    "preserved": true
+  },
+  {
+    "name": "reprovados-api.mjs",
+    "before": "20b5b23077d6e81289ba4c79dffa1e9d1fa4e931ea14f4691cbf7d60e459b503",
+    "current": "2a7711b310b93ffddadf002da2c804de19a7dbe91d1d150edf75cd0afe9595a2",
+    "preserved": false
+  },
+  {
+    "name": "status.mjs",
+    "before": "198f879a034c3877aee7e6bd57dd3666499025e43db99a9caff96d9e2b4ecc26",
+    "current": "198f879a034c3877aee7e6bd57dd3666499025e43db99a9caff96d9e2b4ecc26",
+    "preserved": true
+  },
+  {
+    "name": "testes-acesso.mjs",
+    "before": "3271b7125a9ce37ffb2941bfc647c0e8b430f122c7930042a01ea7be29ba52ee",
+    "current": "3271b7125a9ce37ffb2941bfc647c0e8b430f122c7930042a01ea7be29ba52ee",
+    "preserved": true
+  },
+  {
+    "name": "testes-reprovados.mjs",
+    "before": "7e45cdbe5c9f11868e065cef25f7aec352fd4053f39b6b015eaa313437233324",
+    "current": "7e45cdbe5c9f11868e065cef25f7aec352fd4053f39b6b015eaa313437233324",
+    "preserved": true
+  }
+]

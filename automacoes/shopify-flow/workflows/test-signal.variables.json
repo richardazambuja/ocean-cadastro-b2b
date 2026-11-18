@@ -1,0 +1,22 @@
+{
+  "handle": {
+    "type": "ocean_b2b_pending_cycle",
+    "handle": "local-8622571620-8c88f54d-c2f0-48ef-94ed-cc7813aaa309"
+  },
+  "metaobject": {
+    "fields": [
+      {
+        "key": "local_id",
+        "value": "gid://shopify/CompanyLocation/8622571620"
+      },
+      {
+        "key": "cycle_id",
+        "value": "8c88f54d-c2f0-48ef-94ed-cc7813aaa309"
+      },
+      {
+        "key": "entered_at",
+        "value": "2026-11-17T13:54:55.178Z"
+      }
+    ]
+  }
+}

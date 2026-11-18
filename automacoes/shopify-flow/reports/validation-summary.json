@@ -1,0 +1,38 @@
+{
+  "updatedAt": "2026-11-17T14:43:44.634289+00:00",
+  "shop": "mrdvrf-6a.myshopify.com",
+  "integrationTests": 79,
+  "existingTests": 45,
+  "allPassed": true,
+  "appBuildPassed": true,
+  "appDeployed": true,
+  "inStoreTests": {
+    "integrationPassed": 79,
+    "existingPassed": 45,
+    "buildPassed": true,
+    "nativeMetafieldWriteRead": true,
+    "nativeMetaobjectSignal": true,
+    "companyLocationCreatedCapture": "passed_in_store_2026-11-17T14:39:41Z",
+    "companyContactCreatedCapture": "passed_in_store_2026-11-17T14:23:47Z",
+    "novoSentAt": "2026-11-17T14:10:59Z",
+    "vencidoSentAt": "2026-11-17T14:13:00Z",
+    "inbox": {
+      "confirmedBy": "user",
+      "recipient": "cadastros@oceanjoiasbr.com",
+      "company": "OCEAN B2B TESTE FLOW 20261117",
+      "novoReceived": true,
+      "vencidoReceived": true,
+      "answer": "Recebi os dois",
+      "shopifySentAt": {
+        "novo": "2026-11-17T14:10:59Z",
+        "vencido": "2026-11-17T14:13:00Z"
+      }
+    },
+    "repeatedSignalSameCycleSuppressed": true,
+    "approvedAccessBeforeDeadlineSuppressed": "passed_in_store_2026-11-17T14:33:49Z",
+    "commercialApprovalWithoutAccess": "local_tests_passed_runtime_app_pending",
+    "appOwnerRejectReopenProjection": "user_reported_done_but_metafields_unchanged_full_refresh_repeat_pending"
+  },
+  "productionNotificationsEnabled": false,
+  "details": "production-result.json"
+}

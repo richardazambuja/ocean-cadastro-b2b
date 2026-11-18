@@ -1,0 +1,6 @@
+mutation OceanDefineCycleSignal($definition: MetaobjectDefinitionCreateInput!) {
+  metaobjectDefinitionCreate(definition: $definition) {
+    metaobjectDefinition { id type name }
+    userErrors { field message code }
+  }
+}

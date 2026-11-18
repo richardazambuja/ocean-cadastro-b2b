@@ -1,0 +1,1 @@
+query OceanEachDiscovery { automationTasks(first:10,query:"For each") { nodes {id taskId version label outputPortIds configFields {id required ... on AutomationPathConfigField {listsOnly allowedTypes}}} pageInfo{hasNextPage endCursor} } }

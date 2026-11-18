@@ -1,0 +1,16 @@
+{
+  "data": {
+    "companyContactCreate": {
+      "companyContact": {
+        "id": "gid://shopify/CompanyContact/4960157796",
+        "customer": {
+          "id": "gid://shopify/Customer/31382403285092"
+        },
+        "company": {
+          "id": "gid://shopify/Company/7442399332"
+        }
+      },
+      "userErrors": []
+    }
+  }
+}

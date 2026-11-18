@@ -1,0 +1,17 @@
+query OceanBridgeDiagnostic {
+  automationWorkflows(first: 100) {
+    nodes { id name version activeVersion configuration }
+    pageInfo { hasNextPage endCursor }
+  }
+  companyLocations(first: 1) {
+    nodes {
+      id
+      review: metafield(namespace: "ocean_b2b", key: "review") { type value compareDigest }
+    }
+    pageInfo { hasNextPage endCursor }
+  }
+  automationTasks(first: 100, taskType: TRIGGER, reverse: true) {
+    nodes { id taskId label version connector { name installed } }
+    pageInfo { hasNextPage endCursor }
+  }
+}

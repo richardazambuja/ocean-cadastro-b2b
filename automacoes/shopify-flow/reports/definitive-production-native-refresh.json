@@ -1,0 +1,32 @@
+{
+  "at": "2026-11-17T19:09:37.667Z",
+  "before": {
+    "review": {
+      "value": "{\"schema\":1,\"locationId\":\"gid://shopify/CompanyLocation/8625356900\",\"ready\":true,\"operationId\":null,\"status\":\"pendente\",\"cycleId\":\"native-8625356900-01M7NEHWY5JRVVJVCFDGZAW5SP\",\"enteredAt\":\"2026-11-17T19:08:19Z\",\"enrolled\":true,\"reopenVersion\":null,\"decisionVersion\":null,\"updatedAt\":\"2026-11-17T19:08:19Z\",\"signalPending\":false,\"sourceKind\":\"native-new-location\"}",
+      "compareDigest": "2f21fdee71f847da3dcbceb3714fe29d8dc672472f4f6aaaf1d4d2a9a7bb332d"
+    },
+    "ledger": {
+      "value": "{\"schema\":1,\"cycleId\":\"native-8625356900-01M7NEHWY5JRVVJVCFDGZAW5SP\",\"novo\":{\"state\":\"sent\",\"requestId\":\"01a1e9c5-8412-721a-9a5e-2e545f827eee01M7NEHZ2TDW09RD61P9WHX4QE63c4a583f0e8cc65v2\",\"runUrl\":\"https://admin.shopify.com/store/mrdvrf-6a/apps/flow/activity/01a1e9c5-8412-721a-9a5e-2e545f827eee:01M7NEHZ2TDW09RD61P9WHX4QE:63c4a583f0e8cc65:v2\"}}",
+      "updatedAt": "2026-11-17T19:08:22Z"
+    },
+    "signal": {
+      "value": "{\"schema\":1,\"cycleId\":\"native-8625356900-01M7NEHWY5JRVVJVCFDGZAW5SP\",\"at\":\"2026-11-17T19:09:26.093Z\",\"status\":\"confirmed\",\"eventId\":\"gid://shopify/Metaobject/695433461860\",\"handle\":\"local-8625356900-native-8625356900-01m7nehwy5jrvvjvcfdgzaw5sp\"}"
+    }
+  },
+  "after": {
+    "review": {
+      "value": "{\"schema\":1,\"locationId\":\"gid://shopify/CompanyLocation/8625356900\",\"ready\":true,\"operationId\":null,\"status\":\"pendente\",\"cycleId\":\"native-8625356900-01M7NEHWY5JRVVJVCFDGZAW5SP\",\"enteredAt\":\"2026-11-17T19:08:19Z\",\"enrolled\":true,\"reopenVersion\":null,\"decisionVersion\":null,\"updatedAt\":\"2026-11-17T19:08:19Z\",\"signalPending\":false,\"sourceKind\":\"native-new-location\"}",
+      "compareDigest": "2f21fdee71f847da3dcbceb3714fe29d8dc672472f4f6aaaf1d4d2a9a7bb332d"
+    },
+    "ledger": {
+      "value": "{\"schema\":1,\"cycleId\":\"native-8625356900-01M7NEHWY5JRVVJVCFDGZAW5SP\",\"novo\":{\"state\":\"sent\",\"requestId\":\"01a1e9c5-8412-721a-9a5e-2e545f827eee01M7NEHZ2TDW09RD61P9WHX4QE63c4a583f0e8cc65v2\",\"runUrl\":\"https://admin.shopify.com/store/mrdvrf-6a/apps/flow/activity/01a1e9c5-8412-721a-9a5e-2e545f827eee:01M7NEHZ2TDW09RD61P9WHX4QE:63c4a583f0e8cc65:v2\"}}",
+      "updatedAt": "2026-11-17T19:08:22Z"
+    },
+    "signal": {
+      "value": "{\"schema\":1,\"cycleId\":\"native-8625356900-01M7NEHWY5JRVVJVCFDGZAW5SP\",\"at\":\"2026-11-17T19:09:37.028Z\",\"status\":\"confirmed\",\"eventId\":\"gid://shopify/Metaobject/695433461860\",\"handle\":\"local-8625356900-native-8625356900-01m7nehwy5jrvvjvcfdgzaw5sp\"}"
+    }
+  },
+  "warnings": [],
+  "cycleStable": true,
+  "ledgerStable": true
+}

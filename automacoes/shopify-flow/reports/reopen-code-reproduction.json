@@ -1,0 +1,8 @@
+{
+  "test": "tests/reopen-runtime.test.mjs",
+  "command": "node tests/reopen-runtime.test.mjs",
+  "beforeFix": "FAIL: Reabertura privada nova nao pode ficar no ciclo antigo",
+  "expected": "new cycle after changed private reaberto version",
+  "actual": "old-cycle",
+  "cause": "syncLoaded skipped an existing ready mirror without re-reading the app-owned commercial decision. Reopening versions also discarded milliseconds."
+}

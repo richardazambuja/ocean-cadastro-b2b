@@ -1,0 +1,56 @@
+{
+  "automationWorkflowCreate": {
+    "automationWorkflow": {
+      "id": "gid://shopify/AutomationWorkflow/01a1e9c5-8412-721a-9a5e-2e545f827eee",
+      "name": "OCEAN — NOVO CADASTRO B2B",
+      "version": "01M7MWB16W8Q8SV68PBNB6P686",
+      "versionState": "DRAFT",
+      "activeVersion": null,
+      "validationErrors": [
+        {
+          "code": "CONFIG_FIELD_GRAPHQL_QUERY_ERROR",
+          "message": "Este campo de configuração contém uma consulta inválida da Admin API.",
+          "stepId": "check_rollout",
+          "configFieldId": "input"
+        },
+        {
+          "code": "CONFIG_FIELD_GRAPHQL_QUERY_ERROR",
+          "message": "Este campo de configuração contém uma consulta inválida da Admin API.",
+          "stepId": "reserve_once",
+          "configFieldId": "input"
+        },
+        {
+          "code": "CONFIG_FIELD_GRAPHQL_QUERY_ERROR",
+          "message": "Este campo de configuração contém uma consulta inválida da Admin API.",
+          "stepId": "reserve_once",
+          "configFieldId": "input"
+        },
+        {
+          "code": "CONFIG_FIELD_GRAPHQL_QUERY_ERROR",
+          "message": "Este campo de configuração contém uma consulta inválida da Admin API.",
+          "stepId": "reserve_once",
+          "configFieldId": "input"
+        },
+        {
+          "code": "CONFIG_FIELD_GRAPHQL_QUERY_ERROR",
+          "message": "Este campo de configuração contém uma consulta inválida da Admin API.",
+          "stepId": "verify_claim",
+          "configFieldId": "input"
+        },
+        {
+          "code": "CONFIG_FIELD_GRAPHQL_QUERY_ERROR",
+          "message": "Este campo de configuração contém uma consulta inválida da Admin API.",
+          "stepId": "verify_claim",
+          "configFieldId": "input"
+        },
+        {
+          "code": "CONFIG_FIELD_GRAPHQL_QUERY_ERROR",
+          "message": "Este campo de configuração contém uma consulta inválida da Admin API.",
+          "stepId": "verify_claim",
+          "configFieldId": "input"
+        }
+      ]
+    },
+    "userErrors": []
+  }
+}

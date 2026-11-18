@@ -1,0 +1,132 @@
+{
+  "capturedAt": "2026-11-17T14:43:44.634289+00:00",
+  "store": "mrdvrf-6a.myshopify.com",
+  "recipient": "cadastros@oceanjoiasbr.com",
+  "completion": "app_published_workflows_test_active_general_rollout_blocked",
+  "app": {
+    "createdAt": "2026-11-17 14:27:14",
+    "createdBy": "gid://shopify/User/288782911",
+    "versionTag": "ocean-b2b-notifications-20261117-1427",
+    "status": "active",
+    "versionId": "gid://shopify/Version/1232262725633",
+    "message": "Ocean B2B: ponte idempotente, recuperacao de sinais e preservacao do historico"
+  },
+  "backup": {
+    "directory": "/home/richard-azambuja/Downloads/ocean-cadastros-app/cadastro-b2b/automacoes/shopify-flow/backups/20261117T133747Z",
+    "archive": "/home/richard-azambuja/Downloads/ocean-cadastros-app/cadastro-b2b/automacoes/shopify-flow/backups/20261117T133747Z/cadastro-b2b-before.tar.gz"
+  },
+  "workflows": [
+    {
+      "id": "gid://shopify/AutomationWorkflow/01a1e9e3-4bea-70f3-8e80-b18d8c984f89",
+      "name": "OCEAN — PONTE TÉCNICA B2B (novo contato)",
+      "version": "01M7MZ5EDWCX5PJCY044BDK2Z3",
+      "activeVersion": "01M7MZ5EDWCX5PJCY044BDK2Z3",
+      "validationErrors": []
+    },
+    {
+      "id": "gid://shopify/AutomationWorkflow/01a1e9e0-fb18-7796-96df-1f4d86f80bac",
+      "name": "OCEAN — PONTE TÉCNICA B2B (novo local)",
+      "version": "01M7MZ58C596TBKN4M2FTJS639",
+      "activeVersion": "01M7MZ58C596TBKN4M2FTJS639",
+      "validationErrors": []
+    },
+    {
+      "id": "gid://shopify/AutomationWorkflow/01a1e9c5-a198-7078-8e9a-35b205098189",
+      "name": "OCEAN — CADASTRO VENCIDO",
+      "version": "01M7MYKSWJBGDBKJ3B01JWZEYS",
+      "activeVersion": "01M7MYKSWJBGDBKJ3B01JWZEYS",
+      "validationErrors": []
+    },
+    {
+      "id": "gid://shopify/AutomationWorkflow/01a1e9c5-8412-721a-9a5e-2e545f827eee",
+      "name": "OCEAN — NOVO CADASTRO B2B",
+      "version": "01M7MYJX5HKQBPV8G41RQSVZR0",
+      "activeVersion": "01M7MYJX5HKQBPV8G41RQSVZR0",
+      "validationErrors": []
+    }
+  ],
+  "rollout": {
+    "mode": "test",
+    "productionApproved": false,
+    "cutover": null,
+    "testLocationIds": [
+      "gid://shopify/CompanyLocation/8622571620",
+      "gid://shopify/CompanyLocation/8622604388"
+    ]
+  },
+  "tests": {
+    "integrationPassed": 79,
+    "existingPassed": 45,
+    "buildPassed": true,
+    "nativeMetafieldWriteRead": true,
+    "nativeMetaobjectSignal": true,
+    "companyLocationCreatedCapture": "passed_in_store_2026-11-17T14:39:41Z",
+    "companyContactCreatedCapture": "passed_in_store_2026-11-17T14:23:47Z",
+    "novoSentAt": "2026-11-17T14:10:59Z",
+    "vencidoSentAt": "2026-11-17T14:13:00Z",
+    "inbox": {
+      "confirmedBy": "user",
+      "recipient": "cadastros@oceanjoiasbr.com",
+      "company": "OCEAN B2B TESTE FLOW 20261117",
+      "novoReceived": true,
+      "vencidoReceived": true,
+      "answer": "Recebi os dois",
+      "shopifySentAt": {
+        "novo": "2026-11-17T14:10:59Z",
+        "vencido": "2026-11-17T14:13:00Z"
+      }
+    },
+    "repeatedSignalSameCycleSuppressed": true,
+    "approvedAccessBeforeDeadlineSuppressed": "passed_in_store_2026-11-17T14:33:49Z",
+    "commercialApprovalWithoutAccess": "local_tests_passed_runtime_app_pending",
+    "appOwnerRejectReopenProjection": "user_reported_done_but_metafields_unchanged_full_refresh_repeat_pending"
+  },
+  "originalWorkflows": [
+    {
+      "id": "gid://shopify/AutomationWorkflow/01a1c14c-9fee-73fb-8b03-6357cbe0154c",
+      "name": "Receber uma notificação e configurar empresas criadas por solicitações de conta da empresa",
+      "activeVersion": "01M72XNFVAGHPTXTV1YDX9QG5X",
+      "configurationUnchanged": true,
+      "activeVersionUnchanged": true
+    },
+    {
+      "id": "gid://shopify/AutomationWorkflow/01a1c180-81c7-79af-9c3e-ca8b4ea94983",
+      "name": "New Workflow",
+      "activeVersion": "01M70R10E4NQKGQ71416JKK078",
+      "configurationUnchanged": true,
+      "activeVersionUnchanged": true
+    },
+    {
+      "id": "gid://shopify/AutomationWorkflow/01a18422-f112-75f0-b62e-1358b17adcea",
+      "name": "Recover abandoned checkout",
+      "activeVersion": "01M6225W8J1ZBVFRR33H3P864S",
+      "configurationUnchanged": true,
+      "activeVersionUnchanged": true
+    }
+  ],
+  "remainingBlocker": {
+    "type": "app_owner_runtime_projection_unverified",
+    "details": "User reported rejection and reopening in cadastro-b2b, but cycle and commercial mirror did not change. Correct app API key, published active version and granted scopes were verified. Full-page refresh and repeat requested. Do not remove test restriction until owner app writes and new cycle signal are observed.",
+    "receiptConfirmationPending": false
+  },
+  "existingUnrelatedError": [
+    {
+      "code": "CONNECTOR_ERROR",
+      "message": "O conector para esta etapa da automação está indisponível.",
+      "stepId": "abandoned_checkout",
+      "configFieldId": null
+    }
+  ],
+  "evidenceFiles": [
+    "production-two-sends-evidence.json",
+    "production-inbox-confirmation.json",
+    "production-approval-suppression-evidence.json",
+    "production-native-capture-evidence.json",
+    "production-location-trigger-evidence.json",
+    "production-owner-runtime-observation.json",
+    "production-originals-preserved.json",
+    "production-app-versions.json",
+    "production-workflows-final.json",
+    "production-final-rollout.json"
+  ]
+}

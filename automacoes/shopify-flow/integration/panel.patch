@@ -1,0 +1,79 @@
+--- a/extensions/app-home/src/AppHome.jsx
++++ b/extensions/app-home/src/AppHome.jsx
+@@ -1,4 +1,5 @@
+ import {render} from 'preact';
++import {ponteFlow} from './flow-bridge-app.mjs';
+ import {useEffect, useMemo, useState} from 'preact/hooks';
+ import {fetchAllLocations, fetchLocation, assignOrderRole, revokeOrderRole} from './api.mjs';
+ import {selectBuyer, selectOrderRole, formatCnpj, classifyLocation} from './regras.mjs';
+@@ -79,9 +80,9 @@
+     if (!selected || busy || loading || statusDoPainel(selected,decisions)!=='pendente') return;
+     setBusy(true);setError('');setNotice('');
+     try {
+-      const outcome = await approveLocation(selected.id,{
++      const outcome = await ponteFlow.run(selected.id,()=>approveLocation(selected.id,{
+         getLocation:fetchLocation,readDecision:lerReviewStatus,saveDecision:salvarReviewStatus
+-      });
++      }));
+       setSelected(null);setFilter('aprovado_pendente');
+       await loadLocations();
+       setNotice(`${outcome.location.company.name}: aprovada comercialmente. O acesso a pedidos continua bloqueado ate a liberacao.`);
+@@ -94,9 +95,9 @@
+     if (!selected || busy || loading || statusDoPainel(selected,decisions)!=='aprovado_pendente') return;
+     setBusy(true);setError('');setNotice('');
+     try {
+-      const outcome=await releaseAccess(selected.id,{
++      const outcome=await ponteFlow.run(selected.id,()=>releaseAccess(selected.id,{
+         getLocation:fetchLocation,readDecision:lerReviewStatus,assignRole:assignOrderRole
+-      });
++      }));
+       setSelected(null);setFilter('aprovado_liberado');
+       await loadLocations();
+       setNotice(`${outcome.location.company.name}: acesso Apenas pedidos concedido e confirmado na Shopify.`);
+@@ -109,10 +110,10 @@
+     if (!selected || busy || loading || !confirmingLock || statusDoPainel(selected,decisions)!=='aprovado_liberado') return;
+     setBusy(true);setError('');setNotice('');
+     try {
+-      const outcome=await lockAccess(selected.id,{
++      const outcome=await ponteFlow.run(selected.id,()=>lockAccess(selected.id,{
+         getLocation:fetchLocation,readDecision:lerReviewStatus,
+         saveDecision:salvarReviewStatus,revokeRole:revokeOrderRole
+-      });
++      }));
+       setSelected(null);setConfirmingLock(false);setFilter('aprovado_pendente');
+       await loadLocations();
+       setNotice(`${outcome.location.company.name}: funcao Apenas pedidos revogada e ausencia de acesso confirmada na Shopify.`);
+@@ -126,10 +127,13 @@
+     setBusy(true);setError('');setNotice('');
+     try {
+       // Revalida para nao marcar como reprovado um local ja autorizado.
+-      const [actual,decisaoAtual] = await Promise.all([fetchLocation(selected.id),lerReviewStatus(selected.id)]);
+-      if (!['pendente','incompleto'].includes(statusDoPainel(actual,{[selected.id]:decisaoAtual}))) throw new Error('Situacao modificada por outro vendedor. Atualize os dados.');
+-      if (classifyLocation(actual)==='erro') throw new Error('Os dados do local estao incompletos para verificar as permissoes.');
+-      await salvarReviewStatus(selected.id,'reprovado');
++      const actual = await ponteFlow.run(selected.id,async()=>{
++        const [actual,decisaoAtual] = await Promise.all([fetchLocation(selected.id),lerReviewStatus(selected.id)]);
++        if (!['pendente','incompleto'].includes(statusDoPainel(actual,{[selected.id]:decisaoAtual}))) throw new Error('Situacao modificada por outro vendedor. Atualize os dados.');
++        if (classifyLocation(actual)==='erro') throw new Error('Os dados do local estao incompletos para verificar as permissoes.');
++        await salvarReviewStatus(selected.id,'reprovado');
++        return actual;
++      });
+       const companyName = actual.company.name;
+       setSelected(null);setConfirmingRejection(false);setFilter('reprovado');
+       await loadLocations();
+@@ -143,9 +147,12 @@
+     if (!selected || busy || loading || !podeReabrir(selected,decisions)) return;
+     setBusy(true);setError('');setNotice('');
+     try {
+-      const [actual,decisaoAtual] = await Promise.all([fetchLocation(selected.id),lerReviewStatus(selected.id)]);
+-      if (statusDoPainel(actual,{[selected.id]:decisaoAtual})!=='reprovado') throw new Error('Situacao modificada por outro vendedor. Atualize os dados.');
+-      await salvarReviewStatus(selected.id,'reaberto');
++      const actual = await ponteFlow.run(selected.id,async()=>{
++        const [actual,decisaoAtual] = await Promise.all([fetchLocation(selected.id),lerReviewStatus(selected.id)]);
++        if (statusDoPainel(actual,{[selected.id]:decisaoAtual})!=='reprovado') throw new Error('Situacao modificada por outro vendedor. Atualize os dados.');
++        await salvarReviewStatus(selected.id,'reaberto');
++        return actual;
++      });
+       const companyName = actual.company.name;
+       setSelected(null);setConfirmingRejection(false);
+       const currentStatus = classifyLocation(actual);

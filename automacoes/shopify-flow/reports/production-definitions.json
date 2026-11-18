@@ -1,0 +1,59 @@
+{
+  "data": {
+    "d0": {
+      "createdDefinition": {
+        "id": "gid://shopify/MetafieldDefinition/606253088868",
+        "key": "review",
+        "namespace": "ocean_b2b"
+      },
+      "userErrors": []
+    },
+    "d1": {
+      "createdDefinition": {
+        "id": "gid://shopify/MetafieldDefinition/606253121636",
+        "key": "ready",
+        "namespace": "ocean_b2b"
+      },
+      "userErrors": []
+    },
+    "d2": {
+      "createdDefinition": {
+        "id": "gid://shopify/MetafieldDefinition/606253154404",
+        "key": "status",
+        "namespace": "ocean_b2b"
+      },
+      "userErrors": []
+    },
+    "d3": {
+      "createdDefinition": {
+        "id": "gid://shopify/MetafieldDefinition/606253187172",
+        "key": "cycle_id",
+        "namespace": "ocean_b2b"
+      },
+      "userErrors": []
+    },
+    "d4": {
+      "createdDefinition": {
+        "id": "gid://shopify/MetafieldDefinition/606253219940",
+        "key": "pending_since",
+        "namespace": "ocean_b2b"
+      },
+      "userErrors": []
+    },
+    "d5": {
+      "createdDefinition": {
+        "id": "gid://shopify/MetafieldDefinition/606253252708",
+        "key": "notifications",
+        "namespace": "ocean_b2b"
+      },
+      "userErrors": []
+    },
+    "signal": {
+      "metaobjectDefinition": {
+        "id": "gid://shopify/MetaobjectDefinition/43056922724",
+        "type": "ocean_b2b_pending_cycle"
+      },
+      "userErrors": []
+    }
+  }
+}

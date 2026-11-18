@@ -1,0 +1,6 @@
+mutation OceanActivateTestNotification($id:ID!,$version:String!) {
+  automationWorkflowActivate(id:$id,version:$version) {
+    automationWorkflow { id name version activeVersion validationErrors { code message stepId configFieldId } }
+    userErrors { field message code }
+  }
+}

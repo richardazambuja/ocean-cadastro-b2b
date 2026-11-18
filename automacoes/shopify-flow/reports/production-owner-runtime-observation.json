@@ -1,0 +1,54 @@
+{
+  "userReportedRejectAndReopen": true,
+  "observation": "After the reported app actions, review/cycle/decisionVersion/pending_since remained unchanged. A full-page reload and repeat was requested; no result received yet.",
+  "rootCause": "unconfirmed",
+  "data": {
+    "data": {
+      "companyLocation": {
+        "id": "gid://shopify/CompanyLocation/8622571620",
+        "review": {
+          "value": "{\"schema\":1,\"locationId\":\"gid://shopify/CompanyLocation/8622571620\",\"ready\":true,\"operationId\":null,\"status\":\"pendente\",\"cycleId\":\"108ddf6e-bc65-430f-839a-27fd8674766b\",\"enteredAt\":\"2026-11-17T14:02:37Z\",\"enrolled\":true,\"reopenVersion\":null,\"decisionVersion\":null,\"updatedAt\":\"2026-11-17T14:02:37Z\",\"signalPending\":true}",
+          "updatedAt": "2026-11-17T14:02:44Z"
+        },
+        "notifications": {
+          "value": "{\"schema\":1,\"cycleId\":\"108ddf6e-bc65-430f-839a-27fd8674766b\",\"novo\":{\"state\":\"sent\",\"requestId\":\"01a1e9c5-8412-721a-9a5e-2e545f827eee01M7MXHDMER7DWWW4QVKRNJNSA63c4a583f0e8cc65v2\",\"runUrl\":\"https://admin.shopify.com/store/mrdvrf-6a/apps/flow/activity/01a1e9c5-8412-721a-9a5e-2e545f827eee:01M7MXHDMER7DWWW4QVKRNJNSA:63c4a583f0e8cc65:v2\"},\"vencido\":{\"state\":\"sent\",\"requestId\":\"01a1e9c5-a198-7078-8e9a-35b20509818901M7MX2TH0FKTZB066974GH5JZ97f57220d5314e9ev2\",\"runUrl\":\"https://admin.shopify.com/store/mrdvrf-6a/apps/flow/activity/01a1e9c5-a198-7078-8e9a-35b205098189:01M7MX2TH0FKTZB066974GH5JZ:97f57220d5314e9e:v2\"}}",
+          "updatedAt": "2026-11-17T14:13:00Z"
+        }
+      }
+    }
+  },
+  "appInstallation": [
+    {
+      "app": {
+        "id": "gid://shopify/App/447943081985",
+        "title": "cadastro-b2b",
+        "apiKey": "cbdf3320e1517c8e9006c806a882be25"
+      },
+      "launchUrl": "https://mrdvrf-6a.myshopify.com/admin/apps/cadastro-b2b",
+      "accessScopes": [
+        {
+          "handle": "read_companies"
+        },
+        {
+          "handle": "read_customers"
+        },
+        {
+          "handle": "read_metaobjects"
+        },
+        {
+          "handle": "write_companies"
+        },
+        {
+          "handle": "write_metaobjects"
+        },
+        {
+          "handle": "write_products"
+        },
+        {
+          "handle": "read_products"
+        }
+      ]
+    }
+  ],
+  "productionEnabled": false
+}

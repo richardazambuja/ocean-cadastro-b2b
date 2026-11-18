@@ -1,0 +1,14 @@
+{
+  "data": {
+    "metafieldsSet": {
+      "metafields": [
+        {
+          "key": "rollout",
+          "value": "{\"mode\":\"test\",\"testLocationIds\":[\"gid://shopify/CompanyLocation/8622571620\",\"gid://shopify/CompanyLocation/8622604388\",\"gid://shopify/CompanyLocation/8622702692\"],\"cutover\":null,\"recipient\":\"cadastros@oceanjoiasbr.com\",\"productionApproved\":false}",
+          "compareDigest": "2e8fb03bbbf682b5aa8320f8b32eabe3a7038fb4b3c48d647b40cf0c0e7e368f"
+        }
+      ],
+      "userErrors": []
+    }
+  }
+}

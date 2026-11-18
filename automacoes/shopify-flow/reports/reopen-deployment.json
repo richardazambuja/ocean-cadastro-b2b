@@ -1,0 +1,31 @@
+{
+  "version": "ocean-b2b-reopen-fix-20261117-1745",
+  "versionId": "gid://shopify/Version/1233353408513",
+  "url": "https://dev.shopify.com/dashboard/243206031/apps/447943081985/versions/1233353408513",
+  "buildMarker": "ocean-reopen-20261117-1745",
+  "released": true,
+  "integrationTestsPassed": 90,
+  "existingTestsPassed": 45,
+  "buildPassed": true,
+  "graphQLValidated": true,
+  "uiAdditionsValidated": true,
+  "workflowMutationsExecuted": 0,
+  "realNotificationsEnabled": false,
+  "runtimeTest": "retry_not_yet_observed_after_uuid_fix",
+  "previousVersion": "ocean-b2b-reopen-fix-20261117-1740",
+  "confirmedRootCause": "globalThis.crypto is undefined in the Shopify extension runtime. randomUUID failed before the bridge could write the lock/state.",
+  "additionalFixes": [
+    "syncLoaded compares current app-owned decision even for an existing mirror",
+    "decision version retains milliseconds",
+    "snapshot confirmed before native signal, with no post-signal digest-changing ACK"
+  ],
+  "activeVersionVerified": {
+    "createdAt": "2026-11-17 17:46:37",
+    "createdBy": "gid://shopify/User/288782911",
+    "versionTag": "ocean-b2b-reopen-fix-20261117-1745",
+    "status": "active",
+    "versionId": "gid://shopify/Version/1233353408513",
+    "message": "Corrige UUID no runtime sem Web Crypto e mantem reconciliacao e testes restritos"
+  },
+  "testRestrictionMaintained": true
+}

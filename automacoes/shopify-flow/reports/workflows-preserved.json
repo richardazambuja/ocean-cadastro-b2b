@@ -1,0 +1,33 @@
+{
+  "readOnly": true,
+  "workflows": [
+    {
+      "id": "gid://shopify/AutomationWorkflow/01a1c14c-9fee-73fb-8b03-6357cbe0154c",
+      "name": "Receber uma notificação e configurar empresas criadas por solicitações de conta da empresa",
+      "version": "01M72XNFVAGHPTXTV1YDX9QG5X",
+      "activeVersion": "01M72XNFVAGHPTXTV1YDX9QG5X",
+      "configurationSHA256": "37105d6667bdf8ab78bcac6c0ac00c784aa7eb89a9b08bcfcdb0b63a309e5dcb",
+      "sameConfigurationAsEarlierDiagnosis": true,
+      "sameActiveVersionAsEarlierDiagnosis": true
+    },
+    {
+      "id": "gid://shopify/AutomationWorkflow/01a1c180-81c7-79af-9c3e-ca8b4ea94983",
+      "name": "New Workflow",
+      "version": "01M70R10E4NQKGQ71416JKK078",
+      "activeVersion": "01M70R10E4NQKGQ71416JKK078",
+      "configurationSHA256": "ca4432e12a282220c217812765d4eafcdebd78ca8494dc3762fae9d6f72b7f4d",
+      "sameConfigurationAsEarlierDiagnosis": true,
+      "sameActiveVersionAsEarlierDiagnosis": true
+    },
+    {
+      "id": "gid://shopify/AutomationWorkflow/01a18422-f112-75f0-b62e-1358b17adcea",
+      "name": "Recover abandoned checkout",
+      "version": "01M6225W8J1ZBVFRR33H3P864S",
+      "activeVersion": "01M6225W8J1ZBVFRR33H3P864S",
+      "configurationSHA256": "8e6afbbcd0f3388178d4ad8f2eb17f42dae658dd9d83ce166e1c3eb139d473c5",
+      "sameConfigurationAsEarlierDiagnosis": true,
+      "sameActiveVersionAsEarlierDiagnosis": true
+    }
+  ],
+  "mutationsExecuted": 0
+}

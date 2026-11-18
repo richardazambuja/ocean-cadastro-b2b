@@ -1,0 +1,11 @@
+{
+  "name": "ocean-b2b-flow-bridge",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/*.test.mjs",
+    "prepare:panel": "node scripts/prepare-panel.mjs",
+    "prepare:definitions": "node scripts/prepare-definitions.mjs",
+    "validate:graphql": "node scripts/validate-graphql.mjs"
+  }
+}

@@ -1,0 +1,17 @@
+import {spawnSync} from 'node:child_process';
+import {readFileSync,writeFileSync} from 'node:fs';
+const [file,variablesFile,output,permission]=process.argv.slice(2);
+const code=readFileSync(file,'utf8');
+const mutation=/^\s*mutation\b/.test(code);
+if(mutation&&permission!=='--mutation')throw Error('Explicit mutation flag required.');
+const validator='/home/richard-azambuja/.codex/plugins/cache/openai-curated-remote/shopify/4.1.3/skills/shopify/scripts/validate.mjs';
+const valid=spawnSync(process.execPath,[validator,'--api','admin','--version','unstable','--code',code,'--model','gpt-6','--client-name','codex','--client-version','none'],{encoding:'utf8',env:{...process.env,OPT_OUT_INSTRUMENTATION:'true'}});
+if(valid.error||valid.status!==0||!valid.stdout.includes('Overall Status:** ✅ VALID'))throw Error(valid.error?.message||valid.stdout+valid.stderr);
+const args=['store','execute','--store','mrdvrf-6a.myshopify.com','--version','unstable','--query-file',file,'--json','--no-input'];
+if(variablesFile!=='-')args.push('--variable-file',variablesFile);
+if(mutation)args.push('--allow-mutations');
+const result=spawnSync('shopify',args,{encoding:'utf8',maxBuffer:30*1024*1024,env:{...process.env,SHOPIFY_CLI_AGENT_INFO:'n:codex|v:none|p:openai|m:gpt-6'}});
+writeFileSync(output,result.stdout||'');
+if(result.error||result.status!==0)throw Error(result.error?.message||result.stdout+result.stderr);
+const data=JSON.parse(result.stdout);
+console.log(JSON.stringify(data,(key,value)=>['configuration'].includes(key)?'[saved configuration]':value));

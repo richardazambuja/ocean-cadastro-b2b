@@ -1,0 +1,116 @@
+{
+  "at": "2026-11-17T19:08:04.073Z",
+  "checks": {
+    "migrationComplete": true,
+    "primaryRecovered": true,
+    "primaryImmediate": true,
+    "primaryOverdue": true,
+    "approvedBeforeDeadline": true,
+    "approvalRemainsApproved": true,
+    "approvalNoOverdue": true,
+    "elapsed": true,
+    "permissionsPreserved": true,
+    "originalWorkflowsPreserved": true,
+    "historicalExcluded": true
+  },
+  "migration": {
+    "schema": 1,
+    "epoch": "ocean-20261117-1845",
+    "startedAt": "2026-11-17T18:54:49.770Z",
+    "total": 51,
+    "written": 51,
+    "unchanged": 0,
+    "errors": [],
+    "complete": true,
+    "statusCounts": {
+      "incompleto": 5,
+      "aprovado_liberado": 12,
+      "reprovado": 1,
+      "aprovado_pendente": 31,
+      "pendente": 2
+    },
+    "privateSnapshotStable": true,
+    "pass": 1,
+    "completedAt": "2026-11-17T18:54:54.213Z"
+  },
+  "primary": {
+    "review": {
+      "schema": 1,
+      "locationId": "gid://shopify/CompanyLocation/8622571620",
+      "ready": true,
+      "operationId": null,
+      "status": "pendente",
+      "cycleId": "4dd50967-11cf-4403-a0ad-a0f4a11c392e",
+      "enteredAt": "2026-11-17T18:55:31Z",
+      "enrolled": true,
+      "reopenVersion": "2026-11-17T18:55:31.900Z",
+      "decisionVersion": "2026-11-17T18:55:31.900Z",
+      "decisionStatus": "reaberto",
+      "updatedAt": "2026-11-17T18:55:32Z",
+      "signalPending": false,
+      "sourceKind": "cadastro-b2b",
+      "projectionEpoch": "ocean-20261117-1845",
+      "lastSync": {
+        "operationId": "f0cc3212-244f-412b-8632-56f8dee15681",
+        "at": "2026-11-17T18:55:32.864Z",
+        "recoveredOperationId": null,
+        "outcome": "committed"
+      }
+    },
+    "ledger": {
+      "schema": 1,
+      "cycleId": "4dd50967-11cf-4403-a0ad-a0f4a11c392e",
+      "novo": {
+        "state": "sent",
+        "requestId": "01a1e9c5-8412-721a-9a5e-2e545f827eee01M7NDTK6XAG9PKM0DXE54Y0NM63c4a583f0e8cc65v2",
+        "runUrl": "https://admin.shopify.com/store/mrdvrf-6a/apps/flow/activity/01a1e9c5-8412-721a-9a5e-2e545f827eee:01M7NDTK6XAG9PKM0DXE54Y0NM:63c4a583f0e8cc65:v2"
+      },
+      "vencido": {
+        "state": "sent",
+        "requestId": "01a1e9c5-a198-7078-8e9a-35b20509818901M7NDTK6XAG9PKM0DXE54Y0NM97f57220d5314e9ev2",
+        "runUrl": "https://admin.shopify.com/store/mrdvrf-6a/apps/flow/activity/01a1e9c5-a198-7078-8e9a-35b205098189:01M7NDTK6XAG9PKM0DXE54Y0NM:97f57220d5314e9e:v2"
+      }
+    }
+  },
+  "approval": {
+    "review": {
+      "schema": 1,
+      "locationId": "gid://shopify/CompanyLocation/8622702692",
+      "ready": true,
+      "operationId": null,
+      "status": "aprovado_pendente",
+      "cycleId": "b479b806-a659-4357-ac1f-42fd024036ed",
+      "enteredAt": "2026-11-17T18:55:45Z",
+      "enrolled": true,
+      "reopenVersion": null,
+      "decisionVersion": "2026-11-17T18:56:53.659Z",
+      "decisionStatus": "aprovado_pendente",
+      "updatedAt": "2026-11-17T18:56:55Z",
+      "signalPending": false,
+      "sourceKind": "cadastro-b2b",
+      "projectionEpoch": "ocean-20261117-1845",
+      "lastSync": {
+        "operationId": "3ce2fcb0-9369-4871-ab36-e09cc6885d6d",
+        "at": "2026-11-17T18:56:55.299Z",
+        "recoveredOperationId": null,
+        "outcome": "committed"
+      }
+    },
+    "ledger": {
+      "schema": 1,
+      "cycleId": "b479b806-a659-4357-ac1f-42fd024036ed",
+      "novo": {
+        "state": "sent",
+        "requestId": "01a1e9c5-8412-721a-9a5e-2e545f827eee01M7NDV0KMBXHCTCS6JGXNY7YC63c4a583f0e8cc65v2",
+        "runUrl": "https://admin.shopify.com/store/mrdvrf-6a/apps/flow/activity/01a1e9c5-8412-721a-9a5e-2e545f827eee:01M7NDV0KMBXHCTCS6JGXNY7YC:63c4a583f0e8cc65:v2"
+      }
+    }
+  },
+  "historicalCount": 51,
+  "originalWorkflows": [
+    "01a1c14c-9fee-73fb-8b03-6357cbe0154c",
+    "01a1c180-81c7-79af-9c3e-ca8b4ea94983",
+    "01a18422-f112-75f0-b62e-1358b17adcea"
+  ],
+  "roleLocationsCompared": 54
+}

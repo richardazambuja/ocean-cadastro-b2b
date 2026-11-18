@@ -1,0 +1,25 @@
+{
+  "data": {
+    "companyCreate": {
+      "company": {
+        "id": "gid://shopify/Company/7442366564",
+        "name": "OCEAN B2B TESTE FLOW 20261117",
+        "locations": {
+          "nodes": [
+            {
+              "id": "gid://shopify/CompanyLocation/8622571620",
+              "name": "Local TESTE notificações internas"
+            }
+          ]
+        },
+        "mainContact": {
+          "id": "gid://shopify/CompanyContact/4960125028",
+          "customer": {
+            "id": "gid://shopify/Customer/31382285811812"
+          }
+        }
+      },
+      "userErrors": []
+    }
+  }
+}

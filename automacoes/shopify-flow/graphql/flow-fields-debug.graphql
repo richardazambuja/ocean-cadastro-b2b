@@ -1,0 +1,6 @@
+query OceanFlowFieldsDebug {
+  metafield: automationEnvironmentPaths(rootType:"Metafield",query:"compareDigest updatedAt value",first:20) { nodes { path leafType description } pageInfo { hasNextPage endCursor } }
+  shop: automationEnvironmentPaths(rootType:"Shop",query:"metafield",first:10) { nodes { path leafType description } pageInfo { hasNextPage endCursor } }
+  metaobject: automationEnvironmentPaths(rootType:"Metaobject",query:"fields key value",first:10) { nodes { path leafType description } pageInfo { hasNextPage endCursor } }
+  templates: automationTemplates(first:10,query:"metaobject") { nodes { id title configuration } pageInfo { hasNextPage endCursor } }
+}

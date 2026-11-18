@@ -1,0 +1,29 @@
+{
+  "app": {
+    "title": "cadastro-b2b"
+  },
+  "launchUrl": "https://mrdvrf-6a.myshopify.com/admin/apps/cadastro-b2b",
+  "accessScopes": [
+    {
+      "handle": "read_companies"
+    },
+    {
+      "handle": "read_customers"
+    },
+    {
+      "handle": "read_metaobjects"
+    },
+    {
+      "handle": "write_companies"
+    },
+    {
+      "handle": "write_metaobjects"
+    },
+    {
+      "handle": "write_products"
+    },
+    {
+      "handle": "read_products"
+    }
+  ]
+}

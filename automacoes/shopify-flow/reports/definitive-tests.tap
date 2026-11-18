@@ -1,0 +1,572 @@
+
+> test
+> node --test tests/*.test.mjs
+
+TAP version 13
+# Subtest: Bootstrap nativo autoriza somente local de teste
+ok 1 - Bootstrap nativo autoriza somente local de teste
+  ---
+  duration_ms: 3.228239
+  type: 'test'
+  ...
+# Subtest: Bootstrap nativo preserva decisoes e ciclos atuais
+ok 2 - Bootstrap nativo preserva decisoes e ciclos atuais
+  ---
+  duration_ms: 1.870492
+  type: 'test'
+  ...
+# Subtest: Bootstrap nativo nao alerta incompletos nem empresas com acesso
+ok 3 - Bootstrap nativo nao alerta incompletos nem empresas com acesso
+  ---
+  duration_ms: 0.360735
+  type: 'test'
+  ...
+# Subtest: Bootstrap nativo usa CAS ausente e ciclo deterministico por execucao
+ok 4 - Bootstrap nativo usa CAS ausente e ciclo deterministico por execucao
+  ---
+  duration_ms: 0.569759
+  type: 'test'
+  ...
+# Subtest: Bootstrap nativo bloqueia historico e liberacao nao validada
+ok 5 - Bootstrap nativo bloqueia historico e liberacao nao validada
+  ---
+  duration_ms: 0.480163
+  type: 'test'
+  ...
+# Subtest: Bootstrap nativo revalida a gravacao antes de emitir sinal
+ok 6 - Bootstrap nativo revalida a gravacao antes de emitir sinal
+  ---
+  duration_ms: 1.103655
+  type: 'test'
+  ...
+# Subtest: Bootstrap gera outro ciclo em uma futura entrada de incompleto
+ok 7 - Bootstrap gera outro ciclo em uma futura entrada de incompleto
+  ---
+  duration_ms: 2.662686
+  type: 'test'
+  ...
+# Subtest: Bootstrap permite novo local somente dentro da empresa sintetica autorizada
+ok 8 - Bootstrap permite novo local somente dentro da empresa sintetica autorizada
+  ---
+  duration_ms: 0.840435
+  type: 'test'
+  ...
+# Subtest: Preserva classificacao real: pendente
+ok 9 - Preserva classificacao real: pendente
+  ---
+  duration_ms: 3.745818
+  type: 'test'
+  ...
+# Subtest: Preserva classificacao real: aprovado_pendente
+ok 10 - Preserva classificacao real: aprovado_pendente
+  ---
+  duration_ms: 0.601042
+  type: 'test'
+  ...
+# Subtest: Preserva classificacao real: aprovado_liberado
+ok 11 - Preserva classificacao real: aprovado_liberado
+  ---
+  duration_ms: 2.679261
+  type: 'test'
+  ...
+# Subtest: Preserva classificacao real: reprovado
+ok 12 - Preserva classificacao real: reprovado
+  ---
+  duration_ms: 0.361333
+  type: 'test'
+  ...
+# Subtest: Preserva classificacao real: incompleto
+ok 13 - Preserva classificacao real: incompleto
+  ---
+  duration_ms: 0.23799
+  type: 'test'
+  ...
+# Subtest: Acesso B2B existente prevalece sobre reabertura
+ok 14 - Acesso B2B existente prevalece sobre reabertura
+  ---
+  duration_ms: 0.307404
+  type: 'test'
+  ...
+# Subtest: Contatos ambiguos permanecem incompletos
+ok 15 - Contatos ambiguos permanecem incompletos
+  ---
+  duration_ms: 0.375757
+  type: 'test'
+  ...
+# Subtest: Leitura de decisao falhou: nao presume pendente
+ok 16 - Leitura de decisao falhou: nao presume pendente
+  ---
+  duration_ms: 0.439319
+  type: 'test'
+  ...
+# Subtest: Decisao de outro local bloqueada
+ok 17 - Decisao de outro local bloqueada
+  ---
+  duration_ms: 0.573679
+  type: 'test'
+  ...
+# Subtest: Decisao desconhecida bloqueada
+ok 18 - Decisao desconhecida bloqueada
+  ---
+  duration_ms: 0.627189
+  type: 'test'
+  ...
+# Subtest: Paginacao de permissoes inconclusiva bloqueada
+ok 19 - Paginacao de permissoes inconclusiva bloqueada
+  ---
+  duration_ms: 0.329883
+  type: 'test'
+  ...
+# Subtest: Local sem permissoes carregadas bloqueado
+ok 20 - Local sem permissoes carregadas bloqueado
+  ---
+  duration_ms: 0.228329
+  type: 'test'
+  ...
+# Subtest: Reabertura sem horario bloqueada
+ok 21 - Reabertura sem horario bloqueada
+  ---
+  duration_ms: 0.228585
+  type: 'test'
+  ...
+# Subtest: Decisao no futuro bloqueada
+ok 22 - Decisao no futuro bloqueada
+  ---
+  duration_ms: 0.207176
+  type: 'test'
+  ...
+# Subtest: Leitura repetida conserva ciclo e inicio
+ok 23 - Leitura repetida conserva ciclo e inicio
+  ---
+  duration_ms: 0.40273
+  type: 'test'
+  ...
+# Subtest: Horarios sao normalizados para precisao real da Shopify
+ok 24 - Horarios sao normalizados para precisao real da Shopify
+  ---
+  duration_ms: 0.542356
+  type: 'test'
+  ...
+# Subtest: Reabertura inicia ciclo unico no horario confirmado
+ok 25 - Reabertura inicia ciclo unico no horario confirmado
+  ---
+  duration_ms: 0.25955
+  type: 'test'
+  ...
+# Subtest: Releitura da mesma reabertura nao reinicia prazo
+ok 26 - Releitura da mesma reabertura nao reinicia prazo
+  ---
+  duration_ms: 0.269139
+  type: 'test'
+  ...
+# Subtest: Reaberto incompleto nao cria ciclo notificavel
+ok 27 - Reaberto incompleto nao cria ciclo notificavel
+  ---
+  duration_ms: 0.28331
+  type: 'test'
+  ...
+# Subtest: Completar cadastro inicia prazo na entrada real, nao createdAt
+ok 28 - Completar cadastro inicia prazo na entrada real, nao createdAt
+  ---
+  duration_ms: 1.45608
+  type: 'test'
+  ...
+# Subtest: Backfill nao envia notificacoes historicas
+ok 29 - Backfill nao envia notificacoes historicas
+  ---
+  duration_ms: 0.174403
+  type: 'test'
+  ...
+# Subtest: Ciclo antigo rejeitado apos segunda reabertura
+ok 30 - Ciclo antigo rejeitado apos segunda reabertura
+  ---
+  duration_ms: 0.185836
+  type: 'test'
+  ...
+# Subtest: Evento idempotente por local e ciclo
+ok 31 - Evento idempotente por local e ciclo
+  ---
+  duration_ms: 1.098913
+  type: 'test'
+  ...
+# Subtest: Primeiro claim impede duplicata
+ok 32 - Primeiro claim impede duplicata
+  ---
+  duration_ms: 0.20754
+  type: 'test'
+  ...
+# Subtest: Segundo aviso exige primeiro confirmado
+ok 33 - Segundo aviso exige primeiro confirmado
+  ---
+  duration_ms: 0.124283
+  type: 'test'
+  ...
+# Subtest: Limite antes e depois de 10 minutos
+ok 34 - Limite antes e depois de 10 minutos
+  ---
+  duration_ms: 0.24585
+  type: 'test'
+  ...
+# Subtest: Claim sem confirmacao nunca expira automaticamente
+ok 35 - Claim sem confirmacao nunca expira automaticamente
+  ---
+  duration_ms: 0.169707
+  type: 'test'
+  ...
+# Subtest: Ack de outro ciclo nao altera ledger novo
+ok 36 - Ack de outro ciclo nao altera ledger novo
+  ---
+  duration_ms: 0.149096
+  type: 'test'
+  ...
+# Subtest: Ack de outro executor bloqueado
+ok 37 - Ack de outro executor bloqueado
+  ---
+  duration_ms: 0.265769
+  type: 'test'
+  ...
+# Subtest: Metafields usam namespace compartilhado e CAS apenas como bundle
+ok 38 - Metafields usam namespace compartilhado e CAS apenas como bundle
+  ---
+  duration_ms: 0.230748
+  type: 'test'
+  ...
+# Subtest: Flags desligadas fazem zero chamadas Shopify
+ok 39 - Flags desligadas fazem zero chamadas Shopify
+  ---
+  duration_ms: 0.611507
+  type: 'test'
+  ...
+# Subtest: Invalida espelho antes da decisao e publica depois
+ok 40 - Invalida espelho antes da decisao e publica depois
+  ---
+  duration_ms: 15.646921
+  type: 'test'
+  ...
+# Subtest: Falha CAS impede alteracao comercial
+ok 41 - Falha CAS impede alteracao comercial
+  ---
+  duration_ms: 0.691194
+  type: 'test'
+  ...
+# Subtest: Falha comercial reconcilia fonte atual sem repetir a acao
+ok 42 - Falha comercial reconcilia fonte atual sem repetir a acao
+  ---
+  duration_ms: 1.856123
+  type: 'test'
+  ...
+# Subtest: Leitura comercial falha mantem avisos bloqueados
+ok 43 - Leitura comercial falha mantem avisos bloqueados
+  ---
+  duration_ms: 1.371951
+  type: 'test'
+  ...
+# Subtest: Operacao interrompida exige recuperacao explicita
+ok 44 - Operacao interrompida exige recuperacao explicita
+  ---
+  duration_ms: 2.443326
+  type: 'test'
+  ...
+# Subtest: Falha de sinal e retomada nao refazem a decisao
+ok 45 - Falha de sinal e retomada nao refazem a decisao
+  ---
+  duration_ms: 3.489796
+  type: 'test'
+  ...
+# Subtest: Sincronizacao repetida nao recria sinal
+ok 46 - Sincronizacao repetida nao recria sinal
+  ---
+  duration_ms: 3.786243
+  type: 'test'
+  ...
+# Subtest: Ledger tem disputa CAS entre execucoes paralelas
+ok 47 - Ledger tem disputa CAS entre execucoes paralelas
+  ---
+  duration_ms: 2.147675
+  type: 'test'
+  ...
+# Subtest: Revalida aprovacao real antes de reservar aviso
+ok 48 - Revalida aprovacao real antes de reservar aviso
+  ---
+  duration_ms: 1.136783
+  type: 'test'
+  ...
+# Subtest: Revalida alteracao de decisao do mesmo status
+ok 49 - Revalida alteracao de decisao do mesmo status
+  ---
+  duration_ms: 0.958127
+  type: 'test'
+  ...
+# Subtest: Espelho parcial nao e interpretado como pendente
+ok 50 - Espelho parcial nao e interpretado como pendente
+  ---
+  duration_ms: 0.269631
+  type: 'test'
+  ...
+# Subtest: JSON null nao e interpretado como espelho ausente
+ok 51 - JSON null nao e interpretado como espelho ausente
+  ---
+  duration_ms: 0.261071
+  type: 'test'
+  ...
+# Subtest: Ciclo incompleto no JSON bloqueia leitura
+ok 52 - Ciclo incompleto no JSON bloqueia leitura
+  ---
+  duration_ms: 0.819737
+  type: 'test'
+  ...
+# Subtest: Divergencia entre JSON e escalar bloqueia envio
+ok 53 - Divergencia entre JSON e escalar bloqueia envio
+  ---
+  duration_ms: 0.932953
+  type: 'test'
+  ...
+# Subtest: Bootstrap fechado requer rollout confirmado
+ok 54 - Bootstrap fechado requer rollout confirmado
+  ---
+  duration_ms: 0.477746
+  type: 'test'
+  ...
+# Subtest: Bootstrap nao presume ausencia de decisao historica
+ok 55 - Bootstrap nao presume ausencia de decisao historica
+  ---
+  duration_ms: 0.207682
+  type: 'test'
+  ...
+# Subtest: Bootstrap novo completo pode produzir ciclo sem painel
+ok 56 - Bootstrap novo completo pode produzir ciclo sem painel
+  ---
+  duration_ms: 0.274861
+  type: 'test'
+  ...
+# Subtest: Bootstrap incompleto nao emite sinal
+ok 57 - Bootstrap incompleto nao emite sinal
+  ---
+  duration_ms: 0.213633
+  type: 'test'
+  ...
+# Subtest: Bootstrap nao sobrescreve aprovacao comercial
+ok 58 - Bootstrap nao sobrescreve aprovacao comercial
+  ---
+  duration_ms: 0.240579
+  type: 'test'
+  ...
+# Subtest: Bootstrap nao sobrescreve lock do aplicativo
+ok 59 - Bootstrap nao sobrescreve lock do aplicativo
+  ---
+  duration_ms: 0.24562
+  type: 'test'
+  ...
+# Subtest: Contato tardio inicia novo prazo ao ficar completo
+ok 60 - Contato tardio inicia novo prazo ao ficar completo
+  ---
+  duration_ms: 0.289106
+  type: 'test'
+  ...
+# Subtest: Regras, WhatsApp e contador preservados durante implantacao
+ok 61 - Regras, WhatsApp e contador preservados durante implantacao
+  ---
+  duration_ms: 4.171271
+  type: 'test'
+  ...
+# Subtest: Evento publicado nao recebe ACK que invalida o digest visto pelo Flow
+ok 62 - Evento publicado nao recebe ACK que invalida o digest visto pelo Flow
+  ---
+  duration_ms: 1.52332
+  type: 'test'
+  ...
+# Subtest: Reaberturas no mesmo segundo preservam identidade distinta da decisao
+ok 63 - Reaberturas no mesmo segundo preservam identidade distinta da decisao
+  ---
+  duration_ms: 0.392327
+  type: 'test'
+  ...
+# Subtest: Sinal de ciclo nativo usa handle canonico e nao cria evento duplicado
+ok 64 - Sinal de ciclo nativo usa handle canonico e nao cria evento duplicado
+  ---
+  duration_ms: 1.65192
+  type: 'test'
+  ...
+# Subtest: Recuperacao automatica de lease expirado usa decisao atual e conserva ciclo nas repeticoes
+ok 65 - Recuperacao automatica de lease expirado usa decisao atual e conserva ciclo nas repeticoes
+  ---
+  duration_ms: 4.489709
+  type: 'test'
+  ...
+# Subtest: Falha apos decisao gravada recupera estado sem executar negocio novamente
+ok 66 - Falha apos decisao gravada recupera estado sem executar negocio novamente
+  ---
+  duration_ms: 1.854295
+  type: 'test'
+  ...
+# Subtest: Painel atual com os cinco hooks tem sintaxe JSX valida
+ok 67 - Painel atual com os cinco hooks tem sintaxe JSX valida
+  ---
+  duration_ms: 89.721221
+  type: 'test'
+  ...
+# Subtest: Adapter preparado inicia desligado e nao acessa Shopify
+ok 68 - Adapter preparado inicia desligado e nao acessa Shopify
+  ---
+  duration_ms: 4.734743
+  type: 'test'
+  ...
+# Subtest: Painel de producao integrado tem sintaxe JSX valida e cinco hooks
+ok 69 - Painel de producao integrado tem sintaxe JSX valida e cinco hooks
+  ---
+  duration_ms: 46.035796
+  type: 'test'
+  ...
+# Subtest: Reconciliacao consulta decisao privada mesmo quando o espelho pronto ja existe
+ok 70 - Reconciliacao consulta decisao privada mesmo quando o espelho pronto ja existe
+  ---
+  duration_ms: 20.594344
+  type: 'test'
+  ...
+# Subtest: Carregamento de espelho estavel nao disputa o digest com o Flow
+ok 71 - Carregamento de espelho estavel nao disputa o digest com o Flow
+  ---
+  duration_ms: 1.110617
+  type: 'test'
+  ...
+# Subtest: Reabertura completa nao depende de globalThis.crypto no painel Shopify
+ok 72 - Reabertura completa nao depende de globalThis.crypto no painel Shopify
+  ---
+  duration_ms: 2.11821
+  type: 'test'
+  ...
+# Subtest: Acao compartilhada rejeita somente pendentes/incompletos; aprovados sem acesso continuam aprovados
+ok 73 - Acao compartilhada rejeita somente pendentes/incompletos; aprovados sem acesso continuam aprovados
+  ---
+  duration_ms: 3.090656
+  type: 'test'
+  ...
+# Subtest: Reprovar e reabrir alteram apenas decisao comercial e conservam permissoes
+ok 74 - Reprovar e reabrir alteram apenas decisao comercial e conservam permissoes
+  ---
+  duration_ms: 3.929054
+  type: 'test'
+  ...
+# Subtest: UUID funciona no runtime sem crypto, inclusive com relogio constante
+ok 75 - UUID funciona no runtime sem crypto, inclusive com relogio constante
+  ---
+  duration_ms: 77.4681
+  type: 'test'
+  ...
+# Subtest: UUID monotono resiste a retrocesso do relogio
+ok 76 - UUID monotono resiste a retrocesso do relogio
+  ---
+  duration_ms: 0.245605
+  type: 'test'
+  ...
+# Subtest: UUIDv7 confere com vetor publicado no RFC 9562
+ok 77 - UUIDv7 confere com vetor publicado no RFC 9562
+  ---
+  duration_ms: 0.146504
+  type: 'test'
+  ...
+# Subtest: UUID usa randomUUID nativo quando disponivel
+ok 78 - UUID usa randomUUID nativo quando disponivel
+  ---
+  duration_ms: 0.092343
+  type: 'test'
+  ...
+# Subtest: Workflow permite apenas ID de teste autorizado
+ok 79 - Workflow permite apenas ID de teste autorizado
+  ---
+  duration_ms: 1.965295
+  type: 'test'
+  ...
+# Subtest: Workflow bloqueia liberacao real sem validacao
+ok 80 - Workflow bloqueia liberacao real sem validacao
+  ---
+  duration_ms: 0.348902
+  type: 'test'
+  ...
+# Subtest: Workflow le campos camelCase efetivos do metaobjeto Flow
+ok 81 - Workflow le campos camelCase efetivos do metaobjeto Flow
+  ---
+  duration_ms: 0.224735
+  type: 'test'
+  ...
+# Subtest: Workflow rejeita aprovados, reprovados e incompletos
+ok 82 - Workflow rejeita aprovados, reprovados e incompletos
+  ---
+  duration_ms: 0.985837
+  type: 'test'
+  ...
+# Subtest: Workflow revalida acessos B2B existentes
+ok 83 - Workflow revalida acessos B2B existentes
+  ---
+  duration_ms: 0.559652
+  type: 'test'
+  ...
+# Subtest: Workflow exige contato valido
+ok 84 - Workflow exige contato valido
+  ---
+  duration_ms: 0.353524
+  type: 'test'
+  ...
+# Subtest: Workflow monta reserva atomica com dois digests
+ok 85 - Workflow monta reserva atomica com dois digests
+  ---
+  duration_ms: 0.763796
+  type: 'test'
+  ...
+# Subtest: Workflow obtem digests dos metafields genericos Flow
+ok 86 - Workflow obtem digests dos metafields genericos Flow
+  ---
+  duration_ms: 0.465473
+  type: 'test'
+  ...
+# Subtest: Workflow bloqueia repeticao do mesmo ciclo
+ok 87 - Workflow bloqueia repeticao do mesmo ciclo
+  ---
+  duration_ms: 0.605225
+  type: 'test'
+  ...
+# Subtest: Workflow vencido exige primeiro confirmado
+ok 88 - Workflow vencido exige primeiro confirmado
+  ---
+  duration_ms: 0.904297
+  type: 'test'
+  ...
+# Subtest: Workflow vencido aceita ciclo atual com primeiro confirmado
+ok 89 - Workflow vencido aceita ciclo atual com primeiro confirmado
+  ---
+  duration_ms: 0.291536
+  type: 'test'
+  ...
+# Subtest: Workflow bloqueia evento de ciclo antigo
+ok 90 - Workflow bloqueia evento de ciclo antigo
+  ---
+  duration_ms: 0.161998
+  type: 'test'
+  ...
+# Subtest: Workflows possuem destinatario exclusivamente interno
+ok 91 - Workflows possuem destinatario exclusivamente interno
+  ---
+  duration_ms: 2.03539
+  type: 'test'
+  ...
+# Subtest: Workflow usa CNPJ do cadastro enquanto o fluxo legado copia o campo fiscal
+ok 92 - Workflow usa CNPJ do cadastro enquanto o fluxo legado copia o campo fiscal
+  ---
+  duration_ms: 0.210764
+  type: 'test'
+  ...
+# Subtest: Configuracao final remove gravacoes de diagnostico
+ok 93 - Configuracao final remove gravacoes de diagnostico
+  ---
+  duration_ms: 0.453451
+  type: 'test'
+  ...
+1..93
+# tests 93
+# suites 0
+# pass 93
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 513.869954

@@ -1,0 +1,127 @@
+{
+  "automationTasks": {
+    "nodes": [
+      {
+        "id": "gid://shopify/AutomationTask/shopify%3A%3Aflow%3A%3Aforeach?version=0.1",
+        "taskId": "shopify::flow::foreach",
+        "version": "0.1",
+        "label": "For each loop (iterate)",
+        "outputPortIds": [
+          "after",
+          "loop_body"
+        ],
+        "configFields": [
+          {
+            "id": "listpath",
+            "required": true,
+            "listsOnly": true,
+            "allowedTypes": null
+          }
+        ]
+      },
+      {
+        "id": "gid://shopify/AutomationTask/01a19881-e25f-7677-a31f-2f5af5d01a2d?version=1.0",
+        "taskId": "01a19881-e25f-7677-a31f-2f5af5d01a2d",
+        "version": "1.0",
+        "label": "Kaching Bundles deal ordered",
+        "outputPortIds": [
+          "output"
+        ],
+        "configFields": []
+      },
+      {
+        "id": "gid://shopify/AutomationTask/01a0cd1e-e691-7635-bf36-18f8e2466b1c?version=1.0",
+        "taskId": "01a0cd1e-e691-7635-bf36-18f8e2466b1c",
+        "version": "1.0",
+        "label": "Coupon Crew Not Reached",
+        "outputPortIds": [
+          "output"
+        ],
+        "configFields": []
+      },
+      {
+        "id": "gid://shopify/AutomationTask/01a155f6-3261-7df8-949d-8b0cef81ef4a?version=1.0",
+        "taskId": "01a155f6-3261-7df8-949d-8b0cef81ef4a",
+        "version": "1.0",
+        "label": "Low stock reached",
+        "outputPortIds": [
+          "output"
+        ],
+        "configFields": []
+      },
+      {
+        "id": "gid://shopify/AutomationTask/019d8cc2-ba4a-7b3c-abe3-f8a4e3e451b5?version=1.0",
+        "taskId": "019d8cc2-ba4a-7b3c-abe3-f8a4e3e451b5",
+        "version": "1.0",
+        "label": "Coupon Crew Reached",
+        "outputPortIds": [
+          "output"
+        ],
+        "configFields": []
+      },
+      {
+        "id": "gid://shopify/AutomationTask/019e60bc-9eec-72ed-bfce-3beca0877ba8?version=1.0",
+        "taskId": "019e60bc-9eec-72ed-bfce-3beca0877ba8",
+        "version": "1.0",
+        "label": "Clear Upselling Cache",
+        "outputPortIds": [
+          "output"
+        ],
+        "configFields": [
+          {
+            "id": "product_id",
+            "required": true
+          },
+          {
+            "id": "custom_cache_tags",
+            "required": false
+          }
+        ]
+      },
+      {
+        "id": "gid://shopify/AutomationTask/01999a1c-e5dc-7c50-ac0c-006f824b590b?version=1.0",
+        "taskId": "01999a1c-e5dc-7c50-ac0c-006f824b590b",
+        "version": "1.0",
+        "label": "Limit Max Reached",
+        "outputPortIds": [
+          "output"
+        ],
+        "configFields": []
+      },
+      {
+        "id": "gid://shopify/AutomationTask/019c56a1-eddf-7e38-a6a0-b592e02c54d9?version=1.0",
+        "taskId": "019c56a1-eddf-7e38-a6a0-b592e02c54d9",
+        "version": "1.0",
+        "label": "Reward points reached",
+        "outputPortIds": [
+          "output"
+        ],
+        "configFields": []
+      },
+      {
+        "id": "gid://shopify/AutomationTask/019e1ad6-aea5-7f97-b341-b3e1f5414116?version=1.0",
+        "taskId": "019e1ad6-aea5-7f97-b341-b3e1f5414116",
+        "version": "1.0",
+        "label": "Loyalty Tier Reached",
+        "outputPortIds": [
+          "output"
+        ],
+        "configFields": []
+      },
+      {
+        "id": "gid://shopify/AutomationTask/019eef00-679c-7ca9-9e85-04ca9da2cfc4?version=1.0",
+        "taskId": "019eef00-679c-7ca9-9e85-04ca9da2cfc4",
+        "version": "1.0",
+        "label": "Customer reached a tier",
+        "outputPortIds": [
+          "output"
+        ],
+        "configFields": []
+      }
+    ],
+    "pageInfo": {
+      "hasNextPage": true,
+      "endCursor": "eyJsYXN0X3ZhbHVlIjoiT1RvNld5SkdiM0lnWldGamFDSXNiblZzYkN4bVlXeHpaVjAifQ=="
+    }
+  }
+}

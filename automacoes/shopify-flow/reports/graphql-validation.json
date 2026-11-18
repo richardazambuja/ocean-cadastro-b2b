@@ -1,0 +1,69 @@
+{
+  "apiVersion": "2026-10",
+  "executedMutations": 0,
+  "operations": [
+    {
+      "name": "READ",
+      "passed": true,
+      "status": 0,
+      "signal": null,
+      "details": "## Validation Summary\n\n**Overall Status:** ✅ VALID\n**Total Code Blocks:** 1\n\n## Detailed Results\n\n### Code Block 1\n**Artifact ID:** ocean-bridge-read\n**Revision:** 1\n*Use same ID & increment revision when retrying on an improvement of this artifact*\n\n**Status:** ✅ SUCCESS\n**Details:** Successfully validated GraphQL query against schema.\nRequired scopes: read_customers, read_companies\n\n\n"
+    },
+    {
+      "name": "SET",
+      "passed": true,
+      "status": 0,
+      "signal": null,
+      "details": "## Validation Summary\n\n**Overall Status:** ✅ VALID\n**Total Code Blocks:** 1\n\n## Detailed Results\n\n### Code Block 1\n**Artifact ID:** ocean-bridge-set\n**Revision:** 1\n*Use same ID & increment revision when retrying on an improvement of this artifact*\n\n**Status:** ✅ SUCCESS\n**Details:** Successfully validated GraphQL mutation against schema.\n\n\n"
+    },
+    {
+      "name": "SIGNAL",
+      "passed": true,
+      "status": 0,
+      "signal": null,
+      "details": "## Validation Summary\n\n**Overall Status:** ✅ VALID\n**Total Code Blocks:** 1\n\n## Detailed Results\n\n### Code Block 1\n**Artifact ID:** ocean-bridge-signal\n**Revision:** 1\n*Use same ID & increment revision when retrying on an improvement of this artifact*\n\n**Status:** ✅ SUCCESS\n**Details:** Successfully validated GraphQL mutation against schema.\nRequired scopes: write_metaobjects, read_metaobjects\n\n\n"
+    },
+    {
+      "name": "REVIEW",
+      "passed": true,
+      "status": 0,
+      "signal": null,
+      "details": "## Validation Summary\n\n**Overall Status:** ✅ VALID\n**Total Code Blocks:** 1\n\n## Detailed Results\n\n### Code Block 1\n**Artifact ID:** ocean-bridge-review\n**Revision:** 1\n*Use same ID & increment revision when retrying on an improvement of this artifact*\n\n**Status:** ✅ SUCCESS\n**Details:** Successfully validated GraphQL query against schema.\nRequired scopes: read_metaobjects\n\n\n"
+    },
+    {
+      "name": "READ_SIGNAL",
+      "passed": true,
+      "status": 0,
+      "signal": null,
+      "details": "## Validation Summary\n\n**Overall Status:** ✅ VALID\n**Total Code Blocks:** 1\n\n## Detailed Results\n\n### Code Block 1\n**Artifact ID:** ocean-bridge-read_signal\n**Revision:** 1\n*Use same ID & increment revision when retrying on an improvement of this artifact*\n\n**Status:** ✅ SUCCESS\n**Details:** Successfully validated GraphQL query against schema.\nRequired scopes: read_metaobjects\n\n\n"
+    },
+    {
+      "name": "PRIVATE_WRITE",
+      "passed": true,
+      "status": 0,
+      "signal": null,
+      "details": "## Validation Summary\n\n**Overall Status:** ✅ VALID\n**Total Code Blocks:** 1\n\n## Detailed Results\n\n### Code Block 1\n**Artifact ID:** ocean-bridge-private_write\n**Revision:** 1\n*Use same ID & increment revision when retrying on an improvement of this artifact*\n\n**Status:** ✅ SUCCESS\n**Details:** Successfully validated GraphQL mutation against schema.\nRequired scopes: write_metaobjects, read_metaobjects\n\n\n"
+    },
+    {
+      "name": "MIGRATION_READ",
+      "passed": true,
+      "status": 0,
+      "signal": null,
+      "details": "## Validation Summary\n\n**Overall Status:** ✅ VALID\n**Total Code Blocks:** 1\n\n## Detailed Results\n\n### Code Block 1\n**Artifact ID:** ocean-bridge-migration_read\n**Revision:** 1\n*Use same ID & increment revision when retrying on an improvement of this artifact*\n\n**Status:** ✅ SUCCESS\n**Details:** Successfully validated GraphQL query against schema.\nRequired scopes: read_customers, read_companies\n\n\n"
+    },
+    {
+      "name": "DEFINE_METAFIELD",
+      "passed": true,
+      "status": 0,
+      "signal": null,
+      "details": "## Validation Summary\n\n**Overall Status:** ✅ VALID\n**Total Code Blocks:** 1\n\n## Detailed Results\n\n### Code Block 1\n**Artifact ID:** ocean-bridge-define_metafield\n**Revision:** 1\n*Use same ID & increment revision when retrying on an improvement of this artifact*\n\n**Status:** ✅ SUCCESS\n**Details:** Successfully validated GraphQL mutation against schema.\n\n\n"
+    },
+    {
+      "name": "DEFINE_CYCLE",
+      "passed": true,
+      "status": 0,
+      "signal": null,
+      "details": "## Validation Summary\n\n**Overall Status:** ✅ VALID\n**Total Code Blocks:** 1\n\n## Detailed Results\n\n### Code Block 1\n**Artifact ID:** ocean-bridge-define_cycle\n**Revision:** 1\n*Use same ID & increment revision when retrying on an improvement of this artifact*\n\n**Status:** ✅ SUCCESS\n**Details:** Successfully validated GraphQL mutation against schema.\nRequired scopes: write_metaobject_definitions, read_metaobject_definitions\n\n\n"
+    }
+  ]
+}

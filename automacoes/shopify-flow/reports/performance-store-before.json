@@ -1,0 +1,1718 @@
+{
+  "at": "2026-11-18T11:47:31.842Z",
+  "mode": "before",
+  "shop": "mrdvrf-6a.myshopify.com",
+  "app": {
+    "id": "gid://shopify/App/447943081985",
+    "title": "cadastro-b2b",
+    "apiKey": "cbdf3320e1517c8e9006c806a882be25"
+  },
+  "config": {
+    "mode": "production",
+    "cutover": "2026-11-17T19:08:04Z",
+    "recipient": "cadastros@oceanjoiasbr.com",
+    "productionApproved": true,
+    "epoch": "ocean-20261117-1845"
+  },
+  "rows": [
+    {
+      "id": "gid://shopify/CompanyLocation/8588918884",
+      "status": "incompleto",
+      "roles": [],
+      "review": {
+        "schema": 1,
+        "locationId": "gid://shopify/CompanyLocation/8588918884",
+        "ready": true,
+        "operationId": null,
+        "status": "incompleto",
+        "cycleId": null,
+        "enteredAt": null,
+        "enrolled": false,
+        "reopenVersion": null,
+        "decisionVersion": null,
+        "decisionStatus": null,
+        "updatedAt": "2026-11-17T18:54:50Z",
+        "signalPending": false,
+        "sourceKind": "cadastro-b2b",
+        "projectionEpoch": "ocean-20261117-1845",
+        "migratedAt": "2026-11-17T18:54:50.313Z"
+      },
+      "digest": "b29b53837f91f09e748f0970113e4fbc29aeed1183ccff99a43df1864bb6f0fd",
+      "ledger": null,
+      "ledgerDigest": null,
+      "signal": null
+    },
+    {
+      "id": "gid://shopify/CompanyLocation/8589934692",
+      "status": "aprovado_liberado",
+      "roles": [
+        {
+          "id": "gid://shopify/CompanyContactRoleAssignment/52357791844",
+          "role": {
+            "id": "gid://shopify/CompanyContactRole/13625589860",
+            "name": "Apenas pedidos"
+          },
+          "companyContact": {
+            "id": "gid://shopify/CompanyContact/4935352420"
+          }
+        }
+      ],
+      "review": {
+        "schema": 1,
+        "locationId": "gid://shopify/CompanyLocation/8589934692",
+        "ready": true,
+        "operationId": null,
+        "status": "aprovado_liberado",
+        "cycleId": null,
+        "enteredAt": null,
+        "enrolled": false,
+        "reopenVersion": null,
+        "decisionVersion": null,
+        "decisionStatus": null,
+        "updatedAt": "2026-11-17T18:54:50Z",
+        "signalPending": false,
+        "sourceKind": "cadastro-b2b",
+        "projectionEpoch": "ocean-20261117-1845",
+        "migratedAt": "2026-11-17T18:54:50.313Z"
+      },
+      "digest": "3071488409d1e7b4d15b679ab2498afef4b94867c4852da60cd4ea624bc62646",
+      "ledger": null,
+      "ledgerDigest": null,
+      "signal": null
+    },
+    {
+      "id": "gid://shopify/CompanyLocation/8591147108",
+      "status": "incompleto",
+      "roles": [],
+      "review": {
+        "schema": 1,
+        "locationId": "gid://shopify/CompanyLocation/8591147108",
+        "ready": true,
+        "operationId": null,
+        "status": "incompleto",
+        "cycleId": null,
+        "enteredAt": null,
+        "enrolled": false,
+        "reopenVersion": null,
+        "decisionVersion": null,
+        "decisionStatus": null,
+        "updatedAt": "2026-11-17T18:54:50Z",
+        "signalPending": false,
+        "sourceKind": "cadastro-b2b",
+        "projectionEpoch": "ocean-20261117-1845",
+        "migratedAt": "2026-11-17T18:54:50.313Z"
+      },
+      "digest": "8b4b108ee63ffb68c0432f2b873312b87e5ecae033557260dac1cd92715f0d1a",
+      "ledger": null,
+      "ledgerDigest": null,
+      "signal": null
+    },
+    {
+      "id": "gid://shopify/CompanyLocation/8601075812",
+      "status": "incompleto",
+      "roles": [],
+      "review": {
+        "schema": 1,
+        "locationId": "gid://shopify/CompanyLocation/8601075812",
+        "ready": true,
+        "operationId": null,
+        "status": "incompleto",
+        "cycleId": null,
+        "enteredAt": null,
+        "enrolled": false,
+        "reopenVersion": null,
+        "decisionVersion": null,
+        "decisionStatus": null,
+        "updatedAt": "2026-11-17T18:54:50Z",
+        "signalPending": false,
+        "sourceKind": "cadastro-b2b",
+        "projectionEpoch": "ocean-20261117-1845",
+        "migratedAt": "2026-11-17T18:54:50.313Z"
+      },
+      "digest": "11772aea5daae2362c6bd2bd1d44f93dc33c5a82035a4d875640be5a24f21404",
+      "ledger": null,
+      "ledgerDigest": null,
+      "signal": null
+    },
+    {
+      "id": "gid://shopify/CompanyLocation/8601272420",
+      "status": "incompleto",
+      "roles": [],
+      "review": {
+        "schema": 1,
+        "locationId": "gid://shopify/CompanyLocation/8601272420",
+        "ready": true,
+        "operationId": null,
+        "status": "incompleto",
+        "cycleId": null,
+        "enteredAt": null,
+        "enrolled": false,
+        "reopenVersion": null,
+        "decisionVersion": null,
+        "decisionStatus": null,
+        "updatedAt": "2026-11-17T18:54:50Z",
+        "signalPending": false,
+        "sourceKind": "cadastro-b2b",
+        "projectionEpoch": "ocean-20261117-1845",
+        "migratedAt": "2026-11-17T18:54:50.313Z"
+      },
+      "digest": "c8cc6db2bdb769848e2060a542044b7e432ad8ac8a6ca391e33b4e6b758ce921",
+      "ledger": null,
+      "ledgerDigest": null,
+      "signal": null
+    },
+    {
+      "id": "gid://shopify/CompanyLocation/8601305188",
+      "status": "aprovado_liberado",
+      "roles": [
+        {
+          "id": "gid://shopify/CompanyContactRoleAssignment/52362379364",
+          "role": {
+            "id": "gid://shopify/CompanyContactRole/13647216740",
+            "name": "Apenas pedidos"
+          },
+          "companyContact": {
+            "id": "gid://shopify/CompanyContact/4948754532"
+          }
+        }
+      ],
+      "review": {
+        "schema": 1,
+        "locationId": "gid://shopify/CompanyLocation/8601305188",
+        "ready": true,
+        "operationId": null,
+        "status": "aprovado_liberado",
+        "cycleId": null,
+        "enteredAt": null,
+        "enrolled": false,
+        "reopenVersion": null,
+        "decisionVersion": null,
+        "decisionStatus": null,
+        "updatedAt": "2026-11-17T18:54:50Z",
+        "signalPending": false,
+        "sourceKind": "cadastro-b2b",
+        "projectionEpoch": "ocean-20261117-1845",
+        "migratedAt": "2026-11-17T18:54:50.313Z"
+      },
+      "digest": "80afcff7340a471a02467db804d2f2a872da65c64d91e1f89b18502ec373c4c2",
+      "ledger": null,
+      "ledgerDigest": null,
+      "signal": null
+    },
+    {
+      "id": "gid://shopify/CompanyLocation/8602452068",
+      "status": "aprovado_liberado",
+      "roles": [
+        {
+          "id": "gid://shopify/CompanyContactRoleAssignment/52373815396",
+          "role": {
+            "id": "gid://shopify/CompanyContactRole/13649313892",
+            "name": "Apenas pedidos"
+          },
+          "companyContact": {
+            "id": "gid://shopify/CompanyContact/4944592996"
+          }
+        }
+      ],
+      "review": {
+        "schema": 1,
+        "locationId": "gid://shopify/CompanyLocation/8602452068",
+        "ready": true,
+        "operationId": null,
+        "status": "aprovado_liberado",
+        "cycleId": null,
+        "enteredAt": null,
+        "enrolled": false,
+        "reopenVersion": null,
+        "decisionVersion": "2026-11-16T17:53:20.622Z",
+        "decisionStatus": "aprovado_pendente",
+        "updatedAt": "2026-11-17T18:54:50Z",
+        "signalPending": false,
+        "sourceKind": "cadastro-b2b",
+        "projectionEpoch": "ocean-20261117-1845",
+        "migratedAt": "2026-11-17T18:54:50.313Z"
+      },
+      "digest": "b28bee00bb72c7e4768dd386bbf7f87e8587b7e5914acfd3283ba4b0ccbd5741",
+      "ledger": null,
+      "ledgerDigest": null,
+      "signal": null
+    },
+    {
+      "id": "gid://shopify/CompanyLocation/8602714212",
+      "status": "reprovado",
+      "roles": [],
+      "review": {
+        "schema": 1,
+        "locationId": "gid://shopify/CompanyLocation/8602714212",
+        "ready": true,
+        "operationId": null,
+        "status": "reprovado",
+        "cycleId": null,
+        "enteredAt": null,
+        "enrolled": false,
+        "reopenVersion": null,
+        "decisionVersion": "2026-11-16T17:53:42.148Z",
+        "decisionStatus": "reprovado",
+        "updatedAt": "2026-11-17T18:54:50Z",
+        "signalPending": false,
+        "sourceKind": "cadastro-b2b",
+        "projectionEpoch": "ocean-20261117-1845",
+        "migratedAt": "2026-11-17T18:54:50.313Z"
+      },
+      "digest": "25df1dc43b9a978daba29873f18cb680eb5092544d2a570d0c315badf27f047c",
+      "ledger": null,
+      "ledgerDigest": null,
+      "signal": null
+    },
+    {
+      "id": "gid://shopify/CompanyLocation/8602746980",
+      "status": "aprovado_liberado",
+      "roles": [
+        {
+          "id": "gid://shopify/CompanyContactRoleAssignment/52365492324",
+          "role": {
+            "id": "gid://shopify/CompanyContactRole/13649838180",
+            "name": "Apenas pedidos"
+          },
+          "companyContact": {
+            "id": "gid://shopify/CompanyContact/4944855140"
+          }
+        }
+      ],
+      "review": {
+        "schema": 1,
+        "locationId": "gid://shopify/CompanyLocation/8602746980",
+        "ready": true,
+        "operationId": null,
+        "status": "aprovado_liberado",
+        "cycleId": null,
+        "enteredAt": null,
+        "enrolled": false,
+        "reopenVersion": null,
+        "decisionVersion": null,
+        "decisionStatus": null,
+        "updatedAt": "2026-11-17T18:54:50Z",
+        "signalPending": false,
+        "sourceKind": "cadastro-b2b",
+        "projectionEpoch": "ocean-20261117-1845",
+        "migratedAt": "2026-11-17T18:54:50.314Z"
+      },
+      "digest": "1183345e8dd89cd3cc9b166cc32c088e9c6011fcb1d6e7e36ce010d7fadef2de",
+      "ledger": null,
+      "ledgerDigest": null,
+      "signal": null
+    },
+    {
+      "id": "gid://shopify/CompanyLocation/8602910820",
+      "status": "aprovado_pendente",
+      "roles": [],
+      "review": {
+        "schema": 1,
+        "locationId": "gid://shopify/CompanyLocation/8602910820",
+        "ready": true,
+        "operationId": null,
+        "status": "aprovado_pendente",
+        "cycleId": null,
+        "enteredAt": null,
+        "enrolled": false,
+        "reopenVersion": null,
+        "decisionVersion": "2026-11-17T12:38:40.496Z",
+        "decisionStatus": "aprovado_pendente",
+        "updatedAt": "2026-11-17T18:54:50Z",
+        "signalPending": false,
+        "sourceKind": "cadastro-b2b",
+        "projectionEpoch": "ocean-20261117-1845",
+        "migratedAt": "2026-11-17T18:54:50.314Z"
+      },
+      "digest": "11b6138be19b39c8ff64c56d410a5d82cb65f03292902c53515e53790fd1a797",
+      "ledger": null,
+      "ledgerDigest": null,
+      "signal": null
+    },
+    {
+      "id": "gid://shopify/CompanyLocation/8602943588",
+      "status": "aprovado_liberado",
+      "roles": [
+        {
+          "id": "gid://shopify/CompanyContactRoleAssignment/52371488868",
+          "role": {
+            "id": "gid://shopify/CompanyContactRole/13650165860",
+            "name": "Apenas pedidos"
+          },
+          "companyContact": {
+            "id": "gid://shopify/CompanyContact/4945018980"
+          }
+        }
+      ],
+      "review": {
+        "schema": 1,
+        "locationId": "gid://shopify/CompanyLocation/8602943588",
+        "ready": true,
+        "operationId": null,
+        "status": "aprovado_liberado",
+        "cycleId": null,
+        "enteredAt": null,
+        "enrolled": false,
+        "reopenVersion": null,
+        "decisionVersion": null,
+        "decisionStatus": null,
+        "updatedAt": "2026-11-17T18:54:50Z",
+        "signalPending": false,
+        "sourceKind": "cadastro-b2b",
+        "projectionEpoch": "ocean-20261117-1845",
+        "migratedAt": "2026-11-17T18:54:50.314Z"
+      },
+      "digest": "7ec0736d3bb32671cffb5e8099fe6bc542ee0b7a53ee697de19e242586030b19",
+      "ledger": null,
+      "ledgerDigest": null,
+      "signal": null
+    },
+    {
+      "id": "gid://shopify/CompanyLocation/8602976356",
+      "status": "aprovado_liberado",
+      "roles": [
+        {
+          "id": "gid://shopify/CompanyContactRoleAssignment/52374143076",
+          "role": {
+            "id": "gid://shopify/CompanyContactRole/13650231396",
+            "name": "Apenas pedidos"
+          },
+          "companyContact": {
+            "id": "gid://shopify/CompanyContact/4945051748"
+          }
+        }
+      ],
+      "review": {
+        "schema": 1,
+        "locationId": "gid://shopify/CompanyLocation/8602976356",
+        "ready": true,
+        "operationId": null,
+        "status": "aprovado_liberado",
+        "cycleId": null,
+        "enteredAt": null,
+        "enrolled": false,
+        "reopenVersion": null,
+        "decisionVersion": "2026-11-16T17:54:35.898Z",
+        "decisionStatus": "aprovado_pendente",
+        "updatedAt": "2026-11-17T18:54:50Z",
+        "signalPending": false,
+        "sourceKind": "cadastro-b2b",
+        "projectionEpoch": "ocean-20261117-1845",
+        "migratedAt": "2026-11-17T18:54:50.314Z"
+      },
+      "digest": "c09871e62c1cdfbf2db01eeaf82e3da1e1143ae92e674d35e2e2ea4f1b0f579f",
+      "ledger": null,
+      "ledgerDigest": null,
+      "signal": null
+    },
+    {
+      "id": "gid://shopify/CompanyLocation/8603304036",
+      "status": "aprovado_pendente",
+      "roles": [],
+      "review": {
+        "schema": 1,
+        "locationId": "gid://shopify/CompanyLocation/8603304036",
+        "ready": true,
+        "operationId": null,
+        "status": "aprovado_pendente",
+        "cycleId": null,
+        "enteredAt": null,
+        "enrolled": false,
+        "reopenVersion": null,
+        "decisionVersion": "2026-11-17T13:05:08.382Z",
+        "decisionStatus": "aprovado_pendente",
+        "updatedAt": "2026-11-17T18:54:50Z",
+        "signalPending": false,
+        "sourceKind": "cadastro-b2b",
+        "projectionEpoch": "ocean-20261117-1845",
+        "migratedAt": "2026-11-17T18:54:50.314Z"
+      },
+      "digest": "de8b0ba6c2782751faa4cca40d1dfa2343f6ba7306ef9894ceea6b38e470f5d5",
+      "ledger": null,
+      "ledgerDigest": null,
+      "signal": null
+    },
+    {
+      "id": "gid://shopify/CompanyLocation/8604516452",
+      "status": "aprovado_liberado",
+      "roles": [
+        {
+          "id": "gid://shopify/CompanyContactRoleAssignment/52372471908",
+          "role": {
+            "id": "gid://shopify/CompanyContactRole/13653246052",
+            "name": "Apenas pedidos"
+          },
+          "companyContact": {
+            "id": "gid://shopify/CompanyContact/4946133092"
+          }
+        }
+      ],
+      "review": {
+        "schema": 1,
+        "locationId": "gid://shopify/CompanyLocation/8604516452",
+        "ready": true,
+        "operationId": null,
+        "status": "aprovado_liberado",
+        "cycleId": null,
+        "enteredAt": null,
+        "enrolled": false,
+        "reopenVersion": null,
+        "decisionVersion": null,
+        "decisionStatus": null,
+        "updatedAt": "2026-11-17T18:54:50Z",
+        "signalPending": false,
+        "sourceKind": "cadastro-b2b",
+        "projectionEpoch": "ocean-20261117-1845",
+        "migratedAt": "2026-11-17T18:54:50.314Z"
+      },
+      "digest": "989be38feb34bdcad6876419985905ef4201e9115fa264f67f25307dccd4cc1c",
+      "ledger": null,
+      "ledgerDigest": null,
+      "signal": null
+    },
+    {
+      "id": "gid://shopify/CompanyLocation/8604581988",
+      "status": "aprovado_pendente",
+      "roles": [],
+      "review": {
+        "schema": 1,
+        "locationId": "gid://shopify/CompanyLocation/8604581988",
+        "ready": true,
+        "operationId": null,
+        "status": "aprovado_pendente",
+        "cycleId": null,
+        "enteredAt": null,
+        "enrolled": false,
+        "reopenVersion": null,
+        "decisionVersion": "2026-11-16T17:54:24.154Z",
+        "decisionStatus": "aprovado_pendente",
+        "updatedAt": "2026-11-17T18:54:50Z",
+        "signalPending": false,
+        "sourceKind": "cadastro-b2b",
+        "projectionEpoch": "ocean-20261117-1845",
+        "migratedAt": "2026-11-17T18:54:50.314Z"
+      },
+      "digest": "4a069f0ee8a674dc7f9d7e7d208036a2b0ef6ab678ebd5a38e1596a9e763f3ee",
+      "ledger": null,
+      "ledgerDigest": null,
+      "signal": null
+    },
+    {
+      "id": "gid://shopify/CompanyLocation/8604876900",
+      "status": "aprovado_pendente",
+      "roles": [],
+      "review": {
+        "schema": 1,
+        "locationId": "gid://shopify/CompanyLocation/8604876900",
+        "ready": true,
+        "operationId": null,
+        "status": "aprovado_pendente",
+        "cycleId": null,
+        "enteredAt": null,
+        "enrolled": false,
+        "reopenVersion": null,
+        "decisionVersion": "2026-11-16T17:51:19.290Z",
+        "decisionStatus": "aprovado_pendente",
+        "updatedAt": "2026-11-17T18:54:50Z",
+        "signalPending": false,
+        "sourceKind": "cadastro-b2b",
+        "projectionEpoch": "ocean-20261117-1845",
+        "migratedAt": "2026-11-17T18:54:50.314Z"
+      },
+      "digest": "4657617f6f2232875caa1eb20a6fad7ed27e0394f7f0e85c9237c98848888487",
+      "ledger": null,
+      "ledgerDigest": null,
+      "signal": null
+    },
+    {
+      "id": "gid://shopify/CompanyLocation/8605106276",
+      "status": "aprovado_pendente",
+      "roles": [],
+      "review": {
+        "schema": 1,
+        "locationId": "gid://shopify/CompanyLocation/8605106276",
+        "ready": true,
+        "operationId": null,
+        "status": "aprovado_pendente",
+        "cycleId": null,
+        "enteredAt": null,
+        "enrolled": false,
+        "reopenVersion": null,
+        "decisionVersion": "2026-11-16T17:51:12.007Z",
+        "decisionStatus": "aprovado_pendente",
+        "updatedAt": "2026-11-17T18:54:50Z",
+        "signalPending": false,
+        "sourceKind": "cadastro-b2b",
+        "projectionEpoch": "ocean-20261117-1845",
+        "migratedAt": "2026-11-17T18:54:50.314Z"
+      },
+      "digest": "df3ed66d32d1f653609045d0f11de47595158f8e4b00b585b6b9e66b4f9812ca",
+      "ledger": null,
+      "ledgerDigest": null,
+      "signal": null
+    },
+    {
+      "id": "gid://shopify/CompanyLocation/8605630564",
+      "status": "aprovado_pendente",
+      "roles": [],
+      "review": {
+        "schema": 1,
+        "locationId": "gid://shopify/CompanyLocation/8605630564",
+        "ready": true,
+        "operationId": null,
+        "status": "aprovado_pendente",
+        "cycleId": null,
+        "enteredAt": null,
+        "enrolled": false,
+        "reopenVersion": null,
+        "decisionVersion": "2026-11-17T13:06:25.435Z",
+        "decisionStatus": "aprovado_pendente",
+        "updatedAt": "2026-11-17T18:54:50Z",
+        "signalPending": false,
+        "sourceKind": "cadastro-b2b",
+        "projectionEpoch": "ocean-20261117-1845",
+        "migratedAt": "2026-11-17T18:54:50.314Z"
+      },
+      "digest": "f8f4497b33c2868e86652f26eab1196a7b25d5fd907d6ed6b9aa41c9b0072fdb",
+      "ledger": null,
+      "ledgerDigest": null,
+      "signal": null
+    },
+    {
+      "id": "gid://shopify/CompanyLocation/8606646372",
+      "status": "aprovado_liberado",
+      "roles": [
+        {
+          "id": "gid://shopify/CompanyContactRoleAssignment/52373979236",
+          "role": {
+            "id": "gid://shopify/CompanyContactRole/13657440356",
+            "name": "Apenas pedidos"
+          },
+          "companyContact": {
+            "id": "gid://shopify/CompanyContact/4947771492"
+          }
+        }
+      ],
+      "review": {
+        "schema": 1,
+        "locationId": "gid://shopify/CompanyLocation/8606646372",
+        "ready": true,
+        "operationId": null,
+        "status": "aprovado_liberado",
+        "cycleId": null,
+        "enteredAt": null,
+        "enrolled": false,
+        "reopenVersion": null,
+        "decisionVersion": "2026-11-16T17:51:28.828Z",
+        "decisionStatus": "aprovado_pendente",
+        "updatedAt": "2026-11-17T18:54:50Z",
+        "signalPending": false,
+        "sourceKind": "cadastro-b2b",
+        "projectionEpoch": "ocean-20261117-1845",
+        "migratedAt": "2026-11-17T18:54:50.314Z"
+      },
+      "digest": "41dd8a97b994840506ae42186efb52ce3bafe98482985638be08e8f34009067f",
+      "ledger": null,
+      "ledgerDigest": null,
+      "signal": null
+    },
+    {
+      "id": "gid://shopify/CompanyLocation/8607236196",
+      "status": "aprovado_pendente",
+      "roles": [],
+      "review": {
+        "schema": 1,
+        "locationId": "gid://shopify/CompanyLocation/8607236196",
+        "ready": true,
+        "operationId": null,
+        "status": "aprovado_pendente",
+        "cycleId": null,
+        "enteredAt": null,
+        "enrolled": false,
+        "reopenVersion": null,
+        "decisionVersion": "2026-11-17T13:26:39.151Z",
+        "decisionStatus": "aprovado_pendente",
+        "updatedAt": "2026-11-17T18:54:50Z",
+        "signalPending": false,
+        "sourceKind": "cadastro-b2b",
+        "projectionEpoch": "ocean-20261117-1845",
+        "migratedAt": "2026-11-17T18:54:50.314Z"
+      },
+      "digest": "30d083d648e6b2e8f247f2e7d1ca07cd6525bdaa0feb5b6213b1e2610e00cf88",
+      "ledger": null,
+      "ledgerDigest": null,
+      "signal": null
+    },
+    {
+      "id": "gid://shopify/CompanyLocation/8607334500",
+      "status": "pendente",
+      "roles": [],
+      "review": {
+        "schema": 1,
+        "locationId": "gid://shopify/CompanyLocation/8607334500",
+        "ready": true,
+        "operationId": null,
+        "status": "pendente",
+        "cycleId": "507760e6-358c-40f5-aa52-bae653ac50bd",
+        "enteredAt": "2026-11-17T18:54:50Z",
+        "enrolled": false,
+        "reopenVersion": null,
+        "decisionVersion": null,
+        "decisionStatus": null,
+        "updatedAt": "2026-11-17T18:54:50Z",
+        "signalPending": false,
+        "sourceKind": "cadastro-b2b",
+        "projectionEpoch": "ocean-20261117-1845",
+        "migratedAt": "2026-11-17T18:54:50.315Z"
+      },
+      "digest": "fe0defc148f9cba6e02a18eb330bb5837d523adb59a7b2d957cba28862631ea8",
+      "ledger": null,
+      "ledgerDigest": null,
+      "signal": null
+    },
+    {
+      "id": "gid://shopify/CompanyLocation/8607793252",
+      "status": "aprovado_pendente",
+      "roles": [],
+      "review": {
+        "schema": 1,
+        "locationId": "gid://shopify/CompanyLocation/8607793252",
+        "ready": true,
+        "operationId": null,
+        "status": "aprovado_pendente",
+        "cycleId": null,
+        "enteredAt": null,
+        "enrolled": false,
+        "reopenVersion": null,
+        "decisionVersion": "2026-11-16T17:40:27.870Z",
+        "decisionStatus": "aprovado_pendente",
+        "updatedAt": "2026-11-17T18:54:50Z",
+        "signalPending": false,
+        "sourceKind": "cadastro-b2b",
+        "projectionEpoch": "ocean-20261117-1845",
+        "migratedAt": "2026-11-17T18:54:50.315Z"
+      },
+      "digest": "6c876bc880cbcad08fbc29590479e752a8cf38bd77406ff30409df0dbc2237b7",
+      "ledger": null,
+      "ledgerDigest": null,
+      "signal": null
+    },
+    {
+      "id": "gid://shopify/CompanyLocation/8607858788",
+      "status": "aprovado_pendente",
+      "roles": [],
+      "review": {
+        "schema": 1,
+        "locationId": "gid://shopify/CompanyLocation/8607858788",
+        "ready": true,
+        "operationId": null,
+        "status": "aprovado_pendente",
+        "cycleId": null,
+        "enteredAt": null,
+        "enrolled": false,
+        "reopenVersion": null,
+        "decisionVersion": "2026-11-16T17:40:14.742Z",
+        "decisionStatus": "aprovado_pendente",
+        "updatedAt": "2026-11-17T18:54:50Z",
+        "signalPending": false,
+        "sourceKind": "cadastro-b2b",
+        "projectionEpoch": "ocean-20261117-1845",
+        "migratedAt": "2026-11-17T18:54:50.315Z"
+      },
+      "digest": "74f7a0f42a829a78214cc7e21cb2b580ca0a4cd2abfab56f4acf59572f607e87",
+      "ledger": null,
+      "ledgerDigest": null,
+      "signal": null
+    },
+    {
+      "id": "gid://shopify/CompanyLocation/8608088164",
+      "status": "aprovado_pendente",
+      "roles": [],
+      "review": {
+        "schema": 1,
+        "locationId": "gid://shopify/CompanyLocation/8608088164",
+        "ready": true,
+        "operationId": null,
+        "status": "aprovado_pendente",
+        "cycleId": null,
+        "enteredAt": null,
+        "enrolled": false,
+        "reopenVersion": null,
+        "decisionVersion": "2026-11-16T17:39:33.058Z",
+        "decisionStatus": "aprovado_pendente",
+        "updatedAt": "2026-11-17T18:54:50Z",
+        "signalPending": false,
+        "sourceKind": "cadastro-b2b",
+        "projectionEpoch": "ocean-20261117-1845",
+        "migratedAt": "2026-11-17T18:54:50.315Z"
+      },
+      "digest": "4161eb71dfab6038093eb6ecb6c01a5d455ae3758b8e52b850856c9434387db3",
+      "ledger": null,
+      "ledgerDigest": null,
+      "signal": null
+    },
+    {
+      "id": "gid://shopify/CompanyLocation/8608120932",
+      "status": "aprovado_pendente",
+      "roles": [],
+      "review": {
+        "schema": 1,
+        "locationId": "gid://shopify/CompanyLocation/8608120932",
+        "ready": true,
+        "operationId": null,
+        "status": "aprovado_pendente",
+        "cycleId": null,
+        "enteredAt": null,
+        "enrolled": false,
+        "reopenVersion": null,
+        "decisionVersion": "2026-11-16T17:38:12.712Z",
+        "decisionStatus": "aprovado_pendente",
+        "updatedAt": "2026-11-17T18:54:50Z",
+        "signalPending": false,
+        "sourceKind": "cadastro-b2b",
+        "projectionEpoch": "ocean-20261117-1845",
+        "migratedAt": "2026-11-17T18:54:50.315Z"
+      },
+      "digest": "084ccda0bb3cb3449bbfd4b2138226438676731ed0e96643d282ce32af789d5e",
+      "ledger": null,
+      "ledgerDigest": null,
+      "signal": null
+    },
+    {
+      "id": "gid://shopify/CompanyLocation/8608186468",
+      "status": "incompleto",
+      "roles": [],
+      "review": {
+        "schema": 1,
+        "locationId": "gid://shopify/CompanyLocation/8608186468",
+        "ready": true,
+        "operationId": null,
+        "status": "incompleto",
+        "cycleId": null,
+        "enteredAt": null,
+        "enrolled": false,
+        "reopenVersion": null,
+        "decisionVersion": null,
+        "decisionStatus": null,
+        "updatedAt": "2026-11-17T18:54:50Z",
+        "signalPending": false,
+        "sourceKind": "cadastro-b2b",
+        "projectionEpoch": "ocean-20261117-1845",
+        "migratedAt": "2026-11-17T18:54:50.315Z"
+      },
+      "digest": "37daf6804fb8600d88908c1081adf0c8df5b73f4e835a7b5fffbb479e5be5094",
+      "ledger": null,
+      "ledgerDigest": null,
+      "signal": null
+    },
+    {
+      "id": "gid://shopify/CompanyLocation/8609529956",
+      "status": "aprovado_pendente",
+      "roles": [],
+      "review": {
+        "schema": 1,
+        "locationId": "gid://shopify/CompanyLocation/8609529956",
+        "ready": true,
+        "operationId": null,
+        "status": "aprovado_pendente",
+        "cycleId": null,
+        "enteredAt": null,
+        "enrolled": false,
+        "reopenVersion": null,
+        "decisionVersion": "2026-11-16T17:54:14.651Z",
+        "decisionStatus": "aprovado_pendente",
+        "updatedAt": "2026-11-17T18:54:50Z",
+        "signalPending": false,
+        "sourceKind": "cadastro-b2b",
+        "projectionEpoch": "ocean-20261117-1845",
+        "migratedAt": "2026-11-17T18:54:50.315Z"
+      },
+      "digest": "63dffe7528e0f46faa1530e67b29346a9c91a66844b2fc71b9a67311fe48dc2b",
+      "ledger": null,
+      "ledgerDigest": null,
+      "signal": null
+    },
+    {
+      "id": "gid://shopify/CompanyLocation/8609824868",
+      "status": "aprovado_pendente",
+      "roles": [],
+      "review": {
+        "schema": 1,
+        "locationId": "gid://shopify/CompanyLocation/8609824868",
+        "ready": true,
+        "operationId": null,
+        "status": "aprovado_pendente",
+        "cycleId": null,
+        "enteredAt": null,
+        "enrolled": false,
+        "reopenVersion": null,
+        "decisionVersion": "2026-11-16T17:38:40.446Z",
+        "decisionStatus": "aprovado_pendente",
+        "updatedAt": "2026-11-17T18:54:50Z",
+        "signalPending": false,
+        "sourceKind": "cadastro-b2b",
+        "projectionEpoch": "ocean-20261117-1845",
+        "migratedAt": "2026-11-17T18:54:50.315Z"
+      },
+      "digest": "6ab64da4d38a86d11cd94721ff7395ce63179203a1c86eabc45d31559491d002",
+      "ledger": null,
+      "ledgerDigest": null,
+      "signal": null
+    },
+    {
+      "id": "gid://shopify/CompanyLocation/8610021476",
+      "status": "aprovado_pendente",
+      "roles": [],
+      "review": {
+        "schema": 1,
+        "locationId": "gid://shopify/CompanyLocation/8610021476",
+        "ready": true,
+        "operationId": null,
+        "status": "aprovado_pendente",
+        "cycleId": null,
+        "enteredAt": null,
+        "enrolled": false,
+        "reopenVersion": null,
+        "decisionVersion": "2026-11-16T17:37:46.805Z",
+        "decisionStatus": "aprovado_pendente",
+        "updatedAt": "2026-11-17T18:54:50Z",
+        "signalPending": false,
+        "sourceKind": "cadastro-b2b",
+        "projectionEpoch": "ocean-20261117-1845",
+        "migratedAt": "2026-11-17T18:54:50.315Z"
+      },
+      "digest": "c599ad9defc32b4393402ef184d7b9f9cd13938def63cee232e1c0069fd10ac4",
+      "ledger": null,
+      "ledgerDigest": null,
+      "signal": null
+    },
+    {
+      "id": "gid://shopify/CompanyLocation/8611201124",
+      "status": "aprovado_pendente",
+      "roles": [],
+      "review": {
+        "schema": 1,
+        "locationId": "gid://shopify/CompanyLocation/8611201124",
+        "ready": true,
+        "operationId": null,
+        "status": "aprovado_pendente",
+        "cycleId": null,
+        "enteredAt": null,
+        "enrolled": false,
+        "reopenVersion": null,
+        "decisionVersion": "2026-11-16T17:37:17.112Z",
+        "decisionStatus": "aprovado_pendente",
+        "updatedAt": "2026-11-17T18:54:50Z",
+        "signalPending": false,
+        "sourceKind": "cadastro-b2b",
+        "projectionEpoch": "ocean-20261117-1845",
+        "migratedAt": "2026-11-17T18:54:50.315Z"
+      },
+      "digest": "cfb8290e299ccfba83fce54ab1887a53e8933d670cf1961f49f3d42caec3c930",
+      "ledger": null,
+      "ledgerDigest": null,
+      "signal": null
+    },
+    {
+      "id": "gid://shopify/CompanyLocation/8611233892",
+      "status": "aprovado_pendente",
+      "roles": [],
+      "review": {
+        "schema": 1,
+        "locationId": "gid://shopify/CompanyLocation/8611233892",
+        "ready": true,
+        "operationId": null,
+        "status": "aprovado_pendente",
+        "cycleId": null,
+        "enteredAt": null,
+        "enrolled": false,
+        "reopenVersion": null,
+        "decisionVersion": "2026-11-16T17:36:23.281Z",
+        "decisionStatus": "aprovado_pendente",
+        "updatedAt": "2026-11-17T18:54:50Z",
+        "signalPending": false,
+        "sourceKind": "cadastro-b2b",
+        "projectionEpoch": "ocean-20261117-1845",
+        "migratedAt": "2026-11-17T18:54:50.315Z"
+      },
+      "digest": "538549e1f4a5162b360de27101e02d90ef6348ded22550412de5dfbd55a77f74",
+      "ledger": null,
+      "ledgerDigest": null,
+      "signal": null
+    },
+    {
+      "id": "gid://shopify/CompanyLocation/8611430500",
+      "status": "aprovado_pendente",
+      "roles": [],
+      "review": {
+        "schema": 1,
+        "locationId": "gid://shopify/CompanyLocation/8611430500",
+        "ready": true,
+        "operationId": null,
+        "status": "aprovado_pendente",
+        "cycleId": null,
+        "enteredAt": null,
+        "enrolled": false,
+        "reopenVersion": null,
+        "decisionVersion": "2026-11-16T17:36:12.700Z",
+        "decisionStatus": "aprovado_pendente",
+        "updatedAt": "2026-11-17T18:54:50Z",
+        "signalPending": false,
+        "sourceKind": "cadastro-b2b",
+        "projectionEpoch": "ocean-20261117-1845",
+        "migratedAt": "2026-11-17T18:54:50.315Z"
+      },
+      "digest": "bf1afe2005d02f9a32db46ac04a126c9b4cadb4d7a0deeed7475bfc27ff64489",
+      "ledger": null,
+      "ledgerDigest": null,
+      "signal": null
+    },
+    {
+      "id": "gid://shopify/CompanyLocation/8611463268",
+      "status": "aprovado_pendente",
+      "roles": [],
+      "review": {
+        "schema": 1,
+        "locationId": "gid://shopify/CompanyLocation/8611463268",
+        "ready": true,
+        "operationId": null,
+        "status": "aprovado_pendente",
+        "cycleId": null,
+        "enteredAt": null,
+        "enrolled": false,
+        "reopenVersion": null,
+        "decisionVersion": "2026-11-16T17:36:03.858Z",
+        "decisionStatus": "aprovado_pendente",
+        "updatedAt": "2026-11-17T18:54:50Z",
+        "signalPending": false,
+        "sourceKind": "cadastro-b2b",
+        "projectionEpoch": "ocean-20261117-1845",
+        "migratedAt": "2026-11-17T18:54:50.315Z"
+      },
+      "digest": "1b8c0b89f7566bac7910e6e1c4ab6ae32c3788a708a28e636d0a2aea2be4e515",
+      "ledger": null,
+      "ledgerDigest": null,
+      "signal": null
+    },
+    {
+      "id": "gid://shopify/CompanyLocation/8611922020",
+      "status": "aprovado_liberado",
+      "roles": [
+        {
+          "id": "gid://shopify/CompanyContactRoleAssignment/52373946468",
+          "role": {
+            "id": "gid://shopify/CompanyContactRole/13667860580",
+            "name": "Apenas pedidos"
+          },
+          "companyContact": {
+            "id": "gid://shopify/CompanyContact/4951900260"
+          }
+        }
+      ],
+      "review": {
+        "schema": 1,
+        "locationId": "gid://shopify/CompanyLocation/8611922020",
+        "ready": true,
+        "operationId": null,
+        "status": "aprovado_liberado",
+        "cycleId": null,
+        "enteredAt": null,
+        "enrolled": false,
+        "reopenVersion": null,
+        "decisionVersion": "2026-11-16T17:35:56.871Z",
+        "decisionStatus": "aprovado_pendente",
+        "updatedAt": "2026-11-17T18:54:50Z",
+        "signalPending": false,
+        "sourceKind": "cadastro-b2b",
+        "projectionEpoch": "ocean-20261117-1845",
+        "migratedAt": "2026-11-17T18:54:50.315Z"
+      },
+      "digest": "1a0c0ad883cf9fc62c3f3793a5ac6c01ef137de42fd46db83dc45ce01828912f",
+      "ledger": null,
+      "ledgerDigest": null,
+      "signal": null
+    },
+    {
+      "id": "gid://shopify/CompanyLocation/8612053092",
+      "status": "aprovado_liberado",
+      "roles": [
+        {
+          "id": "gid://shopify/CompanyContactRoleAssignment/52372144228",
+          "role": {
+            "id": "gid://shopify/CompanyContactRole/13668122724",
+            "name": "Apenas pedidos"
+          },
+          "companyContact": {
+            "id": "gid://shopify/CompanyContact/4951965796"
+          }
+        }
+      ],
+      "review": {
+        "schema": 1,
+        "locationId": "gid://shopify/CompanyLocation/8612053092",
+        "ready": true,
+        "operationId": null,
+        "status": "aprovado_liberado",
+        "cycleId": null,
+        "enteredAt": null,
+        "enrolled": false,
+        "reopenVersion": null,
+        "decisionVersion": "2026-11-16T14:30:40.653Z",
+        "decisionStatus": "aprovado_pendente",
+        "updatedAt": "2026-11-17T18:54:50Z",
+        "signalPending": false,
+        "sourceKind": "cadastro-b2b",
+        "projectionEpoch": "ocean-20261117-1845",
+        "migratedAt": "2026-11-17T18:54:50.315Z"
+      },
+      "digest": "aec1033cfe357154cd4f19c47016125059fe5d294790f054a51f4f8f4357d537",
+      "ledger": null,
+      "ledgerDigest": null,
+      "signal": null
+    },
+    {
+      "id": "gid://shopify/CompanyLocation/8612184164",
+      "status": "aprovado_pendente",
+      "roles": [],
+      "review": {
+        "schema": 1,
+        "locationId": "gid://shopify/CompanyLocation/8612184164",
+        "ready": true,
+        "operationId": null,
+        "status": "aprovado_pendente",
+        "cycleId": null,
+        "enteredAt": null,
+        "enrolled": false,
+        "reopenVersion": null,
+        "decisionVersion": "2026-11-16T17:34:55.799Z",
+        "decisionStatus": "aprovado_pendente",
+        "updatedAt": "2026-11-17T18:54:50Z",
+        "signalPending": false,
+        "sourceKind": "cadastro-b2b",
+        "projectionEpoch": "ocean-20261117-1845",
+        "migratedAt": "2026-11-17T18:54:50.315Z"
+      },
+      "digest": "8c6b6eec7bcafed978c7215bce3b0ccd2516a87e02e0c25c0bf53aa1a78df092",
+      "ledger": null,
+      "ledgerDigest": null,
+      "signal": null
+    },
+    {
+      "id": "gid://shopify/CompanyLocation/8616181860",
+      "status": "aprovado_pendente",
+      "roles": [],
+      "review": {
+        "schema": 1,
+        "locationId": "gid://shopify/CompanyLocation/8616181860",
+        "ready": true,
+        "operationId": null,
+        "status": "aprovado_pendente",
+        "cycleId": null,
+        "enteredAt": null,
+        "enrolled": false,
+        "reopenVersion": null,
+        "decisionVersion": "2026-11-16T17:32:50.632Z",
+        "decisionStatus": "aprovado_pendente",
+        "updatedAt": "2026-11-17T18:54:50Z",
+        "signalPending": false,
+        "sourceKind": "cadastro-b2b",
+        "projectionEpoch": "ocean-20261117-1845",
+        "migratedAt": "2026-11-17T18:54:50.315Z"
+      },
+      "digest": "aac600449473217a86b30f52f4c5f4b8c0465a2d20efcc57e53e6cb35a82c44b",
+      "ledger": null,
+      "ledgerDigest": null,
+      "signal": null
+    },
+    {
+      "id": "gid://shopify/CompanyLocation/8616312932",
+      "status": "aprovado_pendente",
+      "roles": [],
+      "review": {
+        "schema": 1,
+        "locationId": "gid://shopify/CompanyLocation/8616312932",
+        "ready": true,
+        "operationId": null,
+        "status": "aprovado_pendente",
+        "cycleId": null,
+        "enteredAt": null,
+        "enrolled": false,
+        "reopenVersion": null,
+        "decisionVersion": "2026-11-16T17:31:46.778Z",
+        "decisionStatus": "aprovado_pendente",
+        "updatedAt": "2026-11-17T18:54:50Z",
+        "signalPending": false,
+        "sourceKind": "cadastro-b2b",
+        "projectionEpoch": "ocean-20261117-1845",
+        "migratedAt": "2026-11-17T18:54:50.315Z"
+      },
+      "digest": "da9771632f9f5acb0c467036f665becbf46e2d32bdc79843e72bcaa2a52c12d2",
+      "ledger": null,
+      "ledgerDigest": null,
+      "signal": null
+    },
+    {
+      "id": "gid://shopify/CompanyLocation/8616935524",
+      "status": "aprovado_pendente",
+      "roles": [],
+      "review": {
+        "schema": 1,
+        "locationId": "gid://shopify/CompanyLocation/8616935524",
+        "ready": true,
+        "operationId": null,
+        "status": "aprovado_pendente",
+        "cycleId": null,
+        "enteredAt": null,
+        "enrolled": false,
+        "reopenVersion": null,
+        "decisionVersion": "2026-11-16T17:27:23.078Z",
+        "decisionStatus": "aprovado_pendente",
+        "updatedAt": "2026-11-17T18:54:50Z",
+        "signalPending": false,
+        "sourceKind": "cadastro-b2b",
+        "projectionEpoch": "ocean-20261117-1845",
+        "migratedAt": "2026-11-17T18:54:50.316Z"
+      },
+      "digest": "9748db02b24124420e72ce98c1999609d1808a84cfc3543603df36643c9e9e79",
+      "ledger": null,
+      "ledgerDigest": null,
+      "signal": null
+    },
+    {
+      "id": "gid://shopify/CompanyLocation/8617492580",
+      "status": "aprovado_pendente",
+      "roles": [],
+      "review": {
+        "schema": 1,
+        "locationId": "gid://shopify/CompanyLocation/8617492580",
+        "ready": true,
+        "operationId": null,
+        "status": "aprovado_pendente",
+        "cycleId": null,
+        "enteredAt": null,
+        "enrolled": false,
+        "reopenVersion": null,
+        "decisionVersion": "2026-11-16T17:26:47.803Z",
+        "decisionStatus": "aprovado_pendente",
+        "updatedAt": "2026-11-17T18:54:50Z",
+        "signalPending": false,
+        "sourceKind": "cadastro-b2b",
+        "projectionEpoch": "ocean-20261117-1845",
+        "migratedAt": "2026-11-17T18:54:50.316Z"
+      },
+      "digest": "f7dfd3679a19841357dc08f89bb5ba952114031e42353ce9dcbd42f19eea30c3",
+      "ledger": null,
+      "ledgerDigest": null,
+      "signal": null
+    },
+    {
+      "id": "gid://shopify/CompanyLocation/8617656420",
+      "status": "aprovado_pendente",
+      "roles": [],
+      "review": {
+        "schema": 1,
+        "locationId": "gid://shopify/CompanyLocation/8617656420",
+        "ready": true,
+        "operationId": null,
+        "status": "aprovado_pendente",
+        "cycleId": null,
+        "enteredAt": null,
+        "enrolled": false,
+        "reopenVersion": null,
+        "decisionVersion": "2026-11-16T17:30:41.380Z",
+        "decisionStatus": "aprovado_pendente",
+        "updatedAt": "2026-11-17T18:54:50Z",
+        "signalPending": false,
+        "sourceKind": "cadastro-b2b",
+        "projectionEpoch": "ocean-20261117-1845",
+        "migratedAt": "2026-11-17T18:54:50.316Z"
+      },
+      "digest": "337a4b5610c5eab20630cbed2812b2e5e9c86cffa11cd391a4d6687dc25d82c9",
+      "ledger": null,
+      "ledgerDigest": null,
+      "signal": null
+    },
+    {
+      "id": "gid://shopify/CompanyLocation/8617885796",
+      "status": "aprovado_pendente",
+      "roles": [],
+      "review": {
+        "schema": 1,
+        "locationId": "gid://shopify/CompanyLocation/8617885796",
+        "ready": true,
+        "operationId": null,
+        "status": "aprovado_pendente",
+        "cycleId": null,
+        "enteredAt": null,
+        "enrolled": false,
+        "reopenVersion": null,
+        "decisionVersion": "2026-11-16T17:26:15.527Z",
+        "decisionStatus": "aprovado_pendente",
+        "updatedAt": "2026-11-17T18:54:50Z",
+        "signalPending": false,
+        "sourceKind": "cadastro-b2b",
+        "projectionEpoch": "ocean-20261117-1845",
+        "migratedAt": "2026-11-17T18:54:50.316Z"
+      },
+      "digest": "ee7647d336c0c7a983d214a9957b3b3dd591619dc0d133c6a67924bcf4482d49",
+      "ledger": null,
+      "ledgerDigest": null,
+      "signal": null
+    },
+    {
+      "id": "gid://shopify/CompanyLocation/8618639460",
+      "status": "aprovado_pendente",
+      "roles": [],
+      "review": {
+        "schema": 1,
+        "locationId": "gid://shopify/CompanyLocation/8618639460",
+        "ready": true,
+        "operationId": null,
+        "status": "aprovado_pendente",
+        "cycleId": null,
+        "enteredAt": null,
+        "enrolled": false,
+        "reopenVersion": null,
+        "decisionVersion": "2026-11-16T16:31:50.613Z",
+        "decisionStatus": "aprovado_pendente",
+        "updatedAt": "2026-11-17T18:54:50Z",
+        "signalPending": false,
+        "sourceKind": "cadastro-b2b",
+        "projectionEpoch": "ocean-20261117-1845",
+        "migratedAt": "2026-11-17T18:54:50.316Z"
+      },
+      "digest": "42fc15b6a2af3994d527ce98c92b142c8b8eed0d9bf9dab6ffaec9ba54b61326",
+      "ledger": null,
+      "ledgerDigest": null,
+      "signal": null
+    },
+    {
+      "id": "gid://shopify/CompanyLocation/8619556964",
+      "status": "aprovado_pendente",
+      "roles": [],
+      "review": {
+        "schema": 1,
+        "locationId": "gid://shopify/CompanyLocation/8619556964",
+        "ready": true,
+        "operationId": null,
+        "status": "aprovado_pendente",
+        "cycleId": null,
+        "enteredAt": null,
+        "enrolled": false,
+        "reopenVersion": null,
+        "decisionVersion": "2026-11-16T17:24:54.861Z",
+        "decisionStatus": "aprovado_pendente",
+        "updatedAt": "2026-11-17T18:54:50Z",
+        "signalPending": false,
+        "sourceKind": "cadastro-b2b",
+        "projectionEpoch": "ocean-20261117-1845",
+        "migratedAt": "2026-11-17T18:54:50.316Z"
+      },
+      "digest": "bb3a372578b5041cf7cfff442d5227e88549cd4eb5d0bdb40863a7e0a50822ba",
+      "ledger": null,
+      "ledgerDigest": null,
+      "signal": null
+    },
+    {
+      "id": "gid://shopify/CompanyLocation/8619688036",
+      "status": "aprovado_liberado",
+      "roles": [
+        {
+          "id": "gid://shopify/CompanyContactRoleAssignment/52372242532",
+          "role": {
+            "id": "gid://shopify/CompanyContactRole/13683327076",
+            "name": "Apenas pedidos"
+          },
+          "companyContact": {
+            "id": "gid://shopify/CompanyContact/4958060644"
+          }
+        }
+      ],
+      "review": {
+        "schema": 1,
+        "locationId": "gid://shopify/CompanyLocation/8619688036",
+        "ready": true,
+        "operationId": null,
+        "status": "aprovado_liberado",
+        "cycleId": null,
+        "enteredAt": null,
+        "enrolled": false,
+        "reopenVersion": null,
+        "decisionVersion": "2026-11-16T14:45:35.326Z",
+        "decisionStatus": "aprovado_pendente",
+        "updatedAt": "2026-11-17T18:54:50Z",
+        "signalPending": false,
+        "sourceKind": "cadastro-b2b",
+        "projectionEpoch": "ocean-20261117-1845",
+        "migratedAt": "2026-11-17T18:54:50.316Z"
+      },
+      "digest": "3355ed6c154df8b69368f0a7988786e678506b124d6cdac006692240a36d4392",
+      "ledger": null,
+      "ledgerDigest": null,
+      "signal": null
+    },
+    {
+      "id": "gid://shopify/CompanyLocation/8620015716",
+      "status": "aprovado_pendente",
+      "roles": [],
+      "review": {
+        "schema": 1,
+        "locationId": "gid://shopify/CompanyLocation/8620015716",
+        "ready": true,
+        "operationId": null,
+        "status": "aprovado_pendente",
+        "cycleId": null,
+        "enteredAt": null,
+        "enrolled": false,
+        "reopenVersion": null,
+        "decisionVersion": "2026-11-17T16:14:52.404Z",
+        "decisionStatus": "aprovado_pendente",
+        "updatedAt": "2026-11-17T18:54:50Z",
+        "signalPending": false,
+        "sourceKind": "cadastro-b2b",
+        "projectionEpoch": "ocean-20261117-1845",
+        "migratedAt": "2026-11-17T18:54:50.316Z"
+      },
+      "digest": "f65a636c2901d7c306435e331f4a94cc4c73cbdb5913c133e2120de77f0bcd02",
+      "ledger": null,
+      "ledgerDigest": null,
+      "signal": null
+    },
+    {
+      "id": "gid://shopify/CompanyLocation/8620212324",
+      "status": "aprovado_pendente",
+      "roles": [],
+      "review": {
+        "schema": 1,
+        "locationId": "gid://shopify/CompanyLocation/8620212324",
+        "ready": true,
+        "operationId": null,
+        "status": "aprovado_pendente",
+        "cycleId": null,
+        "enteredAt": null,
+        "enrolled": false,
+        "reopenVersion": null,
+        "decisionVersion": "2026-11-16T15:00:40.553Z",
+        "decisionStatus": "aprovado_pendente",
+        "updatedAt": "2026-11-17T18:54:50Z",
+        "signalPending": false,
+        "sourceKind": "cadastro-b2b",
+        "projectionEpoch": "ocean-20261117-1845",
+        "migratedAt": "2026-11-17T18:54:50.316Z"
+      },
+      "digest": "a8a90173e051a6df3becfedc65c8658324e0de263d69ecea99d4b166c911f7a7",
+      "ledger": null,
+      "ledgerDigest": null,
+      "signal": null
+    },
+    {
+      "id": "gid://shopify/CompanyLocation/8620245092",
+      "status": "aprovado_pendente",
+      "roles": [],
+      "review": {
+        "schema": 1,
+        "locationId": "gid://shopify/CompanyLocation/8620245092",
+        "ready": true,
+        "operationId": null,
+        "status": "aprovado_pendente",
+        "cycleId": null,
+        "enteredAt": null,
+        "enrolled": false,
+        "reopenVersion": null,
+        "decisionVersion": "2026-11-16T17:30:51.772Z",
+        "decisionStatus": "aprovado_pendente",
+        "updatedAt": "2026-11-17T18:54:50Z",
+        "signalPending": false,
+        "sourceKind": "cadastro-b2b",
+        "projectionEpoch": "ocean-20261117-1845",
+        "migratedAt": "2026-11-17T18:54:50.316Z"
+      },
+      "digest": "dd8d58c2b23a820b2302196947280367f6f697db46f54ccc30f1f1ba22636ac2",
+      "ledger": null,
+      "ledgerDigest": null,
+      "signal": null
+    },
+    {
+      "id": "gid://shopify/CompanyLocation/8622538852",
+      "status": "aprovado_pendente",
+      "roles": [],
+      "review": {
+        "schema": 1,
+        "locationId": "gid://shopify/CompanyLocation/8622538852",
+        "ready": true,
+        "operationId": null,
+        "status": "aprovado_pendente",
+        "cycleId": null,
+        "enteredAt": null,
+        "enrolled": false,
+        "reopenVersion": null,
+        "decisionVersion": "2026-11-17T14:25:58.571Z",
+        "decisionStatus": "aprovado_pendente",
+        "updatedAt": "2026-11-17T18:54:50Z",
+        "signalPending": false,
+        "sourceKind": "cadastro-b2b",
+        "projectionEpoch": "ocean-20261117-1845",
+        "migratedAt": "2026-11-17T18:54:50.316Z"
+      },
+      "digest": "b67e4fbb381d9ab027496d4753610bc870a29f46ccd754213952753668960984",
+      "ledger": null,
+      "ledgerDigest": null,
+      "signal": null
+    },
+    {
+      "id": "gid://shopify/CompanyLocation/8622571620",
+      "status": "pendente",
+      "roles": [],
+      "review": {
+        "schema": 1,
+        "locationId": "gid://shopify/CompanyLocation/8622571620",
+        "ready": true,
+        "operationId": null,
+        "status": "pendente",
+        "cycleId": "4dd50967-11cf-4403-a0ad-a0f4a11c392e",
+        "enteredAt": "2026-11-17T18:55:31Z",
+        "enrolled": true,
+        "reopenVersion": "2026-11-17T18:55:31.900Z",
+        "decisionVersion": "2026-11-17T18:55:31.900Z",
+        "decisionStatus": "reaberto",
+        "updatedAt": "2026-11-17T18:55:32Z",
+        "signalPending": false,
+        "sourceKind": "cadastro-b2b",
+        "projectionEpoch": "ocean-20261117-1845",
+        "lastSync": {
+          "operationId": "f0cc3212-244f-412b-8632-56f8dee15681",
+          "at": "2026-11-17T18:55:32.864Z",
+          "recoveredOperationId": null,
+          "outcome": "committed"
+        }
+      },
+      "digest": "c34a89721ecc4df24167f2eaacfeb86b94a53d1c4861f4fbf9122b64d3eb9840",
+      "ledger": {
+        "schema": 1,
+        "cycleId": "4dd50967-11cf-4403-a0ad-a0f4a11c392e",
+        "novo": {
+          "state": "sent",
+          "requestId": "01a1e9c5-8412-721a-9a5e-2e545f827eee01M7NDTK6XAG9PKM0DXE54Y0NM63c4a583f0e8cc65v2",
+          "runUrl": "https://admin.shopify.com/store/mrdvrf-6a/apps/flow/activity/01a1e9c5-8412-721a-9a5e-2e545f827eee:01M7NDTK6XAG9PKM0DXE54Y0NM:63c4a583f0e8cc65:v2"
+        },
+        "vencido": {
+          "state": "sent",
+          "requestId": "01a1e9c5-a198-7078-8e9a-35b20509818901M7NDTK6XAG9PKM0DXE54Y0NM97f57220d5314e9ev2",
+          "runUrl": "https://admin.shopify.com/store/mrdvrf-6a/apps/flow/activity/01a1e9c5-a198-7078-8e9a-35b205098189:01M7NDTK6XAG9PKM0DXE54Y0NM:97f57220d5314e9e:v2"
+        }
+      },
+      "ledgerDigest": "a63b29014efaa2d547560735f3a8cc3dcca5551472c8649f807fd23b7061e407",
+      "signal": {
+        "schema": 1,
+        "cycleId": "4dd50967-11cf-4403-a0ad-a0f4a11c392e",
+        "at": "2026-11-18T11:30:03.626Z",
+        "status": "confirmed",
+        "eventId": "gid://shopify/Metaobject/695429464164",
+        "handle": "local-8622571620-4dd50967-11cf-4403-a0ad-a0f4a11c392e"
+      }
+    },
+    {
+      "id": "gid://shopify/CompanyLocation/8622604388",
+      "status": "aprovado_liberado",
+      "roles": [
+        {
+          "id": "gid://shopify/CompanyContactRoleAssignment/52373848164",
+          "role": {
+            "id": "gid://shopify/CompanyContactRole/13688635492",
+            "name": "Apenas pedidos"
+          },
+          "companyContact": {
+            "id": "gid://shopify/CompanyContact/4960157796"
+          }
+        }
+      ],
+      "review": {
+        "schema": 1,
+        "locationId": "gid://shopify/CompanyLocation/8622604388",
+        "ready": true,
+        "operationId": null,
+        "status": "aprovado_liberado",
+        "cycleId": "initial-8622604388",
+        "enteredAt": "2026-11-17T14:23:47Z",
+        "enrolled": true,
+        "reopenVersion": null,
+        "decisionVersion": null,
+        "decisionStatus": null,
+        "updatedAt": "2026-11-17T18:01:24Z",
+        "signalPending": false
+      },
+      "digest": "6768a75f8e48db1e74d2ea9b3b3009e5d77e3cae8391985c489b3011d0f2d123",
+      "ledger": {
+        "schema": 1,
+        "cycleId": "initial-8622604388",
+        "novo": {
+          "state": "sent",
+          "requestId": "01a1e9c5-8412-721a-9a5e-2e545f827eee01M7MY8Z4W0QXQKTBKEFNP3RD163c4a583f0e8cc65v2",
+          "runUrl": "https://admin.shopify.com/store/mrdvrf-6a/apps/flow/activity/01a1e9c5-8412-721a-9a5e-2e545f827eee:01M7MY8Z4W0QXQKTBKEFNP3RD1:63c4a583f0e8cc65:v2"
+        }
+      },
+      "ledgerDigest": "d0fbb09a2653047c1f309309f31263dca24b3737dc210cf5da7061cf763a7335",
+      "signal": null
+    },
+    {
+      "id": "gid://shopify/CompanyLocation/8622702692",
+      "status": "aprovado_pendente",
+      "roles": [],
+      "review": {
+        "schema": 1,
+        "locationId": "gid://shopify/CompanyLocation/8622702692",
+        "ready": true,
+        "operationId": null,
+        "status": "aprovado_pendente",
+        "cycleId": "b479b806-a659-4357-ac1f-42fd024036ed",
+        "enteredAt": "2026-11-17T18:55:45Z",
+        "enrolled": true,
+        "reopenVersion": null,
+        "decisionVersion": "2026-11-17T18:56:53.659Z",
+        "decisionStatus": "aprovado_pendente",
+        "updatedAt": "2026-11-17T18:56:55Z",
+        "signalPending": false,
+        "sourceKind": "cadastro-b2b",
+        "projectionEpoch": "ocean-20261117-1845",
+        "lastSync": {
+          "operationId": "3ce2fcb0-9369-4871-ab36-e09cc6885d6d",
+          "at": "2026-11-17T18:56:55.299Z",
+          "recoveredOperationId": null,
+          "outcome": "committed"
+        }
+      },
+      "digest": "8f3e56a4746d5dcaa0c767b4c3c779aa2caacd3c200bf663c250d6e15db7b5ff",
+      "ledger": {
+        "schema": 1,
+        "cycleId": "b479b806-a659-4357-ac1f-42fd024036ed",
+        "novo": {
+          "state": "sent",
+          "requestId": "01a1e9c5-8412-721a-9a5e-2e545f827eee01M7NDV0KMBXHCTCS6JGXNY7YC63c4a583f0e8cc65v2",
+          "runUrl": "https://admin.shopify.com/store/mrdvrf-6a/apps/flow/activity/01a1e9c5-8412-721a-9a5e-2e545f827eee:01M7NDV0KMBXHCTCS6JGXNY7YC:63c4a583f0e8cc65:v2"
+        }
+      },
+      "ledgerDigest": "9419482dcedb9eede5adbfca78337947fec43d0a18ae1e9a47948507616026c2",
+      "signal": {
+        "schema": 1,
+        "cycleId": "b479b806-a659-4357-ac1f-42fd024036ed",
+        "at": "2026-11-17T18:55:55.926Z",
+        "status": "confirmed",
+        "eventId": "gid://shopify/Metaobject/695429595236",
+        "handle": "local-8622702692-b479b806-a659-4357-ac1f-42fd024036ed"
+      }
+    },
+    {
+      "id": "gid://shopify/CompanyLocation/8622735460",
+      "status": "aprovado_liberado",
+      "roles": [
+        {
+          "id": "gid://shopify/CompanyContactRoleAssignment/52374110308",
+          "role": {
+            "id": "gid://shopify/CompanyContactRole/13688832100",
+            "name": "Apenas pedidos"
+          },
+          "companyContact": {
+            "id": "gid://shopify/CompanyContact/4960223332"
+          }
+        }
+      ],
+      "review": {
+        "schema": 1,
+        "locationId": "gid://shopify/CompanyLocation/8622735460",
+        "ready": true,
+        "operationId": null,
+        "status": "aprovado_liberado",
+        "cycleId": null,
+        "enteredAt": null,
+        "enrolled": false,
+        "reopenVersion": null,
+        "decisionVersion": "2026-11-17T16:18:58.690Z",
+        "decisionStatus": "aprovado_pendente",
+        "updatedAt": "2026-11-17T18:54:50Z",
+        "signalPending": false,
+        "sourceKind": "cadastro-b2b",
+        "projectionEpoch": "ocean-20261117-1845",
+        "migratedAt": "2026-11-17T18:54:50.316Z"
+      },
+      "digest": "17464f95e55a0c8a83ba58c77cdf75b9fd28a5b8872c48cd564b4f3b69d0f904",
+      "ledger": null,
+      "ledgerDigest": null,
+      "signal": null
+    },
+    {
+      "id": "gid://shopify/CompanyLocation/8623030372",
+      "status": "pendente",
+      "roles": [],
+      "review": {
+        "schema": 1,
+        "locationId": "gid://shopify/CompanyLocation/8623030372",
+        "ready": true,
+        "operationId": null,
+        "status": "pendente",
+        "cycleId": "98906945-7240-4bc1-8ffb-8b9e923a1768",
+        "enteredAt": "2026-11-17T18:54:50Z",
+        "enrolled": false,
+        "reopenVersion": null,
+        "decisionVersion": null,
+        "decisionStatus": null,
+        "updatedAt": "2026-11-17T18:54:50Z",
+        "signalPending": false,
+        "sourceKind": "cadastro-b2b",
+        "projectionEpoch": "ocean-20261117-1845",
+        "migratedAt": "2026-11-17T18:54:50.316Z"
+      },
+      "digest": "21f96b1deab0d2e116c387018182464ce08089fb2c0b539685d46f8405fb47cb",
+      "ledger": null,
+      "ledgerDigest": null,
+      "signal": null
+    },
+    {
+      "id": "gid://shopify/CompanyLocation/8625356900",
+      "status": "pendente",
+      "roles": [],
+      "review": {
+        "schema": 1,
+        "locationId": "gid://shopify/CompanyLocation/8625356900",
+        "ready": true,
+        "operationId": null,
+        "status": "pendente",
+        "cycleId": "native-8625356900-01M7NEHWY5JRVVJVCFDGZAW5SP",
+        "enteredAt": "2026-11-17T19:08:19Z",
+        "enrolled": true,
+        "reopenVersion": null,
+        "decisionVersion": null,
+        "updatedAt": "2026-11-17T19:08:19Z",
+        "signalPending": false,
+        "sourceKind": "native-new-location"
+      },
+      "digest": "2f21fdee71f847da3dcbceb3714fe29d8dc672472f4f6aaaf1d4d2a9a7bb332d",
+      "ledger": {
+        "schema": 1,
+        "cycleId": "native-8625356900-01M7NEHWY5JRVVJVCFDGZAW5SP",
+        "novo": {
+          "state": "sent",
+          "requestId": "01a1e9c5-8412-721a-9a5e-2e545f827eee01M7NEHZ2TDW09RD61P9WHX4QE63c4a583f0e8cc65v2",
+          "runUrl": "https://admin.shopify.com/store/mrdvrf-6a/apps/flow/activity/01a1e9c5-8412-721a-9a5e-2e545f827eee:01M7NEHZ2TDW09RD61P9WHX4QE:63c4a583f0e8cc65:v2"
+        },
+        "vencido": {
+          "state": "sent",
+          "requestId": "01a1e9c5-a198-7078-8e9a-35b20509818901M7NEHZ2TDW09RD61P9WHX4QE97f57220d5314e9ev2",
+          "runUrl": "https://admin.shopify.com/store/mrdvrf-6a/apps/flow/activity/01a1e9c5-a198-7078-8e9a-35b205098189:01M7NEHZ2TDW09RD61P9WHX4QE:97f57220d5314e9e:v2"
+        }
+      },
+      "ledgerDigest": "6cde3fc3d1dbcc622e34083fdf4095e0db008908b857d9b0850266ca08259196",
+      "signal": {
+        "schema": 1,
+        "cycleId": "native-8625356900-01M7NEHWY5JRVVJVCFDGZAW5SP",
+        "at": "2026-11-18T11:30:08.227Z",
+        "status": "confirmed",
+        "eventId": "gid://shopify/Metaobject/695433461860",
+        "handle": "local-8625356900-native-8625356900-01m7nehwy5jrvvjvcfdgzaw5sp"
+      }
+    }
+  ],
+  "allCommercialStatesMatch": true,
+  "allLocationsReady": true,
+  "permissionsCyclesLedgersDigestsPreserved": null,
+  "mutations": 0
+}

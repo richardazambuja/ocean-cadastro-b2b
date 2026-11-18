@@ -1,0 +1,2469 @@
+{
+  "at": "2026-11-18T11:37:50.043Z",
+  "essentialsMs": 979,
+  "totalMs": 31183,
+  "locations": 55,
+  "calls": [
+    {
+      "operation": "OceanStatusReprovados",
+      "ms": 360,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 16,
+        "actualQueryCost": 14,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3485,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanLocations",
+      "ms": 674,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 506,
+        "actualQueryCost": 135,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3856,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanLocations",
+      "ms": 304,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 506,
+        "actualQueryCost": 16,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3947,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanBridgeRollout_mwm1qz2k_1",
+      "ms": 228,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 2,
+        "actualQueryCost": 2,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3998,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadBridge_mwm1qz2k_2",
+      "ms": 218,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 8,
+        "actualQueryCost": 8,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3992,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadCommercialDecision_mwm1qz2k_3",
+      "ms": 229,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 2,
+        "actualQueryCost": 1,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3930,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanLocation",
+      "ms": 251,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 72,
+        "actualQueryCost": 31,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3971,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadBridge_mwm1qz2k_4",
+      "ms": 320,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 8,
+        "actualQueryCost": 8,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3992,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadCommercialDecision_mwm1qz2k_5",
+      "ms": 244,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 2,
+        "actualQueryCost": 1,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3931,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanLocation",
+      "ms": 257,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 72,
+        "actualQueryCost": 19,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3984,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadBridge_mwm1qz2k_6",
+      "ms": 259,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 8,
+        "actualQueryCost": 8,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3992,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanLocation",
+      "ms": 304,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 72,
+        "actualQueryCost": 31,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3968,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadCommercialDecision_mwm1qz2k_7",
+      "ms": 304,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 2,
+        "actualQueryCost": 1,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3927,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadBridge_mwm1qz2k_8",
+      "ms": 306,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 8,
+        "actualQueryCost": 8,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3992,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadCommercialDecision_mwm1qz2k_9",
+      "ms": 212,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 2,
+        "actualQueryCost": 1,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3927,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanLocation",
+      "ms": 237,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 72,
+        "actualQueryCost": 31,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3968,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadBridge_mwm1qz2k_10",
+      "ms": 276,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 8,
+        "actualQueryCost": 8,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3992,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanLocation",
+      "ms": 272,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 72,
+        "actualQueryCost": 31,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3968,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadCommercialDecision_mwm1qz2k_11",
+      "ms": 271,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 2,
+        "actualQueryCost": 1,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3927,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadBridge_mwm1qz2k_12",
+      "ms": 236,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 8,
+        "actualQueryCost": 8,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3992,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadCommercialDecision_mwm1qz2k_13",
+      "ms": 204,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 2,
+        "actualQueryCost": 1,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3999,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanLocation",
+      "ms": 270,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 72,
+        "actualQueryCost": 19,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3981,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadBridge_mwm1qz2k_14",
+      "ms": 220,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 8,
+        "actualQueryCost": 8,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3992,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadCommercialDecision_mwm1qz2k_15",
+      "ms": 223,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 2,
+        "actualQueryCost": 2,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3998,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanLocation",
+      "ms": 262,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 72,
+        "actualQueryCost": 19,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3979,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadBridge_mwm1qz2k_16",
+      "ms": 215,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 8,
+        "actualQueryCost": 8,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3992,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadCommercialDecision_mwm1qz2k_17",
+      "ms": 230,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 2,
+        "actualQueryCost": 2,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3928,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanLocation",
+      "ms": 244,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 72,
+        "actualQueryCost": 25,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3975,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadBridge_mwm1qz2k_18",
+      "ms": 224,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 8,
+        "actualQueryCost": 8,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3992,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadCommercialDecision_mwm1qz2k_19",
+      "ms": 206,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 2,
+        "actualQueryCost": 1,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3999,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanLocation",
+      "ms": 266,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 72,
+        "actualQueryCost": 19,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3981,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadBridge_mwm1qz2k_20",
+      "ms": 349,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 8,
+        "actualQueryCost": 8,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3992,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadCommercialDecision_mwm1qz2k_21",
+      "ms": 215,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 2,
+        "actualQueryCost": 2,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3926,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanLocation",
+      "ms": 245,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 72,
+        "actualQueryCost": 25,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3973,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadBridge_mwm1qz2k_22",
+      "ms": 265,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 8,
+        "actualQueryCost": 8,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3992,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadCommercialDecision_mwm1qz2k_23",
+      "ms": 230,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 2,
+        "actualQueryCost": 1,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3929,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanLocation",
+      "ms": 245,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 72,
+        "actualQueryCost": 19,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3982,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadBridge_mwm1qz2k_24",
+      "ms": 214,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 8,
+        "actualQueryCost": 8,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3992,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadCommercialDecision_mwm1qz2k_25",
+      "ms": 217,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 2,
+        "actualQueryCost": 2,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3998,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanLocation",
+      "ms": 295,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 72,
+        "actualQueryCost": 19,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3981,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadBridge_mwm1qz2k_26",
+      "ms": 248,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 8,
+        "actualQueryCost": 8,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3992,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadCommercialDecision_mwm1qz2k_27",
+      "ms": 242,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 2,
+        "actualQueryCost": 2,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3998,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanLocation",
+      "ms": 318,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 72,
+        "actualQueryCost": 25,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3975,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadBridge_mwm1qz2k_28",
+      "ms": 230,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 8,
+        "actualQueryCost": 8,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3992,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadCommercialDecision_mwm1qz2k_29",
+      "ms": 209,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 2,
+        "actualQueryCost": 1,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3999,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanLocation",
+      "ms": 262,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 72,
+        "actualQueryCost": 19,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3981,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadBridge_mwm1qz2k_30",
+      "ms": 226,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 8,
+        "actualQueryCost": 8,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3992,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadCommercialDecision_mwm1qz2k_31",
+      "ms": 229,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 2,
+        "actualQueryCost": 2,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3998,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanLocation",
+      "ms": 267,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 72,
+        "actualQueryCost": 25,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3975,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadBridge_mwm1qz2k_32",
+      "ms": 223,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 8,
+        "actualQueryCost": 8,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3992,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadCommercialDecision_mwm1qz2k_33",
+      "ms": 236,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 2,
+        "actualQueryCost": 2,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3998,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanLocation",
+      "ms": 249,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 72,
+        "actualQueryCost": 25,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3973,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadBridge_mwm1qz2k_34",
+      "ms": 222,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 8,
+        "actualQueryCost": 8,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3992,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadCommercialDecision_mwm1qz2k_35",
+      "ms": 219,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 2,
+        "actualQueryCost": 2,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3927,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanLocation",
+      "ms": 244,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 72,
+        "actualQueryCost": 25,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3974,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadBridge_mwm1qz2k_36",
+      "ms": 238,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 8,
+        "actualQueryCost": 8,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3992,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadCommercialDecision_mwm1qz2k_37",
+      "ms": 223,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 2,
+        "actualQueryCost": 2,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3998,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanLocation",
+      "ms": 289,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 72,
+        "actualQueryCost": 25,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3975,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadBridge_mwm1qz2k_38",
+      "ms": 325,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 8,
+        "actualQueryCost": 8,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3992,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadCommercialDecision_mwm1qz2k_39",
+      "ms": 221,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 2,
+        "actualQueryCost": 2,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3998,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanLocation",
+      "ms": 249,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 72,
+        "actualQueryCost": 19,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3979,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadBridge_mwm1qz2k_40",
+      "ms": 410,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 8,
+        "actualQueryCost": 8,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3992,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanLocation",
+      "ms": 265,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 72,
+        "actualQueryCost": 25,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3975,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadCommercialDecision_mwm1qz2k_41",
+      "ms": 264,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 2,
+        "actualQueryCost": 2,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3928,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadBridge_mwm1qz2k_42",
+      "ms": 305,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 8,
+        "actualQueryCost": 8,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3992,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadCommercialDecision_mwm1qz2k_43",
+      "ms": 205,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 2,
+        "actualQueryCost": 1,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3999,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanLocation",
+      "ms": 290,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 72,
+        "actualQueryCost": 25,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3975,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadBridge_mwm1qz2k_44",
+      "ms": 288,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 8,
+        "actualQueryCost": 8,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3992,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadCommercialDecision_mwm1qz2k_45",
+      "ms": 240,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 2,
+        "actualQueryCost": 2,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3998,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanLocation",
+      "ms": 274,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 72,
+        "actualQueryCost": 25,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3975,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadBridge_mwm1qz2k_46",
+      "ms": 213,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 8,
+        "actualQueryCost": 8,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3992,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadCommercialDecision_mwm1qz2k_47",
+      "ms": 223,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 2,
+        "actualQueryCost": 2,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3998,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanLocation",
+      "ms": 271,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 72,
+        "actualQueryCost": 25,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3973,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadBridge_mwm1qz2k_48",
+      "ms": 212,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 8,
+        "actualQueryCost": 8,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3992,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadCommercialDecision_mwm1qz2k_49",
+      "ms": 213,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 2,
+        "actualQueryCost": 2,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3927,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanLocation",
+      "ms": 235,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 72,
+        "actualQueryCost": 25,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3974,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadBridge_mwm1qz2k_50",
+      "ms": 265,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 8,
+        "actualQueryCost": 8,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3992,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadCommercialDecision_mwm1qz2k_51",
+      "ms": 218,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 2,
+        "actualQueryCost": 2,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3998,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanLocation",
+      "ms": 283,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 72,
+        "actualQueryCost": 25,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3974,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadBridge_mwm1qz2k_52",
+      "ms": 228,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 8,
+        "actualQueryCost": 8,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3992,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadCommercialDecision_mwm1qz2k_53",
+      "ms": 242,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 2,
+        "actualQueryCost": 1,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3999,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanLocation",
+      "ms": 272,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 72,
+        "actualQueryCost": 31,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3969,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadBridge_mwm1qz2k_54",
+      "ms": 240,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 8,
+        "actualQueryCost": 8,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3992,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadCommercialDecision_mwm1qz2k_55",
+      "ms": 289,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 2,
+        "actualQueryCost": 2,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3928,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanLocation",
+      "ms": 291,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 72,
+        "actualQueryCost": 25,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3975,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadBridge_mwm1qz2k_56",
+      "ms": 324,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 8,
+        "actualQueryCost": 8,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3992,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadCommercialDecision_mwm1qz2k_57",
+      "ms": 228,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 2,
+        "actualQueryCost": 2,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3998,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanLocation",
+      "ms": 253,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 72,
+        "actualQueryCost": 25,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3975,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadBridge_mwm1qz2k_58",
+      "ms": 239,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 8,
+        "actualQueryCost": 8,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3992,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanLocation",
+      "ms": 293,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 72,
+        "actualQueryCost": 25,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3976,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadCommercialDecision_mwm1qz2k_59",
+      "ms": 293,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 2,
+        "actualQueryCost": 2,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3929,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadBridge_mwm1qz2k_60",
+      "ms": 240,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 8,
+        "actualQueryCost": 8,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3992,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadCommercialDecision_mwm1qz2k_61",
+      "ms": 216,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 2,
+        "actualQueryCost": 2,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3998,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanLocation",
+      "ms": 265,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 72,
+        "actualQueryCost": 25,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3974,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadBridge_mwm1qz2k_62",
+      "ms": 227,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 8,
+        "actualQueryCost": 8,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3992,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadCommercialDecision_mwm1qz2k_63",
+      "ms": 223,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 2,
+        "actualQueryCost": 2,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3998,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanLocation",
+      "ms": 255,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 72,
+        "actualQueryCost": 25,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3973,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadBridge_mwm1qz2k_64",
+      "ms": 224,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 8,
+        "actualQueryCost": 8,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3992,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadCommercialDecision_mwm1qz2k_65",
+      "ms": 257,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 2,
+        "actualQueryCost": 2,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3998,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanLocation",
+      "ms": 278,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 72,
+        "actualQueryCost": 25,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3973,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadBridge_mwm1qz2k_66",
+      "ms": 209,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 8,
+        "actualQueryCost": 8,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3992,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadCommercialDecision_mwm1qz2k_67",
+      "ms": 282,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 2,
+        "actualQueryCost": 2,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3998,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanLocation",
+      "ms": 283,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 72,
+        "actualQueryCost": 25,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3975,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadBridge_mwm1qz2k_68",
+      "ms": 242,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 8,
+        "actualQueryCost": 8,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3992,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadCommercialDecision_mwm1qz2k_69",
+      "ms": 255,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 2,
+        "actualQueryCost": 2,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3928,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanLocation",
+      "ms": 278,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 72,
+        "actualQueryCost": 19,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3981,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadBridge_mwm1qz2k_70",
+      "ms": 279,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 8,
+        "actualQueryCost": 8,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3992,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadCommercialDecision_mwm1qz2k_71",
+      "ms": 222,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 2,
+        "actualQueryCost": 2,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3998,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanLocation",
+      "ms": 273,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 72,
+        "actualQueryCost": 19,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3981,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadBridge_mwm1qz2k_72",
+      "ms": 260,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 8,
+        "actualQueryCost": 8,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3992,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadCommercialDecision_mwm1qz2k_73",
+      "ms": 306,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 2,
+        "actualQueryCost": 2,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3930,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanLocation",
+      "ms": 307,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 72,
+        "actualQueryCost": 25,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3977,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadBridge_mwm1qz2k_74",
+      "ms": 274,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 8,
+        "actualQueryCost": 8,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3992,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadCommercialDecision_mwm1qz2k_75",
+      "ms": 213,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 2,
+        "actualQueryCost": 2,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3998,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanLocation",
+      "ms": 257,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 72,
+        "actualQueryCost": 25,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3973,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadBridge_mwm1qz2k_76",
+      "ms": 221,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 8,
+        "actualQueryCost": 8,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3992,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadCommercialDecision_mwm1qz2k_77",
+      "ms": 219,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 2,
+        "actualQueryCost": 2,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3928,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanLocation",
+      "ms": 235,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 72,
+        "actualQueryCost": 25,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3975,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadBridge_mwm1qz2k_78",
+      "ms": 235,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 8,
+        "actualQueryCost": 8,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3992,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadCommercialDecision_mwm1qz2k_79",
+      "ms": 212,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 2,
+        "actualQueryCost": 2,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3926,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanLocation",
+      "ms": 237,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 72,
+        "actualQueryCost": 25,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3973,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadBridge_mwm1qz2k_80",
+      "ms": 280,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 8,
+        "actualQueryCost": 8,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3992,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadCommercialDecision_mwm1qz2k_81",
+      "ms": 226,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 2,
+        "actualQueryCost": 2,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3927,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanLocation",
+      "ms": 261,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 72,
+        "actualQueryCost": 25,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3974,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadBridge_mwm1qz2k_82",
+      "ms": 249,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 8,
+        "actualQueryCost": 8,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3992,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadCommercialDecision_mwm1qz2k_83",
+      "ms": 248,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 2,
+        "actualQueryCost": 2,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3928,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanLocation",
+      "ms": 263,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 72,
+        "actualQueryCost": 25,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3975,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadBridge_mwm1qz2k_84",
+      "ms": 251,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 8,
+        "actualQueryCost": 8,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3992,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanLocation",
+      "ms": 288,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 72,
+        "actualQueryCost": 25,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3975,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadCommercialDecision_mwm1qz2k_85",
+      "ms": 349,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 2,
+        "actualQueryCost": 2,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3998,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadBridge_mwm1qz2k_86",
+      "ms": 221,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 8,
+        "actualQueryCost": 8,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3992,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadCommercialDecision_mwm1qz2k_87",
+      "ms": 248,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 2,
+        "actualQueryCost": 2,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3998,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanLocation",
+      "ms": 249,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 72,
+        "actualQueryCost": 25,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3975,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadBridge_mwm1qz2k_88",
+      "ms": 306,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 8,
+        "actualQueryCost": 8,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3992,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanLocation",
+      "ms": 277,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 72,
+        "actualQueryCost": 25,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3974,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadCommercialDecision_mwm1qz2k_89",
+      "ms": 276,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 2,
+        "actualQueryCost": 2,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3927,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadBridge_mwm1qz2k_90",
+      "ms": 235,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 8,
+        "actualQueryCost": 8,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3992,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanLocation",
+      "ms": 307,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 72,
+        "actualQueryCost": 19,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3979,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadCommercialDecision_mwm1qz2k_91",
+      "ms": 306,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 2,
+        "actualQueryCost": 2,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3998,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadBridge_mwm1qz2k_92",
+      "ms": 307,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 8,
+        "actualQueryCost": 8,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3992,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanLocation",
+      "ms": 261,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 72,
+        "actualQueryCost": 25,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3979,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadCommercialDecision_mwm1qz2k_93",
+      "ms": 261,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 2,
+        "actualQueryCost": 2,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3932,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadBridge_mwm1qz2k_94",
+      "ms": 249,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 8,
+        "actualQueryCost": 8,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3992,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadCommercialDecision_mwm1qz2k_95",
+      "ms": 308,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 2,
+        "actualQueryCost": 2,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3998,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanLocation",
+      "ms": 309,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 72,
+        "actualQueryCost": 25,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3975,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadBridge_mwm1qz2k_96",
+      "ms": 215,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 8,
+        "actualQueryCost": 8,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3992,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanLocation",
+      "ms": 223,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 72,
+        "actualQueryCost": 25,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3975,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadCommercialDecision_mwm1qz2k_97",
+      "ms": 223,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 2,
+        "actualQueryCost": 2,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3928,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadBridge_mwm1qz2k_98",
+      "ms": 222,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 8,
+        "actualQueryCost": 8,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3992,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanLocation",
+      "ms": 260,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 72,
+        "actualQueryCost": 25,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3974,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadCommercialDecision_mwm1qz2k_99",
+      "ms": 260,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 2,
+        "actualQueryCost": 2,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3927,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadBridge_mwm1qz2k_100",
+      "ms": 225,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 8,
+        "actualQueryCost": 8,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3992,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanLocation",
+      "ms": 288,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 72,
+        "actualQueryCost": 25,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3981,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadCommercialDecision_mwm1qz2k_101",
+      "ms": 287,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 2,
+        "actualQueryCost": 2,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3934,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadSignal_mwm1qz2k_102",
+      "ms": 227,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 2,
+        "actualQueryCost": 2,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3998,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadBridge_mwm1qz2k_103",
+      "ms": 196,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 8,
+        "actualQueryCost": 8,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3992,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadBridge_mwm1qz2k_104",
+      "ms": 223,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 8,
+        "actualQueryCost": 8,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3992,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadBridge_mwm1qz2k_105",
+      "ms": 209,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 8,
+        "actualQueryCost": 8,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3992,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadCommercialDecision_mwm1qz2k_106",
+      "ms": 208,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 2,
+        "actualQueryCost": 1,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3927,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanLocation",
+      "ms": 253,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 72,
+        "actualQueryCost": 19,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3980,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadBridge_mwm1qz2k_107",
+      "ms": 226,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 8,
+        "actualQueryCost": 8,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3992,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadCommercialDecision_mwm1qz2k_108",
+      "ms": 300,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 2,
+        "actualQueryCost": 2,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3998,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanLocation",
+      "ms": 301,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 72,
+        "actualQueryCost": 25,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3974,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadBridge_mwm1qz2k_109",
+      "ms": 262,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 8,
+        "actualQueryCost": 8,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3992,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadCommercialDecision_mwm1qz2k_110",
+      "ms": 252,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 2,
+        "actualQueryCost": 2,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3998,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanLocation",
+      "ms": 300,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 72,
+        "actualQueryCost": 19,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3980,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadBridge_mwm1qz2k_111",
+      "ms": 231,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 8,
+        "actualQueryCost": 8,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3992,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadCommercialDecision_mwm1qz2k_112",
+      "ms": 229,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 2,
+        "actualQueryCost": 1,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3927,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanLocation",
+      "ms": 260,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 72,
+        "actualQueryCost": 25,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3974,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadBridge_mwm1qz2k_113",
+      "ms": 201,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 8,
+        "actualQueryCost": 8,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3992,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadCommercialDecision_mwm1qz2k_114",
+      "ms": 239,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 2,
+        "actualQueryCost": 1,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3928,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanLocation",
+      "ms": 249,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 72,
+        "actualQueryCost": 25,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3975,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadSignal_mwm1qz2k_115",
+      "ms": 209,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 2,
+        "actualQueryCost": 2,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3998,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadBridge_mwm1qz2k_116",
+      "ms": 213,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 8,
+        "actualQueryCost": 8,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3992,
+          "restoreRate": 200
+        }
+      }
+    },
+    {
+      "operation": "OceanReadBridge_mwm1qz2k_117",
+      "ms": 224,
+      "httpStatus": 200,
+      "cost": {
+        "requestedQueryCost": 8,
+        "actualQueryCost": 8,
+        "throttleStatus": {
+          "maximumAvailable": 4000,
+          "currentlyAvailable": 3992,
+          "restoreRate": 200
+        }
+      }
+    }
+  ],
+  "warnings": [
+    "gid://shopify/CompanyLocation/8622571620: Estado comercial confirmado; emissao/confirmacao do sinal pendente: Baseline is read only; blocked write",
+    "gid://shopify/CompanyLocation/8625356900: Estado comercial confirmado; emissao/confirmacao do sinal pendente: Baseline is read only; blocked write"
+  ],
+  "measurement": {
+    "transport": "Direct Admin API under the cadastro-b2b app identity",
+    "readOnly": true,
+    "browserRenderIncluded": false,
+    "blockedReceiptWrites": true,
+    "note": "Original syncLoaded was executed; mutations were blocked. 175 network reads completed. Two stable enrolled cycles attempted receipt writes. This is a conservative API-only measurement, not a browser timing."
+  }
+}

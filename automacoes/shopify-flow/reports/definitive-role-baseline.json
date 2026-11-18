@@ -1,0 +1,296 @@
+[
+  {
+    "id": "gid://shopify/CompanyLocation/8588918884",
+    "roles": []
+  },
+  {
+    "id": "gid://shopify/CompanyLocation/8589934692",
+    "roles": [
+      {
+        "id": "gid://shopify/CompanyContactRoleAssignment/52357791844",
+        "contactId": "gid://shopify/CompanyContact/4935352420",
+        "roleId": "gid://shopify/CompanyContactRole/13625589860"
+      }
+    ]
+  },
+  {
+    "id": "gid://shopify/CompanyLocation/8591147108",
+    "roles": []
+  },
+  {
+    "id": "gid://shopify/CompanyLocation/8601075812",
+    "roles": []
+  },
+  {
+    "id": "gid://shopify/CompanyLocation/8601272420",
+    "roles": []
+  },
+  {
+    "id": "gid://shopify/CompanyLocation/8601305188",
+    "roles": [
+      {
+        "id": "gid://shopify/CompanyContactRoleAssignment/52362379364",
+        "contactId": "gid://shopify/CompanyContact/4948754532",
+        "roleId": "gid://shopify/CompanyContactRole/13647216740"
+      }
+    ]
+  },
+  {
+    "id": "gid://shopify/CompanyLocation/8602452068",
+    "roles": [
+      {
+        "id": "gid://shopify/CompanyContactRoleAssignment/52373815396",
+        "contactId": "gid://shopify/CompanyContact/4944592996",
+        "roleId": "gid://shopify/CompanyContactRole/13649313892"
+      }
+    ]
+  },
+  {
+    "id": "gid://shopify/CompanyLocation/8602714212",
+    "roles": []
+  },
+  {
+    "id": "gid://shopify/CompanyLocation/8602746980",
+    "roles": [
+      {
+        "id": "gid://shopify/CompanyContactRoleAssignment/52365492324",
+        "contactId": "gid://shopify/CompanyContact/4944855140",
+        "roleId": "gid://shopify/CompanyContactRole/13649838180"
+      }
+    ]
+  },
+  {
+    "id": "gid://shopify/CompanyLocation/8602910820",
+    "roles": []
+  },
+  {
+    "id": "gid://shopify/CompanyLocation/8602943588",
+    "roles": [
+      {
+        "id": "gid://shopify/CompanyContactRoleAssignment/52371488868",
+        "contactId": "gid://shopify/CompanyContact/4945018980",
+        "roleId": "gid://shopify/CompanyContactRole/13650165860"
+      }
+    ]
+  },
+  {
+    "id": "gid://shopify/CompanyLocation/8602976356",
+    "roles": [
+      {
+        "id": "gid://shopify/CompanyContactRoleAssignment/52374143076",
+        "contactId": "gid://shopify/CompanyContact/4945051748",
+        "roleId": "gid://shopify/CompanyContactRole/13650231396"
+      }
+    ]
+  },
+  {
+    "id": "gid://shopify/CompanyLocation/8603304036",
+    "roles": []
+  },
+  {
+    "id": "gid://shopify/CompanyLocation/8604516452",
+    "roles": [
+      {
+        "id": "gid://shopify/CompanyContactRoleAssignment/52372471908",
+        "contactId": "gid://shopify/CompanyContact/4946133092",
+        "roleId": "gid://shopify/CompanyContactRole/13653246052"
+      }
+    ]
+  },
+  {
+    "id": "gid://shopify/CompanyLocation/8604581988",
+    "roles": []
+  },
+  {
+    "id": "gid://shopify/CompanyLocation/8604876900",
+    "roles": []
+  },
+  {
+    "id": "gid://shopify/CompanyLocation/8605106276",
+    "roles": []
+  },
+  {
+    "id": "gid://shopify/CompanyLocation/8605630564",
+    "roles": []
+  },
+  {
+    "id": "gid://shopify/CompanyLocation/8606646372",
+    "roles": [
+      {
+        "id": "gid://shopify/CompanyContactRoleAssignment/52373979236",
+        "contactId": "gid://shopify/CompanyContact/4947771492",
+        "roleId": "gid://shopify/CompanyContactRole/13657440356"
+      }
+    ]
+  },
+  {
+    "id": "gid://shopify/CompanyLocation/8607236196",
+    "roles": []
+  },
+  {
+    "id": "gid://shopify/CompanyLocation/8607334500",
+    "roles": []
+  },
+  {
+    "id": "gid://shopify/CompanyLocation/8607793252",
+    "roles": []
+  },
+  {
+    "id": "gid://shopify/CompanyLocation/8607858788",
+    "roles": []
+  },
+  {
+    "id": "gid://shopify/CompanyLocation/8608088164",
+    "roles": []
+  },
+  {
+    "id": "gid://shopify/CompanyLocation/8608120932",
+    "roles": []
+  },
+  {
+    "id": "gid://shopify/CompanyLocation/8608186468",
+    "roles": []
+  },
+  {
+    "id": "gid://shopify/CompanyLocation/8609529956",
+    "roles": []
+  },
+  {
+    "id": "gid://shopify/CompanyLocation/8609824868",
+    "roles": []
+  },
+  {
+    "id": "gid://shopify/CompanyLocation/8610021476",
+    "roles": []
+  },
+  {
+    "id": "gid://shopify/CompanyLocation/8611201124",
+    "roles": []
+  },
+  {
+    "id": "gid://shopify/CompanyLocation/8611233892",
+    "roles": []
+  },
+  {
+    "id": "gid://shopify/CompanyLocation/8611430500",
+    "roles": []
+  },
+  {
+    "id": "gid://shopify/CompanyLocation/8611463268",
+    "roles": []
+  },
+  {
+    "id": "gid://shopify/CompanyLocation/8611922020",
+    "roles": [
+      {
+        "id": "gid://shopify/CompanyContactRoleAssignment/52373946468",
+        "contactId": "gid://shopify/CompanyContact/4951900260",
+        "roleId": "gid://shopify/CompanyContactRole/13667860580"
+      }
+    ]
+  },
+  {
+    "id": "gid://shopify/CompanyLocation/8612053092",
+    "roles": [
+      {
+        "id": "gid://shopify/CompanyContactRoleAssignment/52372144228",
+        "contactId": "gid://shopify/CompanyContact/4951965796",
+        "roleId": "gid://shopify/CompanyContactRole/13668122724"
+      }
+    ]
+  },
+  {
+    "id": "gid://shopify/CompanyLocation/8612184164",
+    "roles": []
+  },
+  {
+    "id": "gid://shopify/CompanyLocation/8616181860",
+    "roles": []
+  },
+  {
+    "id": "gid://shopify/CompanyLocation/8616312932",
+    "roles": []
+  },
+  {
+    "id": "gid://shopify/CompanyLocation/8616935524",
+    "roles": []
+  },
+  {
+    "id": "gid://shopify/CompanyLocation/8617492580",
+    "roles": []
+  },
+  {
+    "id": "gid://shopify/CompanyLocation/8617656420",
+    "roles": []
+  },
+  {
+    "id": "gid://shopify/CompanyLocation/8617885796",
+    "roles": []
+  },
+  {
+    "id": "gid://shopify/CompanyLocation/8618639460",
+    "roles": []
+  },
+  {
+    "id": "gid://shopify/CompanyLocation/8619556964",
+    "roles": []
+  },
+  {
+    "id": "gid://shopify/CompanyLocation/8619688036",
+    "roles": [
+      {
+        "id": "gid://shopify/CompanyContactRoleAssignment/52372242532",
+        "contactId": "gid://shopify/CompanyContact/4958060644",
+        "roleId": "gid://shopify/CompanyContactRole/13683327076"
+      }
+    ]
+  },
+  {
+    "id": "gid://shopify/CompanyLocation/8620015716",
+    "roles": []
+  },
+  {
+    "id": "gid://shopify/CompanyLocation/8620212324",
+    "roles": []
+  },
+  {
+    "id": "gid://shopify/CompanyLocation/8620245092",
+    "roles": []
+  },
+  {
+    "id": "gid://shopify/CompanyLocation/8622538852",
+    "roles": []
+  },
+  {
+    "id": "gid://shopify/CompanyLocation/8622571620",
+    "roles": []
+  },
+  {
+    "id": "gid://shopify/CompanyLocation/8622604388",
+    "roles": [
+      {
+        "id": "gid://shopify/CompanyContactRoleAssignment/52373848164",
+        "contactId": "gid://shopify/CompanyContact/4960157796",
+        "roleId": "gid://shopify/CompanyContactRole/13688635492"
+      }
+    ]
+  },
+  {
+    "id": "gid://shopify/CompanyLocation/8622702692",
+    "roles": []
+  },
+  {
+    "id": "gid://shopify/CompanyLocation/8622735460",
+    "roles": [
+      {
+        "id": "gid://shopify/CompanyContactRoleAssignment/52374110308",
+        "contactId": "gid://shopify/CompanyContact/4960223332",
+        "roleId": "gid://shopify/CompanyContactRole/13688832100"
+      }
+    ]
+  },
+  {
+    "id": "gid://shopify/CompanyLocation/8623030372",
+    "roles": []
+  }
+]

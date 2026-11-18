@@ -1,0 +1,18 @@
+{
+  "source": "/home/richard-azambuja/Downloads/ocean-cadastros-app/cadastro-b2b/extensions/app-home/src",
+  "hashes": {
+    "AppHome.jsx": "5615768ef9c5d7a65b18e7be800e605a94ff912626c0e949005f562c73a20d2d",
+    "api.mjs": "38a5743c2bb4eac6a9fbfe9f1e686dcf6b0d4370ec2c35e31b342c8466fefe6d",
+    "aprovar.mjs": "39cebc48f6f126a5a9970460d83c0b763aa12632115cf4cd8cff3b96e430cc48",
+    "cnpj-link.mjs": "415a29a433041aa0733874c0971f9f3d44f61ee257b6693ee994227335fd7c9a",
+    "contato-links.mjs": "b8377510f8f6c46fe459d14655ccdb379796604fa8c76b98956564e93ca96b51",
+    "mensagens-whatsapp.mjs": "66cd9762087a64ce611caaddb56bca23fb2700a9749b5e8930b674bcc9d91819",
+    "ordenacao.mjs": "68fda88d5a24509ed6190a7742049725e0d5a636d28523384e42fa174ab74e8d",
+    "prazo-pendentes.mjs": "218f81bf16f12d4c7f997aa7f11818f5f4c346ba117d2626767769732c3590ab",
+    "regras.mjs": "9e4abb8e98590e431d3ad4de6adc468a1ddc3de82ea20f7d2af5f5e5e80dc158",
+    "reprovados-api.mjs": "20b5b23077d6e81289ba4c79dffa1e9d1fa4e931ea14f4691cbf7d60e459b503",
+    "status.mjs": "198f879a034c3877aee7e6bd57dd3666499025e43db99a9caff96d9e2b4ecc26",
+    "testes-acesso.mjs": "3271b7125a9ce37ffb2941bfc647c0e8b430f122c7930042a01ea7be29ba52ee",
+    "testes-reprovados.mjs": "7e45cdbe5c9f11868e065cef25f7aec352fd4053f39b6b015eaa313437233324"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "data": {
+    "shop": {
+      "rollout": {
+        "value": "{\"mode\":\"test\",\"testLocationIds\":[\"gid://shopify/CompanyLocation/8622571620\",\"gid://shopify/CompanyLocation/8622604388\",\"gid://shopify/CompanyLocation/8622702692\"],\"cutover\":null,\"recipient\":\"cadastros@oceanjoiasbr.com\",\"productionApproved\":false}"
+      }
+    },
+    "primary": {
+      "id": "gid://shopify/CompanyLocation/8622571620",
+      "review": {
+        "value": "{\"schema\":1,\"locationId\":\"gid://shopify/CompanyLocation/8622571620\",\"ready\":true,\"operationId\":null,\"status\":\"pendente\",\"cycleId\":\"108ddf6e-bc65-430f-839a-27fd8674766b\",\"enteredAt\":\"2026-11-17T14:02:37Z\",\"enrolled\":true,\"reopenVersion\":null,\"decisionVersion\":null,\"updatedAt\":\"2026-11-17T14:02:37Z\",\"signalPending\":true}",
+        "updatedAt": "2026-11-17T14:02:44Z"
+      },
+      "audit": {
+        "value": "{\"schema\":1,\"build\":\"ocean-reopen-20261117-1730\",\"testId\":\"reopen-1794937335563\",\"startedAt\":\"2026-11-17T17:42:15.563Z\",\"steps\":[{\"phase\":\"before\",\"at\":\"2026-11-17T17:42:16.210Z\",\"build\":\"ocean-reopen-20261117-1730\",\"locationId\":\"gid://shopify/CompanyLocation/8622571620\",\"decision\":{\"verified\":true,\"localId\":\"gid://shopify/CompanyLocation/8622571620\",\"status\":\"reprovado\",\"updatedAt\":\"2026-11-17T14:35:42.845Z\",\"metaobjectId\":\"gid://shopify/Metaobject/695338172516\",\"metaobjectUpdatedAt\":\"2026-11-17T14:35:43Z\"},\"mirror\":{\"schema\":1,\"locationId\":\"gid://shopify/CompanyLocation/8622571620\",\"ready\":true,\"operationId\":null,\"status\":\"pendente\",\"cycleId\":\"108ddf6e-bc65-430f-839a-27fd8674766b\",\"enteredAt\":\"2026-11-17T14:02:37Z\",\"enrolled\":true,\"reopenVersion\":null,\"decisionVersion\":null,\"updatedAt\":\"2026-11-17T14:02:37Z\",\"signalPending\":true},\"ledger\":{\"schema\":1,\"cycleId\":\"108ddf6e-bc65-430f-839a-27fd8674766b\",\"novo\":{\"state\":\"sent\",\"requestId\":\"01a1e9c5-8412-721a-9a5e-2e545f827eee01M7MXHDMER7DWWW4QVKRNJNSA63c4a583f0e8cc65v2\",\"runUrl\":\"https://admin.shopify.com/store/mrdvrf-6a/apps/flow/activity/01a1e9c5-8412-721a-9a5e-2e545f827eee:01M7MXHDMER7DWWW4QVKRNJNSA:63c4a583f0e8cc65:v2\"},\"vencido\":{\"state\":\"sent\",\"requestId\":\"01a1e9c5-a198-7078-8e9a-35b20509818901M7MX2TH0FKTZB066974GH5JZ97f57220d5314e9ev2\",\"runUrl\":\"https://admin.shopify.com/store/mrdvrf-6a/apps/flow/activity/01a1e9c5-a198-7078-8e9a-35b205098189:01M7MX2TH0FKTZB066974GH5JZ:97f57220d5314e9e:v2\"}},\"roleAssignmentIds\":[],\"companyId\":\"gid://shopify/Company/7442366564\"},{\"phase\":\"before\",\"at\":\"2026-11-17T17:42:17.605Z\",\"build\":\"ocean-reopen-20261117-1730\",\"locationId\":\"gid://shopify/CompanyLocation/8622702692\",\"decision\":{\"verified\":true,\"localId\":\"gid://shopify/CompanyLocation/8622702692\",\"status\":null,\"updatedAt\":null},\"mirror\":{\"schema\":1,\"locationId\":\"gid://shopify/CompanyLocation/8622702692\",\"ready\":true,\"operationId\":null,\"status\":\"pendente\",\"cycleId\":\"native-8622702692-01M7MZ60M28KMTTEGDGFXZP5CG\",\"enteredAt\":\"2026-11-17T14:39:41Z\",\"enrolled\":true,\"reopenVersion\":null,\"decisionVersion\":null,\"updatedAt\":\"2026-11-17T14:39:41Z\",\"signalPending\":true},\"ledger\":null,\"roleAssignmentIds\":[],\"companyId\":\"gid://shopify/Company/7442399332\"}],\"error\":{\"message\":\"Cannot read properties of undefined (reading 'randomUUID')\",\"at\":\"2026-11-17T17:42:20.165Z\"}}",
+        "updatedAt": "2026-11-17T17:42:20Z"
+      },
+      "roleAssignments": {
+        "nodes": []
+      }
+    },
+    "approval": {
+      "id": "gid://shopify/CompanyLocation/8622702692",
+      "review": {
+        "value": "{\"schema\":1,\"locationId\":\"gid://shopify/CompanyLocation/8622702692\",\"ready\":true,\"operationId\":null,\"status\":\"pendente\",\"cycleId\":\"native-8622702692-01M7MZ60M28KMTTEGDGFXZP5CG\",\"enteredAt\":\"2026-11-17T14:39:41Z\",\"enrolled\":true,\"reopenVersion\":null,\"decisionVersion\":null,\"updatedAt\":\"2026-11-17T14:39:41Z\",\"signalPending\":true}",
+        "updatedAt": "2026-11-17T14:39:41Z"
+      },
+      "roleAssignments": {
+        "nodes": []
+      }
+    }
+  }
+}

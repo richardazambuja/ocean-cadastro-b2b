@@ -1,0 +1,36 @@
+{
+  "at": "2026-11-17T19:08:04.381Z",
+  "rollout": {
+    "mode": "production",
+    "cutover": "2026-11-17T19:08:04Z",
+    "recipient": "cadastros@oceanjoiasbr.com",
+    "productionApproved": true,
+    "epoch": "ocean-20261117-1845"
+  },
+  "receipt": {
+    "metafields": [
+      {
+        "id": "gid://shopify/Metafield/193810612977764",
+        "namespace": "ocean_b2b",
+        "key": "rollout",
+        "type": "json",
+        "value": "{\"mode\":\"production\",\"cutover\":\"2026-11-17T19:08:04Z\",\"recipient\":\"cadastros@oceanjoiasbr.com\",\"productionApproved\":true,\"epoch\":\"ocean-20261117-1845\"}",
+        "compareDigest": "e69e1ff5d53defc4ca1473605d09e17009c00b355ff8c5bfdd9c187f6c114524"
+      }
+    ],
+    "userErrors": []
+  },
+  "gate": {
+    "migrationComplete": true,
+    "primaryRecovered": true,
+    "primaryImmediate": true,
+    "primaryOverdue": true,
+    "approvedBeforeDeadline": true,
+    "approvalRemainsApproved": true,
+    "approvalNoOverdue": true,
+    "elapsed": true,
+    "permissionsPreserved": true,
+    "originalWorkflowsPreserved": true,
+    "historicalExcluded": true
+  }
+}

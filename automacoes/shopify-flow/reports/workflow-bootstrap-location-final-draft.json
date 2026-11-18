@@ -1,0 +1,12 @@
+{
+  "automationWorkflowUpdate": {
+    "automationWorkflow": {
+      "id": "gid://shopify/AutomationWorkflow/01a1e9e0-fb18-7796-96df-1f4d86f80bac",
+      "name": "OCEAN — PONTE TÉCNICA B2B (novo local)",
+      "version": "01M7MYG1EPX52JYBEWXVZSEECX",
+      "activeVersion": "01M7MY1YXH8SRC8KJK4W200P8D",
+      "validationErrors": []
+    },
+    "userErrors": []
+  }
+}

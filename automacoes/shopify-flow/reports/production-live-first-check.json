@@ -1,0 +1,12 @@
+{
+  "data": {
+    "companyLocation": {
+      "id": "gid://shopify/CompanyLocation/8622571620",
+      "notifications": null,
+      "review": {
+        "value": "{\"schema\":1,\"locationId\":\"gid://shopify/CompanyLocation/8622571620\",\"ready\":true,\"operationId\":null,\"status\":\"pendente\",\"cycleId\":\"108ddf6e-bc65-430f-839a-27fd8674766b\",\"enteredAt\":\"2026-11-17T14:02:37Z\",\"enrolled\":true,\"reopenVersion\":null,\"decisionVersion\":null,\"updatedAt\":\"2026-11-17T14:02:37Z\",\"signalPending\":true}",
+        "compareDigest": "4e65dd5a8ac76f2c0cd7d7ef1db7deb75a92fc5405b5e0264e6e6cf295e4d044"
+      }
+    }
+  }
+}

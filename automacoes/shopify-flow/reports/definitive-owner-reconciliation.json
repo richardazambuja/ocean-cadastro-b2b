@@ -1,0 +1,95 @@
+{
+  "at": "2026-11-17T18:55:01.264Z",
+  "warnings": [],
+  "snapshots": [
+    {
+      "build": "ocean-production-20261117-1830",
+      "locationId": "gid://shopify/CompanyLocation/8622571620",
+      "decision": {
+        "verified": true,
+        "localId": "gid://shopify/CompanyLocation/8622571620",
+        "status": "reaberto",
+        "updatedAt": "2026-11-17T18:01:37.319Z",
+        "metaobjectId": "gid://shopify/Metaobject/695338172516",
+        "metaobjectUpdatedAt": "2026-11-17T18:01:37Z"
+      },
+      "mirror": {
+        "schema": 1,
+        "locationId": "gid://shopify/CompanyLocation/8622571620",
+        "ready": true,
+        "operationId": null,
+        "status": "pendente",
+        "cycleId": "58e1a583-f8a8-4569-a0d8-57a4143ef28d",
+        "enteredAt": "2026-11-17T18:01:37Z",
+        "enrolled": true,
+        "reopenVersion": "2026-11-17T18:01:37.319Z",
+        "decisionVersion": "2026-11-17T18:01:37.319Z",
+        "decisionStatus": "reaberto",
+        "updatedAt": "2026-11-17T18:54:56Z",
+        "signalPending": false,
+        "sourceKind": "cadastro-b2b",
+        "projectionEpoch": "ocean-20261117-1845",
+        "lastSync": {
+          "operationId": "79bd9ebf-185d-4b80-bbaa-cfca9dc51927",
+          "at": "2026-11-17T18:54:56.108Z",
+          "recoveredOperationId": "01a1eaab-e5f1-7031-b8bb-75fb541522f8",
+          "outcome": "operation_recovered"
+        }
+      },
+      "ledger": {
+        "schema": 1,
+        "cycleId": "58e1a583-f8a8-4569-a0d8-57a4143ef28d",
+        "novo": {
+          "state": "sent",
+          "requestId": "01a1e9c5-8412-721a-9a5e-2e545f827eee01M7NDSF6AVJ6HXV27JZZQ9AKT63c4a583f0e8cc65v2",
+          "runUrl": "https://admin.shopify.com/store/mrdvrf-6a/apps/flow/activity/01a1e9c5-8412-721a-9a5e-2e545f827eee:01M7NDSF6AVJ6HXV27JZZQ9AKT:63c4a583f0e8cc65:v2"
+        }
+      },
+      "signal": {
+        "schema": 1,
+        "cycleId": "58e1a583-f8a8-4569-a0d8-57a4143ef28d",
+        "at": "2026-11-17T18:54:57.637Z",
+        "status": "confirmed",
+        "eventId": "gid://shopify/Metaobject/695429234788",
+        "handle": "local-8622571620-58e1a583-f8a8-4569-a0d8-57a4143ef28d"
+      },
+      "roleAssignmentIds": [],
+      "companyId": "gid://shopify/Company/7442366564"
+    },
+    {
+      "build": "ocean-production-20261117-1830",
+      "locationId": "gid://shopify/CompanyLocation/8622702692",
+      "decision": {
+        "verified": true,
+        "localId": "gid://shopify/CompanyLocation/8622702692",
+        "status": null,
+        "updatedAt": null
+      },
+      "mirror": {
+        "schema": 1,
+        "locationId": "gid://shopify/CompanyLocation/8622702692",
+        "ready": true,
+        "operationId": null,
+        "status": "pendente",
+        "cycleId": "native-8622702692-01M7MZ60M28KMTTEGDGFXZP5CG",
+        "enteredAt": "2026-11-17T14:39:41Z",
+        "enrolled": true,
+        "reopenVersion": null,
+        "decisionVersion": null,
+        "updatedAt": "2026-11-17T14:39:41Z",
+        "signalPending": false
+      },
+      "ledger": null,
+      "signal": {
+        "schema": 1,
+        "cycleId": "native-8622702692-01M7MZ60M28KMTTEGDGFXZP5CG",
+        "at": "2026-11-17T18:54:59.659Z",
+        "status": "confirmed",
+        "eventId": "gid://shopify/Metaobject/695339155556",
+        "handle": "local-8622702692-native-8622702692-01m7mz60m28kmttegdgfxzp5cg"
+      },
+      "roleAssignmentIds": [],
+      "companyId": "gid://shopify/Company/7442399332"
+    }
+  ]
+}

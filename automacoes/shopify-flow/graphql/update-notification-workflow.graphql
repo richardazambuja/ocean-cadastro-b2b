@@ -1,0 +1,6 @@
+mutation OceanUpdateNotification($id:ID!,$version:String!,$configuration:JSON!) {
+  automationWorkflowUpdate(id:$id,version:$version,configuration:$configuration) {
+    automationWorkflow { id name version activeVersion validationErrors { code message stepId configFieldId } }
+    userErrors { field message code }
+  }
+}

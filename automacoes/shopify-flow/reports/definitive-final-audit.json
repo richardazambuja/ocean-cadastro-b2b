@@ -1,0 +1,336 @@
+{
+  "at": "2026-11-17T19:18:52.301Z",
+  "version": {
+    "id": "gid://shopify/Version/1233627316225",
+    "name": "ocean-b2b-production-20261117-1900"
+  },
+  "store": "mrdvrf-6a.myshopify.com",
+  "appIdentity": {
+    "app": {
+      "id": "gid://shopify/App/447943081985",
+      "title": "cadastro-b2b",
+      "apiKey": "cbdf3320e1517c8e9006c806a882be25"
+    },
+    "accessScopes": [
+      {
+        "handle": "read_companies"
+      },
+      {
+        "handle": "read_customers"
+      },
+      {
+        "handle": "read_metaobjects"
+      },
+      {
+        "handle": "write_companies"
+      },
+      {
+        "handle": "write_metaobjects"
+      },
+      {
+        "handle": "write_products"
+      },
+      {
+        "handle": "read_products"
+      }
+    ]
+  },
+  "rollout": {
+    "mode": "production",
+    "cutover": "2026-11-17T19:08:04Z",
+    "recipient": "cadastros@oceanjoiasbr.com",
+    "productionApproved": true,
+    "epoch": "ocean-20261117-1845"
+  },
+  "checks": {
+    "productionEnabled": true,
+    "testModeRemoved": true,
+    "allMirrorsMatchPrivateSource": true,
+    "allScalarMetafieldsConsistent": true,
+    "allOperationsReady": true,
+    "allExistingPermissionsPreserved": true,
+    "newSyntheticPermissionsEmpty": true,
+    "historicalExcluded": true,
+    "reopenBothEmailsSent": true,
+    "approvedOverdueSuppressed": true,
+    "nativeImmediateSent": true,
+    "nativeOverdueSent": true
+  },
+  "locationCount": 55,
+  "existingPermissionsCompared": 54,
+  "historicalCount": 51,
+  "affected": [
+    {
+      "id": "gid://shopify/CompanyLocation/8622571620",
+      "createdAt": "2026-11-17T13:40:42Z",
+      "sourceStatus": "pendente",
+      "privateDecision": {
+        "handle": "local-8622571620",
+        "fields": [
+          {
+            "key": "local_id",
+            "value": "gid://shopify/CompanyLocation/8622571620"
+          },
+          {
+            "key": "status",
+            "value": "reaberto"
+          },
+          {
+            "key": "alterado_em",
+            "value": "2026-11-17T18:55:31.900Z"
+          }
+        ]
+      },
+      "review": {
+        "schema": 1,
+        "locationId": "gid://shopify/CompanyLocation/8622571620",
+        "ready": true,
+        "operationId": null,
+        "status": "pendente",
+        "cycleId": "4dd50967-11cf-4403-a0ad-a0f4a11c392e",
+        "enteredAt": "2026-11-17T18:55:31Z",
+        "enrolled": true,
+        "reopenVersion": "2026-11-17T18:55:31.900Z",
+        "decisionVersion": "2026-11-17T18:55:31.900Z",
+        "decisionStatus": "reaberto",
+        "updatedAt": "2026-11-17T18:55:32Z",
+        "signalPending": false,
+        "sourceKind": "cadastro-b2b",
+        "projectionEpoch": "ocean-20261117-1845",
+        "lastSync": {
+          "operationId": "f0cc3212-244f-412b-8632-56f8dee15681",
+          "at": "2026-11-17T18:55:32.864Z",
+          "recoveredOperationId": null,
+          "outcome": "committed"
+        }
+      },
+      "ledger": {
+        "schema": 1,
+        "cycleId": "4dd50967-11cf-4403-a0ad-a0f4a11c392e",
+        "novo": {
+          "state": "sent",
+          "requestId": "01a1e9c5-8412-721a-9a5e-2e545f827eee01M7NDTK6XAG9PKM0DXE54Y0NM63c4a583f0e8cc65v2",
+          "runUrl": "https://admin.shopify.com/store/mrdvrf-6a/apps/flow/activity/01a1e9c5-8412-721a-9a5e-2e545f827eee:01M7NDTK6XAG9PKM0DXE54Y0NM:63c4a583f0e8cc65:v2"
+        },
+        "vencido": {
+          "state": "sent",
+          "requestId": "01a1e9c5-a198-7078-8e9a-35b20509818901M7NDTK6XAG9PKM0DXE54Y0NM97f57220d5314e9ev2",
+          "runUrl": "https://admin.shopify.com/store/mrdvrf-6a/apps/flow/activity/01a1e9c5-a198-7078-8e9a-35b205098189:01M7NDTK6XAG9PKM0DXE54Y0NM:97f57220d5314e9e:v2"
+        }
+      },
+      "ledgerUpdatedAt": "2026-11-17T19:05:35Z",
+      "signal": {
+        "schema": 1,
+        "cycleId": "4dd50967-11cf-4403-a0ad-a0f4a11c392e",
+        "at": "2026-11-17T19:09:20.172Z",
+        "status": "confirmed",
+        "eventId": "gid://shopify/Metaobject/695429464164",
+        "handle": "local-8622571620-4dd50967-11cf-4403-a0ad-a0f4a11c392e"
+      },
+      "roles": []
+    },
+    {
+      "id": "gid://shopify/CompanyLocation/8622702692",
+      "createdAt": "2026-11-17T14:39:39Z",
+      "sourceStatus": "aprovado_pendente",
+      "privateDecision": {
+        "handle": "local-8622702692",
+        "fields": [
+          {
+            "key": "local_id",
+            "value": "gid://shopify/CompanyLocation/8622702692"
+          },
+          {
+            "key": "status",
+            "value": "aprovado_pendente"
+          },
+          {
+            "key": "alterado_em",
+            "value": "2026-11-17T18:56:53.659Z"
+          }
+        ]
+      },
+      "review": {
+        "schema": 1,
+        "locationId": "gid://shopify/CompanyLocation/8622702692",
+        "ready": true,
+        "operationId": null,
+        "status": "aprovado_pendente",
+        "cycleId": "b479b806-a659-4357-ac1f-42fd024036ed",
+        "enteredAt": "2026-11-17T18:55:45Z",
+        "enrolled": true,
+        "reopenVersion": null,
+        "decisionVersion": "2026-11-17T18:56:53.659Z",
+        "decisionStatus": "aprovado_pendente",
+        "updatedAt": "2026-11-17T18:56:55Z",
+        "signalPending": false,
+        "sourceKind": "cadastro-b2b",
+        "projectionEpoch": "ocean-20261117-1845",
+        "lastSync": {
+          "operationId": "3ce2fcb0-9369-4871-ab36-e09cc6885d6d",
+          "at": "2026-11-17T18:56:55.299Z",
+          "recoveredOperationId": null,
+          "outcome": "committed"
+        }
+      },
+      "ledger": {
+        "schema": 1,
+        "cycleId": "b479b806-a659-4357-ac1f-42fd024036ed",
+        "novo": {
+          "state": "sent",
+          "requestId": "01a1e9c5-8412-721a-9a5e-2e545f827eee01M7NDV0KMBXHCTCS6JGXNY7YC63c4a583f0e8cc65v2",
+          "runUrl": "https://admin.shopify.com/store/mrdvrf-6a/apps/flow/activity/01a1e9c5-8412-721a-9a5e-2e545f827eee:01M7NDV0KMBXHCTCS6JGXNY7YC:63c4a583f0e8cc65:v2"
+        }
+      },
+      "ledgerUpdatedAt": "2026-11-17T18:55:50Z",
+      "signal": {
+        "schema": 1,
+        "cycleId": "b479b806-a659-4357-ac1f-42fd024036ed",
+        "at": "2026-11-17T18:55:55.926Z",
+        "status": "confirmed",
+        "eventId": "gid://shopify/Metaobject/695429595236",
+        "handle": "local-8622702692-b479b806-a659-4357-ac1f-42fd024036ed"
+      },
+      "roles": []
+    },
+    {
+      "id": "gid://shopify/CompanyLocation/8625356900",
+      "createdAt": "2026-11-17T19:08:17Z",
+      "sourceStatus": "pendente",
+      "privateDecision": null,
+      "review": {
+        "schema": 1,
+        "locationId": "gid://shopify/CompanyLocation/8625356900",
+        "ready": true,
+        "operationId": null,
+        "status": "pendente",
+        "cycleId": "native-8625356900-01M7NEHWY5JRVVJVCFDGZAW5SP",
+        "enteredAt": "2026-11-17T19:08:19Z",
+        "enrolled": true,
+        "reopenVersion": null,
+        "decisionVersion": null,
+        "updatedAt": "2026-11-17T19:08:19Z",
+        "signalPending": false,
+        "sourceKind": "native-new-location"
+      },
+      "ledger": {
+        "schema": 1,
+        "cycleId": "native-8625356900-01M7NEHWY5JRVVJVCFDGZAW5SP",
+        "novo": {
+          "state": "sent",
+          "requestId": "01a1e9c5-8412-721a-9a5e-2e545f827eee01M7NEHZ2TDW09RD61P9WHX4QE63c4a583f0e8cc65v2",
+          "runUrl": "https://admin.shopify.com/store/mrdvrf-6a/apps/flow/activity/01a1e9c5-8412-721a-9a5e-2e545f827eee:01M7NEHZ2TDW09RD61P9WHX4QE:63c4a583f0e8cc65:v2"
+        },
+        "vencido": {
+          "state": "sent",
+          "requestId": "01a1e9c5-a198-7078-8e9a-35b20509818901M7NEHZ2TDW09RD61P9WHX4QE97f57220d5314e9ev2",
+          "runUrl": "https://admin.shopify.com/store/mrdvrf-6a/apps/flow/activity/01a1e9c5-a198-7078-8e9a-35b205098189:01M7NEHZ2TDW09RD61P9WHX4QE:97f57220d5314e9e:v2"
+        }
+      },
+      "ledgerUpdatedAt": "2026-11-17T19:18:23Z",
+      "signal": {
+        "schema": 1,
+        "cycleId": "native-8625356900-01M7NEHWY5JRVVJVCFDGZAW5SP",
+        "at": "2026-11-17T19:09:37.028Z",
+        "status": "confirmed",
+        "eventId": "gid://shopify/Metaobject/695433461860",
+        "handle": "local-8625356900-native-8625356900-01m7nehwy5jrvvjvcfdgzaw5sp"
+      },
+      "roles": []
+    }
+  ],
+  "sourceStatusCounts": {
+    "incompleto": 5,
+    "aprovado_liberado": 13,
+    "reprovado": 1,
+    "aprovado_pendente": 32,
+    "pendente": 4
+  },
+  "tests": {
+    "integration": {
+      "passed": 93,
+      "failed": 0
+    },
+    "originalAccess": {
+      "passed": 21,
+      "failed": 0
+    },
+    "originalCommercial": {
+      "passed": 24,
+      "failed": 0
+    },
+    "total": 138,
+    "build": "passed",
+    "deploy": "released"
+  },
+  "inbox": {
+    "recipient": "cadastros@oceanjoiasbr.com",
+    "company": "OCEAN B2B TESTE FLOW 20261117",
+    "cycleId": "4dd50967-11cf-4403-a0ad-a0f4a11c392e",
+    "userConfirmedBoth": true,
+    "answerVerbatim": "Recebi os dois",
+    "immediateApproxBrasilia": "2026-11-17 15:55",
+    "overdueApproxBrasilia": "2026-11-17 16:05",
+    "questionContext": "Nova rodada de reabertura, posterior à correção definitiva; confirmação de caixa postal além dos recibos de execução da Shopify."
+  },
+  "originalWorkflowsPreserved": true,
+  "workflows": [
+    {
+      "id": "gid://shopify/AutomationWorkflow/01a1e9e3-4bea-70f3-8e80-b18d8c984f89",
+      "name": "OCEAN — PONTE TÉCNICA B2B (novo contato)",
+      "version": "01M7ND1MNKGG38VAEZJ9R0ETZ5",
+      "activeVersion": "01M7ND1MNKGG38VAEZJ9R0ETZ5",
+      "validationErrors": []
+    },
+    {
+      "id": "gid://shopify/AutomationWorkflow/01a1e9e0-fb18-7796-96df-1f4d86f80bac",
+      "name": "OCEAN — PONTE TÉCNICA B2B (novo local)",
+      "version": "01M7ND1F014GWZV5WG0AHSWR9Y",
+      "activeVersion": "01M7ND1F014GWZV5WG0AHSWR9Y",
+      "validationErrors": []
+    },
+    {
+      "id": "gid://shopify/AutomationWorkflow/01a1e9c5-a198-7078-8e9a-35b205098189",
+      "name": "OCEAN — CADASTRO VENCIDO",
+      "version": "01M7ND17GDZT14NQNC7Z8MT5PR",
+      "activeVersion": "01M7ND17GDZT14NQNC7Z8MT5PR",
+      "validationErrors": []
+    },
+    {
+      "id": "gid://shopify/AutomationWorkflow/01a1e9c5-8412-721a-9a5e-2e545f827eee",
+      "name": "OCEAN — NOVO CADASTRO B2B",
+      "version": "01M7ND1053SFM395G569ZCH2MJ",
+      "activeVersion": "01M7ND1053SFM395G569ZCH2MJ",
+      "validationErrors": []
+    },
+    {
+      "id": "gid://shopify/AutomationWorkflow/01a1c14c-9fee-73fb-8b03-6357cbe0154c",
+      "name": "Receber uma notificação e configurar empresas criadas por solicitações de conta da empresa",
+      "version": "01M72XNFVAGHPTXTV1YDX9QG5X",
+      "activeVersion": "01M72XNFVAGHPTXTV1YDX9QG5X",
+      "validationErrors": []
+    },
+    {
+      "id": "gid://shopify/AutomationWorkflow/01a1c180-81c7-79af-9c3e-ca8b4ea94983",
+      "name": "New Workflow",
+      "version": "01M70R10E4NQKGQ71416JKK078",
+      "activeVersion": "01M70R10E4NQKGQ71416JKK078",
+      "validationErrors": []
+    },
+    {
+      "id": "gid://shopify/AutomationWorkflow/01a18422-f112-75f0-b62e-1358b17adcea",
+      "name": "Recover abandoned checkout",
+      "version": "01M6225W8J1ZBVFRR33H3P864S",
+      "activeVersion": "01M6225W8J1ZBVFRR33H3P864S",
+      "validationErrors": [
+        {
+          "code": "CONNECTOR_ERROR",
+          "message": "O conector para esta etapa da automação está indisponível.",
+          "stepId": "abandoned_checkout",
+          "configFieldId": null
+        }
+      ]
+    }
+  ],
+  "temporaryCredentialsRemoved": true
+}

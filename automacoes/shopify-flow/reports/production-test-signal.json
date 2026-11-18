@@ -1,0 +1,13 @@
+{
+  "data": {
+    "metaobjectUpsert": {
+      "metaobject": {
+        "id": "gid://shopify/Metaobject/695325425764",
+        "handle": "local-8622571620-8c88f54d-c2f0-48ef-94ed-cc7813aaa309",
+        "type": "ocean_b2b_pending_cycle",
+        "updatedAt": "2026-11-17T13:55:14Z"
+      },
+      "userErrors": []
+    }
+  }
+}

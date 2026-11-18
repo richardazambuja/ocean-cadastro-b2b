@@ -1,0 +1,9 @@
+{
+  "definition": {
+    "name": "Ciclo de analise Ocean",
+    "namespace": "ocean_b2b",
+    "key": "cycle_id",
+    "type": "single_line_text_field",
+    "ownerType": "COMPANY_LOCATION"
+  }
+}

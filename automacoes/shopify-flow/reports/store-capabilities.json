@@ -1,0 +1,64 @@
+{
+  "date": "2026-11-17",
+  "shop": {
+    "myshopifyDomain": "mrdvrf-6a.myshopify.com",
+    "plan": {
+      "publicDisplayName": "Advanced"
+    }
+  },
+  "apps": [
+    {
+      "app": {
+        "title": "Flow"
+      },
+      "accessScopes": [
+        {
+          "handle": "read_all_orders"
+        },
+        {
+          "handle": "read_all_subscription_contracts"
+        },
+        {
+          "handle": "read_apps"
+        },
+        {
+          "handle": "read_orders"
+        },
+        {
+          "handle": "read_own_subscription_contracts"
+        },
+        {
+          "handle": "read_users"
+        },
+        {
+          "handle": "write_orders"
+        }
+      ]
+    },
+    {
+      "app": {
+        "title": "cadastro-b2b"
+      },
+      "accessScopes": [
+        {
+          "handle": "read_companies"
+        },
+        {
+          "handle": "read_customers"
+        },
+        {
+          "handle": "write_companies"
+        },
+        {
+          "handle": "write_products"
+        },
+        {
+          "handle": "read_products"
+        }
+      ]
+    }
+  ],
+  "mutationsExecuted": 0,
+  "writePermissionConclusion": "write_companies is granted to cadastro-b2b. API schema and read support confirmed. A real metafield write is intentionally untested.",
+  "nativeSignalAdditionalPermission": "write_metaobjects for merchant-owned native cycle signals; definition setup requires write_metaobject_definitions by the setup operator."
+}

@@ -1,0 +1,6 @@
+mutation OceanCreateNotification($name:String!,$configuration:JSON!,$note:String) {
+  automationWorkflowCreate(name:$name,configuration:$configuration,note:$note) {
+    automationWorkflow { id name version versionState activeVersion validationErrors { code message stepId configFieldId } }
+    userErrors { field message code }
+  }
+}

@@ -1,0 +1,721 @@
+{
+  "automationTasks": {
+    "nodes": [
+      {
+        "id": "gid://shopify/AutomationTask/shopify%3A%3Aadmin%3A%3Acompany_created?version=0.1",
+        "taskId": "shopify::admin::company_created",
+        "version": "0.1",
+        "label": "Company created",
+        "returnFields": [
+          {
+            "name": "Company",
+            "type": "Company!",
+            "typeDefinitions": null
+          }
+        ]
+      },
+      {
+        "id": "gid://shopify/AutomationTask/shopify%3A%3Aadmin%3A%3Acompany_contact_created?version=0.1",
+        "taskId": "shopify::admin::company_contact_created",
+        "version": "0.1",
+        "label": "Company contact created",
+        "returnFields": [
+          {
+            "name": "CompanyContact",
+            "type": "CompanyContact!",
+            "typeDefinitions": null
+          }
+        ]
+      },
+      {
+        "id": "gid://shopify/AutomationTask/shopify%3A%3Aadmin%3A%3Acompany_location_created?version=0.1",
+        "taskId": "shopify::admin::company_location_created",
+        "version": "0.1",
+        "label": "Company location created",
+        "returnFields": [
+          {
+            "name": "Company Location",
+            "type": "CompanyLocation!",
+            "typeDefinitions": null
+          }
+        ]
+      },
+      {
+        "id": "gid://shopify/AutomationTask/shopify%3A%3Aadmin%3A%3Acompany_contact_permission_assigned?version=0.1",
+        "taskId": "shopify::admin::company_contact_permission_assigned",
+        "version": "0.1",
+        "label": "Company contact assigned permission",
+        "returnFields": [
+          {
+            "name": "Company Location",
+            "type": "CompanyLocation!",
+            "typeDefinitions": null
+          },
+          {
+            "name": "Company Contact",
+            "type": "CompanyContact!",
+            "typeDefinitions": null
+          },
+          {
+            "name": "Permission Name",
+            "type": "String!",
+            "typeDefinitions": null
+          }
+        ]
+      },
+      {
+        "id": "gid://shopify/AutomationTask/019b2860-ef08-7ff5-aee1-da81d8e1ee14?version=1.0",
+        "taskId": "019b2860-ef08-7ff5-aee1-da81d8e1ee14",
+        "version": "1.0",
+        "label": "Companies update",
+        "returnFields": [
+          {
+            "name": "Resource ID",
+            "type": "String!",
+            "typeDefinitions": null
+          },
+          {
+            "name": "Payload",
+            "type": "String!",
+            "typeDefinitions": null
+          },
+          {
+            "name": "Webhook ID",
+            "type": "String!",
+            "typeDefinitions": null
+          },
+          {
+            "name": "Triggered at",
+            "type": "String!",
+            "typeDefinitions": null
+          }
+        ]
+      },
+      {
+        "id": "gid://shopify/AutomationTask/019c2d2e-1393-7815-83ef-66d3026ff2ff?version=1.0",
+        "taskId": "019c2d2e-1393-7815-83ef-66d3026ff2ff",
+        "version": "1.0",
+        "label": "Company Update",
+        "returnFields": [
+          {
+            "name": "eventId",
+            "type": "String!",
+            "typeDefinitions": null
+          },
+          {
+            "name": "Company",
+            "type": "Company!",
+            "typeDefinitions": "type Company {\n  id: ID!\n  name: String!\n  note: String\n  externalId: String\n  customerSince: String\n  createdAt: String!\n  updatedAt: String!\n  \"What changed in this update, with the old and new value of each field. Empty when nothing the trigger reports changed or the record had no stored values yet\"\n  changes: ResourceChanges\n}\n\n\"One field that changed in this update\"\ntype FieldChange {\n  \"The field that changed: name, note, externalId or customerSince\"\n  field: String!\n  \"The value before the update. Long values are shortened\"\n  oldValue: String\n  \"The value after the update. Long values are shortened\"\n  newValue: String\n}\n\n\"Old and new values of the fields that changed\"\ntype ResourceChanges {\n  \"Names of the fields that changed\"\n  fields: [String!]!\n  \"Old and new value per changed field\"\n  items: [FieldChange!]!\n  \"True when the update changed more than one event carries: items then holds the first changes only, while fields still names every field that changed\"\n  truncated: Boolean\n  \"How many changes the update had, including any not in items\"\n  totalCount: Int\n}\n"
+          }
+        ]
+      },
+      {
+        "id": "gid://shopify/AutomationTask/019b2860-ef08-732a-a70f-5359689129e8?version=1.0",
+        "taskId": "019b2860-ef08-732a-a70f-5359689129e8",
+        "version": "1.0",
+        "label": "Companies delete",
+        "returnFields": [
+          {
+            "name": "Resource ID",
+            "type": "String!",
+            "typeDefinitions": null
+          },
+          {
+            "name": "Payload",
+            "type": "String!",
+            "typeDefinitions": null
+          },
+          {
+            "name": "Webhook ID",
+            "type": "String!",
+            "typeDefinitions": null
+          },
+          {
+            "name": "Triggered at",
+            "type": "String!",
+            "typeDefinitions": null
+          }
+        ]
+      },
+      {
+        "id": "gid://shopify/AutomationTask/019cd485-72eb-750a-9140-604e728c51f0?version=1.0",
+        "taskId": "019cd485-72eb-750a-9140-604e728c51f0",
+        "version": "1.0",
+        "label": "Company Request Created",
+        "returnFields": [
+          {
+            "name": "Customer",
+            "type": "Customer!",
+            "typeDefinitions": null
+          },
+          {
+            "name": "Company Name",
+            "type": "String!",
+            "typeDefinitions": null
+          },
+          {
+            "name": "Company ID",
+            "type": "String!",
+            "typeDefinitions": null
+          },
+          {
+            "name": "Admin URL",
+            "type": "String!",
+            "typeDefinitions": null
+          }
+        ]
+      },
+      {
+        "id": "gid://shopify/AutomationTask/01a115ce-cb1a-74ca-bfee-5ace6170aaaa?version=1.0",
+        "taskId": "01a115ce-cb1a-74ca-bfee-5ace6170aaaa",
+        "version": "1.0",
+        "label": "Company created",
+        "returnFields": [
+          {
+            "name": "Application ID",
+            "type": "String!",
+            "typeDefinitions": null
+          },
+          {
+            "name": "Reference",
+            "type": "String!",
+            "typeDefinitions": null
+          },
+          {
+            "name": "Company name",
+            "type": "String!",
+            "typeDefinitions": null
+          },
+          {
+            "name": "Contact name",
+            "type": "String!",
+            "typeDefinitions": null
+          },
+          {
+            "name": "Contact email",
+            "type": "String!",
+            "typeDefinitions": null
+          },
+          {
+            "name": "Country",
+            "type": "String!",
+            "typeDefinitions": null
+          },
+          {
+            "name": "Status",
+            "type": "String!",
+            "typeDefinitions": null
+          },
+          {
+            "name": "Admin URL",
+            "type": "String!",
+            "typeDefinitions": null
+          },
+          {
+            "name": "Company",
+            "type": "Company!",
+            "typeDefinitions": null
+          }
+        ]
+      },
+      {
+        "id": "gid://shopify/AutomationTask/f654aa0b-3f89-4f86-ac9c-08c0c0c71e63?version=1.0",
+        "taskId": "f654aa0b-3f89-4f86-ac9c-08c0c0c71e63",
+        "version": "1.0",
+        "label": "Company approved",
+        "returnFields": [
+          {
+            "name": "Customer",
+            "type": "Customer!",
+            "typeDefinitions": null
+          },
+          {
+            "name": "form",
+            "type": "String!",
+            "typeDefinitions": null
+          }
+        ]
+      },
+      {
+        "id": "gid://shopify/AutomationTask/fad2d950-f4da-43c1-9bf1-bb5573f3c812?version=1.0",
+        "taskId": "fad2d950-f4da-43c1-9bf1-bb5573f3c812",
+        "version": "1.0",
+        "label": "Duos company approved",
+        "returnFields": [
+          {
+            "name": "Submission",
+            "type": "Submission!",
+            "typeDefinitions": "type Submission {\n  id: String!\n  data: String!\n  formattedData: String!\n  submittedEmail: String!\n  createdAt: String!\n}\n"
+          },
+          {
+            "name": "Customer",
+            "type": "Customer!",
+            "typeDefinitions": null
+          }
+        ]
+      },
+      {
+        "id": "gid://shopify/AutomationTask/019b2860-ef08-7084-abd9-00164a9404ff?version=1.0",
+        "taskId": "019b2860-ef08-7084-abd9-00164a9404ff",
+        "version": "1.0",
+        "label": "Company contacts delete",
+        "returnFields": [
+          {
+            "name": "Resource ID",
+            "type": "String!",
+            "typeDefinitions": null
+          },
+          {
+            "name": "Payload",
+            "type": "String!",
+            "typeDefinitions": null
+          },
+          {
+            "name": "Webhook ID",
+            "type": "String!",
+            "typeDefinitions": null
+          },
+          {
+            "name": "Triggered at",
+            "type": "String!",
+            "typeDefinitions": null
+          }
+        ]
+      },
+      {
+        "id": "gid://shopify/AutomationTask/019b2860-ef08-7369-9e63-8bfbf41445b3?version=1.0",
+        "taskId": "019b2860-ef08-7369-9e63-8bfbf41445b3",
+        "version": "1.0",
+        "label": "Company locations delete",
+        "returnFields": [
+          {
+            "name": "Resource ID",
+            "type": "String!",
+            "typeDefinitions": null
+          },
+          {
+            "name": "Payload",
+            "type": "String!",
+            "typeDefinitions": null
+          },
+          {
+            "name": "Webhook ID",
+            "type": "String!",
+            "typeDefinitions": null
+          },
+          {
+            "name": "Triggered at",
+            "type": "String!",
+            "typeDefinitions": null
+          }
+        ]
+      },
+      {
+        "id": "gid://shopify/AutomationTask/019b2860-ef08-7c68-ba70-4d137aed0ab9?version=1.0",
+        "taskId": "019b2860-ef08-7c68-ba70-4d137aed0ab9",
+        "version": "1.0",
+        "label": "Company contacts update",
+        "returnFields": [
+          {
+            "name": "Resource ID",
+            "type": "String!",
+            "typeDefinitions": null
+          },
+          {
+            "name": "Payload",
+            "type": "String!",
+            "typeDefinitions": null
+          },
+          {
+            "name": "Webhook ID",
+            "type": "String!",
+            "typeDefinitions": null
+          },
+          {
+            "name": "Triggered at",
+            "type": "String!",
+            "typeDefinitions": null
+          }
+        ]
+      },
+      {
+        "id": "gid://shopify/AutomationTask/019b2860-ef08-7d38-9f34-abe5e841f2d1?version=1.0",
+        "taskId": "019b2860-ef08-7d38-9f34-abe5e841f2d1",
+        "version": "1.0",
+        "label": "Company locations update",
+        "returnFields": [
+          {
+            "name": "Resource ID",
+            "type": "String!",
+            "typeDefinitions": null
+          },
+          {
+            "name": "Payload",
+            "type": "String!",
+            "typeDefinitions": null
+          },
+          {
+            "name": "Webhook ID",
+            "type": "String!",
+            "typeDefinitions": null
+          },
+          {
+            "name": "Triggered at",
+            "type": "String!",
+            "typeDefinitions": null
+          }
+        ]
+      },
+      {
+        "id": "gid://shopify/AutomationTask/019c2d2e-1393-7e35-b963-04f97c52943d?version=1.0",
+        "taskId": "019c2d2e-1393-7e35-b963-04f97c52943d",
+        "version": "1.0",
+        "label": "Company Location Update",
+        "returnFields": [
+          {
+            "name": "eventId",
+            "type": "String!",
+            "typeDefinitions": null
+          },
+          {
+            "name": "CompanyLocation",
+            "type": "CompanyLocation!",
+            "typeDefinitions": "type CompanyLocation {\n  id: ID!\n  name: String!\n  note: String\n  externalId: String\n  locale: String\n  phone: String\n  currency: String!\n  createdAt: String!\n  updatedAt: String!\n  \"What changed in this update, with the old and new value of each field. Empty when nothing the trigger reports changed or the record had no stored values yet\"\n  changes: ResourceChanges\n}\n\n\"One field that changed in this update\"\ntype FieldChange {\n  \"The field that changed: name, note, externalId, locale, phone or currency\"\n  field: String!\n  \"The value before the update. Long values are shortened\"\n  oldValue: String\n  \"The value after the update. Long values are shortened\"\n  newValue: String\n}\n\n\"Old and new values of the fields that changed\"\ntype ResourceChanges {\n  \"Names of the fields that changed\"\n  fields: [String!]!\n  \"Old and new value per changed field\"\n  items: [FieldChange!]!\n  \"True when the update changed more than one event carries: items then holds the first changes only, while fields still names every field that changed\"\n  truncated: Boolean\n  \"How many changes the update had, including any not in items\"\n  totalCount: Int\n}\n"
+          }
+        ]
+      },
+      {
+        "id": "gid://shopify/AutomationTask/019ecff0-224d-7a8a-89ec-4cf98e1109e8?version=1.0",
+        "taskId": "019ecff0-224d-7a8a-89ec-4cf98e1109e8",
+        "version": "1.0",
+        "label": "Company Registration Form Submitted",
+        "returnFields": [
+          {
+            "name": "record id",
+            "type": "String!",
+            "typeDefinitions": null
+          },
+          {
+            "name": "Customer",
+            "type": "Customer!",
+            "typeDefinitions": null
+          },
+          {
+            "name": "company name",
+            "type": "String!",
+            "typeDefinitions": null
+          },
+          {
+            "name": "location name",
+            "type": "String!",
+            "typeDefinitions": null
+          },
+          {
+            "name": "shipping address first name",
+            "type": "String!",
+            "typeDefinitions": null
+          },
+          {
+            "name": "shipping address last name",
+            "type": "String!",
+            "typeDefinitions": null
+          },
+          {
+            "name": "shipping address phone",
+            "type": "String!",
+            "typeDefinitions": null
+          },
+          {
+            "name": "shipping address line one",
+            "type": "String!",
+            "typeDefinitions": null
+          },
+          {
+            "name": "shipping address line two",
+            "type": "String!",
+            "typeDefinitions": null
+          },
+          {
+            "name": "shipping city",
+            "type": "String!",
+            "typeDefinitions": null
+          },
+          {
+            "name": "shipping state",
+            "type": "String!",
+            "typeDefinitions": null
+          },
+          {
+            "name": "shipping country",
+            "type": "String!",
+            "typeDefinitions": null
+          },
+          {
+            "name": "shipping zip",
+            "type": "String!",
+            "typeDefinitions": null
+          },
+          {
+            "name": "billing address first name",
+            "type": "String!",
+            "typeDefinitions": null
+          },
+          {
+            "name": "billing address last name",
+            "type": "String!",
+            "typeDefinitions": null
+          },
+          {
+            "name": "billing address phone",
+            "type": "String!",
+            "typeDefinitions": null
+          },
+          {
+            "name": "billing address line one",
+            "type": "String!",
+            "typeDefinitions": null
+          },
+          {
+            "name": "billing address line two",
+            "type": "String!",
+            "typeDefinitions": null
+          },
+          {
+            "name": "billing city",
+            "type": "String!",
+            "typeDefinitions": null
+          },
+          {
+            "name": "billing state",
+            "type": "String!",
+            "typeDefinitions": null
+          },
+          {
+            "name": "billing country",
+            "type": "String!",
+            "typeDefinitions": null
+          },
+          {
+            "name": "billing zip",
+            "type": "String!",
+            "typeDefinitions": null
+          },
+          {
+            "name": "custom data",
+            "type": "CustomData!",
+            "typeDefinitions": "type CustomDataEntry {\n  key: String!\n  value: String\n}\n\ntype CustomData {\n  entries: [CustomDataEntry!]!\n}\n"
+          }
+        ]
+      },
+      {
+        "id": "gid://shopify/AutomationTask/019f3e50-3295-79f7-8ba7-5a506ebc6e34?version=1.0",
+        "taskId": "019f3e50-3295-79f7-8ba7-5a506ebc6e34",
+        "version": "1.0",
+        "label": "Company Contact Updated",
+        "returnFields": [
+          {
+            "name": "eventId",
+            "type": "String!",
+            "typeDefinitions": null
+          },
+          {
+            "name": "Customer",
+            "type": "Customer!",
+            "typeDefinitions": null
+          },
+          {
+            "name": "Company",
+            "type": "Company!",
+            "typeDefinitions": "type Company {\n  id: ID!\n  name: String!\n  externalId: String\n  note: String\n}\n\ntype CompanyContact {\n  id: ID!\n  title: String\n  locale: String\n  isMainContact: Boolean\n  \"The contact's title before this update (null when the app had not seen the contact before)\"\n  previousTitle: String\n  \"The contact's locale before this update (null when unknown)\"\n  previousLocale: String\n  \"Whether the contact was the main contact before this update (null when unknown)\"\n  previousIsMainContact: Boolean\n}\n"
+          },
+          {
+            "name": "CompanyContact",
+            "type": "CompanyContact!",
+            "typeDefinitions": "type Company {\n  id: ID!\n  name: String!\n  externalId: String\n  note: String\n}\n\ntype CompanyContact {\n  id: ID!\n  title: String\n  locale: String\n  isMainContact: Boolean\n  \"The contact's title before this update (null when the app had not seen the contact before)\"\n  previousTitle: String\n  \"The contact's locale before this update (null when unknown)\"\n  previousLocale: String\n  \"Whether the contact was the main contact before this update (null when unknown)\"\n  previousIsMainContact: Boolean\n}\n"
+          }
+        ]
+      },
+      {
+        "id": "gid://shopify/AutomationTask/019af391-30ea-7549-90ae-87614ca8087f?version=1.0",
+        "taskId": "019af391-30ea-7549-90ae-87614ca8087f",
+        "version": "1.0",
+        "label": "Company metafield changed",
+        "returnFields": [
+          {
+            "name": "Changed company",
+            "type": "ChangedCompany!",
+            "typeDefinitions": "type StringValue {\n  \"Value before change.\"\n  previous: String!\n  \"Value after change.\"\n  current: String!\n}\n\ntype StringListValue {\n  \"Value before change.\"\n  previous: [String!]\n  \"Value after change.\"\n  current: [String!]\n}\n\ntype ReferenceValue {\n  \"Value before change.\"\n  previous: ID\n  \"Value after change.\"\n  current: ID\n}\n\ntype ReferenceListValue {\n  \"Value before change.\"\n  previous: [ID!]\n  \"Value after change.\"\n  current: [ID!]\n}\n\ntype NumericValue {\n  \"Value before change.\"\n  previous: Float!\n  \"Value after change.\"\n  current: Float!\n}\n\ntype NumericListValue {\n  \"Value before change.\"\n  previous: [Float!]\n  \"Value after change.\"\n  current: [Float!]\n}\n\ntype BooleanValue {\n  \"Value before change.\"\n  previous: Boolean!\n  \"Value after change.\"\n  current: Boolean!\n}\n\ntype Money {\n  \"A monetary value in decimal format, allowing for precise representation of cents or fractional currency. For example, 12.99.\"\n  amount: Float!\n\n  \"The three-letter currency code that represents a world currency used in a store. Currency codes include standard standard ISO 4217 codes, legacy codes, and non-standard codes. For example, USD.\"\n  currencyCode: String!\n}\n\ntype MoneyValue {\n  \"Value before change.\"\n  previous: Money\n  \"Value after change.\"\n  current: Money\n}\n\ntype MoneySet {\n  \"Amount in presentment currency.\"\n  presentmentMoney: Money!\n\n  \"Amount in shop currency.\"\n  shopMoney: Money!\n}\n\ntype MoneySetValue {\n  \"Value before change.\"\n  previous: MoneySet\n  \"Value after change.\"\n  current: MoneySet\n}\n\ntype NumericWithUnit {\n  \"Value.\"\n  value: Float!\n  \"Unit.\"\n  unit: String!\n}\n\ntype NumericWithUnitValue {\n  \"Value before change.\"\n  previous: NumericWithUnit\n  \"Value after change.\"\n  current: NumericWithUnit\n}\n\ntype NumericWithUnitListValue {\n  \"Value before change.\"\n  previous: [NumericWithUnit!]\n  \"Value after change.\"\n  current: [NumericWithUnit!]\n}\n\ntype Link {\n  \"Link text.\"\n  text: String\n  \"Link URL.\"\n  url: String!\n}\n\ntype LinkValue {\n  \"Value before change.\"\n  previous: Link\n  \"Value after change.\"\n  current: Link\n}\n\ntype LinkListValue {\n  \"Value before change.\"\n  previous: [Link!]\n  \"Value after change.\"\n  current: [Link!]\n}\n\ntype Rating {\n  \"Value.\"\n  value: Float!\n  \"Min scale value.\"\n  scaleMin: Float!\n  \"Max scale value.\"\n  scaleMax: Float!\n}\n\ntype RatingValue {\n  \"Value before change.\"\n  previous: Rating\n  \"Value after change.\"\n  current: Rating\n}\n\ntype RatingListValue {\n  \"Value before change.\"\n  previous: [Rating!]\n  \"Value after change.\"\n  current: [Rating!]\n}\n\n\"Changed field name and its previous and current values.\"\ntype FieldChange {\n  \"Field name that changed.\"\n  field: String!\n\n  \"String value.\"\n  stringValue: StringValue!\n\n  \"Numeric value, or null if not numeric.\"\n  numericValue: NumericValue\n\n  \"Boolean value, or null if not boolean.\"\n  booleanValue: BooleanValue\n\n  \"Money set if applicable\"\n  moneySetValue: MoneySetValue\n\n  \"Reference value if applicable\"\n  referenceValue: ReferenceValue\n\n  \"A value with unit if applicable (product variant weight, dimension, volume).\"\n  numericWithUnitValue: NumericWithUnitValue\n}\n\n\"Changed metafield namespace, key, type, and its previous and current values\"\ntype MetafieldChange {\n  \"The container for a group of metafields that the metafield definition is associated with.\"\n  namespace: String!\n\n  \"The unique identifier for the metafield definition within its namespace.\"\n  key: String!\n\n  \"The type of data that each of the metafields that belong to the metafield definition will store. Refer to the list of [supported types](https://shopify.dev/apps/metafields/types).\"\n  type: String!\n\n  \"Text, color, date, date and time, id, json, url, or reference\"\n  stringValue: StringValue\n\n  \"List of text, color, date, date and time, id, json, url, or reference values\"\n  stringListValue: StringListValue\n\n  \"Reference value\"\n  referenceValue: ReferenceValue\n\n  \"List of reference values\"\n  referenceListValue: ReferenceListValue\n\n  \"Numeric value\"\n  numericValue: NumericValue\n\n  \"List of numeric values\"\n  numericListValue: NumericListValue\n\n  \"Boolean value\"\n  booleanValue: BooleanValue\n\n  \"A numeric amount, with a currency code that matches the store's currency.\"\n  moneyValue: MoneyValue\n\n  \"A value with unit (dimension, volume, weight).\"\n  numericWithUnitValue: NumericWithUnitValue\n\n  \"A list of values with units (dimension, volume, weight).\"\n  numericWithUnitListValue: NumericWithUnitListValue\n\n  \"A text and URL pairing that can be used to store link content.\"\n  linkValue: LinkValue\n\n  \"A list of text and URL pairings that can be used to store link content.\"\n  linkListValue: LinkListValue\n\n  \"A rating measured on a specified scale.\"\n  ratingValue: RatingValue\n\n  \"A list of ratings measured on a specified scale.\"\n  ratingListValue: RatingListValue\n\n  # Why: nullable, so that the app and the extensions deploy in either order and a start queued before them still\n  # fits (ADR-F-0020).\n  \"Whether the values were shortened to fit Flow's size limit.\"\n  truncated: Boolean\n\n  \"Which values were shortened.\"\n  truncatedFields: [String!]\n}\n\n# A `Changed<Entity>` block names the object when Flow offers no native reference for it. Flow's commerce references\n# are order, product, customer, company and company contact only: a `<entity>_reference` for collection, draft order,\n# location, market, page, blog or blog post fails the deploy with \"key property must be specified for non-commerce\n# object fields\" (probed 2026-06-24); product variant and company location ride their parent's reference plus this\n# block. Its fields are immutable identifiers a Merchant recognizes; editable labels (title, handle) stay out.\n\"Product variant metadata.\"\ntype ChangedProductVariant {\n  \"ID of the product variant.\"\n  id: ID!\n\n  \"ID for the 'Edit query' field of the ‘Get product variant data’ action.\"\n  legacyResourceId: Int!\n}\n\n\"Deprecated. Use the Company field instead\"\ntype ChangedCompany {\n  \"ID of the company.\"\n  id: ID!\n\n  \"ID for the 'Edit query' field of the ‘Get company data’ action.\"\n  legacyResourceId: Int!\n}\n\n\"Company location metadata.\"\ntype ChangedCompanyLocation {\n  \"ID of the company location.\"\n  id: ID!\n\n  \"ID for the 'Edit query' field of the ‘Get company location data’ action.\"\n  legacyResourceId: Int!\n}\n\n\"Order fulfillment metadata.\"\ntype ChangedOrderFulfillment {\n  \"ID of the order fulfillment.\"\n  id: ID!\n}\n\n\"Collection metadata.\"\ntype ChangedCollection {\n  \"ID of the collection.\"\n  id: ID!\n\n  \"ID for the 'Edit query' field of the ‘Get collection data’ action.\"\n  legacyResourceId: Int!\n}\n\n\"Draft order metadata.\"\ntype ChangedDraftOrder {\n  \"ID of the draft order.\"\n  id: ID!\n\n  \"ID for the 'Edit query' field of the ‘Get draft order data’ action.\"\n  legacyResourceId: Int!\n\n  \"Name of the draft order.\"\n  name: String!\n}\n\n\"Location metadata.\"\ntype ChangedLocation {\n  \"ID of the location.\"\n  id: ID!\n\n  \"ID for the 'Edit query' field of the ‘Get location data’ action.\"\n  legacyResourceId: Int!\n}\n\n\"Market metadata.\"\ntype ChangedMarket {\n  \"ID of the market.\"\n  id: ID!\n\n  \"ID for the 'Edit query' field of the ‘Get market data’ action.\"\n  legacyResourceId: Int!\n}\n\n\"Page metadata.\"\ntype ChangedPage {\n  \"ID of the page.\"\n  id: ID!\n\n  \"ID for the 'Edit query' field of the ‘Get page data’ action.\"\n  legacyResourceId: Int!\n}\n\n\"Blog metadata.\"\ntype ChangedBlog {\n  \"ID of the blog.\"\n  id: ID!\n\n  \"ID for the 'Edit query' field of the ‘Get blog data’ action.\"\n  legacyResourceId: Int!\n}\n\n\"Blog post metadata.\"\ntype ChangedArticle {\n  \"ID of the blog post.\"\n  id: ID!\n\n  \"ID for the 'Edit query' field of the ‘Get blog post data’ action.\"\n  legacyResourceId: Int!\n}\n\n\"List of tags that were added.\"\ntype TagsAdded {\n  \"Tags that were added.\"\n  added: [String!]!\n}\n\n\"List of tags that were removed.\"\ntype TagsRemoved {\n  \"Tags that were removed.\"\n  removed: [String!]!\n}\n\n\"A single attribute change.\"\ntype AttributeChange {\n  \"The attribute key.\"\n  key: String!\n  \"The previous value. Empty string if the attribute did not exist before.\"\n  previous: String!\n  \"The current value. Empty string if the attribute was removed.\"\n  current: String!\n}\n\n\"List of attribute changes.\"\ntype AttributesChange {\n  \"Changed attributes with both previous and current values inlined.\"\n  changes: [AttributeChange!]!\n  \"Keys of attributes that changed but whose previous or current value was too large to inline. Use to know that a change happened even when the value cannot be shipped through Flow.\"\n  oversizedKeys: [String!]!\n}\n\n\"Metaobject metadata.\"\ntype MetaobjectInfo {\n  \"ID of the metaobject.\"\n  id: ID!\n  \"Handle of the metaobject.\"\n  handle: String!\n  \"Type of the metaobject.\"\n  type: String!\n}\n\n\"Changed metaobject field key, type, and its previous and current values.\"\ntype MetaobjectFieldChange {\n  \"The field key.\"\n  key: String!\n\n  \"The field type.\"\n  type: String!\n\n  \"Text, color, date, date and time, id, json, url, or reference\"\n  stringValue: StringValue\n\n  \"List of text, color, date, date and time, id, json, url, or reference values\"\n  stringListValue: StringListValue\n\n  \"Reference value\"\n  referenceValue: ReferenceValue\n\n  \"List of reference values\"\n  referenceListValue: ReferenceListValue\n\n  \"Numeric value\"\n  numericValue: NumericValue\n\n  \"List of numeric values\"\n  numericListValue: NumericListValue\n\n  \"Boolean value\"\n  booleanValue: BooleanValue\n\n  \"A numeric amount, with a currency code that matches the store's currency.\"\n  moneyValue: MoneyValue\n\n  \"A value with unit (dimension, volume, weight).\"\n  numericWithUnitValue: NumericWithUnitValue\n\n  \"A list of values with units (dimension, volume, weight).\"\n  numericWithUnitListValue: NumericWithUnitListValue\n\n  \"A text and URL pairing that can be used to store link content.\"\n  linkValue: LinkValue\n\n  \"A list of text and URL pairings that can be used to store link content.\"\n  linkListValue: LinkListValue\n\n  \"A rating measured on a specified scale.\"\n  ratingValue: RatingValue\n\n  \"A list of ratings measured on a specified scale.\"\n  ratingListValue: RatingListValue\n}\n\n# Rejected payload keys: `specificationHandle`, `accountName` and `accountId` read null on first-party channels\n# (verified live, 2026-07); `Publication.name` is deprecated.\n\"A sales channel a product or collection was published to or unpublished from.\"\ntype SalesChannel {\n  \"The publication GID of the sales channel.\"\n  id: ID!\n  \"The sales channel's Channel GID.\"\n  channelId: ID\n  \"The name of the sales channel (e.g. Online Store).\"\n  name: String\n  \"A human-readable channel identifier (e.g. online_store, pos); may carry an account-id suffix.\"\n  handle: String\n  \"The GID of the app backing the sales channel — a stable key; use it to look up app details if needed.\"\n  appId: ID\n}\n\n\"A market (region) a product was published to or unpublished from.\"\ntype Market {\n  \"The publication GID of the market.\"\n  id: ID!\n  \"The MarketCatalog GID backing the market.\"\n  catalogId: ID\n  \"The market (catalog) name (e.g. Mexico).\"\n  name: String\n}\n\n\"A line item that was added to or removed from an order.\"\ntype OrderLineItemSummary {\n  \"The line item GID (e.g. gid://shopify/LineItem/42). It stays the same across edits and refunds, so a workflow can match a line it saw before.\"\n  id: ID!\n  \"The product variant GID (e.g. gid://shopify/ProductVariant/42). Empty for a custom line, or when the variant no longer exists.\"\n  variantId: ID\n  \"The product GID (e.g. gid://shopify/Product/7). Empty for a custom line, or when the product no longer exists.\"\n  productId: ID\n  \"Whether the line is a custom one, with no product variant backing it.\"\n  custom: Boolean!\n  \"The product or variant title. Can be empty for a line that was removed.\"\n  title: String\n  \"The SKU of the line. Empty for a custom line, or when the variant has no SKU.\"\n  sku: String\n  \"The number of units on the line.\"\n  quantity: Int!\n  \"The line total in the store's currency, after the line's own discount.\"\n  amount: Float!\n}\n\n\"A whole-number value before and after the change, and the difference between them.\"\ntype LineItemQuantityChange {\n  \"Value before the change.\"\n  previous: Int!\n  \"Value after the change.\"\n  current: Int!\n  \"Current minus previous. Negative when the value went down.\"\n  delta: Int!\n}\n\n\"A money value before and after the change, and the difference between them, in the store's currency.\"\ntype LineItemMoneyChange {\n  \"Value before the change.\"\n  previous: Float!\n  \"Value after the change.\"\n  current: Float!\n  \"Current minus previous. Negative when the value went down.\"\n  delta: Float!\n}\n\n\"A line item that stayed on the order, with the values that changed.\"\ntype OrderLineItemChange {\n  \"The line item GID (e.g. gid://shopify/LineItem/42). It stays the same across edits and refunds, so a workflow can match a line it saw before.\"\n  id: ID!\n  \"The product variant GID (e.g. gid://shopify/ProductVariant/42). Empty for a custom line, or when the variant no longer exists.\"\n  variantId: ID\n  \"The product GID (e.g. gid://shopify/Product/7). Empty for a custom line, or when the product no longer exists.\"\n  productId: ID\n  \"Whether the line is a custom one, with no product variant backing it.\"\n  custom: Boolean!\n  \"The product or variant title.\"\n  title: String\n  \"The SKU of the line. Empty for a custom line, or when the variant has no SKU.\"\n  sku: String\n  \"How the number of units changed.\"\n  quantity: LineItemQuantityChange!\n  \"How the line total, after the line's own discount, changed.\"\n  amount: LineItemMoneyChange!\n  \"How the line's own discount changed — the one already taken off the amount.\"\n  discount: LineItemMoneyChange!\n}\n\n\"What changed about an order's line items in a single edit or refund.\"\ntype OrderLineItemsChange {\n  \"Lines that were added.\"\n  added: [OrderLineItemSummary!]!\n  \"Lines that were removed, with the quantity and amount they had before.\"\n  removed: [OrderLineItemSummary!]!\n  \"Lines that stayed, with the values that changed.\"\n  changed: [OrderLineItemChange!]!\n  \"How many lines were added in total. Always the full number, even when the lists were shortened.\"\n  addedCount: Int!\n  \"How many lines were removed in total. Always the full number, even when the lists were shortened.\"\n  removedCount: Int!\n  \"How many lines changed in total. Always the full number, even when the lists were shortened.\"\n  changedCount: Int!\n  \"Whether the lists were shortened because the change was very large. The lists keep their first entries, and the counts above stay complete.\"\n  truncated: Boolean!\n}\n\n\"A line item that was added to or removed from a draft order. One entry covers all lines of that product variant together.\"\ntype DraftOrderLineItemSummary {\n  \"The product variant GID (e.g. gid://shopify/ProductVariant/42). Empty for a custom line, or when the variant no longer exists.\"\n  variantId: ID\n  \"The product GID (e.g. gid://shopify/Product/7). Empty for a custom line, or when the product no longer exists.\"\n  productId: ID\n  \"Whether the line is a custom one, with no product variant backing it.\"\n  custom: Boolean!\n  \"The product or variant title. Can be empty for a line that was removed.\"\n  title: String\n  \"The SKU of the line. Empty for a custom line, or when the variant has no SKU.\"\n  sku: String\n  \"The number of units, across all lines of that product variant.\"\n  quantity: Int!\n  \"The line total in the store's currency, after the line's own discount, across all lines of that product variant. It is not a per-unit price.\"\n  amount: Float!\n}\n\n\"A line item that stayed on the draft order, with the values that changed. The values cover all lines of that product variant together.\"\ntype DraftOrderLineItemChange {\n  \"The product variant GID (e.g. gid://shopify/ProductVariant/42). Empty for a custom line, or when the variant no longer exists.\"\n  variantId: ID\n  \"The product GID (e.g. gid://shopify/Product/7). Empty for a custom line, or when the product no longer exists.\"\n  productId: ID\n  \"Whether the line is a custom one, with no product variant backing it.\"\n  custom: Boolean!\n  \"The product or variant title.\"\n  title: String\n  \"The SKU of the line. Empty for a custom line, or when the variant has no SKU.\"\n  sku: String\n  \"How the number of units changed, across all lines of that product variant.\"\n  quantity: LineItemQuantityChange!\n  \"How the line total, after the line's own discount, changed across all lines of that product variant. It is not a per-unit price.\"\n  amount: LineItemMoneyChange!\n  \"How the line's own discount changed — the one already taken off the amount.\"\n  discount: LineItemMoneyChange!\n}\n\n\"What changed about a draft order's line items in a single save.\"\ntype DraftOrderLineItemsChange {\n  \"Entries that were added.\"\n  added: [DraftOrderLineItemSummary!]!\n  \"Entries that were removed, with the quantity and amount they had before.\"\n  removed: [DraftOrderLineItemSummary!]!\n  \"Entries that stayed, with the values that changed.\"\n  changed: [DraftOrderLineItemChange!]!\n  \"How many entries were added in total. Always the full number, even when the lists were shortened.\"\n  addedCount: Int!\n  \"How many entries were removed in total. Always the full number, even when the lists were shortened.\"\n  removedCount: Int!\n  \"How many entries changed in total. Always the full number, even when the lists were shortened.\"\n  changedCount: Int!\n  \"Whether the lists were shortened because the change was very large. The lists keep their first entries, and the counts above stay complete.\"\n  truncated: Boolean!\n}\n\n\"A single value of a product option, as it appears in the option's value list.\"\ntype ProductOptionChangeValue {\n  \"A globally-unique ID.\"\n  id: ID!\n  \"The name of the product option value.\"\n  name: String!\n  \"The value of the linked metafield.\"\n  linkedValue: ID\n}\n\n\"The metafield identifier a product option is linked to.\"\ntype LinkedMetafield {\n  \"Key of the metafield the option is linked to.\"\n  key: String\n  \"Namespace of the metafield the option is linked to.\"\n  namespace: String\n}\n\n# Runs arrive in any order (rate limits, HTTP races), so `current` is the option as the app saw it when the run was\n# queued, and a condition on which value comes first reads the live product. Hence no `firstValue` on this block.\n\"What changed about one product option: its values before and after, and what was added or removed. One option, one run.\"\ntype ProductOptionChange {\n  \"A globally-unique ID.\"\n  id: ID!\n  \"The product option's name.\"\n  name: String!\n  \"The product option's position.\"\n  position: Int!\n  \"The metafield identifier linked to this option.\"\n  linkedMetafield: LinkedMetafield\n  \"The values after the change, in their current order. Empty when the whole option was removed.\"\n  current: [ProductOptionChangeValue!]!\n  \"The values before the change, in their previous order. Empty when the option — or the whole product — is new to the app.\"\n  previous: [ProductOptionChangeValue!]!\n  \"Values that were added. Renaming a value on a regular option reports the new name here, and the old one under removed. Empty when the values were only reordered.\"\n  added: [ProductOptionChangeValue!]!\n  \"Values that were removed. Renaming a value on a regular option reports the old name here, and the new one under added. Empty when the values were only reordered.\"\n  removed: [ProductOptionChangeValue!]!\n}\n"
+          },
+          {
+            "name": "Metafield change",
+            "type": "MetafieldChange!",
+            "typeDefinitions": "type StringValue {\n  \"Value before change.\"\n  previous: String!\n  \"Value after change.\"\n  current: String!\n}\n\ntype StringListValue {\n  \"Value before change.\"\n  previous: [String!]\n  \"Value after change.\"\n  current: [String!]\n}\n\ntype ReferenceValue {\n  \"Value before change.\"\n  previous: ID\n  \"Value after change.\"\n  current: ID\n}\n\ntype ReferenceListValue {\n  \"Value before change.\"\n  previous: [ID!]\n  \"Value after change.\"\n  current: [ID!]\n}\n\ntype NumericValue {\n  \"Value before change.\"\n  previous: Float!\n  \"Value after change.\"\n  current: Float!\n}\n\ntype NumericListValue {\n  \"Value before change.\"\n  previous: [Float!]\n  \"Value after change.\"\n  current: [Float!]\n}\n\ntype BooleanValue {\n  \"Value before change.\"\n  previous: Boolean!\n  \"Value after change.\"\n  current: Boolean!\n}\n\ntype Money {\n  \"A monetary value in decimal format, allowing for precise representation of cents or fractional currency. For example, 12.99.\"\n  amount: Float!\n\n  \"The three-letter currency code that represents a world currency used in a store. Currency codes include standard standard ISO 4217 codes, legacy codes, and non-standard codes. For example, USD.\"\n  currencyCode: String!\n}\n\ntype MoneyValue {\n  \"Value before change.\"\n  previous: Money\n  \"Value after change.\"\n  current: Money\n}\n\ntype MoneySet {\n  \"Amount in presentment currency.\"\n  presentmentMoney: Money!\n\n  \"Amount in shop currency.\"\n  shopMoney: Money!\n}\n\ntype MoneySetValue {\n  \"Value before change.\"\n  previous: MoneySet\n  \"Value after change.\"\n  current: MoneySet\n}\n\ntype NumericWithUnit {\n  \"Value.\"\n  value: Float!\n  \"Unit.\"\n  unit: String!\n}\n\ntype NumericWithUnitValue {\n  \"Value before change.\"\n  previous: NumericWithUnit\n  \"Value after change.\"\n  current: NumericWithUnit\n}\n\ntype NumericWithUnitListValue {\n  \"Value before change.\"\n  previous: [NumericWithUnit!]\n  \"Value after change.\"\n  current: [NumericWithUnit!]\n}\n\ntype Link {\n  \"Link text.\"\n  text: String\n  \"Link URL.\"\n  url: String!\n}\n\ntype LinkValue {\n  \"Value before change.\"\n  previous: Link\n  \"Value after change.\"\n  current: Link\n}\n\ntype LinkListValue {\n  \"Value before change.\"\n  previous: [Link!]\n  \"Value after change.\"\n  current: [Link!]\n}\n\ntype Rating {\n  \"Value.\"\n  value: Float!\n  \"Min scale value.\"\n  scaleMin: Float!\n  \"Max scale value.\"\n  scaleMax: Float!\n}\n\ntype RatingValue {\n  \"Value before change.\"\n  previous: Rating\n  \"Value after change.\"\n  current: Rating\n}\n\ntype RatingListValue {\n  \"Value before change.\"\n  previous: [Rating!]\n  \"Value after change.\"\n  current: [Rating!]\n}\n\n\"Changed field name and its previous and current values.\"\ntype FieldChange {\n  \"Field name that changed.\"\n  field: String!\n\n  \"String value.\"\n  stringValue: StringValue!\n\n  \"Numeric value, or null if not numeric.\"\n  numericValue: NumericValue\n\n  \"Boolean value, or null if not boolean.\"\n  booleanValue: BooleanValue\n\n  \"Money set if applicable\"\n  moneySetValue: MoneySetValue\n\n  \"Reference value if applicable\"\n  referenceValue: ReferenceValue\n\n  \"A value with unit if applicable (product variant weight, dimension, volume).\"\n  numericWithUnitValue: NumericWithUnitValue\n}\n\n\"Changed metafield namespace, key, type, and its previous and current values\"\ntype MetafieldChange {\n  \"The container for a group of metafields that the metafield definition is associated with.\"\n  namespace: String!\n\n  \"The unique identifier for the metafield definition within its namespace.\"\n  key: String!\n\n  \"The type of data that each of the metafields that belong to the metafield definition will store. Refer to the list of [supported types](https://shopify.dev/apps/metafields/types).\"\n  type: String!\n\n  \"Text, color, date, date and time, id, json, url, or reference\"\n  stringValue: StringValue\n\n  \"List of text, color, date, date and time, id, json, url, or reference values\"\n  stringListValue: StringListValue\n\n  \"Reference value\"\n  referenceValue: ReferenceValue\n\n  \"List of reference values\"\n  referenceListValue: ReferenceListValue\n\n  \"Numeric value\"\n  numericValue: NumericValue\n\n  \"List of numeric values\"\n  numericListValue: NumericListValue\n\n  \"Boolean value\"\n  booleanValue: BooleanValue\n\n  \"A numeric amount, with a currency code that matches the store's currency.\"\n  moneyValue: MoneyValue\n\n  \"A value with unit (dimension, volume, weight).\"\n  numericWithUnitValue: NumericWithUnitValue\n\n  \"A list of values with units (dimension, volume, weight).\"\n  numericWithUnitListValue: NumericWithUnitListValue\n\n  \"A text and URL pairing that can be used to store link content.\"\n  linkValue: LinkValue\n\n  \"A list of text and URL pairings that can be used to store link content.\"\n  linkListValue: LinkListValue\n\n  \"A rating measured on a specified scale.\"\n  ratingValue: RatingValue\n\n  \"A list of ratings measured on a specified scale.\"\n  ratingListValue: RatingListValue\n\n  # Why: nullable, so that the app and the extensions deploy in either order and a start queued before them still\n  # fits (ADR-F-0020).\n  \"Whether the values were shortened to fit Flow's size limit.\"\n  truncated: Boolean\n\n  \"Which values were shortened.\"\n  truncatedFields: [String!]\n}\n\n# A `Changed<Entity>` block names the object when Flow offers no native reference for it. Flow's commerce references\n# are order, product, customer, company and company contact only: a `<entity>_reference` for collection, draft order,\n# location, market, page, blog or blog post fails the deploy with \"key property must be specified for non-commerce\n# object fields\" (probed 2026-06-24); product variant and company location ride their parent's reference plus this\n# block. Its fields are immutable identifiers a Merchant recognizes; editable labels (title, handle) stay out.\n\"Product variant metadata.\"\ntype ChangedProductVariant {\n  \"ID of the product variant.\"\n  id: ID!\n\n  \"ID for the 'Edit query' field of the ‘Get product variant data’ action.\"\n  legacyResourceId: Int!\n}\n\n\"Deprecated. Use the Company field instead\"\ntype ChangedCompany {\n  \"ID of the company.\"\n  id: ID!\n\n  \"ID for the 'Edit query' field of the ‘Get company data’ action.\"\n  legacyResourceId: Int!\n}\n\n\"Company location metadata.\"\ntype ChangedCompanyLocation {\n  \"ID of the company location.\"\n  id: ID!\n\n  \"ID for the 'Edit query' field of the ‘Get company location data’ action.\"\n  legacyResourceId: Int!\n}\n\n\"Order fulfillment metadata.\"\ntype ChangedOrderFulfillment {\n  \"ID of the order fulfillment.\"\n  id: ID!\n}\n\n\"Collection metadata.\"\ntype ChangedCollection {\n  \"ID of the collection.\"\n  id: ID!\n\n  \"ID for the 'Edit query' field of the ‘Get collection data’ action.\"\n  legacyResourceId: Int!\n}\n\n\"Draft order metadata.\"\ntype ChangedDraftOrder {\n  \"ID of the draft order.\"\n  id: ID!\n\n  \"ID for the 'Edit query' field of the ‘Get draft order data’ action.\"\n  legacyResourceId: Int!\n\n  \"Name of the draft order.\"\n  name: String!\n}\n\n\"Location metadata.\"\ntype ChangedLocation {\n  \"ID of the location.\"\n  id: ID!\n\n  \"ID for the 'Edit query' field of the ‘Get location data’ action.\"\n  legacyResourceId: Int!\n}\n\n\"Market metadata.\"\ntype ChangedMarket {\n  \"ID of the market.\"\n  id: ID!\n\n  \"ID for the 'Edit query' field of the ‘Get market data’ action.\"\n  legacyResourceId: Int!\n}\n\n\"Page metadata.\"\ntype ChangedPage {\n  \"ID of the page.\"\n  id: ID!\n\n  \"ID for the 'Edit query' field of the ‘Get page data’ action.\"\n  legacyResourceId: Int!\n}\n\n\"Blog metadata.\"\ntype ChangedBlog {\n  \"ID of the blog.\"\n  id: ID!\n\n  \"ID for the 'Edit query' field of the ‘Get blog data’ action.\"\n  legacyResourceId: Int!\n}\n\n\"Blog post metadata.\"\ntype ChangedArticle {\n  \"ID of the blog post.\"\n  id: ID!\n\n  \"ID for the 'Edit query' field of the ‘Get blog post data’ action.\"\n  legacyResourceId: Int!\n}\n\n\"List of tags that were added.\"\ntype TagsAdded {\n  \"Tags that were added.\"\n  added: [String!]!\n}\n\n\"List of tags that were removed.\"\ntype TagsRemoved {\n  \"Tags that were removed.\"\n  removed: [String!]!\n}\n\n\"A single attribute change.\"\ntype AttributeChange {\n  \"The attribute key.\"\n  key: String!\n  \"The previous value. Empty string if the attribute did not exist before.\"\n  previous: String!\n  \"The current value. Empty string if the attribute was removed.\"\n  current: String!\n}\n\n\"List of attribute changes.\"\ntype AttributesChange {\n  \"Changed attributes with both previous and current values inlined.\"\n  changes: [AttributeChange!]!\n  \"Keys of attributes that changed but whose previous or current value was too large to inline. Use to know that a change happened even when the value cannot be shipped through Flow.\"\n  oversizedKeys: [String!]!\n}\n\n\"Metaobject metadata.\"\ntype MetaobjectInfo {\n  \"ID of the metaobject.\"\n  id: ID!\n  \"Handle of the metaobject.\"\n  handle: String!\n  \"Type of the metaobject.\"\n  type: String!\n}\n\n\"Changed metaobject field key, type, and its previous and current values.\"\ntype MetaobjectFieldChange {\n  \"The field key.\"\n  key: String!\n\n  \"The field type.\"\n  type: String!\n\n  \"Text, color, date, date and time, id, json, url, or reference\"\n  stringValue: StringValue\n\n  \"List of text, color, date, date and time, id, json, url, or reference values\"\n  stringListValue: StringListValue\n\n  \"Reference value\"\n  referenceValue: ReferenceValue\n\n  \"List of reference values\"\n  referenceListValue: ReferenceListValue\n\n  \"Numeric value\"\n  numericValue: NumericValue\n\n  \"List of numeric values\"\n  numericListValue: NumericListValue\n\n  \"Boolean value\"\n  booleanValue: BooleanValue\n\n  \"A numeric amount, with a currency code that matches the store's currency.\"\n  moneyValue: MoneyValue\n\n  \"A value with unit (dimension, volume, weight).\"\n  numericWithUnitValue: NumericWithUnitValue\n\n  \"A list of values with units (dimension, volume, weight).\"\n  numericWithUnitListValue: NumericWithUnitListValue\n\n  \"A text and URL pairing that can be used to store link content.\"\n  linkValue: LinkValue\n\n  \"A list of text and URL pairings that can be used to store link content.\"\n  linkListValue: LinkListValue\n\n  \"A rating measured on a specified scale.\"\n  ratingValue: RatingValue\n\n  \"A list of ratings measured on a specified scale.\"\n  ratingListValue: RatingListValue\n}\n\n# Rejected payload keys: `specificationHandle`, `accountName` and `accountId` read null on first-party channels\n# (verified live, 2026-07); `Publication.name` is deprecated.\n\"A sales channel a product or collection was published to or unpublished from.\"\ntype SalesChannel {\n  \"The publication GID of the sales channel.\"\n  id: ID!\n  \"The sales channel's Channel GID.\"\n  channelId: ID\n  \"The name of the sales channel (e.g. Online Store).\"\n  name: String\n  \"A human-readable channel identifier (e.g. online_store, pos); may carry an account-id suffix.\"\n  handle: String\n  \"The GID of the app backing the sales channel — a stable key; use it to look up app details if needed.\"\n  appId: ID\n}\n\n\"A market (region) a product was published to or unpublished from.\"\ntype Market {\n  \"The publication GID of the market.\"\n  id: ID!\n  \"The MarketCatalog GID backing the market.\"\n  catalogId: ID\n  \"The market (catalog) name (e.g. Mexico).\"\n  name: String\n}\n\n\"A line item that was added to or removed from an order.\"\ntype OrderLineItemSummary {\n  \"The line item GID (e.g. gid://shopify/LineItem/42). It stays the same across edits and refunds, so a workflow can match a line it saw before.\"\n  id: ID!\n  \"The product variant GID (e.g. gid://shopify/ProductVariant/42). Empty for a custom line, or when the variant no longer exists.\"\n  variantId: ID\n  \"The product GID (e.g. gid://shopify/Product/7). Empty for a custom line, or when the product no longer exists.\"\n  productId: ID\n  \"Whether the line is a custom one, with no product variant backing it.\"\n  custom: Boolean!\n  \"The product or variant title. Can be empty for a line that was removed.\"\n  title: String\n  \"The SKU of the line. Empty for a custom line, or when the variant has no SKU.\"\n  sku: String\n  \"The number of units on the line.\"\n  quantity: Int!\n  \"The line total in the store's currency, after the line's own discount.\"\n  amount: Float!\n}\n\n\"A whole-number value before and after the change, and the difference between them.\"\ntype LineItemQuantityChange {\n  \"Value before the change.\"\n  previous: Int!\n  \"Value after the change.\"\n  current: Int!\n  \"Current minus previous. Negative when the value went down.\"\n  delta: Int!\n}\n\n\"A money value before and after the change, and the difference between them, in the store's currency.\"\ntype LineItemMoneyChange {\n  \"Value before the change.\"\n  previous: Float!\n  \"Value after the change.\"\n  current: Float!\n  \"Current minus previous. Negative when the value went down.\"\n  delta: Float!\n}\n\n\"A line item that stayed on the order, with the values that changed.\"\ntype OrderLineItemChange {\n  \"The line item GID (e.g. gid://shopify/LineItem/42). It stays the same across edits and refunds, so a workflow can match a line it saw before.\"\n  id: ID!\n  \"The product variant GID (e.g. gid://shopify/ProductVariant/42). Empty for a custom line, or when the variant no longer exists.\"\n  variantId: ID\n  \"The product GID (e.g. gid://shopify/Product/7). Empty for a custom line, or when the product no longer exists.\"\n  productId: ID\n  \"Whether the line is a custom one, with no product variant backing it.\"\n  custom: Boolean!\n  \"The product or variant title.\"\n  title: String\n  \"The SKU of the line. Empty for a custom line, or when the variant has no SKU.\"\n  sku: String\n  \"How the number of units changed.\"\n  quantity: LineItemQuantityChange!\n  \"How the line total, after the line's own discount, changed.\"\n  amount: LineItemMoneyChange!\n  \"How the line's own discount changed — the one already taken off the amount.\"\n  discount: LineItemMoneyChange!\n}\n\n\"What changed about an order's line items in a single edit or refund.\"\ntype OrderLineItemsChange {\n  \"Lines that were added.\"\n  added: [OrderLineItemSummary!]!\n  \"Lines that were removed, with the quantity and amount they had before.\"\n  removed: [OrderLineItemSummary!]!\n  \"Lines that stayed, with the values that changed.\"\n  changed: [OrderLineItemChange!]!\n  \"How many lines were added in total. Always the full number, even when the lists were shortened.\"\n  addedCount: Int!\n  \"How many lines were removed in total. Always the full number, even when the lists were shortened.\"\n  removedCount: Int!\n  \"How many lines changed in total. Always the full number, even when the lists were shortened.\"\n  changedCount: Int!\n  \"Whether the lists were shortened because the change was very large. The lists keep their first entries, and the counts above stay complete.\"\n  truncated: Boolean!\n}\n\n\"A line item that was added to or removed from a draft order. One entry covers all lines of that product variant together.\"\ntype DraftOrderLineItemSummary {\n  \"The product variant GID (e.g. gid://shopify/ProductVariant/42). Empty for a custom line, or when the variant no longer exists.\"\n  variantId: ID\n  \"The product GID (e.g. gid://shopify/Product/7). Empty for a custom line, or when the product no longer exists.\"\n  productId: ID\n  \"Whether the line is a custom one, with no product variant backing it.\"\n  custom: Boolean!\n  \"The product or variant title. Can be empty for a line that was removed.\"\n  title: String\n  \"The SKU of the line. Empty for a custom line, or when the variant has no SKU.\"\n  sku: String\n  \"The number of units, across all lines of that product variant.\"\n  quantity: Int!\n  \"The line total in the store's currency, after the line's own discount, across all lines of that product variant. It is not a per-unit price.\"\n  amount: Float!\n}\n\n\"A line item that stayed on the draft order, with the values that changed. The values cover all lines of that product variant together.\"\ntype DraftOrderLineItemChange {\n  \"The product variant GID (e.g. gid://shopify/ProductVariant/42). Empty for a custom line, or when the variant no longer exists.\"\n  variantId: ID\n  \"The product GID (e.g. gid://shopify/Product/7). Empty for a custom line, or when the product no longer exists.\"\n  productId: ID\n  \"Whether the line is a custom one, with no product variant backing it.\"\n  custom: Boolean!\n  \"The product or variant title.\"\n  title: String\n  \"The SKU of the line. Empty for a custom line, or when the variant has no SKU.\"\n  sku: String\n  \"How the number of units changed, across all lines of that product variant.\"\n  quantity: LineItemQuantityChange!\n  \"How the line total, after the line's own discount, changed across all lines of that product variant. It is not a per-unit price.\"\n  amount: LineItemMoneyChange!\n  \"How the line's own discount changed — the one already taken off the amount.\"\n  discount: LineItemMoneyChange!\n}\n\n\"What changed about a draft order's line items in a single save.\"\ntype DraftOrderLineItemsChange {\n  \"Entries that were added.\"\n  added: [DraftOrderLineItemSummary!]!\n  \"Entries that were removed, with the quantity and amount they had before.\"\n  removed: [DraftOrderLineItemSummary!]!\n  \"Entries that stayed, with the values that changed.\"\n  changed: [DraftOrderLineItemChange!]!\n  \"How many entries were added in total. Always the full number, even when the lists were shortened.\"\n  addedCount: Int!\n  \"How many entries were removed in total. Always the full number, even when the lists were shortened.\"\n  removedCount: Int!\n  \"How many entries changed in total. Always the full number, even when the lists were shortened.\"\n  changedCount: Int!\n  \"Whether the lists were shortened because the change was very large. The lists keep their first entries, and the counts above stay complete.\"\n  truncated: Boolean!\n}\n\n\"A single value of a product option, as it appears in the option's value list.\"\ntype ProductOptionChangeValue {\n  \"A globally-unique ID.\"\n  id: ID!\n  \"The name of the product option value.\"\n  name: String!\n  \"The value of the linked metafield.\"\n  linkedValue: ID\n}\n\n\"The metafield identifier a product option is linked to.\"\ntype LinkedMetafield {\n  \"Key of the metafield the option is linked to.\"\n  key: String\n  \"Namespace of the metafield the option is linked to.\"\n  namespace: String\n}\n\n# Runs arrive in any order (rate limits, HTTP races), so `current` is the option as the app saw it when the run was\n# queued, and a condition on which value comes first reads the live product. Hence no `firstValue` on this block.\n\"What changed about one product option: its values before and after, and what was added or removed. One option, one run.\"\ntype ProductOptionChange {\n  \"A globally-unique ID.\"\n  id: ID!\n  \"The product option's name.\"\n  name: String!\n  \"The product option's position.\"\n  position: Int!\n  \"The metafield identifier linked to this option.\"\n  linkedMetafield: LinkedMetafield\n  \"The values after the change, in their current order. Empty when the whole option was removed.\"\n  current: [ProductOptionChangeValue!]!\n  \"The values before the change, in their previous order. Empty when the option — or the whole product — is new to the app.\"\n  previous: [ProductOptionChangeValue!]!\n  \"Values that were added. Renaming a value on a regular option reports the new name here, and the old one under removed. Empty when the values were only reordered.\"\n  added: [ProductOptionChangeValue!]!\n  \"Values that were removed. Renaming a value on a regular option reports the old name here, and the new one under added. Empty when the values were only reordered.\"\n  removed: [ProductOptionChangeValue!]!\n}\n"
+          },
+          {
+            "name": "Company",
+            "type": "Company!",
+            "typeDefinitions": null
+          }
+        ]
+      },
+      {
+        "id": "gid://shopify/AutomationTask/019f3e50-3295-7038-a98b-62a140a7d247?version=1.0",
+        "taskId": "019f3e50-3295-7038-a98b-62a140a7d247",
+        "version": "1.0",
+        "label": "Customer Removed from Company",
+        "returnFields": [
+          {
+            "name": "eventId",
+            "type": "String!",
+            "typeDefinitions": null
+          },
+          {
+            "name": "Customer",
+            "type": "Customer!",
+            "typeDefinitions": null
+          },
+          {
+            "name": "Company",
+            "type": "Company!",
+            "typeDefinitions": "type Company {\n  id: ID!\n  name: String!\n  externalId: String\n  note: String\n}\n\ntype CompanyContact {\n  id: ID!\n  title: String\n  locale: String\n  isMainContact: Boolean\n}\n"
+          },
+          {
+            "name": "CompanyContact",
+            "type": "CompanyContact!",
+            "typeDefinitions": "type Company {\n  id: ID!\n  name: String!\n  externalId: String\n  note: String\n}\n\ntype CompanyContact {\n  id: ID!\n  title: String\n  locale: String\n  isMainContact: Boolean\n}\n"
+          }
+        ]
+      }
+    ],
+    "pageInfo": {
+      "hasNextPage": true,
+      "endCursor": "eyJsYXN0X3ZhbHVlIjoiTVRrNk9sc2lRMjl0Y0dGdWVTSXNJbFJTU1VkSFJWSWlMR1poYkhObFhRIn0="
+    }
+  },
+  "locations": {
+    "taskId": "shopify::flow::fetch::company_locations",
+    "version": "v1",
+    "configFields": [
+      {},
+      {},
+      {
+        "id": "query",
+        "queryFilters": "A filter made up of terms, connectives, modifiers, and comparators.\n| name | type | description | acceptable_values | default_value | example_use |\n| ---- | ---- | ---- | ---- | ---- | ---- |\n| default | string | Filter by a case-insensitive search of multiple fields in a document. | | | - `query=Bob Norman`<br/> - `query=title:green hoodie` |\n| company_id | id |\n| created_at | time |\n| external_id | string |\n| id | id | Filter by `id` range. | | | - `id:1234`<br/> - `id:>=1234`<br/> - `id:<=1234` |\n| ids | string |\n| metafields.{namespace}.{key} | mixed | Filters resources by metafield value. Format: `metafields.{namespace}.{key}:{value}`. Learn more about [querying by metafield value](https://shopify.dev/apps/build/custom-data/metafields/query-by-metafield-value). | | | - `metafields.custom.on_sale:true`<br/> - `metafields.product.material:\"gid://shopify/Metaobject/43458085\"` |\n| name | string |\n| updated_at | time |\nYou can apply one or more filters to a query. Learn more about [Shopify API search syntax](https://shopify.dev/api/usage/search-syntax).\n"
+      }
+    ]
+  },
+  "automationEnvironmentPaths": {
+    "nodes": [
+      {
+        "path": "companyContact.company.locations.id",
+        "leafType": "ID",
+        "pathElementsTypes": [
+          "companyContact:CompanyContact",
+          "company:Company",
+          "locations:CompanyLocation",
+          "id:ID"
+        ]
+      },
+      {
+        "path": "companyContact.company.locations.externalId",
+        "leafType": "String",
+        "pathElementsTypes": [
+          "companyContact:CompanyContact",
+          "company:Company",
+          "locations:CompanyLocation",
+          "externalId:String"
+        ]
+      },
+      {
+        "path": "companyContact.roleAssignments.companyLocation.id",
+        "leafType": "ID",
+        "pathElementsTypes": [
+          "companyContact:CompanyContact",
+          "roleAssignments:CompanyContactRoleAssignment",
+          "companyLocation:CompanyLocation",
+          "id:ID"
+        ]
+      },
+      {
+        "path": "companyContact.orders.retailLocation.id",
+        "leafType": "ID",
+        "pathElementsTypes": [
+          "companyContact:CompanyContact",
+          "orders:Order",
+          "retailLocation:Location",
+          "id:ID"
+        ]
+      },
+      {
+        "path": "companyContact.company.locations.orders.id",
+        "leafType": "ID",
+        "pathElementsTypes": [
+          "companyContact:CompanyContact",
+          "company:Company",
+          "locations:CompanyLocation",
+          "orders:Order",
+          "id:ID"
+        ]
+      },
+      {
+        "path": "companyContact.roleAssignments.companyLocation.company.id",
+        "leafType": "ID",
+        "pathElementsTypes": [
+          "companyContact:CompanyContact",
+          "roleAssignments:CompanyContactRoleAssignment",
+          "companyLocation:CompanyLocation",
+          "company:Company",
+          "id:ID"
+        ]
+      },
+      {
+        "path": "companyContact.company.locations.billingAddress.id",
+        "leafType": "ID",
+        "pathElementsTypes": [
+          "companyContact:CompanyContact",
+          "company:Company",
+          "locations:CompanyLocation",
+          "billingAddress:CompanyAddress",
+          "id:ID"
+        ]
+      },
+      {
+        "path": "companyContact.company.locations.catalogs.id",
+        "leafType": "ID",
+        "pathElementsTypes": [
+          "companyContact:CompanyContact",
+          "company:Company",
+          "locations:CompanyLocation",
+          "catalogs:Catalog",
+          "id:ID"
+        ]
+      },
+      {
+        "path": "companyContact.company.locations.events.id",
+        "leafType": "ID",
+        "pathElementsTypes": [
+          "companyContact:CompanyContact",
+          "company:Company",
+          "locations:CompanyLocation",
+          "events:Event",
+          "id:ID"
+        ]
+      },
+      {
+        "path": "companyContact.customer.lastOrder.retailLocation.id",
+        "leafType": "ID",
+        "pathElementsTypes": [
+          "companyContact:CompanyContact",
+          "customer:Customer",
+          "lastOrder:Order",
+          "retailLocation:Location",
+          "id:ID"
+        ]
+      }
+    ],
+    "pageInfo": {
+      "hasNextPage": true,
+      "endCursor": "OTo6ZTBjNGFhOGNkNzY3OGU5YzAxZGQ2YzhjNzc3OWQyNTgwMjgzNzcwN2FlMDRmNzc1Y2U2MWYwNGUwNTFjOGZkNw"
+    }
+  }
+}

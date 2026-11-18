@@ -1,0 +1,387 @@
+{
+  "nodes": [
+    {
+      "id": "gid://shopify/AutomationWorkflow/01a1c14c-9fee-73fb-8b03-6357cbe0154c",
+      "name": "Receber uma notificação e configurar empresas criadas por solicitações de conta da empresa",
+      "version": "01M72XNFVAGHPTXTV1YDX9QG5X",
+      "activeVersion": "01M72XNFVAGHPTXTV1YDX9QG5X",
+      "configuration": {
+        "__metadata": {
+          "version": 0.1
+        },
+        "root": {
+          "steps": [
+            {
+              "step_id": "3a1e41f6-acd6-48ff-8837-9f3e48d87eb4",
+              "config_field_values": [],
+              "task_id": "shopify::admin::company_location_created",
+              "task_version": "0.1",
+              "task_type": "TRIGGER",
+              "name": null
+            },
+            {
+              "step_id": "40411d7b-4895-4688-a213-04ac9c05abda",
+              "config_field_values": [
+                {
+                  "config_field_id": "condition",
+                  "value": "(companyLocation.events any? |events_item| (events_item.appTitle == 'Forms'))"
+                }
+              ],
+              "task_id": "shopify::flow::condition",
+              "task_version": "0.1",
+              "task_type": "CONDITION",
+              "name": null
+            },
+            {
+              "step_id": "962dabcc-7ab0-4206-8ddd-cf3d1cf2ae66",
+              "config_field_values": [
+                {
+                  "config_field_id": "company_location_id",
+                  "value": "{\"value\":null,\"default_value\":\"companyLocation.id\"}"
+                },
+                {
+                  "config_field_id": "checkout_to_draft",
+                  "value": "false"
+                }
+              ],
+              "task_id": "shopify::admin::update_company_location_checkout_to_draft",
+              "task_version": "0.1",
+              "task_type": "ACTION",
+              "name": null
+            },
+            {
+              "step_id": "45cdbcd6-005f-4cd2-a758-9a7eca17cbec",
+              "config_field_values": [
+                {
+                  "config_field_id": "company_location_id",
+                  "value": "{\"value\":null,\"default_value\":\"companyLocation.id\"}"
+                },
+                {
+                  "config_field_id": "editable_shipping_address",
+                  "value": "true"
+                }
+              ],
+              "task_id": "shopify::admin::update_company_location_editable_shipping_address",
+              "task_version": "0.1",
+              "task_type": "ACTION",
+              "name": null
+            },
+            {
+              "step_id": "b4dc8a88-2784-4bc4-a311-5d167d0a63a5",
+              "config_field_values": [
+                {
+                  "config_field_id": "address",
+                  "value": "oceanjoiassales23@gmail.com"
+                },
+                {
+                  "config_field_id": "subject",
+                  "value": "New company account request - {{companyLocation.company.name}}"
+                },
+                {
+                  "config_field_id": "message",
+                  "value": "{{companyLocation.company.name}} has submitted a company account request.\n\nContact Name: {{companyLocation.company.mainContact.customer.displayName}}\n\nContact Email: {{companyLocation.company.mainContact.customer.email}}\n\n{% for metafields_item in companyLocation.company.metafields %}\n  {{metafields_item.definition.name}}: {{metafields_item.value}}\n{% endfor %}\n\nReview the full submission:\nhttps://{{shop.myshopifyDomain}}/admin/companies?selectedView=orderingNotApproved&orderStatus=%20AND%20active_customers_count%3A0"
+                }
+              ],
+              "task_id": "shopify::flow::send_email",
+              "task_version": "2.0",
+              "task_type": "ACTION",
+              "name": null
+            }
+          ],
+          "links": [
+            {
+              "from_step_id": "3a1e41f6-acd6-48ff-8837-9f3e48d87eb4",
+              "from_port_id": "output",
+              "to_step_id": "40411d7b-4895-4688-a213-04ac9c05abda",
+              "to_port_id": "input"
+            },
+            {
+              "from_step_id": "40411d7b-4895-4688-a213-04ac9c05abda",
+              "from_port_id": "true",
+              "to_step_id": "962dabcc-7ab0-4206-8ddd-cf3d1cf2ae66",
+              "to_port_id": "input"
+            },
+            {
+              "from_step_id": "40411d7b-4895-4688-a213-04ac9c05abda",
+              "from_port_id": "true",
+              "to_step_id": "45cdbcd6-005f-4cd2-a758-9a7eca17cbec",
+              "to_port_id": "input"
+            },
+            {
+              "from_step_id": "40411d7b-4895-4688-a213-04ac9c05abda",
+              "from_port_id": "true",
+              "to_step_id": "b4dc8a88-2784-4bc4-a311-5d167d0a63a5",
+              "to_port_id": "input"
+            }
+          ],
+          "patched_fields": []
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/AutomationWorkflow/01a1c180-81c7-79af-9c3e-ca8b4ea94983",
+      "name": "New Workflow",
+      "version": "01M70R10E4NQKGQ71416JKK078",
+      "activeVersion": "01M70R10E4NQKGQ71416JKK078",
+      "configuration": {
+        "__metadata": {
+          "version": 0.1
+        },
+        "root": {
+          "steps": [
+            {
+              "step_id": "01M70R1BRRT0Y62A1BXWA3SSTX",
+              "config_field_values": [],
+              "task_id": "shopify::admin::company_location_created",
+              "task_version": "0.1",
+              "task_type": "TRIGGER",
+              "name": null
+            },
+            {
+              "step_id": "01M70R3MYDHSWWZWBH82V381F1",
+              "config_field_values": [
+                {
+                  "config_field_id": "api_call",
+                  "value": "{\"name\":\"companyLocationAssignAddress\",\"blob\":\"\\n{\\n  \\\"locationId\\\": \\\"{{ companyLocation.id }}\\\",\\n  \\\"address\\\": {\\n    \\\"address1\\\": {{ companyLocation.billingAddress.address1 | json }},\\n    \\\"address2\\\": {{ companyLocation.billingAddress.address2 | json }},\\n    \\\"city\\\": {{ companyLocation.billingAddress.city | json }},\\n    \\\"zip\\\": {{ companyLocation.billingAddress.zip | json }},\\n    \\\"zoneCode\\\": {{ companyLocation.billingAddress.zoneCode | json }},\\n    \\\"countryCode\\\": {{ companyLocation.billingAddress.countryCode | json }},\\n    \\\"recipient\\\": {{ companyLocation.billingAddress.recipient | json }},\\n    \\\"firstName\\\": {{ companyLocation.billingAddress.firstName | json }},\\n    \\\"lastName\\\": {{ companyLocation.billingAddress.lastName | json }},\\n    \\\"phone\\\": {{ companyLocation.billingAddress.phone | json }}\\n  },\\n  \\\"addressTypes\\\": [\\\"SHIPPING\\\"]\\n}\\n\"}"
+                }
+              ],
+              "task_id": "shopify::admin::admin_api_operation",
+              "task_version": "0.1",
+              "task_type": "ACTION",
+              "name": "Send Admin API request"
+            },
+            {
+              "step_id": "01M70S771DTEK83FQFXCHR7EHH",
+              "config_field_values": [
+                {
+                  "config_field_id": "wait_duration",
+                  "value": "{\"amount\":\"60\",\"unit\":\"seconds\"}"
+                }
+              ],
+              "task_id": "shopify::flow::wait",
+              "task_version": "0.1",
+              "task_type": "WAIT",
+              "name": null
+            },
+            {
+              "step_id": "01M70S8JQPSA2GB99Z3H9WC7GT",
+              "config_field_values": [
+                {
+                  "config_field_id": "api_call",
+                  "value": "{\"name\":\"companyLocationTaxSettingsUpdate\",\"blob\":\"\\n{\\n  \\\"companyLocationId\\\": \\\"{{ companyLocation.id }}\\\",\\n  \\\"taxRegistrationId\\\": \\\"{{ companyLocation.company.cnpj.value }}\\\"\\n}\\n\"}"
+                }
+              ],
+              "task_id": "shopify::admin::admin_api_operation",
+              "task_version": "0.1",
+              "task_type": "ACTION",
+              "name": "Send Admin API request (1)"
+            },
+            {
+              "step_id": "01M70SQFDNSXF5XZKJCZG8Y0BF",
+              "config_field_values": [
+                {
+                  "config_field_id": "condition",
+                  "value": "((companyLocation.billingAddress.address1 not_empty_and_not_nil?) && (companyLocation.company.cnpj.value not_empty_and_not_nil?))"
+                }
+              ],
+              "task_id": "shopify::flow::condition",
+              "task_version": "0.1",
+              "task_type": "CONDITION",
+              "name": null
+            }
+          ],
+          "links": [
+            {
+              "from_step_id": "01M70R1BRRT0Y62A1BXWA3SSTX",
+              "from_port_id": "output",
+              "to_step_id": "01M70S771DTEK83FQFXCHR7EHH",
+              "to_port_id": "input"
+            },
+            {
+              "from_step_id": "01M70R3MYDHSWWZWBH82V381F1",
+              "from_port_id": "output",
+              "to_step_id": "01M70S8JQPSA2GB99Z3H9WC7GT",
+              "to_port_id": "input"
+            },
+            {
+              "from_step_id": "01M70S771DTEK83FQFXCHR7EHH",
+              "from_port_id": "output",
+              "to_step_id": "01M70SQFDNSXF5XZKJCZG8Y0BF",
+              "to_port_id": "input"
+            },
+            {
+              "from_step_id": "01M70SQFDNSXF5XZKJCZG8Y0BF",
+              "from_port_id": "true",
+              "to_step_id": "01M70R3MYDHSWWZWBH82V381F1",
+              "to_port_id": "input"
+            }
+          ],
+          "patched_fields": [
+            {
+              "id": "df28b891-19cb-4713-8b68-9686136a260c",
+              "handle": "cnpj",
+              "field": "metafield",
+              "patched_type": "Company",
+              "arguments": {
+                "key": "cnpj",
+                "namespace": "custom"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/AutomationWorkflow/01a18422-f112-75f0-b62e-1358b17adcea",
+      "name": "Recover abandoned checkout",
+      "version": "01M6225W8J1ZBVFRR33H3P864S",
+      "activeVersion": "01M6225W8J1ZBVFRR33H3P864S",
+      "configuration": {
+        "__metadata": {
+          "version": 0.1
+        },
+        "root": {
+          "steps": [
+            {
+              "step_id": "abandoned-checkout-trigger",
+              "config_field_values": [],
+              "task_id": "shopify::admin::abandoned_checkout",
+              "task_version": "0.2",
+              "task_type": "TRIGGER",
+              "name": null
+            },
+            {
+              "step_id": "online-store-checkout-condition",
+              "config_field_values": [
+                {
+                  "config_field_id": "condition",
+                  "value": "(abandonment.isFromOnlineStore == true)"
+                }
+              ],
+              "task_id": "shopify::flow::condition",
+              "task_version": "0.1",
+              "task_type": "CONDITION",
+              "name": null
+            },
+            {
+              "step_id": "price-condition",
+              "config_field_values": [
+                {
+                  "config_field_id": "condition",
+                  "value": "(abandonment.abandonedCheckoutPayload.totalPriceSet.shopMoney.amount > 0)"
+                }
+              ],
+              "task_id": "shopify::flow::condition",
+              "task_version": "0.1",
+              "task_type": "CONDITION",
+              "name": null
+            },
+            {
+              "step_id": "wait-step",
+              "config_field_values": [
+                {
+                  "config_field_id": "wait_duration",
+                  "value": "{\"amount\":\"10\",\"unit\":\"hours\"}"
+                }
+              ],
+              "task_id": "shopify::flow::wait",
+              "task_version": "0.1",
+              "task_type": "WAIT",
+              "name": null
+            },
+            {
+              "step_id": "order-and-previous-abandoned-checkout-condition",
+              "config_field_values": [
+                {
+                  "config_field_id": "condition",
+                  "value": "((abandonment.customerHasNoOrderSinceAbandonment == true) && (abandonment.hoursSinceLastAbandonedCheckout > 24))"
+                }
+              ],
+              "task_id": "shopify::flow::condition",
+              "task_version": "0.1",
+              "task_type": "CONDITION",
+              "name": null
+            },
+            {
+              "step_id": "inventory-available-condition",
+              "config_field_values": [
+                {
+                  "config_field_id": "condition",
+                  "value": "(abandonment.inventoryAvailable == true)"
+                }
+              ],
+              "task_id": "shopify::flow::condition",
+              "task_version": "0.1",
+              "task_type": "CONDITION",
+              "name": null
+            },
+            {
+              "step_id": "abandoned_checkout",
+              "config_field_values": [
+                {
+                  "config_field_id": "abandonment_id",
+                  "value": "{\"value\":null,\"default_value\":\"abandonment.id\"}"
+                },
+                {
+                  "config_field_id": "customer_id",
+                  "value": "{\"value\":null,\"default_value\":\"customer.id\"}"
+                },
+                {
+                  "config_field_id": "marketing_activity_id",
+                  "value": "gid://shopify/MarketingActivity/182099705956"
+                }
+              ],
+              "task_id": "d077fa62-a75a-45b3-bfa9-835c45f6f2f0",
+              "task_version": "1.0",
+              "task_type": "ACTION",
+              "name": null
+            }
+          ],
+          "links": [
+            {
+              "from_step_id": "abandoned-checkout-trigger",
+              "from_port_id": "output",
+              "to_step_id": "online-store-checkout-condition",
+              "to_port_id": "input"
+            },
+            {
+              "from_step_id": "online-store-checkout-condition",
+              "from_port_id": "true",
+              "to_step_id": "price-condition",
+              "to_port_id": "input"
+            },
+            {
+              "from_step_id": "price-condition",
+              "from_port_id": "true",
+              "to_step_id": "wait-step",
+              "to_port_id": "input"
+            },
+            {
+              "from_step_id": "wait-step",
+              "from_port_id": "output",
+              "to_step_id": "order-and-previous-abandoned-checkout-condition",
+              "to_port_id": "input"
+            },
+            {
+              "from_step_id": "order-and-previous-abandoned-checkout-condition",
+              "from_port_id": "true",
+              "to_step_id": "inventory-available-condition",
+              "to_port_id": "input"
+            },
+            {
+              "from_step_id": "inventory-available-condition",
+              "from_port_id": "true",
+              "to_step_id": "abandoned_checkout",
+              "to_port_id": "input"
+            }
+          ],
+          "patched_fields": []
+        }
+      }
+    }
+  ],
+  "pageInfo": {
+    "hasNextPage": false,
+    "endCursor": "eyJsYXN0X3ZhbHVlIjoiTWpvNk1qQXlOaTB4TVMweE4xUXhNem96T0Rvek5DNDRNVFE1TnpJck1EQTZNREEifQ=="
+  }
+}

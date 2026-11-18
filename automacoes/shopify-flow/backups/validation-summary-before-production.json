@@ -1,0 +1,27 @@
+{
+  "shop": "mrdvrf-6a.myshopify.com",
+  "newTestsPassed": 54,
+  "existingRegressionChecksPassed": 45,
+  "graphqlOperationsValidated": 6,
+  "apiVersion": "2026-10",
+  "panelJSXSyntax": "passed",
+  "originalLocalPanelSources": "preserved, SHA-256 checked",
+  "implementationLocation": "local bridge package and staged current panel",
+  "productionAppSourcePatchApplied": false,
+  "bridgeEnabled": false,
+  "signalsEnabled": false,
+  "realStoreWrites": 0,
+  "workflowsCreated": 0,
+  "workflowsModified": 0,
+  "workflowsActivated": 0,
+  "realEmailsSent": 0,
+  "liveMetafieldWriteValidated": false,
+  "flowRuntimeValidated": false,
+  "remainingValidation": [
+    "Controlled actual app-authenticated write/read, only after approval",
+    "New shared definitions, additional native signal permissions and Flow visibility",
+    "Native initialization/contact workflows, migration gate and runtime data paths",
+    "CAS claim/error handling and delivery acknowledgement in native Flow actions",
+    "Interrupted UI operations and delayed first-email reconciliation"
+  ]
+}
