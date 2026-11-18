@@ -377,6 +377,7 @@ function Detail({location,decisions,agora,busy,confirming,confirmingLock,onStart
           <s-heading fontSize="large-300">Contato do cadastro</s-heading>
           <s-heading fontSize="large-200">Responsável: {contact?.displayName || 'Não identificado'}</s-heading>
           <s-heading fontSize="large-200">E-mail: {contact?.defaultEmailAddress?.emailAddress || 'Não informado'}</s-heading>
+          <s-heading fontSize="large-200">Telefone do lead: {telefone ? formatarTelefone(telefone) : 'Não informado'}</s-heading>
           <s-stack direction="inline" gap="base" alignItems="center">
             <s-heading fontSize="large-200">Instagram:</s-heading>
             <s-heading fontSize="large-200">{instagram ? (instagramHref ? <s-link href={instagramHref} target="_blank">{instagram}</s-link> : instagram) : 'Não informado'}</s-heading>
